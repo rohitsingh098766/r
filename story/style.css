@@ -1,0 +1,304 @@
+html{
+    overflow-y: hidden;
+    height: 100vh;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Segoe UI,Helvetica Neue,Helvetica,Lucida Grande,Arial,Ubuntu,Cantarell,Fira Sans,sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    background: black;
+}
+
+.left-part,
+.right-part{
+    background: white;
+    /* height: 100vh; */
+    position: relative;
+    z-index: 5000;
+    overflow: hidden;
+/*    width: calc(50vw - 215px);*/
+}
+
+*{
+    /* border: 1px solid red; */
+}
+
+
+main{
+/*    background: black;*/
+    height: 100%;
+    width: 100%;
+    max-width: 450px;
+    margin: auto;
+    align-items: center;
+    justify-items: center;
+    overflow: hidden;
+    position: relative;
+}  
+
+section{
+    background: rgb(0, 0, 0);
+    height: 100%;
+    width: 100%;
+    /* max-width: 400px; */
+    transition: all 0.6S;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.story{
+    background: rgb(0, 0, 0);
+    transform-origin: 50% 200%;
+    transform: rotate(90deg);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.firsst{
+    /* background: url(img3.jpg); */
+    position: absolute;
+    transform: rotate(0deg) ;
+    z-index: 5000;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+}
+
+.top-section{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+     transition: 1s ease all;
+}
+
+section .top{
+    display: grid;
+    height: 60px;
+    grid-template-columns: 50px 70px 1fr 50px;
+    padding: 10px 0;
+    background-color: transparent;
+  
+}
+a{
+    text-decoration: none;
+}
+
+.loader{
+    height: 6px;
+    position: relative;
+    margin:0;
+    margin: 3px 2px 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.loader .bar{
+    margin: 2px;
+    padding: 0;
+    line-height: 2px;
+    width: 100%;
+    border-radius: 25px;
+    background-color: rgb(107, 104, 107);
+}
+
+.bar div{
+    padding: 0;
+    margin: 0;
+    width: 0;
+    background-color: rgb(255, 255, 255);
+    line-height: 2px;
+    border-radius: 25px;
+}
+
+
+.load-now{
+    animation: loading 3s forwards;
+}
+
+.completed{
+    width: 100%;
+}
+
+@keyframes loading{
+
+    100%{
+        width: 100%;
+    }
+}
+
+
+.bottom{
+    background: rgb(0 0 0 / 20%);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    /* padding-bottom: 50px; */
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: 1s ease all;
+   
+}
+
+.bottom p{
+    color: white;
+    font-weight: 500;
+}
+
+.bottom span{
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    margin: 1px 0 13px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.bottom .reply-icon{
+    filter: invert(1);
+    width: 15px;
+    margin: auto;
+    cursor: pointer;
+}
+
+section .content-img{
+/* width: 100%; */
+/* width: 100%; */
+    margin: auto;
+    /* transform: translateY(-50px); */
+    display: flex;
+    align-self: center;
+    position: relative;
+    z-index: -50;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+section .status{
+    /* display: none; */
+    width: 100%;
+    margin: auto;
+    bottom: 0;
+    display: flex;
+    align-self: center;
+    z-index: -50;
+    /* display: none; */
+}
+
+.top .back{
+    width: 20px;
+    margin: auto;
+    margin-left: 15px;
+    filter: invert(1);
+    cursor: pointer;
+}
+
+.top .profile-pic{
+    background-image: url("avatar.png");
+    background-size: cover;
+    background-position: center;
+/*    border: 3px solid white;*/
+    border-radius: 50%;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+}
+
+.profile-pic.rohit{
+    background-image: url("rohit.jpg") !important;
+}
+
+.profile-pic.alexandra{
+    background-image: url("alexandra.jpg") !important;
+}
+
+.profile-pic.samay{
+    background-image: url("samay.jpg") !important;
+}
+
+.profile-pic.akash{
+    background-image: url("akash.jpg") !important;
+}
+
+.top .info{
+    margin: 5px 10px  ;
+    max-width: 190px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    /* display: block; */
+}
+
+.top .info .name{
+    font-size: 1em;
+    color: white;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.top .info .time{
+    font-size: .8em;
+    color: white;
+}
+
+.top .menu{
+    width: 23px;
+    margin: auto;
+    margin-right: 20px;
+    transform: rotate(180deg);
+    filter: invert(1);
+    cursor: pointer;
+}
+#css{
+    display: none;
+}
+
+@media (max-width:400px){
+    .main{
+        width: 100vw;
+    }
+    .top .info .name{
+        font-size: 17px;
+    }
+
+    .top .profile-pic{
+        width: 45px;
+        height:  45px;
+    }
+
+    .top .back{
+        width: 17px;
+        margin-left: 10px;
+    }
+
+    .top .menu{
+        width: 17px;
+        margin-right: 10px;
+
+    }
+
+    section .top{
+        grid-template-columns: 40px 50px 1fr 40px;
+    }
+}
+
+
+
+

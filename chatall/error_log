@@ -1,0 +1,1 @@
+[05-Jan-2021 11:05:03 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/wqawhdpzw0wl/public_html/chatall/index.php on line 167

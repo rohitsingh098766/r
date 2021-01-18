@@ -1,0 +1,20 @@
+.invisible {
+  display: none;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+.blue {
+  color: #196fb6;
+}
+
+.white {
+  color: white;
+}
+
+.blue-background-header {
+  background-color: #0073b1 !important;
+}

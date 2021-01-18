@@ -1,0 +1,5 @@
+[05-Jan-2021 10:54:21 UTC] PHP Notice:  Undefined index: room in /home/wqawhdpzw0wl/public_html/chat/index.php on line 47
+[05-Jan-2021 10:54:21 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/wqawhdpzw0wl/public_html/chat/index.php on line 53
+[05-Jan-2021 10:54:21 UTC] PHP Notice:  Undefined variable: proceed in /home/wqawhdpzw0wl/public_html/chat/index.php on line 88
+[05-Jan-2021 11:16:32 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/wqawhdpzw0wl/public_html/chat/index.php on line 53
+[05-Jan-2021 11:16:32 UTC] PHP Notice:  Undefined variable: proceed in /home/wqawhdpzw0wl/public_html/chat/index.php on line 88

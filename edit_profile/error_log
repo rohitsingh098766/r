@@ -1,0 +1,8 @@
+[04-Jan-2021 06:52:59 UTC] PHP Notice:  Undefined index: id in /home/wqawhdpzw0wl/public_html/edit_profile/index.php on line 31
+[04-Jan-2021 06:52:59 UTC] PHP Notice:  Undefined index: id in /home/wqawhdpzw0wl/public_html/edit_profile/index.php on line 147
+[04-Jan-2021 06:52:59 UTC] PHP Notice:  Undefined index: id in /home/wqawhdpzw0wl/public_html/edit_profile/index.php on line 157
+[04-Jan-2021 06:52:59 UTC] PHP Notice:  Undefined index: id in /home/wqawhdpzw0wl/public_html/edit_profile/index.php on line 165
+[04-Jan-2021 06:52:59 UTC] PHP Notice:  Undefined index: id in /home/wqawhdpzw0wl/public_html/edit_profile/index.php on line 177
+[04-Jan-2021 06:52:59 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/wqawhdpzw0wl/public_html/edit_profile/index.php on line 179
+[15-Jan-2021 06:07:35 UTC] PHP Warning:  exif_read_data(1.4h6kl.png): File not supported in /home/wqawhdpzw0wl/public_html/edit_profile/index.php on line 9
+[15-Jan-2021 06:50:50 UTC] PHP Warning:  exif_read_data(3.4h8kv.png): File not supported in /home/wqawhdpzw0wl/public_html/edit_profile/index.php on line 9

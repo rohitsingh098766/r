@@ -1,0 +1,691 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    letter-spacing: .5px;
+    word-spacing: 1.5px;
+}
+html{
+    scroll-behavior: smooth;
+}
+.container{
+    width: 100%;
+   min-height: 100%;
+    position: absolute;
+    background-image: linear-gradient(to right top, #0073b1 , #BA68C8);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: multiply;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-login,.main-signup{
+    padding: 1em;
+    background-color: white;
+    width: 50%;
+    display: flex;
+    border-radius: 10px;
+}
+/* Login CSS */
+.left-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    padding: 1em;
+}
+.title{
+    font-size: 2em;
+    margin: 0.5em 0;
+    text-transform: uppercase;
+}
+.about{
+    text-align: justify;
+    margin: 1em 0;
+    padding: 0 2em;
+    color: gray;
+}
+.signup-action{
+    margin: 0.75em 0;
+}
+.signup{
+    color: #196fb6;
+    font-weight: 500;
+    padding: 0 0.5em;
+    cursor: pointer;
+}
+.right-bar{
+    width: 50%;
+    padding: 1em;
+}
+.main-img{
+    width: 12em;
+    height: 12em;
+    object-fit: cover;
+}
+.heading{
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+.form-wrap{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.input-wrap{
+    position: relative;
+}
+.label{
+    position: absolute;
+    top: 1.65em;
+    left: 1em;
+    transition: 0.2s;
+    pointer-events: none;
+    color: gray;
+}
+.fields{
+    border: none;
+    background-color: white;
+    padding: 0.6em 1em;
+    margin: 1em 0;
+    font-size: 1em;
+    width: 100%;
+    border: 2px solid gainsboro;
+    border-radius: 5px;
+}
+.password{
+    letter-spacing: 3px;
+}
+.fields:valid{
+    border-color: rgb(180, 180, 180);
+}
+.fields:focus{
+    border-color: #196fb6;
+}
+.fields:focus ~ .label,
+.fields:valid ~ .label{
+    top: 0.6em;
+    padding: 0 0.15em;
+    font-size: 0.85em;
+    font-weight: 500;
+    color: #196fb6;
+    letter-spacing: 1px;
+    background-color: white;
+}
+.recovery{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25em;
+    font-size: 1em;
+}
+.checkbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.checkbox label{
+    margin-left: 0.5em;
+    cursor: pointer;
+}
+.submit{
+    border: none;
+    color: white;
+    background-color: #196fb6;
+    padding: 0.6em 1em;
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 0.5em;
+}
+.submit:hover{
+    background-color: #0f3e68;
+}
+.or-marker{
+    margin: 1em 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-size: 0.8em;
+    color: gray;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.or-marker::before,
+.or-marker::after{
+    content: '';
+    width: 50%;
+    height: 1px;
+    background-color: gainsboro;
+    display: block;
+}
+.social-media{
+    padding: 0.6em 1em;
+    font-size: 1em;
+    border: none;
+    background-color: white;
+    border: 1px solid gainsboro;
+    margin: 0.5em 0;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /*chnaged*/
+     border: 0 solid gainsboro;
+}
+.social-media:hover{
+    background-color: whitesmoke;
+}
+.social-media::before{
+    content: '';
+    width: 1em;
+    height: 1em;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 0.95em;
+    display: block;
+    margin-right: 0.5em;
+}
+.google::before{
+    background-image: url("Images/google.svg");
+}
+.facebook::before{
+    background-image: url("Images/facebook.svg");
+}
+.twitter::before{
+    background-image: url("Images/twitter.svg");
+}
+/* Signup CSS */
+.main-signup{
+    position: relative;
+    overflow: hidden;
+    flex-direction: column;
+}
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.head-img{
+    width: 4em;
+    height: 4em;
+}
+.header .title{
+    font-size: 1.5em;
+    margin-left: 0.5em;
+    margin-right: auto;
+}
+.login{
+    color: #196fb6;
+    font-weight: 500;
+    font-size: 1.15em;
+    padding: 0.2em 1em;
+    cursor: pointer;
+}
+.login:hover{
+    background-color: #eef7ff;
+}
+.progress-bar{
+    margin: 0.5em 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.number{
+    width: 1.6em;
+    height: 1.6em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: #196fb6;
+    border: 2px solid #196fb6;
+    cursor: pointer;
+}
+.finished{
+    background-color: #196fb6;
+    color: white;
+}
+.line{
+    flex: 1;
+    height: 2px;
+    background-color: #c0ddf7;
+    position: relative;
+    overflow: hidden;
+}
+.finish-line::before{
+    content: '';
+    position: absolute;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: 2px;
+    background-color: #196fb6;
+    display: block;
+    animation: grow 0.4s linear;
+}
+@keyframes grow{
+    0%{
+        margin-left: -100%;
+    }
+    100%{
+        margin-left: 0;
+    }
+}
+.multi-stage{
+    align-self: center;
+    width: 55%;
+    margin-top: 1em;
+    display: flex;
+    overflow: hidden;
+}
+.forms{
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1em;
+    transition: margin 0.3s;
+}
+.slide-left{
+    margin-left: -100%;
+}
+.form-heading{
+    align-self: center;
+    display: flex;
+    margin: 0.5em 0;
+    align-items: center;
+    font-size: 1.1em;
+}
+.form-heading span:nth-child(2){
+    margin-right: 0.5em;
+}
+.svg-icon{
+    width: 1em;
+    height: 1em;
+    background-size: 0.95em;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    margin-right: 0.5em;
+}
+.pers{
+    background-image: url("Images/user.svg");
+}
+.date-wrap{
+    display: flex;
+}
+.date-wrap .input-wrap{
+    flex: 1;
+}
+.select{
+    top: 1.7em;
+}
+.month{
+    margin: 0 1em;
+}
+.date-wrap .input-wrap:last-of-type{
+    flex: 2;
+}
+.button-wrap{
+    display: flex;
+}
+.previous,
+.continue,
+.signup-button{
+    border: none;
+    border-radius: 3px;
+    padding: 0.5em 1em;
+    background-color: #196fb6;
+    border: 2px solid transparent;
+    color: white;
+    font-size: 1em;
+    width: max-content;
+    margin: 1em 0;
+    margin-left: auto;
+    transition: background-color 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.previous::before,
+.continue::after,
+.signup-button::after{
+    content: '';
+    width: 0.35em;
+    height: 0.35em;
+    border-top: 1.5px solid white;
+    border-left: 1.5px solid white;
+    display: block;
+    transform: rotate(135deg);
+    margin-left: 0.5em;
+}
+.signup-button:hover,
+.continue:hover{
+    background-color: #0f3e68;
+}
+.previous{
+    margin-left: 0;
+    margin-right: auto;
+    color: #196fb6;
+    background-color: white;
+    border-color: #196fb6;
+}
+.previous::before{
+    margin-left: 0;
+    margin-right: 0.5em;
+    border-color: #196fb6;
+    transform: rotate(-45deg);
+}
+.previous:hover{
+    background-color: #eef7ff;
+}
+.account{
+    background-image: url("Images/password.svg");
+}
+.recover{
+    background-image: url("Images/mail.svg");
+}
+.location{
+    background-image: url("Images/location.svg");
+    background-size: 0.65em;
+}
+.job{
+    background-image: url("Images/work.svg");
+}
+.skill{
+    background-image: url("Images/skill.svg");
+}
+.note{
+    margin-bottom: 0.2em;
+    font-size: 0.85em;
+    color: gray;
+    display: block;
+    line-height: 160%;
+}
+.note-plus {
+    margin: 1em 0;
+}
+.note-check{
+    display:none;
+}
+.mobile,
+.hide{
+    display: none;
+}
+.loader {
+    background: #ffffff8a;
+}
+#warning{
+    display:none;
+    color:red;
+    transition:  all 1s ease-in;
+}
+
+.alert{
+    
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.63) ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s all ease;
+    transform: scale(0);
+}
+.alert.active{
+      transform: scale(1);
+}
+.alert_center{
+    display: flex;
+    background: white;
+    border-radius: 1em;
+    justify-content: center;
+    width: 98%;
+    max-width: 450px;
+    height: 200px;
+    max-height: 70%;
+   
+}
+.alert.active .alert_center{
+   
+}
+.alert_grid{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 100%;
+}
+.success_mark{
+    background: #00bf00;
+    width: 100%;
+    border-radius: 1em 100% 100% 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.success_mark_wrong_ps{
+   background: rgba(255, 0, 0, 0.35);  
+}
+.success_mark_another_username{
+    background: #ffd587;
+}
+.tick_scg{
+    width: 2em;
+    height: auto;
+}
+.success_message{
+    display: grid;
+}
+.success_message div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.success_message div:nth-child(1){
+    color: #378ee3;
+    font-weight: bold;
+     font-size: 1.2em;
+    padding:0 1em;
+    text-align: center;
+}
+.success_message_wrong_ps div:nth-child(1){
+      color: #de4a4a;
+}.success_message_another_username div:nth-child(1){
+      color: darkorange;
+}
+
+.success_message div:nth-child(2){
+    color: gray;
+    font-weight: lighter;
+    font-size: .9em;
+    padding:0 1em;
+    text-align: center;
+}.success_message div:nth-child(3) button{
+   padding: .5em 1em;
+    border:0;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    background: #0073b1;
+/*    padding:0 1em;*/
+}
+@media only screen and (max-width:1700px){
+    .main-login{
+        width: 55%;
+    }
+    .multi-stage{
+        width: 60%;
+    }
+}
+@media only screen and (max-width:1600px){
+    .main-login, .main-signup{
+        width: 60%;
+    }
+}
+@media only screen and (max-width:1500px){
+    .main-login, .main-signup{
+        width: 65%;
+    }
+}
+@media only screen and (max-width:1400px){
+    .main-login, .main-signup{
+        width: 70%;
+    }
+}
+@media only screen and (max-width:1300px){
+    .main-login, .main-signup{
+        width: 75%;
+    }
+}
+@media only screen and (max-width:1200px){
+    .main-login, .main-signup{
+        width: 80%;
+    }
+}
+@media only screen and (max-width:1100px){
+    .main-login, .main-signup{
+        width: 85%;
+    }
+    .multi-stage{
+        width: 65%;
+    }
+}
+@media only screen and (max-width:1000px){
+    .main-login, .main-signup{
+        width: 90%;
+    }
+    .multi-stage{
+        width: 70%;
+    }
+}
+@media only screen and (max-width:900px){
+    .main-login, .main-signup{
+        width: 95%;
+    }
+    .multi-stage{
+        width: 75%;
+    }
+}
+@media only screen and (max-width:800px){
+    .main-login, .main-signup{
+        width: 100%;
+        border-radius: unset;
+    }
+    .multi-stage{
+        width: 80%;
+    }
+}
+@media only screen and (max-width:768px){
+
+    .container{
+        background: white;
+        height: auto;
+    }
+    .main-img{
+        width: 10em;
+        height: 10em;
+    }
+    .head-img{
+        width: 3em;
+        height: 3em;
+    }
+    .title,
+    .header .title{
+        font-size: 1.35em;
+    }
+    .main-login,
+    .main-signup{
+        height: 100%;
+    }
+    .main-login{
+        flex-direction: column;
+    }
+    .main-signup{
+        padding: 0;
+        overflow: auto;
+    }
+    .left-bar,
+    .right-bar{
+        width: 100%;
+    }
+    .left-bar{
+        padding-bottom: 0;
+    }
+    .about{
+        display: none;
+    }
+    .signup-action{
+        display: none;
+           margin:3em 0 0 0 ;
+    }
+    .mobile{
+        display: block;
+        text-align: center;
+    }
+    .header{
+        padding: 0.5em;
+        margin-bottom: 1em;
+        border-bottom: 1px solid gainsboro;
+    }
+    .multi-stage{
+        width: 90%;
+    }
+}
+@media only screen and (max-width:600px){
+    .multi-stage{
+        width: 95%;
+    }
+    .heading{
+        font-size: 1.25em;
+    }
+}
+@media only screen and (max-width:500px){
+    .main-img{
+        width: 7em;
+        height: 7em;
+    }
+    .head-img{
+        width: 2.75em;
+        height: 2.75em;
+    }
+    .multi-stage{
+        width: 100%;
+    }
+    .month{
+        margin: 0 0.5em;
+    }
+    .month .label{
+        left: 0.7em;
+    }
+    .month .fields{
+        padding: 0.6em;
+        padding-left: 0.3em;
+    }
+}
+@media only screen and (max-width:400px){
+    .container{
+        font-size: 0.95em;
+    }
+    .alert_grid{
+    grid-template-columns: 4em 1fr;
+}
+}

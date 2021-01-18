@@ -1,0 +1,30 @@
+.settings_cart{
+    padding: 1em;
+    margin: 1em;
+    border: 1px solid #d6d6d6;
+    border-radius: .5em
+}
+.settings_header{
+    padding:.1em 0;
+    font-weight: 600;
+    color: black
+}
+.settings_subject{
+    padding:.2em 0;
+      font-weight: 400;
+    color:gray;
+    font-size: .9em
+}
+.my_options .items{
+    padding: 0 .5em ! important
+}
+.choose{
+     padding:  .5em ! important;
+     margin:   .5em 0 ! important;
+    border:1px solid #e5e5e5 ;
+    border-radius: .5em;
+}
+.choose:hover{
+    
+    background: rgba(128, 128, 128, 0.2)
+}

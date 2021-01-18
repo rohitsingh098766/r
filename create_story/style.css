@@ -1,0 +1,206 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: black;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    line-height: 160%;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+}
+body{
+    min-height: 100%;
+    display: flex;
+   justify-content: center;
+}
+#create{
+    background-color: red;
+    min-height: 100%;
+    width:520px;
+    margin: auto;
+    position: absolute;
+}
+#head{
+    display: grid;
+    grid-template-columns: 3em 3em 1fr 3em;
+    height: 3em;
+    width: 100%;
+    padding: .5em 0;
+}
+#head .span{
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+.img{
+    width: 100%;
+    height: auto;
+}
+.arrow{
+    width: 1em;
+    display: flex;
+}
+.profile{
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+}
+.ellipse{
+    height: 1.2em;
+    margin: auto;
+}
+#other{
+    width: 100%;
+    min-height: calc(100% - 4em);
+    position: absolute;
+    display: grid;
+    grid-template-rows: calc(100% - 6em) 6em;
+}
+#story_img{
+    width: 100%;
+/*    background: yellow;*/
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+#story_description{
+    width: 100%;
+    align-items: baseline;
+    position: absolute;
+    bottom: 0;
+    min-height: 6em;
+    background: #00000026;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+#story_pic{
+     width: auto; 
+    max-width: 100%;
+    height: auto;
+    max-height: 75vh;
+    margin: auto;
+    z-index: 1;
+}
+#textarea{
+    padding: .4em ;
+    margin:   .2em;
+    line-height: 150%;
+    word-spacing: 3px;
+    letter-spacing: .7px;
+    font-size: 100%;
+    width: 80%;
+    height: auto;
+    overflow: auto;
+    resize: none;
+    color: white;
+    border: 1px solid rgba(252, 252, 252, 0.35);
+    border-radius: .5em;
+    max-height: 80vh;
+     cursor: pointer
+    
+}
+#textarea:focus {
+    outline: none !important;
+     border:0;
+  box-shadow: 0 0 36px 8px #ffffff38;
+   
+}
+#submit{
+    width:20%;
+    background: blue;
+    display: none;
+}
+#submit_label{
+    width:20%;
+    display: flex;
+align-content: center;
+    justify-content: center;
+background: transparent;
+}
+#submit_label_img{
+    width: 1.5em;
+    height: 1.5em;
+    background: #0592de;
+    border-radius: 50%;
+    padding: .5em;
+}
+#img_send{
+    width: 80%;
+    background: #0592de;
+    padding: 10% 0% 10% 20%;
+}
+#textarea::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: gray;
+}
+
+#textarea:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: gray;
+}
+#textarea::-ms-input-placeholder { /* Microsoft Edge */
+  color: gray;
+}
+#add{
+    display: none;
+}
+#added #add{
+    display: block;
+}
+#added #add{
+    display: block;
+}
+
+#image_file{
+    display: none;
+}
+#image_file_label{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+#story_pic_add{
+   position: absolute;
+    height: 2em;
+    width: 2em;
+}
+#tap_para{
+    color:white;position: absolute;transform: translate(0px, 2em);
+    z-index: 2;
+    background: transparent;
+    transition: all .3s ease;
+}
+body:active #tap_para,body:focus #tap_para{
+    opacity: 0;
+}
+@media only screen and (max-width: 1024px) {
+    
+}
+
+
+@media only screen and (max-width: 720px) {
+      #create{
+width: 100%;
+} 
+}
+
+@media only screen and (min-width: 720px) {
+#textarea::-webkit-scrollbar {
+  width: 10px;
+}
+#textarea::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+#textarea::-webkit-scrollbar-thumb {
+  background: #888;
+}
+#textarea::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+}
+
+
+@media only screen and (max-width: 480px) {
+ 
+}

@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+}
+
+
+.wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.items_slider {
+    width: 1000000px;
+    position: relative;
+    top: 0;
+    left: -35.6vw;
+    display: flex;
+    align-items: baseline;
+}
+
+.items_slider.shifting {
+    transition: left .2s ease-out;
+}
+
+.slide {
+    width: 35.6vw;
+    height: auto;
+    cursor: pointer;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+/*    transition: all 1s;*/
+    position: relative;
+    background: white;
+    max-height: 1200px;
+    margin-top: 1em;
+    background-color: black;
+}
+
+.control {
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 20px;
+    margin-top: -20px;
+    z-index: 2;
+    display: block;
+}
+.wrapper:active .control{
+    display: none;
+}
+.wrapper .control:hover{
+    display: block;
+}
+
+.slider .prev,
+.slider .next {
+    background-size: 22px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: .3s;
+    z-index: 1;
+    font-size: 2em;
+    background-size: .3em;
+    opacity: .5;
+    filter: invert(1);
+}
+
+.slider .prev {
+    background-image: url(../SVG/angle-left-solid-regular.svg);
+    left: -20px;
+     margin-left: 20px;
+       border-radius: 0 20px  20px 0;
+   
+}
+
+.slider .next {
+    background-image: url(../SVG/angle-left-solid-regular.svg);
+    right: -20px;
+    margin-right: 20px;
+transform: scale(-1);
+ border-radius: 0 20px  20px 0;
+}
+
+.slider .prev:active,
+.slider .next:active {
+opacity:.7;
+    width: 50px;
+
+    
+}
+
+
+@media only screen and (max-width: 1024px){
+.slider {
+        width: 60vw;
+    }
+
+    .slide {
+        width: 60vw;
+    }
+
+    .items_slider {
+        left: -60vw;
+    }
+   .wrapper .control{
+    display: none ! important;
+}
+    .wrapper:hover .control{
+    display: none;
+}
+}
+@media only screen and (max-width: 750px){
+.slider {
+        width: 68vw;
+    }
+
+    .slide {
+        width: 68vw;
+    }
+
+    .items_slider {
+        left: -68vw;
+    }
+}
+
+
+
+@media only screen and (max-width: 650px) {
+    .slider {
+        width: 100vw;
+    }
+
+    .slide {
+        width: 100vw;
+    }
+
+    .items_slider {
+        left: -100vw;
+    }
+}

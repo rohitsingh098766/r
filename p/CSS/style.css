@@ -1,0 +1,414 @@
+@font-face{
+    src: url("../Fonts/SourceSansPro-Regular.ttf");
+    font-family: myFont;
+}
+@font-face{
+    src: url("../Fonts/SourceSansPro-Bold.ttf");
+    font-family: myFont;
+    font-weight: bold;
+}
+@font-face{
+    src: url("../Fonts/SourceSansPro-SemiBold.ttf");
+    font-family: myFont;
+    font-weight: 500;
+}
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: myFont,'Segoe UI';
+}
+body{
+    overflow-y: scroll;
+}
+body::-webkit-scrollbar{
+    width: 0.5em;
+    background-color: whitesmoke;
+}
+body::-webkit-scrollbar-thumb{
+    background-color: gray;
+}
+.container{
+    background-color: whitesmoke;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+.main{
+    width: 50%;
+    padding: 1em;
+}
+.profile-section{
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px gainsboro;
+}
+.profile-photo{
+    position: relative;
+}
+.back-photo{
+    width: 100%;
+    height: 12em;
+    object-fit: cover;
+    border-radius: 5px 5px 0 0;
+}
+.svg-icon{
+    width: 1.75em;
+    height: 1.75em;
+    background-size: 1em;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
+    cursor: pointer;
+}
+.camera{
+    background-color: white;
+    background-image: url("Images/photo.svg");
+    position: absolute;
+    top: 0.75em;
+    right: 0.75em;
+    border-radius: 50%;
+}
+.user-photo{
+    width: 8em;
+    height: 8em;
+    object-fit: cover;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -3em;
+    left: 1.5em;
+    border: 2px solid whitesmoke;
+}
+.personal-details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3.75em;
+    padding: 0 1em 1em 1em;
+}
+.personal-details div{
+    width: 60%;
+}
+.user-name{
+    display: block;
+    font-size: 1.3em;
+    font-weight: 500;
+}
+.status{
+    margin-top: 0.2em;
+    font-size: 0.95em;
+}
+.location{
+    font-size: 0.9em;
+    color: gray;
+}
+.num{
+    margin: 0.5em 0;
+    font-size: 0.85em;
+    color: #196fb6;
+    font-weight: 500;
+    cursor: pointer;
+}
+.edit-profile{
+    background-color: transparent;
+    border: none;
+    font-size: 1em;
+    font-weight: 500;
+    color: #196fb6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.25em 0.75em;
+}
+.edit-profile:hover{
+    background-color: #ebf6ff;
+}
+.edit-profile::before{
+    content: '';
+    width: 1em;
+    height: 1em;
+    background-size: 1em;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
+    margin-right: 0.5em;
+    background-image: url("Images/edit.svg");
+}
+.pers-nav-bar{
+    width: 100%;
+    margin-top: 1em;
+}
+.nav-button{
+    padding: 0.6em 1.15em;
+    font-size: 0.95em;
+    border: none;
+    background-color: transparent;
+    border-top: 2px solid transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+.active-tab{
+    background-color: white;
+    border-top: 2px solid #196fb6;
+    font-weight: 500;
+}
+.hide{
+    display: none;
+}
+.about-section{
+    width: 100%;
+    background-color: white;
+    padding: 1em;
+}
+.info-box{
+    padding: 0.75em 1.15em;
+    border-bottom: 1px solid gainsboro;
+    margin-bottom: 1em;
+}
+.info-box:last-of-type{
+    border-bottom: none;
+}
+.heading{
+    font-weight: bold;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    color: #196fb6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25em;
+}
+.add-button{
+    margin-left: auto;
+    margin-right: 0.5em;
+    font-size: 1.5em;
+    color: #196fb6;
+    cursor: pointer;
+}
+.edit-content{
+    background-size: 0.8em;
+    background-image: url("Images/edit-icon.svg");
+    opacity: 0.5;
+    border-radius: 50%;
+}
+.edit-content:hover{
+    opacity: 1;
+    background-color: #ebf6ff;
+}
+.info-content{
+    font-size: 0.95em;
+    padding: 0.75em 0;
+    text-align: justify;
+}
+.anchor{
+    color: black;
+    padding-bottom: 0.75em;
+    width: max-content;
+}
+.link,
+.mail,
+.contact{
+    display: flex;
+    align-items: center;
+}
+.link::before,
+.mail::before,
+.contact::before{
+    content: '';
+    width: 1em;
+    height: 1em;
+    background-size: 0.75em;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("Images/phone.svg");
+    display: block;
+    margin-right: 0.75em;
+}
+.link::before{
+    background-image: url("Images/url.svg");
+}
+.mail::before{
+    background-image: url("Images/mail.svg");
+}
+.educate{
+    display: flex;
+}
+.clg-img{
+    width: 2.5em;
+    height: 2.5em;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.clg-details{
+    margin-left: 1em;
+    display: flex;
+    flex-direction: column;
+}
+.clg-name{
+    font-size: 1em;
+    font-weight: 500;
+}
+.clg-degr{
+    font-size: 0.9em;
+    margin-top: 0.15em;
+}
+.clg-time{
+    font-size: 0.8em;
+    color: gray;
+}
+.work-details{
+    padding-left: 1em;
+}
+.skills, .interest{
+    list-style-type: none;
+}
+.skills li{
+    padding: 0.5em 1em;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+.skill-status{
+    color: gray;
+    font-size: 0.8em;
+}
+.interest li{
+    padding: 0.5em;
+    display: inline-block;
+    cursor: pointer;
+}
+.connections-section{
+    background-color: white;
+    padding: 0.5em;
+}
+.total-conn{
+    padding: 1em;
+}
+.contacts{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em;
+    margin: 0.75em 0;
+    border-bottom: 1px solid gainsboro;
+}
+.contacts:last-of-type{
+    border-bottom: unset;
+}
+.cont-img{
+    width: 2.5em;
+    height: 2.5em;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.cont-details{
+    margin-left: 1em;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+.con-name{
+    font-weight: 500;
+    color: #196fb6;
+}
+.conn-work{
+    margin-top: 0.15em;
+    font-size: 0.9em;
+}
+.conn-locate{
+    font-size: 0.8em;
+    color: gray;
+}
+.message{
+    align-self: center;
+    border: none;
+    background-color: transparent;
+    border: 2px solid #196fb6;
+    font-weight: 500;
+    width: max-content;
+    cursor: pointer;
+    padding: 0.3em 0.85em;
+    font-size: 0.95em;
+    color: #196fb6;
+    border-radius: 1px;
+    margin-left: 0.5em;
+}
+.message:hover{
+    background-color: #ebf6ff;
+}
+.post-section{
+    background-color: white;
+    padding: 1em;
+}
+@media only screen and (max-width:1600px){
+    .main{
+        width: 55%;
+    }
+}
+@media only screen and (max-width:1440px){
+    .main{
+        width: 65%;
+    }
+}
+@media only screen and (max-width:1300px){
+    .main{
+        width: 70%;
+    }
+}
+@media only screen and (max-width:1200px){
+    .main{
+        width: 75%;
+    }
+}
+@media only screen and (max-width:1100px){
+    .main{
+        width: 80%;
+    }
+}
+@media only screen and (max-width:1000px){
+    .main{
+        width: 85%;
+    }
+}
+@media only screen and (max-width:900px){
+    .main{
+        width: 90%;
+    }
+}
+@media only screen and (max-width:850px){
+    .main{
+        width: 95%;
+    }
+}
+@media only screen and (max-width:768px){
+    .main{
+        width: 100%;
+        padding: 1em 0 0 0;
+    }
+    .profile-section, .back-photo{
+        border-radius: unset;
+    }
+}
+@media only screen and (max-width:500px){
+    .main{
+        font-size: 0.95em;
+    }
+    .connections-section,
+    .post-section{
+        margin-bottom: 2em;
+    }
+    .link::before,
+    .mail::before,
+    .contact::before{
+        background-size: 0.9em;
+    }
+}
+@media only screen and (max-width:340px){
+    .main{
+        font-size: 0.9em;
+    }
+}

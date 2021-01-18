@@ -1,0 +1,3 @@
+[15-Jan-2021 06:54:27 UTC] PHP Warning:  exif_read_data(3.4h8qv.a.png): File not supported in /home/wqawhdpzw0wl/public_html/create_story/index.php on line 12
+[15-Jan-2021 06:54:31 UTC] PHP Warning:  exif_read_data(3.4h8r0.a.png): File not supported in /home/wqawhdpzw0wl/public_html/create_story/index.php on line 12
+[15-Jan-2021 17:05:24 UTC] PHP Warning:  exif_read_data(9.4i118.a.png): File not supported in /home/wqawhdpzw0wl/public_html/create_story/index.php on line 12

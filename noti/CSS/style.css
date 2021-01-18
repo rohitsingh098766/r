@@ -1,0 +1,149 @@
+
+.card-header.notifi{
+    background: rgb(250, 250, 250);
+}
+
+.notifi-title{
+    color: black;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.card-main.notif{
+    display: grid;
+    grid-template-columns: 70px 1fr 60px;
+}
+
+.notif{
+    border-bottom: 1px solid #ddd;
+}
+
+.notif .img-wrap{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: fit-content;
+    /* padding: 20px; */
+
+    /* justify-content: center; */
+}
+
+.notif img{
+    margin: 15px auto;
+    width: 50px;
+    height:  50px;
+    object-fit: cover;
+    object-position: center;
+
+    /* border-radius: 50%; */
+}
+
+.notif img.circle{
+    border-radius: 50%;
+
+}
+
+.notif .avatar::after{
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: white;
+    border: 3px solid green;
+    box-shadow: 0 0 0 2px white;
+}
+
+.notif p{
+    margin: 15px 10px;
+    cursor: pointer;
+}
+
+.notif button{
+    border: 1.5px solid #0073b1;
+    color: #0073b1;
+    padding: 5px 10px;
+    border-radius: 3px;
+    background: transparent;
+    margin: auto 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.notif .last span{
+    transform: rotate(90deg);
+    margin: 20px 10px 0;
+    width: 20px;
+}
+
+.notif{
+    background-color: rgb(230,247,255);
+}
+
+.notif.read{
+    background-color: rgb(255, 255, 255);
+}
+
+.notif .last p{
+    margin: 8px auto;
+}
+
+.notif .last{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    filter: invert(0.5);
+}
+
+.notif button:hover{
+    background-color: #c5e3f3;
+}
+.more-icon {
+    width: 2em;
+    height: 2em;
+    background-image: url(../SVG/ellipsis-regular.svg);
+    /* transform: rotate(90deg); */
+    background-size: 1em;
+    border-radius: 50%;
+    filter: invert(0.5);
+}
+
+@media(max-width:450px){
+    .notif p{
+        font-size: 14px;
+    }
+
+    
+    .notif .last span {
+        width: 15px;
+    }
+
+    .notif .last .more-icon{
+       height: 15px;
+    }
+
+    .notif img{
+        margin-left: 10px;
+        margin-right: 1px;
+    }
+
+    .notif .info{
+        margin-left: 8px;
+    }
+    .notif button{
+        font-size: 13px;
+    }
+
+    .card-main.notif{
+        grid-template-columns: 50px 1fr 40px;
+    }
+
+    .notif .avatar::after{
+        right: 0;
+    }
+}

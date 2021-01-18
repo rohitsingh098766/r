@@ -1,0 +1,4 @@
+[12-Jan-2021 19:54:07 UTC] PHP Notice:  Undefined index: id in /home/wqawhdpzw0wl/public_html/story/index.php on line 58
+[12-Jan-2021 19:54:07 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/wqawhdpzw0wl/public_html/story/index.php on line 131
+[12-Jan-2021 19:54:14 UTC] PHP Notice:  Undefined index: id in /home/wqawhdpzw0wl/public_html/story/index.php on line 58
+[12-Jan-2021 19:54:14 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/wqawhdpzw0wl/public_html/story/index.php on line 131
