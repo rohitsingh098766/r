@@ -145,17 +145,22 @@ session_start();
                 <div class="left-bar"></div>
                 <div class="main-content">
                     <div class="card">
-                        <div class="card-header notifi">
-                            <div class="notifi-title"> No notifications yet </div> 
-                        </div>
+                        
                         
                         
                         <?php
                         
                         $query = "SELECT * FROM yaarme.notifications_all 
                         join yaarme.users on users.id = notifications_all.from_user 
-                        where for_user = {$_SESSION['id']} order by at desc" ;
+                        where for_user = {$_SESSION['id']} order by at desc limit 500" ;
   $result = mysqli_query($connection,$query);
+                        
+                        if(!mysqli_num_rows($result)){
+                            echo '<div class="card-header notifi">
+                            <div class="notifi-title"> No notifications yet </div> 
+                        </div>';
+                        }
+                        
   while($row = mysqli_fetch_assoc($result)){
       
       if($row['img']){
