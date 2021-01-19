@@ -195,9 +195,9 @@ function imageResize($imageResourceId,$width,$height,$target) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feed | YaarMe</title>
+    <link rel="stylesheet" href="../CSS/spin_loader.css">
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="../CSS/spin_loader.css">
 
     <!--icons-->
     <link rel="apple-touch-icon" sizes="57x57" href="../icons/icons/apple-icon-57x57.png">
@@ -221,6 +221,23 @@ function imageResize($imageResourceId,$width,$height,$target) {
 
 
 <body id="body" oncontextmenu="">
+    <div class="loader">
+        <div class="lds-spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    
     
 <!--desktop header-->
     <div class="main-navbar-wrap">

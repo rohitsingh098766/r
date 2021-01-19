@@ -44,3 +44,9 @@ for (var i = 0; i < 10; i++) {
             this.classList.add("cross_to_add")
         })
 }
+
+
+
+ document.getElementById('form').addEventListener('submit',function(){
+     document.querySelector('.loader').style.display="flex";
+ })

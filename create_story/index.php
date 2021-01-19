@@ -188,6 +188,7 @@ function imageResize($imageResourceId,$width,$height,$target) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Story</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../CSS/spin_loader.css">
 
     <!--icons-->
     <link rel="apple-touch-icon" sizes="57x57" href="../icons/icons/apple-icon-57x57.png">
@@ -210,6 +211,24 @@ function imageResize($imageResourceId,$width,$height,$target) {
 </head>
 
 <body>
+     <div class="loader">
+        <div class="lds-spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    
+    
     <div id="create">
     <div id="head">
         <a href="../" class="span"><img src='./image/arrow-left-regular.svg' alt="Exit" class="img arrow"></a href="../">

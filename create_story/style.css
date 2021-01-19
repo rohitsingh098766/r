@@ -204,3 +204,10 @@ width: 100%;
 @media only screen and (max-width: 480px) {
  
 }
+.loader{
+    z-index: 10000000000 ! important;
+    
+}
+.lds-spinner {
+    background: white;
+}

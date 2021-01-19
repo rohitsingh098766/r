@@ -256,6 +256,10 @@ function loadFile(event) {
             var image = document.getElementById('o1');
             image.src = URL.createObjectURL(event.target.files[0]);
         };
+        
+ document.getElementById('form').addEventListener('submit',function(){
+     document.querySelector('.loader').style.display="flex";
+ })
     </script>
 </body>
 </html>

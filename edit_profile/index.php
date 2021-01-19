@@ -432,7 +432,7 @@ exit(0);
                     <div class="button-wrap">
                         <div data-id="4" class="previous">Previous</div>
                         <input type="hidden" name="submitted" value="1">
-                        <div  class="signup-button  "  onclick="document.getElementById('form').submit()">Save</div>
+                        <div  class="signup-button  "  onclick="document.getElementById('form').submit(); document.querySelector('.loader').style.display='flex';">Save</div>
                     </div>
                     <br>
                 </div>

@@ -21,3 +21,8 @@ document.getElementById('textarea').addEventListener("mouseout",function(){
 document.getElementById('textarea').addEventListener("mouseover",function(){
     autosize() ;
 })
+
+
+ document.getElementById('other').addEventListener('submit',function(){
+     document.querySelector('.loader').style.display="flex";
+ })
