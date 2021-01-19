@@ -115,13 +115,16 @@ if (state){
         setTimeout(() => { bars[index - 1].querySelector("div").classList.add("load-now") }, 2);
 
                 section.children[index].style.display = "block"
-                 console.log('this is story id '+ section.children[index].getAttribute("s"))
                 loadDoc('./watch.php?s='+section.children[index].getAttribute("s"));
             }
             else{
+//                wil be excuted after watching all stories
                 viewNext()
                 clearInterval(int)
+                document.querySelector('body').style.display="none";
+                
                 window.location.assign('../');
+                loadDoc('../php/delete_old_stories.php');
                 sectionNo++;
 
                 if(sectionNo < sectionsLength)
@@ -342,6 +345,16 @@ function loadDoc(url) {
   };
   xhttp.open("GET", url, true);
   xhttp.send();
+}
+
+
+
+//right click prevent img download
+var images = document.querySelectorAll('img');
+for(var i = 0; i < images.length; i++){
+     images[i].oncontextmenu = function () {
+        return false;
+    };
 }
 
 
