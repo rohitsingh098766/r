@@ -23,6 +23,24 @@
 //insert reaction only like
     
      }
+       
+         
+         
+//         notify
+   $query_show = "SELECT * FROM yaarme_post.posts where id = '{$post_id}'" ;
+  $result_show = mysqli_query($connection,$query_show);
+  while($row_show = mysqli_fetch_assoc($result_show)){
+      $query_notify = "INSERT INTO yaarme.notification  (`user_id`, `category`) VALUES ('{$row_show['owner_id']}', '3')" ;
+  if(mysqli_query($connection,$query_notify)){
+  }    
+      $insert_text = $_SESSION['name']. ' liked  your post';
+      $insert_link = '../posts?p='.$post_id;
+      $query_notify_at_page = "INSERT INTO yaarme.notifications_all  (`for_user`, `from_user`,`text`,`link`) VALUES ('{$row_show['owner_id']}', '{$_SESSION['id']}','{$insert_text}','{$insert_link}')" ;
+  if(mysqli_query($connection,$query_notify_at_page)){
+  }    
+  }    
+         
+         
      }
 
 
@@ -41,6 +59,21 @@
      if(isset($_POST['emogi'])){
      $emogi_type = mysqli_real_escape_string($connection, $_POST['emogi']);}
      $query = "UPDATE yaarme_like.post_like SET emogi = {$emogi_type} WHERE `post_id` = '{$post_id}' and user = '{$_SESSION['id']}'";
+         
+         //         notify
+   $query_show = "SELECT * FROM yaarme_post.posts where id = '{$post_id}'" ;
+  $result_show = mysqli_query($connection,$query_show);
+  while($row_show = mysqli_fetch_assoc($result_show)){
+      $query_notify = "INSERT INTO yaarme.notification  (`user_id`, `category`) VALUES ('{$row_show['owner_id']}', '3')" ;
+  if(mysqli_query($connection,$query_notify)){
+  }    
+      $insert_text = $_SESSION['name']. ' liked  your post';
+      $insert_link = '../posts?p='.$post_id;
+      $query_notify_at_page = "INSERT INTO yaarme.notifications_all  (`for_user`, `from_user`,`text`,`link`) VALUES ('{$row_show['owner_id']}', '{$_SESSION['id']}','{$insert_text}','{$insert_link}')" ;
+  if(mysqli_query($connection,$query_notify_at_page)){
+  }    
+  }   
+         
      }
 
      else{

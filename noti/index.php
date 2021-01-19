@@ -148,6 +148,43 @@ session_start();
                         <div class="card-header notifi">
                             <div class="notifi-title"> No notifications yet </div> 
                         </div>
+                        
+                        
+                        <?php
+                        
+                        $query = "SELECT * FROM yaarme.notifications_all 
+                        join yaarme.users on users.id = notifications_all.from_user 
+                        where for_user = {$_SESSION['id']} order by at desc" ;
+  $result = mysqli_query($connection,$query);
+  while($row = mysqli_fetch_assoc($result)){
+      
+      if($row['img']){
+$from_profile = '../profile/i/240/'.$row['img'];
+      }else{
+        $from_profile = '../profile/i/none.svg';  
+      }
+      echo '
+        <div class="card-main notif read">
+                            <a href="../account?user='.$row['from_user'].'" class="img-wrap">
+                                <img class="circle" src="'.$from_profile.'" alt="">
+                            </a>
+                            <a href="'.$row['link'].'" class="info">
+                                <p>
+                                    '.$row['text'].'
+                                </p>
+                            </a>                        
+                            <div class="last">
+                                <span class="icon more-icon"></span>
+                            <p>1d</p>
+                            </div>
+                        </div>
+      ';
+  }
+                        
+                        ?>
+                        
+                        
+                      
                    <!--     
                         <div class="card-main notif">
                             <div class="img-wrap">
