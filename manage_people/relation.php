@@ -39,6 +39,8 @@ $approve = $row['approve'];
                $final = 9;
                $insert = 1;
            }
+            $query_noti = "INSERT INTO `yaarme`.`notification` (`id`, `user_id`, `category`) VALUES (NULL, {$user}, '1');";
+            
         }else{
             if($approve == 2 || $approve == 1) {
                $final = 1;
@@ -48,7 +50,20 @@ $approve = $row['approve'];
                 $final = 1;
                 $insert = 1;
             }
+            
+//            insert in noti page
+            $text_insert = $_SESSION['name'].' started following you.';
+           $query_noti_page = "INSERT INTO `yaarme`.`notifications_all` (`for_user`, `from_user`, `text`, `link`) VALUES ({$user},{$_SESSION['id']}, '{$text_insert}','');";
+             mysqli_query($connection,$query_noti_page); 
+            $query_noti = "INSERT INTO `yaarme`.`notification` (`id`, `user_id`, `category`) VALUES (NULL, {$user}, '3');";
         }
+        
+//        notify for following
+        mysqli_query($connection,$query_noti); 
+        
+        
+        
+        
     }else if($i=="unfollow"){
       if($approve == 2 || $approve == 1 || $approve == 9) {
                $final = 2;
