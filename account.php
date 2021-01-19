@@ -607,6 +607,14 @@ creat_post();
                         }
                         reaction(output.post[i].id);
                     }
+                                        
+//                    prevent emoji download
+                    var images = document.querySelectorAll('img');
+for(var i = 0; i < images.length; i++){
+     images[i].oncontextmenu = function () {
+        return false;
+    };
+}
                 }
             };
             xhttp.open("GET", "./php/profile_posts.php?u=<?php if($show_every!=false){echo $user;} ?>&f=" + max_id, true);

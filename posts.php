@@ -400,6 +400,14 @@ creat_post();
                         }
                         reaction(output.post[i].id);
                     }
+                                        
+//                    prevent emoji download
+                    var images = document.querySelectorAll('img');
+for(var i = 0; i < images.length; i++){
+     images[i].oncontextmenu = function () {
+        return false;
+    };
+}
                 }
             };
             xhttp.open("GET", "./php/post_id.php?p=<?php echo $post_id?>", true);
