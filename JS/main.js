@@ -714,6 +714,10 @@ function delete_post_confirm(){
 
     close_options('_delete');
 }
+function edit_post_confirm(){
+    window.location.assign("./create_post/edit?post="+delete_post)
+    close_options('_delete');
+}
 
 
 

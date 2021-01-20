@@ -896,7 +896,7 @@ for(var i = 0; i < images.length; i++){
                             <div class="items item_post" style="">
                                 <p class="select_category">Select what to do with this post.</p>
                                 <ul class="post_options">
-                                    <li onclick="close_options('_warning_delete');">
+                                    <li onclick="close_options('_warning_delete');edit_post_confirm();">
                                         <div class="follow-conn "> <img src="./SVG/pen-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Edit Post</b></span> </span> </div>
                                     </li>
                                     <li onclick="close_options('_warning_delete');openlist('_delete')">
