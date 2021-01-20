@@ -3,7 +3,7 @@ session_start();
 include '../connection.php';
 
 function delete_file($filePath, $image_name) {
- if (file_exists($filePath.$image_name)){
+ if (file_exists($filePath.$image_name) && (strlen($image_name)>3)){
                  unlink('../profile/i/120/'.$image_name);
                  unlink('../profile/i/240/'.$image_name);
                  unlink('../profile/i/360/'.$image_name);
