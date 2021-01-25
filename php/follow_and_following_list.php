@@ -80,7 +80,7 @@ $proceed = false;
 
 }
 
-if($proceed===true){  
+if($proceed===true && $row['target']!=$_SESSION['id']){  
     if($row['location']){
      $location_out = '<img class="loc-icon" src="./SVG/location.svg" alt="">'.$row['location'];  
     }else{

@@ -270,7 +270,7 @@ $follower_user = $row_following['total_sum_following'];
                         </a>
                         <a href="#about" class="a12" onclick="show_now('people');show_member(1)">
                             <div>
-                                <p class="a122 a122_b"><?php echo $follower_user;?></p>
+                                <p class="a122 a122_b"><?php echo $follower_user-1;?></p>
                                 <p class="a122 a122_l">Followers</p>
                             </div>
                         </a>
