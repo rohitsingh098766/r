@@ -599,6 +599,7 @@ html{
     .container{
         background: white;
         height: auto;
+        position: inherit;
     }
     .main-img{
         width: 10em;
