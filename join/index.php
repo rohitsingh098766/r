@@ -1,4 +1,11 @@
-    <!DOCTYPE html>
+<?php
+
+header('Location: ../request');
+exit(0);   
+
+?>   
+
+<!DOCTYPE html>
     <html lang="en">
 
     <head>

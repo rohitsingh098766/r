@@ -99,8 +99,12 @@ function slideshow(section){
         child.style.display = "none"
     });
 
-    section.children[index].style.display = "block"
-    console.log('this is story id '+ section.children[index].getAttribute("s"))
+    var running_story = section.children[index];
+//    window.alert(running_story.getAttribute('time')+running_story.getAttribute('user'));
+    document.getElementById('time_'+running_story.getAttribute('user')).innerHTML = running_story.getAttribute('time');
+    document.getElementById('views_'+running_story.getAttribute('user')).innerHTML = running_story.getAttribute('view');
+    document.getElementById('menu_'+running_story.getAttribute('user')).setAttribute('href','../watched?story='+running_story.getAttribute('story_id'));
+    running_story.style.display = "block";
     loadDoc('./watch.php?s='+section.children[index].getAttribute("s"));
     
          int = setInterval(function(){
@@ -113,17 +117,22 @@ if (state){
                 });
                 
         setTimeout(() => { bars[index - 1].querySelector("div").classList.add("load-now") }, 2);
-
-                section.children[index].style.display = "block"
+                
+                var running_story = section.children[index];
+                document.getElementById('time_'+running_story.getAttribute('user')).innerHTML = running_story.getAttribute('time');
+                document.getElementById('views_'+running_story.getAttribute('user')).innerHTML = running_story.getAttribute('view');
+                document.getElementById('menu_'+running_story.getAttribute('user')).setAttribute('href','../watched?story='+running_story.getAttribute('story_id'));
+                running_story.style.display = "block";
                 loadDoc('./watch.php?s='+section.children[index].getAttribute("s"));
             }
             else{
 //                wil be excuted after watching all stories
                 viewNext()
                 clearInterval(int)
-                document.querySelector('body').style.display="none";
                 
+                document.querySelector('body').style.display="none";
                 window.location.assign('../');
+                
                 loadDoc('../php/delete_old_stories.php');
                 sectionNo++;
 

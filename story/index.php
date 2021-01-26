@@ -143,8 +143,25 @@
    $line .='<div class="bar">
        <div>&nbsp</div>
    </div>' ;
+       $time = time_convert($row_x['sec']);
+       $views = '';
+       
+         if($row_x['owner_id']==$_SESSION['id']){
+             $views = '';
+           $view = '<a href="" class="menu " id="menu_'.$row_x['owner_id'].'"><img src="SVG/eye-regular.svg" alt=""><div class="number" id="views_'.$row_x['owner_id'].'">44</div></a>';
+             
+                   $query_views="SELECT COUNT(*) as sum_all from yaarme_post.story_watched where story_id = {$row_x['id']}" ;
+   $result_views=mysqli_query($connection,$query_views);
+   while($row_views=mysqli_fetch_assoc($result_views)){
+       $views = $row_views['sum_all'];
+   }
+       }else{
+          $view = '<div href="" class="menu " id="menu_'.$row_x['owner_id'].'"><img src="SVG/ellipsis-h-solid.svg" alt=""><div class="number hide" id="views_'.$row_x['owner_id'].'">44</div></div>';
+           $views = '';
+       }
+       
    $content .='
-   <div class="status" s="'.$row_x['id'].'">
+   <div class="status" story_id="'.$row_x['id'].'" time="'.$time.'" user="'.$row_x['owner_id'].'" view="'.$views.'" s="'.$row_x['id'].'">
        <img class="content-img" src="../create_story/upload/1080/' .$row_x['img'].'" alt="">
        <div class="bottom">
            <p>'.$row_x['content'].'</p>
@@ -178,9 +195,9 @@
                <a href="../account?user='.$row['owner'].'" class="profile-pic" style="background-image: url('.$image.');"></a>
                <a href="../account?user='.$row['owner'].'" class="info">
                    <div class="name">'.$row['first_name']."&nbsp;".$row['last_name'].'</div>
-                   <div class="time">'.$time_out.'</div>
+                   <div class="time"  id="time_'.$row['owner'].'">'.$time_out.'</div>
                </a>
-               <img class="menu" src="SVG/ellipsis-h-solid.svg" alt="">
+               '.$view.'
            </div>
        </div>
        '.$content.'
@@ -203,7 +220,7 @@
    }
    echo "yes";
    }
-   $query_u= "SELECT *, TIMESTAMPDIFF(SECOND, story.time,CURRENT_TIMESTAMP ) as sec, story.img as image FROM yaarme_post.story join yaarme.users on users.id = story.owner_id where (owner_id = {$u}) ORDER BY `story`.`id` DESC" ;
+   $query_u= "SELECT *, TIMESTAMPDIFF(SECOND, story.time,CURRENT_TIMESTAMP ) as sec, story.img as image, story.id as story_id FROM yaarme_post.story join yaarme.users on users.id = story.owner_id where (owner_id = {$u}) ORDER BY `story`.`id` DESC" ;
    $result_u=mysqli_query($connection,$query_u);
    $content = '';
    $line = '';
@@ -222,7 +239,22 @@
    $line .='<div class="bar">
        <div>&nbsp</div>
    </div>';
-   $content .='<div class="status">
+       
+       if($u==$_SESSION['id']){
+           $views = '';
+           $view = '<a href="" class="menu " id="menu_'.$u.'"><img src="SVG/eye-regular.svg" alt=""><div class="number" id="views_'.$u.'">44</div></a>';
+                 $query_views="SELECT COUNT(*) as sum_all from yaarme_post.story_watched where story_id = {$row_u['story_id']}" ;
+   $result_views=mysqli_query($connection,$query_views);
+   while($row_views=mysqli_fetch_assoc($result_views)){
+       $views = $row_views['sum_all'];
+   }
+       }else{
+          $view = '<div href="" class="menu " id="menu_'.$u.'"><img src="SVG/ellipsis-h-solid.svg" alt=""><div class="number hide" id="views_'.$u.'">44</div></div>';
+           $views = '';
+       }
+       
+
+   $content .='<div class="status" time="'.$time.'" user="'.$u.'" view="'.$views.'" story_id="' .$row_u['story_id'].'">
        <img class="content-img" src="../create_story/upload/1080/' .$row_u['image'].'" alt="">
        <div class="bottom">
            <p>'.$row_u['content'].'</p>
@@ -242,9 +274,9 @@
                <a href="../account?user='.$u.'" class="profile-pic" style="background-image: url('.$image.');"></a>
                <a href="../account?user='.$u.'" class="info">
                    <div class="name">'.$name.'</div>
-                   <div class="time">'.$time.'</div>
+                   <div class="time" id="time_'.$u.'">'.$time.'</div>
                </a>
-               <img class="menu" src="SVG/ellipsis-h-solid.svg" alt="">
+               '.$view.'
            </div>
        </div>
        '.$content.'

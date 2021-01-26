@@ -259,17 +259,24 @@ section .status{
 }
 
 .top .menu{
-    width: 23px;
+width: 23px;
     margin: auto;
-    margin-right: 20px;
-    transform: rotate(180deg);
     filter: invert(1);
     cursor: pointer;
 }
 #css{
     display: none;
 }
-
+.number{
+    font-size: .8em;
+    font-weight: bold;
+    transform: translate(0, -4px);
+    text-align: center;
+    color: black;
+}
+.hide{
+    display: none;
+}
 @media (max-width:400px){
     .main{
         width: 100vw;
