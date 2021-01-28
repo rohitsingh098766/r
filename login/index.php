@@ -1,12 +1,6 @@
 
- <?php
 
-session_start();
-
-          include '../connection.php';    
-
-          ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -258,22 +252,22 @@ xhttp.send("name="+response.name+"&fb_id="+response.id);
         </div>
     </a>  
     
-    <div class="alert " id="wrong_ps">
+    <a href="" class="alert " id="wrong_ps">
     <div class="alert_center">
         <div class="alert_grid">
             <div class="success_mark success_mark_wrong_ps"><img src="images/times-circle-regular.svg" class="tick_scg"></div>
             <div  class="success_message success_message_wrong_ps"><div>Invalid details.</div><div>Incorrect username or password.<br> New at YaarMe! please create an account.</div><div> <button id="wrong_ps_btn">Create account</button></div></div>
         </div>
         </div>
-    </div>   
-    <div class="alert " id="another_username">
+    </a>   
+    <a href="" class="alert " id="another_username">
     <div class="alert_center">
         <div class="alert_grid">
             <div class="success_mark success_mark_another_username"><img src="images/times-circle-regular.svg" class="tick_scg"></div>
             <div  class="success_message success_message_another_username"><div>Username not avilable!</div><div>This username has been already taken please try another one</div><div> <button id="wrong_ps_btn">Try Another</button></div></div>
         </div>
         </div>
-    </div>
+    </a>
     
     <div class="hide load_anything"></div>
     <script src="JS/main.js"></script>

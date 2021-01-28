@@ -12,12 +12,7 @@ document.getElementById('button_post').addEventListener("click",function(){
     
 })
 
-document.querySelector('.location_open').addEventListener("click",function(){
-  document.querySelector('.location_div').classList.toggle("location_div_add");
-})
-document.querySelector('.open_more_click').addEventListener("click",function(){
-  document.getElementById('open_more').classList.toggle("show_open_more");
-})
+
 
         var loadFile = function(event,num) {
             var image = document.getElementById('o'+num);
@@ -45,8 +40,27 @@ for (var i = 0; i < 10; i++) {
         })
 }
 
-
-
  document.getElementById('form').addEventListener('submit',function(){
      document.querySelector('.loader').style.display="flex";
+ }) 
+
+
+document.querySelector('.location_open').addEventListener("click",function(){
+  document.querySelector('.location_div').classList.toggle("location_div_add");
+})
+document.querySelector('.open_more_click').addEventListener('click',function(){
+     document.getElementById('open_more').classList.toggle('active')
  })
+
+function open_id(id){
+    document.getElementById(id).classList.add('active');
+}
+function correct_seletion(){
+     document.getElementById('all_follow').checked = true;
+var checkboxs = document.querySelectorAll('.checkbox');
+    for(var i = 0; i < checkboxs.length; i++){
+        if(checkboxs[i].checked){
+            document.getElementById('all_list').checked = true;
+        }
+    }
+}

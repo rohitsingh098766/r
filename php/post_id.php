@@ -79,6 +79,20 @@ while($row_total_like = mysqli_fetch_assoc($result_total_like)){
        $total_like += $row_total_like['total_likes']; 
     $emogi_type .= $row_total_like['emogi'].',';
 }
+    
+
+//    check relation
+     $query_relation = "select * from yaarme_follow.follow where user =  {$_SESSION['id']} and opponent = {$row['owner']}" ;
+$result_relation = mysqli_query($connection,$query_relation);
+
+ $relation_out = 2;   
+while($row_relation = mysqli_fetch_assoc($result_relation)){
+      $relation_out = $row_relation['approve'];
+}
+    
+    
+    
+    
     $emogi_type .='0]';
     
  
@@ -150,7 +164,7 @@ $time_show = $time_show."y";
             "reaction":"'.$like_output.'",
             "save":"'.$saved_output.'",
             "mute":"'.$row['mute_post'].'",
-            "following":"'.$row['approve'].'"
+            "following":"'.$relation_out.'"
     }
     
     ';

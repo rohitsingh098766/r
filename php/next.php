@@ -36,131 +36,121 @@ function react($fname) {
       return "";
  }
 }
+$mute = 0;
 
 
 if($filter==1){
     $query = "
-SELECT *, posts.id as post_num, posts.owner_id as owner , posts.location as post_location  ,TIMESTAMPDIFF(SECOND, posts.time,CURRENT_TIMESTAMP ) as time_ago
+SELECT *, posts.id as post_num, posts.owner_id as owner , posts.location as post_location  ,TIMESTAMPDIFF(SECOND, posts.time,CURRENT_TIMESTAMP ) as time_ago, A.approve as approved
 from yaarme_post.posts
 join yaarme.users on yaarme.users.id = yaarme_post.posts.owner_id 
-join yaarme_follow.follow on yaarme_post.posts.owner_id = yaarme_follow.follow.opponent 
-left join yaarme_follow.category on yaarme_follow.category.id = yaarme_follow.follow.category
+join yaarme_follow.follow A on yaarme_post.posts.owner_id = A.opponent 
+left join yaarme_follow.category on yaarme_follow.category.id = A.category
+ left join yaarme_post.share_with_post on share_with_post.post_detail = posts.id
+ left join  yaarme_follow.follow B on B.category = share_with_post.category_id
 WHERE 
 (
-    yaarme_follow.follow.user = {$_SESSION['id']} and
-    yaarme_follow.follow.approve = 1 and
-    yaarme_follow.follow.mute_post = 0 and
+    A.user = {$_SESSION['id']} and
+    A.approve = 1 and
+    A.mute_post = 0 and
      yaarme_post.posts.id < {$skip}  
-   
+   and
+   (
+   yaarme_post.posts.shared_with is null
+   or B.opponent ={$_SESSION['id']} 
+   )
 )
 order by post_num DESC
 limit 10
 ";
 }else if($filter==2){
   $query = "
-SELECT *, posts.id as post_num, posts.owner_id as owner, posts.location as post_location  ,TIMESTAMPDIFF(SECOND, posts.time,CURRENT_TIMESTAMP ) as time_ago
+SELECT *, posts.id as post_num, posts.owner_id as owner, posts.location as post_location  ,TIMESTAMPDIFF(SECOND, posts.time,CURRENT_TIMESTAMP ) as time_ago , A.approve as approved
 from yaarme_post.posts
 join yaarme.users on yaarme.users.id = yaarme_post.posts.owner_id 
-join yaarme_follow.follow on yaarme_post.posts.owner_id = yaarme_follow.follow.opponent 
-left join yaarme_follow.category on yaarme_follow.category.id = yaarme_follow.follow.category
+join yaarme_follow.follow A on yaarme_post.posts.owner_id = A.opponent 
+left join yaarme_follow.category on yaarme_follow.category.id = A.category
+ left join yaarme_post.share_with_post on share_with_post.post_detail = posts.id
+ left join  yaarme_follow.follow B on B.category = share_with_post.category_id
 WHERE 
 (
-    yaarme_follow.follow.user = {$_SESSION['id']} and
+    A.user = {$_SESSION['id']} and
     (
-        yaarme_follow.follow.approve = 1 OR
-        (yaarme_follow.follow.approve = 2 and yaarme.users.account_type=0)
+        A.approve = 1 OR
+        (A.approve = 2 and yaarme.users.account_type=0)
     ) and
-    yaarme_follow.follow.mute_post = 0 and
-     yaarme_post.posts.id < {$skip} and 
+    A.mute_post = 0 and
+     yaarme_post.posts.id < {$skip}   and 
     (
         yaarme_follow.category.pin = 1
     )
+    and
+   (
+   yaarme_post.posts.shared_with is null
+   or B.opponent ={$_SESSION['id']} 
+   )
 )
 order by post_num DESC
 limit 10
 ";  
-//    try it
-//    SELECT *, posts.id as post_num, posts.owner_id as owner from yaarme_post.posts
-//join yaarme.users on yaarme.users.id = yaarme_post.posts.owner_id 
-//join yaarme_follow.follow on yaarme_post.posts.owner_id = yaarme_follow.follow.opponent 
-//left join yaarme_follow.category on yaarme_follow.category.id = yaarme_follow.follow.category
-//WHERE 
-//(
-//    yaarme_follow.follow.user = 1 and
-//    (
-//        yaarme_follow.follow.approve = 1 OR
-//        (yaarme_follow.follow.approve = 2 and yaarme.users.account_type=0)
-//    ) and
-//    yaarme_follow.follow.mute_post = 0 and
-//    (
-//        yaarme_follow.category.pin = 1
-//    )
-//)
-//order by post_num DESC
-    
-    
+
 }else if($filter == 3){
     $query = "
-SELECT *, posts.id as post_num, posts.owner_id as owner , posts.location as post_location  ,TIMESTAMPDIFF(SECOND, posts.time,CURRENT_TIMESTAMP ) as time_ago
+SELECT *, posts.id as post_num, posts.owner_id as owner , posts.location as post_location  ,TIMESTAMPDIFF(SECOND, posts.time,CURRENT_TIMESTAMP ) as time_ago , A.approve as approved
 from yaarme_post.posts
 join yaarme.users on yaarme.users.id = yaarme_post.posts.owner_id 
-join yaarme_follow.follow on yaarme_post.posts.owner_id = yaarme_follow.follow.opponent 
-left join yaarme_follow.category on yaarme_follow.category.id = yaarme_follow.follow.category
+join yaarme_follow.follow A on yaarme_post.posts.owner_id = A.opponent
+left join yaarme_follow.category on yaarme_follow.category.id = A.category
+left join yaarme_post.share_with_post on share_with_post.post_detail = posts.id
+ left join  yaarme_follow.follow B on B.category = share_with_post.category_id
 WHERE 
 (
-    yaarme_follow.follow.user = {$_SESSION['id']} and
-    yaarme_follow.follow.approve = 1 and
-    yaarme_follow.follow.mute_post = 0 and
+    A.user = {$_SESSION['id']} and
+    A.approve = 1 and
+    A.mute_post = 0 and
      yaarme_post.posts.id < {$skip} and 
     (
-        yaarme_follow.follow.category is null
+        A.category is null
     )
+    and
+   (
+   yaarme_post.posts.shared_with is null
+   or B.opponent ={$_SESSION['id']} 
+   )
 )
 order by post_num DESC
 limit 10
 ";  
 }else if($filter==4){
      $query = "
-SELECT *, posts.id as post_num, posts.owner_id as owner , posts.location as post_location  ,TIMESTAMPDIFF(SECOND, posts.time,CURRENT_TIMESTAMP ) as time_ago
+SELECT *, posts.id as post_num, posts.owner_id as owner , posts.location as post_location  ,TIMESTAMPDIFF(SECOND, posts.time,CURRENT_TIMESTAMP ) as time_ago , A.approve as approved
 from yaarme_post.posts
 join yaarme.users on yaarme.users.id = yaarme_post.posts.owner_id 
-join yaarme_follow.follow on yaarme_post.posts.owner_id = yaarme_follow.follow.opponent 
-left join yaarme_follow.category on yaarme_follow.category.id = yaarme_follow.follow.category
+join yaarme_follow.follow A on yaarme_post.posts.owner_id = A.opponent
+left join yaarme_follow.category on yaarme_follow.category.id = A.category
+left join yaarme_post.share_with_post on share_with_post.post_detail = posts.id
+ left join  yaarme_follow.follow B on B.category = share_with_post.category_id
 WHERE 
 (
-    yaarme_follow.follow.user = {$_SESSION['id']} and
-    yaarme_follow.follow.approve = 1 and
+    A.user = {$_SESSION['id']} and
+    A.approve = 1 and
       yaarme_post.posts.id < {$skip}   and
     (
-    yaarme_follow.follow.mute_post = 1 
+    A.mute_post = 1 
+   )
+   and
+   (
+   yaarme_post.posts.shared_with is null
+   or B.opponent ={$_SESSION['id']} 
    )
 )
 order by post_num DESC
 limit 10
-";   
+"; 
+    $mute = 1;
 }
 
-
-//SELECT *,COUNT(*) as likes, posts.id as post_num, posts.owner_id as owner from yaarme_post.posts
-//join yaarme.users on yaarme.users.id = yaarme_post.posts.owner_id 
-//join yaarme_follow.follow on yaarme_post.posts.owner_id = yaarme_follow.follow.opponent 
-//left join yaarme_follow.category on yaarme_follow.category.id = yaarme_follow.follow.category
-//left join yaarme_like.post_like on yaarme_post.posts.id = yaarme_like.post_like.post_id 
-//WHERE 
-//(
-//    yaarme_follow.follow.user = 1 and
-//    yaarme_follow.follow.approve = 1 and
-//    yaarme_follow.follow.mute_post = 0 and
-//    yaarme_follow.follow.block = 0 and
-//    yaarme_like.post_like.emogi != 0 and
-//    yaarme_post.posts.id < {$skip} and 
-//    (
-//        yaarme_follow.category.pin = 1
-//    )
-//) group by post_like.post_id
-//order by post_num DESC
-//limit 10
-
+//echo $query;
 
 $result = mysqli_query($connection,$query);
 while($row = mysqli_fetch_assoc($result)){
@@ -264,8 +254,8 @@ $time_show = $time_show."y";
             "comment":"'.$comments_total.'",
             "reaction":"'.$like_output.'",
             "save":"'.$saved_output.'",
-            "mute":"'.$row['mute_post'].'",
-            "following":"'.$row['approve'].'"
+            "mute":"'.$mute.'",
+            "following":"'.$row['approved'].'"
     }
     
     ';

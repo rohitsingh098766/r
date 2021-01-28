@@ -4,8 +4,10 @@ include '../connection.php';
 if(!isset($_SESSION['id'])){
 exit(0);
 }
+
 ini_set('memory_limit', '128M');
-//$old = ini_set('memory_limit', '8192M');
+
+
 $pic_url_ar = array();
 
 
@@ -119,11 +121,43 @@ if(isset($_POST["submit"])) {
     $text = mysqli_real_escape_string($connection, $_POST['text']);
      $location = mysqli_real_escape_string($connection, $_POST['location']);
     
-    $query = "INSERT INTO yaarme_post.posts (`id`, `owner_id`, `content`, `p1`, `p2`, `p3`, `p4`, `p5`, `p6`, `p7`, `p8`, `p9`, `p10`, `status_temporary`, `location`, `shared_with`, `permission_like`, `permission_comment`, `permission_share`, `private_comment`, `private_like`, `private_comment_num`, `private_like_num`, `total_comment`, `total_share`, `archive`, `pined`) VALUES (NULL, '{$_SESSION['id']}', '{$text}', {$url} '', '{$location}', '0', '1', '1', '1', '0', '0', '0', '0', '0', '0', '0', NULL);";
+    $query = "INSERT INTO yaarme_post.posts (`id`, `owner_id`, `content`, `p1`, `p2`, `p3`, `p4`, `p5`, `p6`, `p7`, `p8`, `p9`, `p10`, `status_temporary`, `location`, `shared_with`, `permission_like`, `permission_comment`, `permission_share`, `private_comment`, `private_like`, `private_comment_num`, `private_like_num`, `total_comment`, `total_share`, `archive`, `pined`) VALUES (NULL, '{$_SESSION['id']}', '{$text}', {$url} '', '{$location}', NULL, '1', '1', '1', '0', '0', '0', '0', '0', '0', '0', NULL);";
     echo "<br>".$query."<br>";
     
      if(mysqli_query($connection,$query)){
      echo "inserted";
+         
+         if(isset($_POST['all_list'])){
+             if($_POST['all_list']==1){
+                 
+             $query = "select * from yaarme_post.posts where owner_id = {$_SESSION['id']} order by id desc limit 1" ;
+                                              $result = mysqli_query($connection,$query);
+                                              while($row = mysqli_fetch_assoc($result)){
+                                                  $query_1 = "UPDATE yaarme_post.posts SET `shared_with` = {$row['id']} WHERE `posts`.`id` = {$row['id']};";
+                                                  if(mysqli_query($connection,$query_1)){
+                                                      
+                                                  } 
+                                                  
+                                                  $name = $_POST['list'];
+                                                  $insert ='';
+                                                  foreach ($name as $list){
+                                                      echo $list."<br />";
+                                                  $insert .= '('.$row['id'].','.$list.'),';
+                                                  }
+                                                    $insert = substr( $insert,0,-1);
+                                                  
+                                                  $query_2 = "INSERT INTO yaarme_post.share_with_post (`post_detail`, `category_id`) VALUES {$insert}";
+                                                  if(mysqli_query($connection,$query_2)){
+                                                      
+                                                  }
+                                                  
+                                              }
+             
+               }
+             
+             
+         }
+         
          header('Location: ../');
 //         header
      }else{
@@ -423,25 +457,61 @@ echo $row['status_mini_bio'];
                                         <img src="image/cog-solid.svg" class="icon comment-icon" > <span>More Options</span>
                                     </div>
                                 </div>
-                              <div id="open_more">
-<!--
-                                  <div class="share-section">
-                                      <div class="icon-wrap" >
-                                        <img src="image/cog-solid.svg" class="icon comment-icon" > <span>Share only with</span>
-                                    </div>
-                                </div>
-                                <div class="share-section">
-                                      <div class="icon-wrap" >
-                                        <img src="image/cog-solid.svg" class="icon comment-icon" > <span>Allow Like</span>
-                                    </div>
-                                </div>
-                                <div class="share-section">
-                                      <div class="icon-wrap" >
-                                        <img src="image/cog-solid.svg" class="icon comment-icon" > <span>Allow Comment</span>
-                                    </div>
-                                </div>
--->
-                                </div>
+                              <div id="open_more"     >
+                                  <div class="setting_option">
+                                      <div class="share-section" onclick="open_id('lists')">
+                                          <div class="icon-wrap">
+                                              <img src="../story/SVG/eye-regular.svg" class="icon comment-icon"> <span>Share with</span>
+                                          </div>
+                                      </div>
+                                      <div id="lists" >
+                                      <div class="share_with" id="bottom_border"><input class="options" type="radio" name="all_list" id="all_follow" value="0" checked>Share with all followers</div>
+                                          
+                                      <div class="share_with"><input class="options" type="radio" name="all_list" id="all_list" value="1">Share with only</div>
+                                          
+                                          <div>
+                                              
+                                              <?php
+                                              
+                                              $query = "select * from yaarme_follow.category where owner_id = {$_SESSION['id']}" ;
+                                              $result = mysqli_query($connection,$query);
+                                              while($row = mysqli_fetch_assoc($result)){
+                                              $desciption = '';
+                                              if($row['description']){
+                                              $desciption = '<div class="description">'.$row['description'].'</div>';
+                                              }
+                                              echo '
+                                              <div class="list_fetch">
+                                                  <div class="center"><img src="../emogi/128/'.$row['emoji'].'" class="list_image"></div>
+                                                  <div class="certer_mid">
+                                                      <div class="name">'.$row['group_name'].'</div>
+                                                      '.$desciption.'
+                                                  </div>
+                                                  <label class="center"><input class="checkbox" type="checkbox" name="list[]" value="'.$row['id'].'" oninput="correct_seletion()"></label>
+                                              </div>
+                                              ';
+                                              }
+                                              
+                                              ?>
+                                              
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="setting_option">
+                                      <div class="share-section">
+                                          <div class="icon-wrap">
+                                              <img src="image/thumbs-up-regular.svg" class="icon comment-icon"> <span>Allow people to react on your post</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="setting_option">
+                                      <div class="share-section">
+                                          <div class="icon-wrap">
+                                              <img src="image/comment-regular.svg" class="icon comment-icon"> <span>Allow people to comment on your post</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
                                 <BUTTON  class="share-section"  id="button_post_desk" name="submit" value="submit">
                                      PUBLISH
                                 </BUTTON>

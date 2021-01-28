@@ -948,7 +948,7 @@ for(var i = 0; i < images.length; i++){
                $query = mysqli_query($connection,$query);
   while($row = mysqli_fetch_assoc($query)){
       if($row['description']){
-          $description = '<span>'.$row['description'].'</span>';
+          $description = '<span>'.preg_replace('/\r|\n/','',trim(htmlentities($row['description']))).'</span>';
       }else{
           $description = '';
       }
@@ -961,10 +961,10 @@ for(var i = 0; i < images.length; i++){
       }
       echo '
        <li>
-     <div class="follow-conn select_tl" onclick="changelist('.$row['id'].','."'".$row['group_name']."'".')">
+     <div class="follow-conn select_tl" onclick="changelist('.$row['id'].','."'".preg_replace('/\r|\n/','',trim(htmlentities($row['group_name'])))."'".')">
          <img src="./emogi/128/'.$row['emoji'].'" class="follow-icon">
          <span class="conn-name">
-             <span><b>'.$row['group_name'].'</b></span>
+             <span><b>'.preg_replace('/\r|\n/','',trim(htmlentities($row['group_name']))).'</b></span>
              '.$description.'
          </span>
          </span>
