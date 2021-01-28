@@ -467,7 +467,7 @@ echo $row['status_mini_bio'];
                                       <div id="lists" >
                                       <div class="share_with" id="bottom_border"><input class="options" type="radio" name="all_list" id="all_follow" value="0" checked>Share with all followers</div>
                                           
-                                      <div class="share_with"><input class="options" type="radio" name="all_list" id="all_list" value="1">Share with only</div>
+                                      <div class="share_with"><input class="options" type="radio" name="all_list" id="all_list" value="1">Share only with</div>
                                           
                                           <div>
                                               
