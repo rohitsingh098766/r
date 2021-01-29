@@ -60,7 +60,8 @@ while($row_ckr = mysqli_fetch_assoc($result_ckr)){
 }
 
 
-    $query = "
+    if($user==$_SESSION['id']){
+        $query = "
 SELECT *, posts.id as post_num, posts.owner_id as owner , posts.location as post_location  ,TIMESTAMPDIFF(SECOND, posts.time,CURRENT_TIMESTAMP ) as time_ago
 from yaarme_post.posts
 join yaarme.users on yaarme.users.id = yaarme_post.posts.owner_id 
@@ -68,6 +69,7 @@ WHERE
 (
     yaarme.users.id = {$user} and
      yaarme_post.posts.id < {$skip}  
+     
    
 )
 order by post_num DESC
@@ -75,6 +77,28 @@ limit 10
 ";
 
 
+    }else{
+         $query = "
+SELECT *, posts.id as post_num, posts.owner_id as owner , posts.location as post_location  ,TIMESTAMPDIFF(SECOND, posts.time,CURRENT_TIMESTAMP ) as time_ago
+from yaarme_post.posts
+join yaarme.users on yaarme.users.id = yaarme_post.posts.owner_id 
+left join yaarme_post.share_with_post on share_with_post.post_detail = posts.id
+ left join  yaarme_follow.follow B on B.category = share_with_post.category_id
+WHERE 
+(
+    yaarme.users.id = {$user} and
+     yaarme_post.posts.id < {$skip}  
+   
+    and
+   (
+   yaarme_post.posts.shared_with is null
+   or B.opponent ={$_SESSION['id']} 
+   )
+)
+order by post_num DESC
+limit 10
+"; 
+    }
 
 
 
@@ -161,6 +185,23 @@ $time_show = $time_show."y";
     }else{
         $comments_total = "";
     }
+    
+    if($user==$_SESSION['id'] && $row['shared_with']>0){
+        $list_name = '';
+         $query_list = "Select * from yaarme_post.share_with_post
+         left join yaarme_follow.category on category.id = share_with_post.category_id
+         where post_detail = {$row['post_num']}" ;
+$result_list = mysqli_query($connection,$query_list);  
+while($row_list = mysqli_fetch_assoc($result_list)){
+    $list_name .= preg_replace('/\r|\n/','',trim(htmlentities($row_list['group_name']))).', ';
+}
+        $list_name = substr( $list_name,0,-2);
+        
+        $share_out = 'Only you and your '.$list_name. ' can see this post';
+    }else{
+        $share_out = '';
+    }
+    
     echo '
     
     {
@@ -181,7 +222,8 @@ $time_show = $time_show."y";
             "reaction":"'.$like_output.'",
             "save":"'.$saved_output.'",
             "mute":"'.$mute.'",
-            "following":"'.$approve.'"
+            "following":"'.$approve.'",
+            "shared_with":"'.$share_out.'"
     }
     
     ';

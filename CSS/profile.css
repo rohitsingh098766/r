@@ -212,7 +212,12 @@ position:absolute;
 .middle{
     text-align: center;
 }
-
+.shared_with{
+    padding: .5em 1em;
+    border-bottom: 1px solid #9292921f;
+    color: gray;
+    font-size: .78em;
+}
 
 
 
