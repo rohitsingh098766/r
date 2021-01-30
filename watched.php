@@ -2,6 +2,16 @@
 session_start();
      include './connection.php';
    if(!isset($_SESSION['id'])){include './login/check_coockie.php';}
+
+if(isset($_POST['delete'])){
+     $story  = mysqli_real_escape_string($connection, $_GET['story']);
+    $query = "DELETE FROM `yaarme_post`.`story` WHERE `id` = {$story}";
+    if(mysqli_query($connection,$query)){
+        header('Location: ./');
+    }
+    exit(0);
+}
+
 ?>
 
 <html lang="en">
@@ -30,6 +40,20 @@ session_start();
     <meta name="msapplication-TileColor" content="#0073b1">
     <meta name="msapplication-TileImage" content="./icons/icons/ms-icon-144x144.png">
     <meta name="theme-color" content="#0073b1">
+    <style>
+        .delete_post{
+            width: 100%;
+            padding: .5em;
+            border:1px solid var(--blue);
+            border-radius: 5px;
+            background: white;
+            color:var(--blue);
+        }.delete_post:hover{
+/*            font-weight: bold;*/
+            background: rgba(52, 131, 224, 0.09)
+        }
+    
+    </style>
 </head>
 
 <body id="body" oncontextmenu="">
@@ -142,7 +166,7 @@ session_start();
             <div class="main-content">
                 <div class="homepage-main-content">
 
-
+<button class="delete_post" onclick="openlist('_delete')"> Delete Story</button>
 <?php
                     
 //                    echo $_GET['post'];
@@ -251,6 +275,26 @@ session_start();
                             </div>
                         </div>
                     
+                      <!-- delete post conform-->
+                        <form class="my_options" id="post_option_delete" method="post">
+                            <div class="my_options my_options_block" onclick="close_options('_delete')">
+                            </div>
+                            <div class="items item_post" style="">
+                                <ul class="post_options">
+                                    <li>
+                                        <div class="follow-conn ">Are you sure to delete this Story.</div>
+                                    </li>
+                                </ul>
+                                <div class="btn_box">
+                                    <div></div>
+                                    <button class="follow-button follow-button-alt " onclick="close_options('_delete')">No</button>
+                                    <div></div>
+                                    <button class="follow-button " onclick="delete_post_confirm();" name="delete">Yes</button>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </form>
+
                     
 
                        <!--                        chnage list-->
