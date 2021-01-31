@@ -52,6 +52,11 @@ if(isset($_POST['delete'])){
 /*            font-weight: bold;*/
             background: rgba(52, 131, 224, 0.09)
         }
+        .only_you{
+            margin-top: 1em;
+            color:#626262;
+            font-size: .8em;
+        }
     
     </style>
 </head>
@@ -168,11 +173,29 @@ if(isset($_POST['delete'])){
 
 <button class="delete_post" onclick="openlist('_delete')"> Delete Story</button>
 <?php
+                    $story  = mysqli_real_escape_string($connection, $_GET['story']);
+                    
+                    $query_list = "Select * from yaarme_post.share_with_story
+         left join yaarme_follow.category on category.id = share_with_story.category_id
+          where story_detail = {$story}" ;
+                    $list_name = '';
+                    $share_with = false;
+$result_list = mysqli_query($connection,$query_list);  
+while($row_list = mysqli_fetch_assoc($result_list)){
+    $list_name .= preg_replace('/\r|\n/','',trim(htmlentities($row_list['group_name']))).', ';
+    $share_with = true;
+}
+        $list_name = substr( $list_name,0,-2);
+        if($share_with===true){
+            
+        echo '<p class="only_you">Only you and your '.$list_name. ' can see this story.</p>';
+        }
+                    
                     
 //                    echo $_GET['post'];
                     
                     if(isset($_GET['story'])){
-                        $story  = mysqli_real_escape_string($connection, $_GET['story']);
+                        
                         $query = "select * from yaarme_post.story_watched join yaarme.users on users.id = story_watched.watched_by join yaarme.location on location.id = users.location where story_id = {$story} limit 500";
                         $result = mysqli_query($connection,$query);
                         while($row = mysqli_fetch_assoc($result)){

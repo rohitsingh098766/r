@@ -75,7 +75,51 @@ if(isset($_POST["submit"])) {
     echo "<br>".$query."<br>";
     
      if(mysqli_query($connection,$query)){
-     echo "inserted"; 
+     
+         
+         
+         
+         
+         if(isset($_POST['all_list'])){
+             if($_POST['all_list']==1){
+                 
+             $query = "select * from yaarme_post.story where owner_id = {$_SESSION['id']} order by id desc limit 1" ;
+                                              $result = mysqli_query($connection,$query);
+                                              while($row = mysqli_fetch_assoc($result)){
+                                                  $query_1 = "UPDATE yaarme_post.story SET `shared_with` = {$row['id']} WHERE id = {$row['id']};";
+                                                  if(mysqli_query($connection,$query_1)){
+                                                      
+                                                  } 
+                                                  
+                                                  $name = $_POST['list'];
+                                                  $insert ='';
+                                                  foreach ($name as $list){
+                                                      echo $list."<br />";
+                                                  $insert .= '('.$row['id'].','.$list.'),';
+                                                  }
+                                                    $insert = substr( $insert,0,-1);
+                                                  
+                                                  $query_2 = "INSERT INTO yaarme_post.share_with_story (`story_detail`, `category_id`) VALUES {$insert}";
+                                                  if(mysqli_query($connection,$query_2)){
+                                                      
+                                                  }
+                                                  
+                                              }
+             
+               }
+             
+             
+         }
+         
+         header('Location: ../');
+         
+         
+         
+         
+         
+         
+         
+         
      }else{
      echo"something went wrong";
      }
@@ -143,41 +187,6 @@ function imageResize($imageResourceId,$width,$height,$target) {
 
 ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 
 
@@ -234,7 +243,7 @@ function imageResize($imageResourceId,$width,$height,$target) {
         <a href="../" class="span"><img src='./image/arrow-left-regular.svg' alt="Exit" class="img arrow"></a href="../">
         <span class="span"><img src='<?php if($_SESSION['img']){ echo '../profile/i/240/'.$_SESSION['img'];}else{ echo "../profile/i/none.svg"; } ?>' alt="User Profile" class="img profile"></span>
         <span class="span"></span>
-        <span class="span"><img src='./image/ellipsis-v-solid.svg' alt="Exit" class="img arrow ellipse"></span>
+        <span class="span" onclick="openlist('_warning_delete');"><img src='./image/cog-solid.svg' alt="Exit" class="img arrow ellipse"></span>
         </div>
         <form id="other" method="post" enctype="multipart/form-data">
         
@@ -253,6 +262,67 @@ function imageResize($imageResourceId,$width,$height,$target) {
             <input  type="submit" title="submit" value="submit" name="submit" id="submit">
             <div id="submit_label"><label id="submit_label_img" for="submit"><img src="./image/send-button.svg" id="img_send" alt="post"></label></div>
             </div>
+            
+<!--            share with option-->
+            <div class="my_options " id="post_option_warning_delete">
+                            <div class="my_options my_options_block" onclick="close_options('_warning_delete')">
+                            </div>
+                            <div class="items item_post" style="">
+<!--                                <p class="select_category">Select what to do with this post.</p>-->
+                                <ul class="post_options">
+                                    <li onclick="close_options('_warning_delete');openlist('_delete');">
+                                        <div class="follow-conn "> <img src="image/eye-regular.svg" class="follow-icon"> <span class="conn-name"> <span><b>Share with..</b></span> </span> </div>
+                                    </li>
+<!--
+                                    <li onclick="close_options('_warning_delete');openlist('_delete')">
+                                        <div class="follow-conn "> <img src="./SVG/trash-alt-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Delete post...</b></span> </span> </div>
+                                    </li>
+-->
+                                   
+                                   
+                                </ul>
+                            </div>
+                        </div>
+            
+<!--            share with list or all-->
+            <div class="my_options" id="post_option_delete">
+                            <div class="my_options my_options_block" onclick="close_options('_delete')">
+                            </div>
+                            <div class="items item_post" style="">
+                                <div id="lists" >
+                                      <div class="share_with" id="bottom_border"><input class="options" type="radio" name="all_list" id="all_follow" value="0" checked>Share with all followers</div>
+                                          
+                                      <div class="share_with"><input class="options" type="radio" name="all_list" id="all_list" value="1">Share only with</div>
+                                          
+                                          <div>
+                                              
+                                              <?php
+                                              
+                                              $query = "select * from yaarme_follow.category where owner_id = {$_SESSION['id']}" ;
+                                              $result = mysqli_query($connection,$query);
+                                              while($row = mysqli_fetch_assoc($result)){
+                                              $desciption = '';
+                                              if($row['description']){
+                                              $desciption = '<div class="description">'.$row['description'].'</div>';
+                                              }
+                                              echo '
+                                              <div class="list_fetch">
+                                                  <div class="center"><img src="../emogi/128/'.$row['emoji'].'" class="list_image"></div>
+                                                  <div class="certer_mid">
+                                                      <div class="name">'.$row['group_name'].'</div>
+                                                      '.$desciption.'
+                                                  </div>
+                                                  <label class="center"><input class="checkbox" type="checkbox" name="list[]" value="'.$row['id'].'" oninput="correct_seletion()"></label>
+                                              </div>
+                                              ';
+                                              }
+                                              
+                                              ?>
+                                              
+                                          </div>
+                                      </div>
+                            </div>
+                        </div>
         </form>
     
     </div>

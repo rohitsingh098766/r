@@ -26,3 +26,23 @@ document.getElementById('textarea').addEventListener("mouseover",function(){
  document.getElementById('other').addEventListener('submit',function(){
      document.querySelector('.loader').style.display="flex";
  })
+
+//close post options 
+function close_options(post_id) {
+    document.querySelector("#post_option" + post_id).classList.remove('active')
+}
+
+function openlist(click_point) {
+    document.getElementById('post_option'+click_point).classList.add('active');
+}
+
+
+function correct_seletion(){
+     document.getElementById('all_follow').checked = true;
+var checkboxs = document.querySelectorAll('.checkbox');
+    for(var i = 0; i < checkboxs.length; i++){
+        if(checkboxs[i].checked){
+            document.getElementById('all_list').checked = true;
+        }
+    }
+}

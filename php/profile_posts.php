@@ -197,7 +197,7 @@ while($row_list = mysqli_fetch_assoc($result_list)){
 }
         $list_name = substr( $list_name,0,-2);
         
-        $share_out = 'Only you and your '.$list_name. ' can see this post';
+        $share_out = 'Only you and your '.$list_name. ' can see this post.';
     }else{
         $share_out = '';
     }

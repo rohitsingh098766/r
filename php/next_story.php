@@ -11,14 +11,20 @@ if($filter==1){
  SELECT *,  max(story.id) as post_num, story.owner_id as owner,TIMESTAMPDIFF(SECOND, story.time,CURRENT_TIMESTAMP ) as time_ago
 from yaarme_post.story
 join yaarme.users on yaarme.users.id = yaarme_post.story.owner_id 
-join yaarme_follow.follow on yaarme_post.story.owner_id = yaarme_follow.follow.opponent 
-left join yaarme_follow.category on yaarme_follow.category.id = yaarme_follow.follow.category
+join yaarme_follow.follow A on yaarme_post.story.owner_id = A.opponent 
+left join yaarme_follow.category on yaarme_follow.category.id = A.category
+left join yaarme_post.share_with_story on share_with_story.story_detail = story.id
+ left join  yaarme_follow.follow B on B.category = share_with_story.category_id
 WHERE 
 (
-    yaarme_follow.follow.user = {$_SESSION['id']} and
-    yaarme_follow.follow.approve = 1 and
-    yaarme_follow.follow.mute_post = 0 
-    
+    A.user = {$_SESSION['id']} and
+    A.approve = 1 and
+    A.mute_post = 0 
+     and
+   (
+   yaarme_post.story.shared_with is null
+   or B.opponent ={$_SESSION['id']} 
+   )
    
 )
 group by story.owner_id 
@@ -30,20 +36,27 @@ limit 500
 SELECT *,  max(story.id) as post_num, story.owner_id as owner  ,TIMESTAMPDIFF(SECOND, story.time,CURRENT_TIMESTAMP ) as time_ago
 from yaarme_post.story
 join yaarme.users on yaarme.users.id = yaarme_post.story.owner_id 
-join yaarme_follow.follow on yaarme_post.story.owner_id = yaarme_follow.follow.opponent 
-left join yaarme_follow.category on yaarme_follow.category.id = yaarme_follow.follow.category
+join yaarme_follow.follow A on yaarme_post.story.owner_id = A.opponent 
+left join yaarme_follow.category on yaarme_follow.category.id = A.category
+ left join yaarme_post.share_with_story on share_with_story.story_detail = story.id
+ left join  yaarme_follow.follow B on B.category = share_with_story.category_id
 WHERE 
 (
-    yaarme_follow.follow.user = {$_SESSION['id']} and
+    A.user = {$_SESSION['id']} and
     (
-        yaarme_follow.follow.approve = 1 OR
-        (yaarme_follow.follow.approve = 2 and yaarme.users.account_type=0)
+        A.approve = 1 OR
+        (A.approve = 2 and yaarme.users.account_type=0)
     ) and
-    yaarme_follow.follow.mute_post = 0 and
+    A.mute_post = 0 and
      
     (
         yaarme_follow.category.pin = 1
     )
+     and
+   (
+   yaarme_post.story.shared_with is null
+   or B.opponent ={$_SESSION['id']} 
+   )
 )
 group by story.owner_id 
 limit 500
@@ -54,17 +67,24 @@ limit 500
 SELECT *,  max(story.id) as post_num, story.owner_id as owner ,TIMESTAMPDIFF(SECOND, story.time,CURRENT_TIMESTAMP ) as time_ago
 from yaarme_post.story
 join yaarme.users on yaarme.users.id = yaarme_post.story.owner_id 
-join yaarme_follow.follow on yaarme_post.story.owner_id = yaarme_follow.follow.opponent 
-left join yaarme_follow.category on yaarme_follow.category.id = yaarme_follow.follow.category
+join yaarme_follow.follow A on yaarme_post.story.owner_id = A.opponent 
+left join yaarme_follow.category on yaarme_follow.category.id = A.category
+left join yaarme_post.share_with_story on share_with_story.story_detail = story.id
+ left join  yaarme_follow.follow B on B.category = share_with_story.category_id
 WHERE 
 (
-    yaarme_follow.follow.user = {$_SESSION['id']} and
-    yaarme_follow.follow.approve = 1 and
-    yaarme_follow.follow.mute_post = 0 and
+    A.user = {$_SESSION['id']} and
+    A.approve = 1 and
+    A.mute_post = 0 and
      
     (
-        yaarme_follow.follow.category is null
+        A.category is null
     )
+      and
+   (
+   yaarme_post.story.shared_with is null
+   or B.opponent ={$_SESSION['id']} 
+   )
 )
 group by story.owner_id 
 limit 500
@@ -74,14 +94,21 @@ limit 500
 SELECT *,  max(story.id) as post_num, story.owner_id as owner  ,TIMESTAMPDIFF(SECOND, story.time,CURRENT_TIMESTAMP ) as time_ago
 from yaarme_post.story
 join yaarme.users on yaarme.users.id = yaarme_post.story.owner_id 
-join yaarme_follow.follow on yaarme_post.story.owner_id = yaarme_follow.follow.opponent 
-left join yaarme_follow.category on yaarme_follow.category.id = yaarme_follow.follow.category
+join yaarme_follow.follow A on yaarme_post.story.owner_id = A.opponent 
+left join yaarme_follow.category on yaarme_follow.category.id = A.category
+left join yaarme_post.share_with_story on share_with_story.story_detail = story.id
+ left join  yaarme_follow.follow B on B.category = share_with_story.category_id
 WHERE 
 (
-    yaarme_follow.follow.user = {$_SESSION['id']} and
-    yaarme_follow.follow.approve = 1 and
+    A.user = {$_SESSION['id']} and
+    A.approve = 1 and
      (
-    yaarme_follow.follow.mute_post = 1 
+    A.mute_post = 1 
+   )
+     and
+   (
+   yaarme_post.story.shared_with is null
+   or B.opponent ={$_SESSION['id']} 
    )
 )
 group by story.owner_id 
@@ -90,7 +117,19 @@ limit 500
 }
 
 
-
+$query_check_seen = "select * from yaarme_post.story where (owner_id = {$_SESSION['id']})";
+    $query_check_seen = mysqli_query($connection,$query_check_seen);
+    if(mysqli_num_rows($query_check_seen)){
+        
+        if($_SESSION['img']){ $my_profile = 'profile/i/240/'.$_SESSION['img'];}else{ $my_profile = "profile/i/none.svg"; }
+        
+         echo  '<a class="storie " href="story/?u='.$_SESSION['id'].'">
+    <span class="photo inactive">
+        <img src="'.$my_profile.'" alt="profile-pic" />
+    </span>
+    <span class="name">You</span>
+</a>';
+    }
 
 
 
@@ -99,7 +138,7 @@ $seen_story = '';
 
 $query = mysqli_query($connection,$query);
 while($row = mysqli_fetch_assoc($query)){
-    
+    if($row['owner'] != $_SESSION['id']){
     if($row['img']){
 $owner_profile = 'profile/i/240/'.$row['img'];
 }else{
@@ -127,7 +166,7 @@ $owner_profile = "profile/i/none.svg";
     
 
     
-
+    }
 }
 echo $unseen_story.$seen_story;
 
