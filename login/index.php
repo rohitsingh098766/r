@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | YaarMe</title>
+    <title>YaarMe | Social media</title>
     <link rel="icon" type="image/x-icon" href="CSS/Images/Yaarme-logo.png">
   
     <link rel="stylesheet" href="../CSS/spin_loader.css">
@@ -30,8 +30,8 @@
 	<meta name="msapplication-TileColor" content="#0073b1" />
 	<meta name="msapplication-TileImage" content="../icons/icons/ms-icon-144x144.png" />
 	<meta name="theme-color" content="#0073b1" />
-       <meta name="description" content="Sign up for free and start building your network.">
-  <meta name="keywords" content="Yaarme, YaarMe, Yaar me, Social media, Build and organize your network">
+       <meta name="description" content="YaarMe is world's most street-smart, ultra-customized and non-cluttered social media platform. Sign up for free and get connected with friends, family and people you like.">
+  <meta name="keywords" content="Yaarme, YaarMe, Yaar me, Social media, Social media platform, ultra customized social media platform, safest socail media platform, Build and organize your network, organize your network, world's most advanced social media platform">
     
 <!--    google login kit-->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
