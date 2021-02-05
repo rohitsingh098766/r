@@ -48,3 +48,13 @@ function profile_follow(id,privacy){
 //this.innerHTML = '';
 }
 
+function profile_options(){
+    document.getElementById('post_options').style.display="none"
+    document.getElementById('share_options').style.display="block"
+    document.getElementById('block_options').style.display="block"
+}
+function post_options(){
+    document.getElementById('post_options').style.display="block"
+    document.getElementById('share_options').style.display="none"
+    document.getElementById('block_options').style.display="none"
+}

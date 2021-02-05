@@ -818,7 +818,7 @@ for(var i = 0; i < images.length; i++){
                                     <li id="unflww" onclick="unfollow_yes()">
                                         <div class="follow-conn "> <img src="./SVG/heart-broken-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Unfollow</b></span> </span> </div>
                                     </li>
-                                    <li onclick="share_post()">
+                                    <li onclick="share_post();close_options('_fst')">
                                         <div class="follow-conn "> <img src="./SVG/share.svg" class="follow-icon"> <span class="conn-name"> <span><b>Share Post</b></span> </span> </div>
                                     </li>
                                     <li>
@@ -901,7 +901,7 @@ for(var i = 0; i < images.length; i++){
                                         <div class="follow-conn "> <img src="./SVG/trash-alt-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Delete post...</b></span> </span> </div>
                                     </li>
                                    
-                                    <li onclick="share_post()">
+                                    <li onclick="share_post();close_options('_warning_delete')">
                                         <div class="follow-conn "> <img src="./SVG/share.svg" class="follow-icon"> <span class="conn-name"> <span><b>Share Post</b></span> </span> </div>
                                     </li>
                                 </ul>

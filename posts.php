@@ -459,7 +459,7 @@ for(var i = 0; i < images.length; i++){
                                         <div class="follow-conn "> <img src="./SVG/heart-broken-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Unfollow</b></span> </span> </div>
                                     </li>
                                     <li onclick="share_post()">
-                                        <div class="follow-conn "> <img src="./SVG/share.svg" class="follow-icon"> <span class="conn-name"> <span><b>Share Post via...</b></span> </span> </div>
+                                        <div class="follow-conn "> <img src="./SVG/share.svg" class="follow-icon"> <span class="conn-name"> <span><b>Share Post </b></span> </span> </div>
                                     </li>
                                     <li>
                                         <div class="follow-conn"> </div>

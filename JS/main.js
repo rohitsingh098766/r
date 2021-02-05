@@ -700,6 +700,21 @@ function confirm_unfollow(){
     close_options('_unfollow')
 }
 
+function block_user_confirm(refresh){
+     my_ajax("./manage_people/relation.php", 'block=1&user=' + user_at);
+//    var select_owner = document.querySelectorAll('.card_own_' + user_at);
+    
+//    for (var i = 0; i < select_owner.length; i++) {
+//        select_owner[i].setAttribute('class','reject2')
+//    }
+   
+   
+    if(refresh=='1'){
+        window.location.assign("./"); 
+    }
+    close_options('_block');
+}
+
 
 
 //confirm delete

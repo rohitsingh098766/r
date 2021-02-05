@@ -297,7 +297,7 @@ $follower_user = $row_following['total_sum_following'];
                             <a href="./php/create_room.php?for=<?php echo $user; ?>" class="c121 c121_message">Message</a>
                         </div>
                         <div class="c12">
-                            <div class="c121 c121_more" onclick="open_post_options(<?php echo $user.','. "'".$name_user."'";?>,24,0)">More</div>
+                            <div class="c121 c121_more" onclick="profile_options();open_post_options(<?php echo $user.','. "'".$name_user."'";?>,24,0);">More</div>
                         </div>
                     </div>
 
@@ -365,8 +365,16 @@ $follower_user = $row_following['total_sum_following'];
                                     <div class="follow-conn "> <img src="./SVG/heart-broken-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Unfollow</b></span> </span> </div>
                                 </li>
                                 
-                                    <li onclick="share(' <?php echo $name_user;?>','Follow <?php echo $name_user;?> on YaarMe','https://yaarme.com/account?user=<?php echo $user;?>')">
+                                    <li id="share_options" onclick="share(' <?php echo $name_user;?>','Follow <?php echo $name_user;?> on YaarMe','https://yaarme.com/account?user=<?php echo $user;?>');close_options('_fst')">
                                         <div class="follow-conn "> <img src="./SVG/share.svg" class="follow-icon"> <span class="conn-name"> <span><b>Share Profile</b></span> </span> </div>
+                                    </li>
+                                
+                                     <li id="post_options" onclick="share_post();close_options('_fst')">
+                                        <div class="follow-conn "> <img src="./SVG/share.svg" class="follow-icon"> <span class="conn-name"> <span><b>Share Post</b></span> </span> </div>
+                                    </li>
+                                
+                                     <li id="block_options" onclick="openlist('_block');close_options('_warning_delete');">
+                                        <div class="follow-conn "> <img src="./SVG/exclamation-triangle-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>block</b></span> </span> </div>
                                     </li>
 
                                 <li>
@@ -391,7 +399,7 @@ $follower_user = $row_following['total_sum_following'];
                                         <div class="follow-conn "> <img src="./SVG/trash-alt-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Delete post...</b></span> </span> </div>
                                     </li>
                                    
-                                     <li onclick="share_post()">
+                                     <li onclick="share_post();close_options('_warning_delete')">
                                         <div class="follow-conn "> <img src="./SVG/share.svg" class="follow-icon"> <span class="conn-name"> <span><b>Share Post</b></span> </span> </div>
                                     </li>
                                 </ul>
@@ -413,6 +421,26 @@ $follower_user = $row_following['total_sum_following'];
                                     <button class="follow-button follow-button-alt " onclick="close_options('_delete')">No</button>
                                     <div></div>
                                     <button class="follow-button " onclick="delete_post_confirm();">Yes</button>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+         
+                        <!-- block confirm-->
+                        <div class="my_options" id="post_option_block">
+                            <div class="my_options my_options_block" onclick="close_options('_block')">
+                            </div>
+                            <div class="items item_post" style="">
+                                <ul class="post_options">
+                                    <li>
+                                        <div class="follow-conn ">Are you sure to block.</div>
+                                    </li>
+                                </ul>
+                                <div class="btn_box">
+                                    <div></div>
+                                    <button class="follow-button follow-button-alt block" onclick="close_options('_block')">No</button>
+                                    <div></div>
+                                    <button class="follow-button block" onclick="block_user_confirm(1);">Yes</button>
                                     <div></div>
                                 </div>
                             </div>
@@ -598,7 +626,7 @@ creat_post();
                         if(user_id==output.post[i].owner_id){
                             var check_if_owner = '<span class="icon more-icon top-corner" id="more_post_click" onclick="open_ask_delete('+ output.post[i].id + ');openlist('+"'"+'_warning_delete'+"'"+','+ output.post[i].id + ');"></span>'; 
                         }else{
-                            var check_if_owner = '<span class="icon more-icon top-corner" id="more_post_click" onclick="open_post_options(' + output.post[i].owner_id + ', ' + "'" + output.post[i].name + "'" + ',' + output.post[i].id + ',' + output.post[i].account_type + ')"></span>'; 
+                            var check_if_owner = '<span class="icon more-icon top-corner" id="more_post_click" onclick="post_options();open_post_options(' + output.post[i].owner_id + ', ' + "'" + output.post[i].name + "'" + ',' + output.post[i].id + ',' + output.post[i].account_type + ')"></span>'; 
                         }
                         if(output.post[i].shared_with){
                              var shared_with = "<p class='shared_with'>"+output.post[i].shared_with+"</p>";

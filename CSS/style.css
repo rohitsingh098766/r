@@ -1101,6 +1101,27 @@ background: white;
 .follow-button-alt:hover {
 background: white;
 }
+
+.follow-button.block {
+ 
+  background-color: red;
+    border: 1px solid red;
+}
+.follow-button-alt.block {
+background: white;
+    color: red;
+/*    border: 1px solid var(--blue);*/
+}
+
+.follow-button.block:hover {
+  background-color: #ff3131;
+}
+.follow-button-alt.block:hover {
+background: white;
+}
+
+
+
 /* buttons */
 
 .arrow {
