@@ -534,7 +534,8 @@ function autosize(id) {
 
 
 //open lists
-function openlist(click_point) {
+function openlist(click_point,post_id) {
+      active_post = post_id;
     document.querySelector('.active_name').innerHTML = user_name;
     document.getElementById('post_option'+click_point).classList.add('active');
     close_options('_fst');

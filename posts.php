@@ -356,7 +356,7 @@ creat_post();
                             var post_own_pic = "none.png";
                         }
                         if(user_id==output.post[i].owner_id){
-                            var check_if_owner = '<span class="icon more-icon top-corner" id="more_post_click" onclick="open_ask_delete('+ output.post[i].id + ');openlist('+"'"+'_warning_delete'+"'"+');"></span>'; 
+                            var check_if_owner = '<span class="icon more-icon top-corner" id="more_post_click" onclick="open_ask_delete('+ output.post[i].id + ');openlist('+"'"+'_warning_delete'+"'"+','+ output.post[i].id + ');"></span>'; 
                         }else{
                             var check_if_owner = '<span class="icon more-icon top-corner" id="more_post_click" onclick="open_post_options(' + output.post[i].owner_id + ', ' + "'" + output.post[i].name + "'" + ',' + output.post[i].id + ',' + output.post[i].account_type + ')"></span>'; 
                         }
@@ -459,7 +459,7 @@ for(var i = 0; i < images.length; i++){
                                         <div class="follow-conn "> <img src="./SVG/heart-broken-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Unfollow</b></span> </span> </div>
                                     </li>
                                     <li onclick="share_post()">
-                                        <div class="follow-conn "> <img src="./SVG/share.svg" class="follow-icon"> <span class="conn-name"> <span><b>Share Post</b></span> </span> </div>
+                                        <div class="follow-conn "> <img src="./SVG/share.svg" class="follow-icon"> <span class="conn-name"> <span><b>Share Post via...</b></span> </span> </div>
                                     </li>
                                     <li>
                                         <div class="follow-conn"> </div>
@@ -482,8 +482,8 @@ for(var i = 0; i < images.length; i++){
                                         <div class="follow-conn "> <img src="./SVG/trash-alt-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Delete post...</b></span> </span> </div>
                                     </li>
                                    
-                                    <li>
-                                        <div class="follow-conn"> </div>
+                                     <li onclick="share_post()">
+                                        <div class="follow-conn "> <img src="./SVG/share.svg" class="follow-icon"> <span class="conn-name"> <span><b>Share Post</b></span> </span> </div>
                                     </li>
                                 </ul>
                             </div>
