@@ -41,27 +41,27 @@ session_start();
 
 <body id="body" oncontextmenu="">
 
-    <!--desktop header-->
-    <div class="main-navbar-wrap">
+     <!--desktop header-->
+   <div class="main-navbar-wrap">
         <div class="main-navbar">
-            <span class="icon company-logo"></span>
-            <a href="./" class="input-wrap" autocomplete="off">
+            <a href="./" class="icon company-logo"></a>
+            <form class="input-wrap" autocomplete="off">
                 <span class="icon search-icon autocomplete"></span>
-                <input type="search" placeholder="Search" class="search-bar" name="s" id="search_des">
+                <input type="search" placeholder="Search" class="search-bar" name="s" id="search_des" />
                 <span class="icon qrcode-icon"></span>
-            </a>
+            </form>
             <ul class="nav-icons">
                 <a href="./" class="icon home-icon " title="Home">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30px" height="30px">
                         <path d="M 12 2.0996094 L 1 12 L 4 12 L 4 21 L 10 21 L 10 15 L 14 15 L 14 21 L 20 21 L 20 12 L 23 12 L 12 2.0996094 z"></path>
                     </svg>
                 </a>
-                <a href="join" class="icon" title="My Network">
+                <a href="request/" class="icon" title="My Network">
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-friends" class="svg-inline--fa fa-user-friends fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="31px" height="31px">
                         <path d="M192 256c61.9 0 112-50.1 112-112S253.9 32 192 32 80 82.1 80 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C51.6 288 0 339.6 0 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zM480 256c53 0 96-43 96-96s-43-96-96-96-96 43-96 96 43 96 96 96zm48 32h-3.8c-13.9 4.8-28.6 8-44.2 8s-30.3-3.2-44.2-8H432c-20.4 0-39.2 5.9-55.7 15.4 24.4 26.3 39.7 61.2 39.7 99.8v38.4c0 2.2-.5 4.3-.6 6.4H592c26.5 0 48-21.5 48-48 0-61.9-50.1-112-112-112z"></path>
                     </svg>
                 </a>
-                <a href="post" class="icon " title="Add Post">
+                <a href="create_post/" class="icon" title="Add Post">
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" class="svg-inline--fa fa-plus fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="28px" height="28px">
                         <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
                     </svg>
@@ -78,20 +78,28 @@ session_start();
                     </svg>
                 </a>
                 <span href="#" class="icon profile-icon work-cont">
-                    <img src="<?php if($_SESSION['img']){ echo './profile/i/240/'.$_SESSION['img'];}else{ echo "./profile/i/none.svg"; } ?>">
+                    <img src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>">
                     <div class="desk-menu">
                         <div class="sidebar desktop-menu">
-                            <div class="profile-img-sidebar">
-                                <img class="avatar" src="<?php if($_SESSION['img']){ echo './profile/i/240/'.$_SESSION['img'];}else{ echo "./profile/i/none.svg"; } ?>" alt="">
+                            <a href="./account" class="profile-img-sidebar">
+                                <img class="avatar" src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>" alt="" />
                                 <span class="moon"></span>
                                 <p>
-                                    <?php echo $_SESSION['name'];?> <br>
+                                    <?php echo $_SESSION['name'];?> <br />
                                 </p>
-                                <img class="down expand-add-acc" src="./SVG/chevron-down-solid.svg" alt="">
-                            </div>
+                                <img class="down expand-add-acc  opacaity0" src="SVG/chevron-down-solid.svg" alt="" />
+                                <!-- <i class="fas fa-chevron-down arrow expand-add-acc"></i> -->
+                            </a>
                             <div class="all-uls">
-                            
-                               <ul>
+                                <!--<ul class="add-account">-->
+                                <!--	<li >-->
+                                <!--		<a href="#">-->
+                                <!--			<img src="SVG/plus-solid.svg" alt="" /> <span>Add Account</span>-->
+                                <!--		</a>-->
+                                <!--	</li>-->
+
+                                <!--</ul>-->
+                                <ul>
                                     <li>
                                         <a href="profile/">
                                             <img src="SVG/user-edit-solid.svg" alt="" />
@@ -126,7 +134,7 @@ session_start();
 
 
                                     <li>
-                                        <a href="page/share_profile">
+                                        <a href="#" onclick="share(' <?php echo $_SESSION['name'];?>','Follow <?php echo $_SESSION['name'];?> on YaarMe','https://yaarme.com/account?user=<?php echo $_SESSION['id'];?>')">
                                             <img src="SVG/share-black.svg" alt="" />
                                             <span>Share Your Profile</span>
                                         </a>
@@ -146,8 +154,7 @@ session_start();
             </ul>
         </div>
     </div>
-
-
+    
 
     <div class="container-wrap">
         <div class="container">

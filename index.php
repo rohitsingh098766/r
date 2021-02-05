@@ -277,8 +277,8 @@
             </ul>
             <hr />
             <ul>
-                <li>
-                    <a href="page/share_profile.php">
+                <li >
+                    <a href="#" onclick="share(' <?php echo $_SESSION['name'];?>','Follow <?php echo $_SESSION['name'];?> on YaarMe','https://yaarme.com/account?user=<?php echo $_SESSION['id'];?>')">
                         <img src="SVG/share-black.svg" alt="" />
                         <span>Share Your Profile</span>
                     </a>
@@ -317,7 +317,7 @@
 
     <div class="main-navbar-wrap">
         <div class="main-navbar">
-            <span class="icon company-logo"></span>
+            <a href="./" class="icon company-logo"></a>
             <form class="input-wrap" autocomplete="off">
                 <span class="icon search-icon autocomplete"></span>
                 <input type="search" placeholder="Search" class="search-bar" name="s" id="search_des" />
@@ -357,15 +357,15 @@
                     <img src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>">
                     <div class="desk-menu">
                         <div class="sidebar desktop-menu">
-                            <div class="profile-img-sidebar">
+                            <a href="./account" class="profile-img-sidebar">
                                 <img class="avatar" src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>" alt="" />
                                 <span class="moon"></span>
                                 <p>
                                     <?php echo $_SESSION['name'];?> <br />
                                 </p>
-                                <img class="down expand-add-acc" src="SVG/chevron-down-solid.svg" alt="" />
+                                <img class="down expand-add-acc  opacaity0" src="SVG/chevron-down-solid.svg" alt="" />
                                 <!-- <i class="fas fa-chevron-down arrow expand-add-acc"></i> -->
-                            </div>
+                            </a>
                             <div class="all-uls">
                                 <!--<ul class="add-account">-->
                                 <!--	<li >-->
@@ -410,7 +410,7 @@
 
 
                                     <li>
-                                        <a href="page/share_profile">
+                                        <a href="#" onclick="share(' <?php echo $_SESSION['name'];?>','Follow <?php echo $_SESSION['name'];?> on YaarMe','https://yaarme.com/account?user=<?php echo $_SESSION['id'];?>')">
                                             <img src="SVG/share-black.svg" alt="" />
                                             <span>Share Your Profile</span>
                                         </a>

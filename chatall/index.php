@@ -9,7 +9,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YaarMe</title>
+    <title>Chat</title>
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="static/app.css">
     <!--icons-->
@@ -37,7 +37,7 @@ session_start();
 <!--desktop header-->
     <div class="main-navbar-wrap">
         <div class="main-navbar">
-            <span class="icon company-logo"></span>
+            <a href="../" class="icon company-logo"></a>
             <a href="../" class="input-wrap" autocomplete="off">
                 <span class="icon search-icon autocomplete"></span>
                 <input type="search" placeholder="Search" class="search-bar" name="s" id="search_des">
@@ -114,7 +114,7 @@ session_start();
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="../page/share_profile">
+                                         <a href="#" onclick="share(' <?php echo $_SESSION['name'];?>','Follow <?php echo $_SESSION['name'];?> on YaarMe','https://yaarme.com/account?user=<?php echo $_SESSION['id'];?>')">
                                             <img src="../SVG/share-black.svg" alt="" />
                                             <span>Share Your Profile</span>
                                         </a>
@@ -133,6 +133,7 @@ session_start();
             </ul>
         </div>
     </div>
+    
     
     
     
@@ -411,7 +412,46 @@ echo '
         <form class="input-wrap" autocomplete="off">
         </form>
     </div>
+    <script>
     
+    
+// share profile
+function share(title,text,link){
+    event.preventDefault();
+     if (navigator.share) {
+    navigator.share({
+      title: title,
+      text: text,
+      url: link
+    }).then(() => {
+      console.log('Thanks for sharing!');
+    })
+    .catch(err => {
+      console.log(`Couldn't share because of`, err.message);
+    });
+  } else {
+      
+    // console.log('web share not supported');
+     copyTextToClipboard(text+ ' ' +link);
+  alert("Link copied to clipboard ");
+  }
+    
+}
+
+// copy to clipboard
+function copyTextToClipboard(text) {
+  if (!navigator.clipboard) {
+    fallbackCopyTextToClipboard(text);
+    return;
+  }
+  navigator.clipboard.writeText(text).then(function() {
+    console.log('Async: Copying to clipboard was successful!');
+  }, function(err) {
+    console.error('Async: Could not copy text: ', err);
+  });
+}
+
+    </script>
 </body>
 
 </html>

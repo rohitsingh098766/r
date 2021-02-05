@@ -1680,6 +1680,9 @@ color: #b5b5b5;
 .white{
     color: white;
 }
+.opacaity0{
+    opacity: 0;
+}
 /*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*/
 
 @media only screen and (max-width: 1440px) {

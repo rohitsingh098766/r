@@ -125,7 +125,7 @@ while($row = mysqli_fetch_assoc($result)){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feed | YaarMe</title>
+    <title>Edit post</title>
     <link rel="stylesheet" href="../CSS/spin_loader.css">
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="./style.css">
@@ -171,9 +171,10 @@ while($row = mysqli_fetch_assoc($result)){
     
     
 <!--desktop header-->
+ <!--desktop header-->
     <div class="main-navbar-wrap">
         <div class="main-navbar">
-            <span class="icon company-logo"></span>
+            <a href="../" class="icon company-logo"></a>
             <a href="../" class="input-wrap" autocomplete="off">
                 <span class="icon search-icon autocomplete"></span>
                 <input type="search" placeholder="Search" class="search-bar" name="s" id="search_des">
@@ -250,7 +251,7 @@ while($row = mysqli_fetch_assoc($result)){
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="../page/share_profile">
+                                         <a href="#" onclick="share(' <?php echo $_SESSION['name'];?>','Follow <?php echo $_SESSION['name'];?> on YaarMe','https://yaarme.com/account?user=<?php echo $_SESSION['id'];?>')">
                                             <img src="../SVG/share-black.svg" alt="" />
                                             <span>Share Your Profile</span>
                                         </a>
@@ -269,6 +270,8 @@ while($row = mysqli_fetch_assoc($result)){
             </ul>
         </div>
     </div>
+    
+    
     
     
     <div class="container-wrap">
@@ -411,7 +414,7 @@ echo $row['status_mini_bio'];
                               </div>
                                 
                                 <BUTTON  class="share-section"  id="button_post_desk" name="submit" value="submit">
-                                     PUBLISH
+                                     UPDATE
                                 </BUTTON>
                                 
                             </form>
@@ -432,7 +435,7 @@ echo $row['status_mini_bio'];
         <form class="input-wrap" autocomplete="off">
         </form>
         <span class="">
-            <label id="button_post" for="button_post_desk">POST</label>
+            <label id="button_post" for="button_post_desk">UPDATE</label>
         </span>
     </div>
 

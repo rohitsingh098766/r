@@ -1,4 +1,8 @@
 <?php
+header('Location: ../');
+exit(0);
+
+
 session_start();
      include '../connection.php';
    if(!isset($_SESSION['id'])){include '../login/check_coockie.php';}

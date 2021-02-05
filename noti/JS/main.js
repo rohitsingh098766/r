@@ -1,3 +1,4 @@
+/*
 var elem = document.getElementsByClassName("content");
 for (var i = 0; i < elem.length; i++) {
 
@@ -215,3 +216,42 @@ window.onscroll = function (e) {
     }
     this.oldScroll = this.scrollY;
 }
+*/
+
+
+// share profile
+function share(title,text,link){
+    event.preventDefault();
+     if (navigator.share) {
+    navigator.share({
+      title: title,
+      text: text,
+      url: link
+    }).then(() => {
+      console.log('Thanks for sharing!');
+    })
+    .catch(err => {
+      console.log(`Couldn't share because of`, err.message);
+    });
+  } else {
+      
+    // console.log('web share not supported');
+     copyTextToClipboard(text+ ' ' +link);
+  alert("Link copied to clipboard ");
+  }
+    
+}
+
+// copy to clipboard
+function copyTextToClipboard(text) {
+  if (!navigator.clipboard) {
+    fallbackCopyTextToClipboard(text);
+    return;
+  }
+  navigator.clipboard.writeText(text).then(function() {
+    console.log('Async: Copying to clipboard was successful!');
+  }, function(err) {
+    console.error('Async: Could not copy text: ', err);
+  });
+}
+
