@@ -442,12 +442,13 @@ for(var i = 0; i < images.length; i++){
                             <div class="items item_post" style="">
                                 <p class="select_category">Select what to do with post or post owner.</p>
                                 <ul class="post_options">
+                                    <li id="block_options" onclick="openlist('_block');close_options('_warning_delete');">
+                                        <div class="follow-conn "> <img src="./SVG/lock-solid-red.svg" class="follow-icon"> <span class="conn-name"> <span><b>block</b></span> </span> </div>
+                                    </li>
                                     <li onclick="openlist('_report')">
                                         <div class="follow-conn "> <img src="./SVG/exclamation-triangle-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Report post...</b></span> </span> </div>
                                     </li>
-                                    <li onclick="openlist('yy')">
-                                        <div class="follow-conn "> <img src="./SVG/tags-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Change List</b></span> </span> </div>
-                                    </li>
+                                   
                                     <li id="mutww" onclick="mute_yes()">
                                         <!--                                     <li  onclick="openlist('_mute')">-->
                                         <div class="follow-conn ">
@@ -457,6 +458,9 @@ for(var i = 0; i < images.length; i++){
                                     <!--                                     <li onclick="openlist('_unfollow')">-->
                                     <li id="unflww" onclick="unfollow_yes()">
                                         <div class="follow-conn "> <img src="./SVG/heart-broken-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Unfollow</b></span> </span> </div>
+                                    </li>
+                                     <li onclick="openlist('yy')">
+                                        <div class="follow-conn "> <img src="./SVG/tags-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Change List</b></span> </span> </div>
                                     </li>
                                     <li onclick="share_post()">
                                         <div class="follow-conn "> <img src="./SVG/share.svg" class="follow-icon"> <span class="conn-name"> <span><b>Share Post </b></span> </span> </div>
@@ -550,7 +554,25 @@ for(var i = 0; i < images.length; i++){
                             </div>
                         </div>
 
-
+  <!-- block confirm-->
+                        <div class="my_options" id="post_option_block">
+                            <div class="my_options my_options_block" onclick="close_options('_block')">
+                            </div>
+                            <div class="items item_post" style="">
+                                <ul class="post_options">
+                                    <li>
+                                        <div class="follow-conn ">Are you sure to block.</div>
+                                    </li>
+                                </ul>
+                                <div class="btn_box">
+                                    <div></div>
+                                    <button class="follow-button follow-button-alt block" onclick="close_options('_block')">No</button>
+                                    <div></div>
+                                    <button class="follow-button block" onclick="block_user_confirm(1);">Yes</button>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
 
 
                         <!--                        chnage list-->

@@ -350,19 +350,26 @@ $follower_user = $row_following['total_sum_following'];
                                     <li onclick="openlist('_report')">
                                         <div class="follow-conn "> <img src="./SVG/exclamation-triangle-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Report post...</b></span> </span> </div>
                                     </li>
--->
-                                <li onclick="openlist('yy')">
-                                    <div class="follow-conn "> <img src="./SVG/tags-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Change List</b></span> </span> </div>
-                                </li>
-                                <li id="mutww" onclick="mute_yes()">
+
+--> 
+                                <li id="block_options" onclick="openlist('_block');close_options('_warning_delete');">
+                                        <div class="follow-conn "> <img src="./SVG/lock-solid-red.svg" class="follow-icon"> <span class="conn-name"> <span><b>block</b></span> </span> </div>
+                                    </li>
+                                   <li id="mutww" onclick="mute_yes()">
                                     <!--                                     <li  onclick="openlist('_mute')">-->
                                     <div class="follow-conn ">
                                         <!-- <img src="./SVG/volume-mute-solid.svg" class="follow-icon">--> <img src="./SVG/volume-up-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Mute posts</b></span> </span>
                                     </div>
                                 </li>
+                               
+                                
+                                
                                 <!--                                     <li onclick="openlist('_unfollow')">-->
                                 <li id="unflww" onclick="unfollow_yes()">
                                     <div class="follow-conn "> <img src="./SVG/heart-broken-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Unfollow</b></span> </span> </div>
+                                </li>
+                                 <li onclick="openlist('yy')">
+                                    <div class="follow-conn "> <img src="./SVG/tags-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Change List</b></span> </span> </div>
                                 </li>
                                 
                                     <li id="share_options" onclick="share(' <?php echo $name_user;?>','Follow <?php echo $name_user;?> on YaarMe','https://yaarme.com/account?user=<?php echo $user;?>');close_options('_fst')">
@@ -373,9 +380,7 @@ $follower_user = $row_following['total_sum_following'];
                                         <div class="follow-conn "> <img src="./SVG/share.svg" class="follow-icon"> <span class="conn-name"> <span><b>Share Post</b></span> </span> </div>
                                     </li>
                                 
-                                     <li id="block_options" onclick="openlist('_block');close_options('_warning_delete');">
-                                        <div class="follow-conn "> <img src="./SVG/exclamation-triangle-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>block</b></span> </span> </div>
-                                    </li>
+                                 
 
                                 <li>
                                     <div class="follow-conn"> </div>
