@@ -145,11 +145,11 @@ $follower_user = $row_following['total_sum_following'];
    <div class="main-navbar-wrap">
         <div class="main-navbar">
             <a href="./" class="icon company-logo"></a>
-            <form class="input-wrap" autocomplete="off">
+            <a  href="./" class="input-wrap" autocomplete="off">
                 <span class="icon search-icon autocomplete"></span>
                 <input type="search" placeholder="Search" class="search-bar" name="s" id="search_des" />
                 <span class="icon qrcode-icon"></span>
-            </form>
+            </a>
             <ul class="nav-icons">
                 <a href="./" class="icon home-icon " title="Home">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30px" height="30px">
@@ -364,11 +364,11 @@ $follower_user = $row_following['total_sum_following'];
                                 <li id="unflww" onclick="unfollow_yes()">
                                     <div class="follow-conn "> <img src="./SVG/heart-broken-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Unfollow</b></span> </span> </div>
                                 </li>
-                                <!--
-                                    <li>
+                                
+                                    <li onclick="share_post()">
                                         <div class="follow-conn "> <img src="./SVG/share.svg" class="follow-icon"> <span class="conn-name"> <span><b>Share Post</b></span> </span> </div>
                                     </li>
--->
+
                                 <li>
                                     <div class="follow-conn"> </div>
                                 </li>

@@ -41,15 +41,15 @@ session_start();
 
 <body id="body" oncontextmenu="">
 
-     <!--desktop header-->
+   <!--desktop header-->
    <div class="main-navbar-wrap">
         <div class="main-navbar">
             <a href="./" class="icon company-logo"></a>
-            <form class="input-wrap" autocomplete="off">
+             <a href="./" class="input-wrap" autocomplete="off">
                 <span class="icon search-icon autocomplete"></span>
                 <input type="search" placeholder="Search" class="search-bar" name="s" id="search_des" />
                 <span class="icon qrcode-icon"></span>
-            </form>
+            </a>
             <ul class="nav-icons">
                 <a href="./" class="icon home-icon " title="Home">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30px" height="30px">
@@ -154,7 +154,6 @@ session_start();
             </ul>
         </div>
     </div>
-    
 
     <div class="container-wrap">
         <div class="container">

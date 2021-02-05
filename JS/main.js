@@ -765,6 +765,29 @@ function share(title,text,link){
     
 }
 
+// share post
+function share_post(){
+    event.preventDefault();
+     if (navigator.share) {
+    navigator.share({
+      title: "YaarMe post",
+      text: "Hey there, I found something usefull for you on YaarMe",
+      url: "https://yaarme.com/posts?p="+active_post
+    }).then(() => {
+      console.log('Thanks for sharing!');
+    })
+    .catch(err => {
+      console.log(`Couldn't share because of`, err.message);
+    });
+  } else {
+      
+    // console.log('web share not supported');
+     copyTextToClipboard("Hey there, I found something usefull for you on YaarMe. https://yaarme.com/posts?p="+active_post);
+  alert("Link copied to clipboard ");
+  }
+    
+}
+
 // copy to clipboard
 function copyTextToClipboard(text) {
   if (!navigator.clipboard) {
