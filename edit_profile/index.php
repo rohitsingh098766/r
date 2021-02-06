@@ -3,6 +3,10 @@ session_start();
 include '../connection.php';
 if(!isset($_SESSION['id'])){include './login/check_coockie.php';}
 
+
+
+
+
 if(isset($_POST['submitted'])){
     
 function image_fix_orientation($path,$image_name) {
@@ -231,10 +235,22 @@ $_SESSION['name'] = $row['first_name'].' '.$row['last_name'];
 $_SESSION['img'] = $row['img'];
 }
     
-   
-    
-header('Location: ../');
+//redired at shared page
+    if(isset($_COOKIE['shared'])){
+        if($_COOKIE['shared']==1){
+//            direct at profile
+            header('Location: ../account?user='.$_COOKIE['shared_id']);
+        }else if($_COOKIE['shared']==2){
+//            direct at post
+            header('Location: ../posts?p='.$_COOKIE['shared_id']);
+        }
+    }else{
+      header('Location: ../');
 exit(0);
+  
+    }
+    
+    
 
 
 }else{

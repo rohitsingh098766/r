@@ -162,24 +162,40 @@ exit(0);
                 <div class="homepage-main-content">
 
                     <div class="d1">
-                        <div class="select_one">
-                            <div class="d active" l="following">Following</div>
+                        <div class="select_one" id="already_activeted">
+                            <div class="d <?php if(!isset($_GET['c'])){echo "active";}?>" l="following">Following</div>
                             <div class=" d" l="follower">Followers</div>
                             <?php
                             
+                            $active_list = '';
+                            if(isset($_GET['c'])){
+                            $active_list = $_GET['c'];
+                            }
+                            
                              $query = "select * from yaarme_follow.category where owner_id = {$_SESSION['id']} order by `category`.`id` ASC";
-               $query = mysqli_query($connection,$query);
-  while($row = mysqli_fetch_assoc($query)){
-      echo '<div class=" d flx_2" l="'.$row['id'].'"><img src="../emogi/128/'.$row['emoji'].'" class="list_img">'.str_replace(' ', '&nbsp;', $row['group_name']).'</div>';
-  }
+                             $query = mysqli_query($connection,$query);
+                          
+                             while($row = mysqli_fetch_assoc($query)){
+                                 
+                                   if($active_list == $row['id']){
+                                $active = "active";
+                            }else{
+                               $active = ''; 
+                            }
+                            
+                             echo '<div class=" d flx_2 '.$active.'" l="'.$row['id'].'"><img src="../emogi/128/'.$row['emoji'].'" class="list_img ">'.str_replace(' ', '&nbsp;', preg_replace('/\r|\n/','&nbsp;',trim(htmlentities($row['group_name'])))).'</div>';
+                             }
+                            
                             
                             ?>
- <div class="d" l="muted">Muted</div>
-                            <div class=" d" l="unlisted">Unlisted</div>
+<!-- <div class="d" l="muted">Muted</div>-->
+                            <div class="d" l="unlisted">Unlisted</div>
                         </div>
+<!--
                         <div class="flx d3">
                             <img src="image/filter.svg" class="filter_icon">
                         </div>
+-->
                     </div>
 
                     <div id="all_list">
@@ -208,11 +224,11 @@ exit(0);
                              $query = "select * from yaarme_follow.category where owner_id = {$_SESSION['id']} order by `category`.`id` ASC";
                $query = mysqli_query($connection,$query);
   while($row = mysqli_fetch_assoc($query)){
-      echo '<div class=" d flx_2" l="'.$row['id'].'"><img src="../emogi/128/'.$row['emoji'].'" class="list_img">'.str_replace(' ', '&nbsp;', $row['group_name']).'</div>';
+      echo '<div class=" d flx_2" l="'.$row['id'].'"><img src="../emogi/128/'.$row['emoji'].'" class="list_img">'.str_replace(' ', '&nbsp;', preg_replace('/\r|\n/','&nbsp;',trim(htmlentities($row['group_name'])))).'</div>';
   }
                             
                             ?>
- <div class="d" l="muted">Muted</div>
+<!-- <div class="d" l="muted">Muted</div>-->
                             <div class=" d" l="unlisted">Unlisted</div>
                         </div>
                         

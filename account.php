@@ -1,6 +1,13 @@
 <?php
 session_start();
      include './connection.php';
+
+if(isset($_GET['user'])){
+     $user = mysqli_real_escape_string($connection, $_GET['user']);
+setcookie("shared", 1, time() + (86400 * 364),'/');
+setcookie("shared_id", $user, time() + (86400 * 364),'/');
+}
+
    if(!isset($_SESSION['id'])){include './login/check_coockie.php';}
 
 //echo   $_SESSION['name'].$_SESSION['img'];

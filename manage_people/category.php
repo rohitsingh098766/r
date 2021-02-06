@@ -97,7 +97,38 @@ echo ' <div class="posts g1 act_'.$row['get_id'].'" u="'.$row['get_id'].'">
 }else if($_POST['l']=="muted"){
 echo "muted";
 }else if($_POST['l']=="unlisted"){
-echo "unlisted";
+//    following
+$query = "SELECT *, yaarme.users.id as get_id FROM yaarme_follow.follow JOIN yaarme.users on yaarme.users.id = yaarme_follow.follow.opponent left JOIN yaarme_follow.category on yaarme_follow.category.id = yaarme_follow.follow.category left join yaarme.location on yaarme.location.id = users.location where (yaarme_follow.follow.user ={$_SESSION['id']} and yaarme_follow.follow.category is null and yaarme_follow.follow.approve =1) ORDER BY `follow`.`id` DESC";
+$result = mysqli_query($connection,$query);
+while($row = mysqli_fetch_assoc($result)){
+    if($row['group_name']){
+        $grp = ' • '.$row['group_name'];
+    }else{
+        $grp = '';
+    }
+    $img_out = "../profile/i/none.svg";
+    if($row['img']){
+       $img_out =  '../profile/i/240/'.$row['img'];
+    }else{
+       $img_out = "../profile/i/none.svg";
+    }
+echo ' <div class="posts g1 act_'.$row['get_id'].'" u="'.$row['get_id'].'">
+    <div class="k1"><img src="'.$img_out.'" class="avatar"></div>
+    <div class="k1 mid">
+        <div class="mid_head">'.$row['first_name'].' '.$row['last_name'].' <small class="tag tag_'.$row['get_id'].'">'.$grp.'</small></div>
+        <div class="mid_con">'.$row['status_mini_bio'].'</div>
+    </div>
+    <div href="#" class="k1 hovrr1 user_i_'.$row['get_id'].'"  f="f" u="'.$row['get_id'].'" m="'.$row['mute'].'">
+        <div class="svg_a" > <img src="image/ellipsis-v-solid.svg"></div>
+    </div>
+    <div></div>
+    <div class=" k1 mid ">
+        <div class="location "><img src="./image/location.svg" class="location_img"> '.$row['location'].'</div>
+    </div>
+    <div></div>
+</div>';
+
+}
 }else{
 //echo $_POST['l'];
 

@@ -1,14 +1,23 @@
 <?php
      session_start();
      include './connection.php';
-   if(!isset($_SESSION['id'])){include './login/check_coockie.php';}
-//echo   $_SESSION['name'].$_SESSION['img'];
-function time_convert($time) {
-   if($time <60){ $time_show=$time."s"; }else if($time < 3600){ $time_show=$time / 60; $time_show=intval($time_show); $time_show=$time_show."m"; }else if($time < 86400){ $time_show=$time / 3600; $time_show=intval($time_show); $time_show=$time_show."h"; }else if($time < (86400*30)){ $time_show=$time / 86400; $time_show=intval($time_show); $time_show=$time_show."d"; }else if($time < (86400*365)){ $time_show=$time / (86400*30); $time_show=intval($time_show); $time_show=$time_show."M"; }else{ $time_show=$time / (86400*365); $time_show=intval($time_show); $time_show=$time_show."y"; } return $time_show; }
 
 
 //check in user is allowed to watch this post
 $post_id =  mysqli_real_escape_string($connection, $_GET['p']);
+
+// add coockies if shared
+setcookie("shared", 2, time() + (86400 * 364),'/');
+setcookie("shared_id", $post_id, time() + (86400 * 364),'/');
+
+   if(!isset($_SESSION['id'])){include './login/check_coockie.php';}
+//echo   $_SESSION['name'].$_SESSION['img'];
+
+function time_convert($time) {
+   if($time <60){ $time_show=$time."s"; }else if($time < 3600){ $time_show=$time / 60; $time_show=intval($time_show); $time_show=$time_show."m"; }else if($time < 86400){ $time_show=$time / 3600; $time_show=intval($time_show); $time_show=$time_show."h"; }else if($time < (86400*30)){ $time_show=$time / 86400; $time_show=intval($time_show); $time_show=$time_show."d"; }else if($time < (86400*365)){ $time_show=$time / (86400*30); $time_show=intval($time_show); $time_show=$time_show."M"; }else{ $time_show=$time / (86400*365); $time_show=intval($time_show); $time_show=$time_show."y"; } return $time_show; }
+
+
+
 $query = "select * from yaarme_post.posts join yaarme.users on users.id = posts.owner_id  where posts.id = {$post_id}";
 //echo $query;
  $result = mysqli_query($connection,$query);

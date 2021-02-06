@@ -40,6 +40,8 @@ if($x==1){
          $btn = '<div class="add add_'.$row['user'].'"  u="'.$row['user'].'" ><div class="active d red">Add</div></div>';
      }
     
+  
+    
 }
     
 $img_out = "../profile/i/none.svg";
@@ -52,7 +54,7 @@ $img_out = "../profile/i/none.svg";
 echo ' <div class="posts g1 act_'.$row['user'].'" u="'.$row['user'].'">
     <div class="k1"><img src="'.$img_out.'" class="avatar"></div>
     <div class="k1 mid">
-        <div class="mid_head">'.$row['first_name'].' '.$row['last_name'].' '.$follow_offer.'</div>
+        <div class="mid_head">'.$row['first_name'].' '.$row['last_name'].' '.$follow_offer.'<small class="tag tag_'.$row['user'].'">'.$relation.'</small></div>
         <div class="mid_con"> '.$row['status_mini_bio'].'</div>
     </div>'.$btn.'<div></div>
     <div class=" k1 mid ">
@@ -63,11 +65,50 @@ echo ' <div class="posts g1 act_'.$row['user'].'" u="'.$row['user'].'">
 
 }
 
-
 //echo "follower";
 }else if($_POST['l']=="following"){
     
 $query = "SELECT *, yaarme.users.id as get_id FROM yaarme_follow.follow JOIN yaarme.users on yaarme.users.id = yaarme_follow.follow.opponent left JOIN yaarme_follow.category on yaarme_follow.category.id = yaarme_follow.follow.category left join yaarme.location on yaarme.location.id = users.location  where (yaarme_follow.follow.user ={$_SESSION['id']} and yaarme_follow.follow.approve = 1  ) ORDER BY `follow`.`id` DESC";
+//    echo $query;
+$result = mysqli_query($connection,$query);
+while($row = mysqli_fetch_assoc($result)){
+    if($row['group_name']){
+        $grp = ' • '.$row['group_name'];
+    }else{
+        $grp = '';
+    }
+    if($e==$row['category']){
+          $btn = '<div class="add add_'.$row['opponent'].'"  u="'.$row['opponent'].'" ><div class="active d red blue">Remove</div></div>';
+     }else{
+         $btn = '<div class="add add_'.$row['opponent'].'"  u="'.$row['opponent'].'" ><div class="active d red">Add</div></div>';
+     }
+    $img_out = "../profile/i/none.svg";
+    if($row['img']){
+       $img_out =  '../profile/i/240/'.$row['img'];
+    }else{
+       $img_out = "../profile/i/none.svg";
+    }
+echo ' <div class="posts g1 act_'.$row['get_id'].'" u="'.$row['get_id'].'">
+    <div class="k1"><img src="'.$img_out.'" class="avatar"></div>
+    <div class="k1 mid">
+        <div class="mid_head">'.$row['first_name'].' '.$row['last_name'].'<small class="tag tag_'.$row['get_id'].'">'.$grp.'</small></div>
+        <div class="mid_con">'.$row['status_mini_bio'].'</div>
+    </div>
+    '.$btn.'
+    <div></div>
+    <div class=" k1 mid ">
+        <div class="location "><img src="./image/location.svg" class="location_img"> '.$row['location'].'</div>
+    </div>
+    <div></div>
+</div>';
+
+}
+
+//echo "following";
+}else if($_POST['l']=="muted"){
+echo "muted";
+}else if($_POST['l']=="unlisted"){
+$query = "SELECT *, yaarme.users.id as get_id FROM yaarme_follow.follow JOIN yaarme.users on yaarme.users.id = yaarme_follow.follow.opponent left JOIN yaarme_follow.category on yaarme_follow.category.id = yaarme_follow.follow.category left join yaarme.location on yaarme.location.id = users.location  where (yaarme_follow.follow.user ={$_SESSION['id']} and yaarme_follow.follow.category is null and yaarme_follow.follow.approve =1  ) ORDER BY `follow`.`id` DESC";
 //    echo $query;
 $result = mysqli_query($connection,$query);
 while($row = mysqli_fetch_assoc($result)){
@@ -100,14 +141,7 @@ echo ' <div class="posts g1 act_'.$row['get_id'].'" u="'.$row['get_id'].'">
     </div>
     <div></div>
 </div>';
-
 }
-
-//echo "following";
-}else if($_POST['l']=="muted"){
-echo "muted";
-}else if($_POST['l']=="unlisted"){
-echo "unlisted";
 }else{
 //echo $_POST['l'];
 
@@ -150,7 +184,7 @@ $img_out = "../profile/i/none.svg";
 echo '<div class="posts g1 act_'.$row['opponent'].'" u="'.$row['opponent'].'">
     <div class="k1"><img src="'.$img_out.'" class="avatar"></div>
     <div class="k1 mid">
-        <div class="mid_head">'.$row['first_name'].' '.$row['last_name'].' '.$follow_offer.' </div>
+        <div class="mid_head">'.$row['first_name'].' '.$row['last_name'].' '.$follow_offer.' <small class="tag tag_'.$row['opponent'].'">'.$grp.'</small></div>
         <div class="mid_con"> '.$row['status_mini_bio'].'</div>
 
     </div>

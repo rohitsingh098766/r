@@ -40,6 +40,7 @@ var user = '';
 var mute = '';
 var remove_follower = '';
 
+//ajax 
 function my_ajax(url, post_data) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -78,8 +79,15 @@ function my_ajax(url, post_data) {
     xhttp.send(post_data);
 }
 
-my_ajax("category.php", "l=following");
+var already_activeted = document.getElementById('already_activeted').querySelector('.active').getAttribute('l');
 
+if(already_activeted>0){
+    document.querySelector('.g1_create').classList.add('active');
+}
+
+my_ajax("category.php", "l="+already_activeted);
+
+//ajax 2
 function my_ajx(post_data) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {

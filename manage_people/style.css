@@ -183,7 +183,8 @@ display: grid;
 
 .d1{
     display: grid;
-    grid-template-columns: 1fr 3em;
+/*    grid-template-columns: 1fr 3em;*/
+    grid-template-columns: 1fr;
     padding: 0 1em;
 }
 
