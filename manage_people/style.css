@@ -219,7 +219,7 @@ display: grid;
 }
 .location{
     color: gray;
-    margin: .5em 0;
+    margin: .15em 0 .5em 0;
     font-size: .88em;
     overflow: hidden;
     text-overflow: ellipsis;
