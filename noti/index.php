@@ -12,7 +12,7 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Notifications</title>
          <link rel="stylesheet" href="../CSS/style.css">
-        <link rel="stylesheet" href="CSS/style.css">
+        <link rel="stylesheet" href="CSS/style.css?v=2">
         
         
               <!--icons-->
@@ -151,7 +151,11 @@ session_start();
                         
                         <?php
                         
-                        $query = "SELECT * FROM yaarme.notifications_all 
+                         function time_convert($time) {
+   if($time <60){ $time_show=$time."s"; }else if($time < 3600){ $time_show=$time / 60; $time_show=intval($time_show); $time_show=$time_show."m"; }else if($time < 86400){ $time_show=$time / 3600; $time_show=intval($time_show); $time_show=$time_show."h"; }else if($time < (86400*30)){ $time_show=$time / 86400; $time_show=intval($time_show); $time_show=$time_show."d"; }else if($time < (86400*365)){ $time_show=$time / (86400*30); $time_show=intval($time_show); $time_show=$time_show."M"; }else{ $time_show=$time / (86400*365); $time_show=intval($time_show); $time_show=$time_show."y"; } return $time_show; }
+                        
+                        
+                        $query = "SELECT * , TIMESTAMPDIFF(SECOND, notifications_all.at, CURRENT_TIMESTAMP ) as sec FROM yaarme.notifications_all 
                         join yaarme.users on users.id = notifications_all.from_user 
                         where for_user = {$_SESSION['id']} order by at desc limit 500" ;
   $result = mysqli_query($connection,$query);
@@ -169,6 +173,7 @@ $from_profile = '../profile/i/240/'.$row['img'];
       }else{
         $from_profile = '../profile/i/none.svg';  
       }
+      $time_out = time_convert($row['sec']);
       echo '
         <div class="card-main notif read">
                             <a href="../account?user='.$row['from_user'].'" class="img-wrap">
@@ -181,7 +186,7 @@ $from_profile = '../profile/i/240/'.$row['img'];
                             </a>                        
                             <div class="last">
                                 <span class="icon more-icon"></span>
-                            <p>1d</p>
+                            <p>'.$time_out.'</p>
                             </div>
                         </div>
       ';
@@ -390,7 +395,7 @@ $from_profile = '../profile/i/240/'.$row['img'];
         <form class="input-wrap" autocomplete="off">
         </form>
     </div>
-        <script src="JS/main.js"></script>
+        <script src="JS/main.js?v=2"></script>
        
     </body>
 

@@ -147,7 +147,7 @@ if (state){
     
 //      clearInterval(int);
     }
-        },3000)  
+        },5000)  
 
 }
 

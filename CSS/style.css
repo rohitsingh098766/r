@@ -853,9 +853,9 @@ height: 2.6em;
   width: 66px;
   height: 66px;
   border-radius: 50%;
-  background: linear-gradient(45deg,
-      rgba(245, 160, 77, 1) 0%,
-      rgba(160, 15, 139, 1) 100%);
+  background: linear-gradient(
+45deg
+, #ec407a 0%, #1565c0 100%);
   padding: 3px;
   display: inline-block;
   position: relative;
@@ -863,6 +863,11 @@ height: 2.6em;
 
 .stories .scroll-stories .storie .photo.inactive {
   background: #cfcece;
+}
+.stories .scroll-stories .storie .photo.my {
+  background: linear-gradient( 
+45deg
+ , #e53935 0%, #ffeb3b 100%);
 }
 
 .stories .scroll-stories .storie .photo.user {

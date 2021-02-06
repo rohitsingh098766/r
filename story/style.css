@@ -124,7 +124,7 @@ a{
 
 
 .load-now{
-    animation: loading 3s forwards;
+    animation: loading 5s forwards;
 }
 
 .completed{
