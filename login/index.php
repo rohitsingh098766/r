@@ -30,7 +30,7 @@
 	<meta name="msapplication-TileColor" content="#0073b1" />
 	<meta name="msapplication-TileImage" content="../icons/icons/ms-icon-144x144.png" />
 	<meta name="theme-color" content="#0073b1" />
-       <meta name="description" content="YaarMe is world's most street-smart, ultra-customized and non-cluttered social media platform. Sign up for free and get connected with friends, family and people you like.">
+       <meta name="description" content="YaarMe is an ultra-customizable social media platform, helps individuals to build their optimized social network.">
   <meta name="keywords" content="Yaarme, YaarMe, Yaar me, Social media, Social media platform, ultra customized social media platform, safest socail media platform, Build and organize your network, organize your network, world's most advanced social media platform">
     
 <!--    google login kit-->

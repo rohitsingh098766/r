@@ -541,7 +541,7 @@ echo $row['status_mini_bio'];
 
 
 <script src="app.js"></script>
-<script src="../JS/main.js"></script>
+<!--<script src="../JS/main.js"></script>-->
   
 
 
