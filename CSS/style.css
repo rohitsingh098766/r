@@ -1719,6 +1719,10 @@ background-color: white;
 .promote_following_para{
     color: darkorange;
     padding: 0 1em;
+    -webkit-box-orient: unset ! important;
+}
+.promote_following_p .conn-name{
+width: 100%;
 }
 
 
