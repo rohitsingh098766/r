@@ -682,7 +682,13 @@ creat_post();
                     var my_adds = "";
 
                     var output = JSON.parse(this.responseText);
-                    for (var i = 0; i < output.post.length; i++) {
+                    
+                    
+                       if(output.post.length<1 && !document.getElementById("first_post").innerHTML){
+                       document.getElementById("first_post").innerHTML='<div class="card " ><div class="follow-conn promote_following_p"> <a href="#"  class="follow-icon users post_profile promote_following" ></a><div class="conn-name"> <span> <b class="promote_following_para">follow accounts to watch their posts </b> </span>  </div> <span></span> </div></div>'; 
+                       }
+                    
+                    for (var i = 0; i < output.post.length+1; i++) {
                         var slidrr = "";
                         var sa = '<div id="slider_' + output.post[i].id + '" class="slider loaded" post_id="' + output.post[i].id + '" > <div class="wrapper"> <span id="prev_' + output.post[i].id + '" class="control prev"></span> <span id="next_' + output.post[i].id + '" class="control next"></span> <div id="items_' + output.post[i].id + '" class="items_slider"> ';
                         var sb = '</div></div> </div>';

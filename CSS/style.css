@@ -1709,6 +1709,19 @@ color: #b5b5b5;
 .opacaity0{
     opacity: 0;
 }
+.promote_following{
+background-color: white;
+    background-image: url('../emogi/128/nature/star.png')
+}
+.promote_following_p{
+    padding-bottom: 1em;
+}
+.promote_following_para{
+    color: darkorange;
+    padding: 0 1em;
+}
+
+
 /*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*/
 
 @media only screen and (max-width: 1440px) {
