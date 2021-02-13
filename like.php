@@ -204,7 +204,7 @@ session_start();
                         echo '
                         <div class="grid">
                     
-                    <div class="flex_s"><img class="profile_img" src="'.$img.'"></div>
+                    <a href="./account?user='.$row['user'].'" class="flex_s"><img class="profile_img" src="'.$img.'"></a>
                     <div class="grid_mid">
                         <div class="name">'.$row['first_name'].' '.$row['last_name'].'
                             <small class="u_c_'.$row['user'].'">'.$category.'</small>

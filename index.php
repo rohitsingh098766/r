@@ -201,7 +201,7 @@
             <p>
                 <?php echo $_SESSION['name'];?> <br />
             </p>
-            <img class="down expand-add-acc" src="SVG/chevron-down-solid.svg" alt="" />
+            <img class="down expand-add-acc opacaity0" src="SVG/chevron-down-solid.svg" alt="" />
             <!-- <i class="fas fa-chevron-down arrow expand-add-acc"></i> -->
         </a>
         <div class="all-uls">

@@ -52,7 +52,7 @@ $img_out = "../profile/i/none.svg";
     }
     
 echo ' <div class="posts g1 act_'.$row['user'].'" u="'.$row['user'].'">
-    <div class="k1"><img src="'.$img_out.'" class="avatar"></div>
+    <a class="k1" href="../account?user='.$row['user'].'"><img src="'.$img_out.'" class="avatar"></a>
     <div class="k1 mid">
         <div class="mid_head">'.$row['first_name'].' '.$row['last_name'].' '.$follow_offer.'<small class="tag tag_'.$row['user'].'">'.$relation.'</small></div>
         <div class="mid_con"> '.$row['status_mini_bio'].'</div>
@@ -89,7 +89,7 @@ while($row = mysqli_fetch_assoc($result)){
        $img_out = "../profile/i/none.svg";
     }
 echo ' <div class="posts g1 act_'.$row['get_id'].'" u="'.$row['get_id'].'">
-    <div class="k1"><img src="'.$img_out.'" class="avatar"></div>
+    <a class="k1" href="../account?user='.$row['get_id'].'"><img src="'.$img_out.'" class="avatar"></a>
     <div class="k1 mid">
         <div class="mid_head">'.$row['first_name'].' '.$row['last_name'].'<small class="tag tag_'.$row['get_id'].'">'.$grp.'</small></div>
         <div class="mid_con">'.$row['status_mini_bio'].'</div>
@@ -129,7 +129,7 @@ while($row = mysqli_fetch_assoc($result)){
        $img_out = "../profile/i/none.svg";
     }
 echo ' <div class="posts g1 act_'.$row['get_id'].'" u="'.$row['get_id'].'">
-    <div class="k1"><img src="'.$img_out.'" class="avatar"></div>
+    <a href="../account?user='.$row['get_id'].'" class="k1"><img src="'.$img_out.'" class="avatar"></a>
     <div class="k1 mid">
         <div class="mid_head">'.$row['first_name'].' '.$row['last_name'].'</div>
         <div class="mid_con">'.$row['status_mini_bio'].'</div>
@@ -182,7 +182,7 @@ $img_out = "../profile/i/none.svg";
        $img_out = "../profile/i/none.svg";
     }
 echo '<div class="posts g1 act_'.$row['opponent'].'" u="'.$row['opponent'].'">
-    <div class="k1"><img src="'.$img_out.'" class="avatar"></div>
+    <a href="../account?user='.$row['opponent'].'" class="k1"><img src="'.$img_out.'" class="avatar"></a>
     <div class="k1 mid">
         <div class="mid_head">'.$row['first_name'].' '.$row['last_name'].' '.$follow_offer.' <small class="tag tag_'.$row['opponent'].'">'.$grp.'</small></div>
         <div class="mid_con"> '.$row['status_mini_bio'].'</div>
