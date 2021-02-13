@@ -15,7 +15,7 @@ if (isset($_COOKIE['active_user'])){
                 $_SESSION['name'] = $row['first_name'].' '.$row['last_name'];
                 $_SESSION['img'] = $row['img'];
                 setcookie("active_user", $id, time() + (86400 * 364),'/');
-                setcookie("user_id[$id]", $password, time() + (86400 * 364),'/');header('Location: /');exit(0);}
+                setcookie("user_id[$id]", $password, time() + (86400 * 364),'/');header("Location: https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");exit(0);}
                 }
 }
 }
