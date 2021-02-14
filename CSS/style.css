@@ -997,7 +997,7 @@ height: 2.6em;
 
 .suggestion {
   width: 150px;
-  padding: 0.7em 0.8em;
+  padding: 0.7em 0.2em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1052,7 +1052,7 @@ height: 2.6em;
 }
 
 .suggest-name {
-width: 8em;
+width: 12em;
    font-size: .8em;
     font-weight: 600;
     justify-content: center;
@@ -1081,7 +1081,7 @@ width: 8em;
 }
 
 .follow-button {
-  width: 100%;
+  width: 80%;
   padding: 0.4em 1em;
   text-align: center;
   border: none;
