@@ -357,15 +357,15 @@ session_start();
                         echo '
                         <div class="grid">
                     
-                    <div class="flex_s"><img class="profile_img" src="'.$img.'"></div>
+                    <a href="./account?user='.$row['opponent'].'" class="flex_s"><img class="profile_img" src="'.$img.'"></a>
                     <div class="grid_mid">
                         <div class="name">'.$row['first_name'].' '.$row['last_name'].'
                             <small class="u_c_'.$row['opponent'].'">'.$category.'</small>
                             <small class="fllw_'.$row['opponent'].'" onclick="unfollow_ys('.$row['opponent'].','.$row['account_type'].')">'.$following.'</small>
                             <small class="unmt_'.$row['opponent'].'" onclick="mute_ys('.$row['opponent'].')">'.$mute.'</small>
                         </div>
-                        <div class="description">'.$row['status_mini_bio'].'</div>
-                        <div class="location"><img class="loc-icon" src="./SVG/location.svg" alt="">'.$row['location'].'</div>
+                        <a href="./account?user='.$row['opponent'].'" class="description">'.$row['status_mini_bio'].'</a>
+                        <a href="./account?user='.$row['opponent'].'" class="location"><img class="loc-icon" src="./SVG/location.svg" alt="">'.$row['location'].'</a>
                         </div>
                     <div class="flex_s" onclick="open_post_options('.$row['opponent'].', 88,16,0)"><span class="icon more-icon" ></span></div>
                     </div>
