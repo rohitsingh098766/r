@@ -199,6 +199,21 @@ function close_options(post_id) {
 
 
 
+ var links = document.getElementsByTagName('a');
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener("click", function (e) {
+            if (this.getAttribute('href') != "#" && this.getAttribute('href') ) {
+                
+                e.preventDefault();
+                location.assign(this.getAttribute('href'));
+                document.querySelector(".loader").style.display = "flex";
+                document.querySelector(".container-wrap").style.display = "none";
+            }
+        })
+    }
+
+
+/*
 // hyperlink animation
 var href_click_animation = function () {
     var links = document.getElementsByTagName('a');
@@ -250,6 +265,10 @@ if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
 } else {
     //   window.alert("firefox not found");
 }
+*/
+
+
+
 
 
 // pwa
