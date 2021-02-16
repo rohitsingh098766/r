@@ -1,17 +1,21 @@
 // sidebar mobile
 const sidebar = document.querySelector(".sidebar");
 const blurBackground = function () {
-    sidebar.style.boxShadow =
-        "0px 0px 20px 5000px #00000094";
+          sidebar.style.boxShadow ="0px 0px 20px 5000px #00000094";
     document.querySelector(".container").style.pointerEvents = "none";
     document.querySelector(".mobile-header").style.pointerEvents = "none";
+    if(document.querySelector(".mobile-nav-bar")){
     document.querySelector(".mobile-nav-bar").style.pointerEvents = "none";
+    }
+  
 };
 const removeBlurBackground = function () {
     sidebar.style.boxShadow = "none";
     document.querySelector(".container").style.pointerEvents = "auto";
     document.querySelector(".mobile-header").style.pointerEvents = "auto";
+     if(document.querySelector(".mobile-nav-bar")){
     document.querySelector(".mobile-nav-bar").style.pointerEvents = "auto";
+     }
 };
 
 

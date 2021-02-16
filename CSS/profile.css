@@ -131,6 +131,7 @@ html{
 
 .e11 {
     display: none;
+    min-height: 100vh;
 }
 
 .e11.active {
@@ -218,7 +219,6 @@ position:absolute;
     color: gray;
     font-size: .78em;
 }
-
 
 
 
