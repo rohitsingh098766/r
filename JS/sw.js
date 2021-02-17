@@ -1,8 +1,7 @@
 const staticCache = 'static-v1';
 // const dynamicCache = 'dynamic-v4';
 const assets = [
-  '../CSS/style.css',
-  'https://yaarme.com/SVG/moon-solid.svg',
+  '../CSS/style.css'
 ];
 
 // Cache size limiting functiom

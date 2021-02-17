@@ -283,10 +283,18 @@
                         <span>Share Your Profile</span>
                     </a>
                 </li>
+               
                 <li>
                     <a href="page/faq">
                         <img src="SVG/question-circle-solid.svg" alt="" />
                         <span>YaarMe FAQ</span>
+                    </a>
+                </li>
+                
+                 <li >
+                    <a href="page/logout" >
+                        <img src="SVG/power-off-solid.svg" alt="" />
+                        <span>Logout <?php echo $_SESSION['name'];?></span>
                     </a>
                 </li>
             </ul>

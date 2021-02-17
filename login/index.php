@@ -42,81 +42,7 @@
     <!--facebook login-->
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0&appId=956412888207642&autoLogAppEvents=1" nonce="NJkMk60z"></script>
-    <script>
-
-
-
-  function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-    console.log('statusChangeCallback');
-    console.log(response);                   // The current login status of the person.
-    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-      testAPI();  
-    } else {                                 // Not logged into your webpage or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this webpage.';
-    }
-  }
-
-
-  function checkLoginState() {               // Called when a person is finished with the Login Button.
-    FB.getLoginStatus(function(response) {   // See the onlogin handler
-      statusChangeCallback(response);
-    });
-  }
-
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '956412888207642',
-      cookie     : true,                     // Enable cookies to allow the server to access the session.
-      xfbml      : true,                     // Parse social plugins on this webpage.
-      version    : 'v9.0'           // Use this Graph API version for this call.
-    });
-   
-
-    FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
-      statusChangeCallback(response);        // Returns the login status.
-    });
-  };
- 
-  function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-       'Thanks for logging in, ' + response.name + '! id is :'+response.id;
-       
-    //   connect 
     
-     var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-     document.querySelector(".load_anything").innerHTML = this.responseText;
-    
-     if(this.responseText==1){
-          
-         // add welcome message and redirect at
-          document.getElementById('created').classList.add("active")
-            //  window.location.href = 'https://yaarme.com/edit_profile';
-          animation_close();
-     }else if(this.responseText==2) {
-          animation_close();
-     window.location.href = 'https://yaarme.com/';
-     }
-    }else{
-        animation();
-        // add animation while request is being sended
-    }
-  };
-  xhttp.open("POST", "fb_login.php", true);
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xhttp.send("name="+response.name+"&fb_id="+response.id);
-       
-       
-    });
-  }
-
-</script>
     
     <div class="container">
         <div class="loader">
@@ -155,7 +81,7 @@ xhttp.send("name="+response.name+"&fb_id="+response.id);
                       
                       <div  class="social-media " >  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">Login with Facebook
 </fb:login-button></div>
-              <div class=" social-media g-signin2" data-onsuccess="onSignIn"></div>   
+              <div class=" social-media g-signin2" data-onsuccess="onSignIn" id="google_login_button"></div>   
 <div id="status" class="hide">
     
 </div>
@@ -277,15 +203,97 @@ xhttp.send("name="+response.name+"&fb_id="+response.id);
 
 <!-- Load the JS SDK asynchronously -->
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+  <script>
+FB.logout(function(response) {
+  // user is now logged out
+});
+
+
+  function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+    console.log('statusChangeCallback');
+    console.log(response);                   // The current login status of the person.
+    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+      testAPI();  
+    } else {                                 // Not logged into your webpage or we are unable to tell.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this webpage.';
+    }
+  }
+
+
+  function checkLoginState() {               // Called when a person is finished with the Login Button.
+    FB.getLoginStatus(function(response) {   // See the onlogin handler
+      statusChangeCallback(response);
+    });
+  }
+
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '956412888207642',
+      cookie     : true,                     // Enable cookies to allow the server to access the session.
+      xfbml      : true,                     // Parse social plugins on this webpage.
+      version    : 'v9.0'           // Use this Graph API version for this call.
+    });
+   
+
+    FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+      statusChangeCallback(response);        // Returns the login status.
+    });
+  };
+ 
+  function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+       'Thanks for logging in, ' + response.name + '! id is :'+response.id;
+       
+    //   connect 
     
+     var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.querySelector(".load_anything").innerHTML = this.responseText;
+    
+     if(this.responseText==1){
+          
+         // add welcome message and redirect at
+          document.getElementById('created').classList.add("active")
+            //  window.location.href = 'https://yaarme.com/edit_profile';
+          animation_close();
+     }else if(this.responseText==2) {
+          animation_close();
+     window.location.href = 'https://yaarme.com/';
+     }
+    }else{
+        animation();
+        // add animation while request is being sended
+    }
+  };
+  xhttp.open("POST", "fb_login.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xhttp.send("name="+response.name+"&fb_id="+response.id);
+       
+       
+    });
+  }
+
+</script>  
     
  <script>
  
  
  
  
- 
+  var proceed = false;
+  
+        document.getElementById('google_login_button').addEventListener('click',function(){
+         proceed = true;
+        })
     function onSignIn(googleUser) {
+       
+        if(proceed===true){
   var profile = googleUser.getBasicProfile();
 //   window.alert('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
 //   window.alert('Name: ' + profile.getName());
@@ -318,7 +326,7 @@ xhttp.send("name="+response.name+"&fb_id="+response.id);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xhttp.send("name="+profile.getName()+"&google_id="+profile.getId()+"&gmail="+profile.getEmail());
 console.log("name="+profile.getName()+"&google_id="+profile.getId()+"&gmail="+profile.getEmail());
-
+}
 }
     
 </script>
