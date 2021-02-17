@@ -329,49 +329,7 @@ function searching(a) {
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
 
-                var profiles = "";
-                //            window.alert(this.responseText);
-                var output = JSON.parse(this.responseText);
-
-                for (var i = 0; i < output.post.length; i++) {
-                    if (output.post[i].requested == 1) {
-                        var following = "hide";
-                        var not_following = "";
-
-                    } else {
-                        var not_following = "hide";
-                        var following = "";
-                    }
-                    if (output.post[i].account_type == 1) {
-                        var follow = "REQUESTED";
-                    } else {
-                        var follow = "FOLLOWING";
-                    }
-                    if (output.post[i].following == 1) {
-                        var followers = "following";
-                        var follow_button = '<a href="./account?user='+output.post[i].user_id+'" target="_blank"><button class="connect-btn green_bg">VIEW PROFILE</button></a>';
-                        var follow_mob = '<a href="./account?user='+output.post[i].user_id+'" target="_blank"><img  src="./SVG/arrow-right-solid.svg" alt="" </a>';
-
-                    } else {
-                        var followers = output.post[i].followers + " followers";
-                        var hide = "";
-                        var follow_button = '<button class="connect-btn user_send_' + output.post[i].user_id + ' ' + following + ' ' + hide + '" onclick="follow_me(' + output.post[i].user_id + ',' + output.post[i].account_type + ',1)">FOLLOW</button><button class="connect-btn connect-btn-af user_sending_' + output.post[i].user_id + ' ' + not_following + ' ' + hide + '" onclick="follow_me(' + output.post[i].user_id + ',1,0)">' + follow + '</button>';
-                        var follow_mob = '<img class="user_s_' + output.post[i].user_id + ' ' + following + '" src="./SVG/user-plus-solid.svg" alt="" onclick="follow_me(' + output.post[i].user_id + ',' + output.post[i].account_type + ',1)"><img class="user_sing_' + output.post[i].user_id + ' ' + not_following + '" src="./SVG/user-plus-solid-blue.svg" alt="" onclick="follow_me(' + output.post[i].user_id + ',1,0)">';
-                    }
-                    if(output.post[i].profile_img){
-                        var profile_img = 'profile/i/120/'+output.post[i].profile_img;
-                    }else{
-                        var profile_img = 'profile/i/none.svg';
-                    }
-if(output.post[i].location){
-   var location_search = '<img class="loc-icon" src="./SVG/location.svg" alt=""><span class="location"> ' + output.post[i].location + ' </span>';
-   }else{
-   var location_search ="";
-   }
-
-                    profiles += '<div class="card-main res"><a href="./account?user='+output.post[i].user_id+'" target="_blank" class="img-wrap "><img class="circle" src="'+ profile_img + '" alt=""></a><div class="info"><h1><a href="./account?user='+output.post[i].user_id+'" target="_blank">' + output.post[i].name + '</a><span> • ' + followers + ' </span></h1><p>' + output.post[i].intro + '</p>'+location_search+'<br></div><div class="last">' + follow_button + '<button class="connect-icon ">' + follow_mob + ' </button></div></div>';
-                }
-                document.getElementById("search_rs").innerHTML = profiles;
+               document.getElementById("search_rs").innerHTML = this.responseText;
 
             } else {
                 //                  show page loading animation

@@ -39,6 +39,8 @@
     <link rel="stylesheet" href="./search/CSS/style.css" />
     <link rel="stylesheet" href="CSS/slider.css" />
     <link rel="stylesheet" href="CSS/mobile_header.css" />
+    <link rel="stylesheet" href="CSS/mobile_header.css" />
+    <link rel="stylesheet" href="page/css/like.css">
     <script src="JS/app.js"> </script>
     <script src="JS/slider.js"> </script>
 
@@ -808,7 +810,41 @@ for(var i = 0; i < images.length; i++){
                         
                         
 
-                       
+
+                    </div>
+                </div>
+                <div id="search_content" style="display:none">
+                    <div class="main-content-searching">
+                        <div class="filters-wrapper card2 visible">
+                            <div class="filters">
+                                <span class="selected">People</span>
+                                <!--
+            <span>More</span>
+            <span>Content</span>
+            <span>Companies</span>
+            <span>Schools</span>
+            <span>Groups</span>
+            <span>Events</span>
+-->
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="touch-swipe">
+                            <div class="card" id="search_rs"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-bar"></div>
+        </div>
+
+    </div>
+
+    
+                           
                         <!--                        open post option on triple click-->
                         <div class="my_options " id="post_option_fst">
                             <div class="my_options my_options_block" onclick="close_options('_fst')">
@@ -1036,38 +1072,6 @@ for(var i = 0; i < images.length; i++){
                                 </form>
                             </div>
                         </div>
-
-                    </div>
-                </div>
-                <div id="search_content" style="display:none">
-                    <div class="main-content-searching">
-                        <div class="filters-wrapper card2 visible">
-                            <div class="filters">
-                                <span class="selected">People</span>
-                                <!--
-            <span>More</span>
-            <span>Content</span>
-            <span>Companies</span>
-            <span>Schools</span>
-            <span>Groups</span>
-            <span>Events</span>
--->
-                            </div>
-
-
-                        </div>
-
-
-                        <div class="touch-swipe">
-                            <div class="card" id="search_rs"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="right-bar"></div>
-        </div>
-
-    </div>
 
 
     <div class="mobile-header" style="top: 0px">
