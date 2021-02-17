@@ -330,6 +330,7 @@ function searching(a) {
             if (this.readyState == 4 && this.status == 200) {
 document.getElementById('share_post').style.display="none";
 document.getElementById('report_post').style.display="none";
+ document.querySelector('.select_category').style.display="none";
                document.getElementById("search_rs").innerHTML = this.responseText;
 
             } else {
@@ -353,6 +354,7 @@ function hashHandler() {
         document.querySelector("#search_content").style.display = "none";
         document.getElementById('share_post').style.display="block";
         document.getElementById('report_post').style.display="block";
+        document.querySelector('.select_category').style.display="block";
     } else if (window.location.hash === "#searching") {
         document.querySelector(".homepage-main-content").style.display = "none";
         document.querySelector("#search_content").style.display = "block";
