@@ -852,7 +852,7 @@ for(var i = 0; i < images.length; i++){
                             <div class="items item_post" style="">
                                 <p class="select_category">Select what to do with post or post owner.</p>
                                 <ul class="post_options">
-                                    <li onclick="openlist('_report')">
+                                    <li onclick="openlist('_report')" id="report_post">
                                         <div class="follow-conn "> <img src="./SVG/exclamation-triangle-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Report post...</b></span> </span> </div>
                                     </li>
                                      <li id="block_options" onclick="openlist('_block');close_options('_warning_delete');">
