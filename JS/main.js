@@ -305,7 +305,7 @@ var search = function (click_elm, search_word) {
                     document.querySelector(".homepage-main-content").style.display = "none";
                     document.querySelector("#search_content").style.display = "block";
                     document.querySelector(".loader").style.display = "none";
-
+document.getElementById('share_post').style.display="none";
                     document.getElementById("search_rs").innerHTML += this.responseText;
                 } else {
                     document.querySelector(".loader").style.display = "flex";
@@ -350,6 +350,7 @@ function hashHandler() {
     if (window.location.hash !== "#searching") {
         document.querySelector(".homepage-main-content").style.display = "block";
         document.querySelector("#search_content").style.display = "none";
+        document.getElementById('share_post').style.display="block";
     } else if (window.location.hash === "#searching") {
         document.querySelector(".homepage-main-content").style.display = "none";
         document.querySelector("#search_content").style.display = "block";

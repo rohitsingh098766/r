@@ -872,7 +872,7 @@ for(var i = 0; i < images.length; i++){
                                       <li onclick="openlist('yy')">
                                         <div class="follow-conn "> <img src="./SVG/tags-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Change List</b></span> </span> </div>
                                     </li>
-                                    <li onclick="share_post();close_options('_fst')">
+                                    <li onclick="share_post();close_options('_fst')" id="share_post">
                                         <div class="follow-conn "> <img src="./SVG/share.svg" class="follow-icon"> <span class="conn-name"> <span><b>Share Post</b></span> </span> </div>
                                     </li>
                                     <li>
