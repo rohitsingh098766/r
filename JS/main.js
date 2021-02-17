@@ -305,7 +305,7 @@ var search = function (click_elm, search_word) {
                     document.querySelector(".homepage-main-content").style.display = "none";
                     document.querySelector("#search_content").style.display = "block";
                     document.querySelector(".loader").style.display = "none";
-document.getElementById('share_post').style.display="none";
+
                     document.getElementById("search_rs").innerHTML += this.responseText;
                 } else {
                     document.querySelector(".loader").style.display = "flex";
@@ -328,7 +328,7 @@ function searching(a) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-
+document.getElementById('share_post').style.display="none";
                document.getElementById("search_rs").innerHTML = this.responseText;
 
             } else {
