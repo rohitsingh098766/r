@@ -118,7 +118,8 @@ if(isset($_SESSION['id'])){
                     </form>
 <!--                    <fb:login-button class="social-media " scope="public_profile,email" onlogin="checkLoginState();" id="favebook_login">Sign in</fb:login-button>-->
                     <button class="social-media  g-signin2" data-onsuccess="onSignIn" id="google_login_button">Login with Google</button>
-               <div class="fb-login-button social-media " data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">Login with Facebook</div>
+               <div class="fb-login-button social-media " data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" scope="public_profile,email"
+  onlogin="checkLoginState();">Login with Facebook</div>
 <!--                    <label for="google_login_button" class="social-media twitter">Log in with Twitter</label >-->
 
                 
