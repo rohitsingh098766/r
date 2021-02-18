@@ -183,9 +183,15 @@ html{
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     /*chnaged*/
      border: 0 solid gainsboro;
+}
+.fb_iframe_widget {
+ display: flex ! important;
 }
 .social-media:hover{
     background-color: whitesmoke;
