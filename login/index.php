@@ -49,9 +49,13 @@ if(isset($_SESSION['id'])){
 <body>
 
     <!--facebook login-->
+<!--
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0&appId=956412888207642&autoLogAppEvents=1" nonce="NJkMk60z"></script>
-
+-->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v9.0&appId=956412888207642&autoLogAppEvents=1" nonce="GwISju0w"></script>
+    
 
     <div class="container">
         <div class="loader">
@@ -112,8 +116,9 @@ if(isset($_SESSION['id'])){
 
                     </div>
                     </form>
-                    <fb:login-button class="social-media " scope="public_profile,email" onlogin="checkLoginState();" id="favebook_login">Log in with Facebook</fb:login-button>
-                    <button class="social-media  g-signin2" data-onsuccess="onSignIn" id="google_login_button">Log in with Google</button>
+<!--                    <fb:login-button class="social-media " scope="public_profile,email" onlogin="checkLoginState();" id="favebook_login">Sign in</fb:login-button>-->
+                    <button class="social-media  g-signin2" data-onsuccess="onSignIn" id="google_login_button">Login with Google</button>
+               <div class="fb-login-button social-media " data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">Login with Facebook</div>
 <!--                    <label for="google_login_button" class="social-media twitter">Log in with Twitter</label >-->
 
                 
