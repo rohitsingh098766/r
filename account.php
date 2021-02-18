@@ -694,7 +694,7 @@ for(var i = 0; i < images.length; i++){
             </svg>
         </a>
         <span class="">
-            <label class="white" for="button_post_desk">Profile</label>
+            <label class="white" for="button_post_desk"><?php echo $name_user;?></label>
         </span>
         <form class="input-wrap" autocomplete="off">
         </form>
