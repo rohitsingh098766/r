@@ -42,8 +42,13 @@ if(isset($_SESSION['id'])){
     <meta name="keywords" content="Yaarme, YaarMe, Yaar me, Social media, Social media platform, ultra customized social media platform, safest socail media platform, Build and organize your network, organize your network, world's most advanced social media platform">
 
     <!--    google login kit-->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="439528579983-k5k0e41kel6a4dsd6517jr7r48ksl7ms.apps.googleusercontent.com">
+    <?php
+    if($_SERVER['HTTP_X_REQUESTED_WITH'] != "com.team.yaarme") {
+    echo '<script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="439528579983-k5k0e41kel6a4dsd6517jr7r48ksl7ms.apps.googleusercontent.com">';
+}
+    ?>
+    
 </head>
 
 <body>
@@ -53,8 +58,13 @@ if(isset($_SESSION['id'])){
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0&appId=956412888207642&autoLogAppEvents=1" nonce="NJkMk60z"></script>
 -->
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v9.0&appId=956412888207642&autoLogAppEvents=1" nonce="GwISju0w"></script>
+      <?php
+    if($_SERVER['HTTP_X_REQUESTED_WITH'] != "com.team.yaarme") {
+    echo '<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v9.0&appId=956412888207642&autoLogAppEvents=1" nonce="GwISju0w"></script>';
+}
+    ?>
+
     
 
     <div class="container">
@@ -117,9 +127,14 @@ if(isset($_SESSION['id'])){
                     </div>
                     </form>
 <!--                    <fb:login-button class="social-media " scope="public_profile,email" onlogin="checkLoginState();" id="favebook_login">Sign in</fb:login-button>-->
-                    <button class="social-media  g-signin2" data-onsuccess="onSignIn" id="google_login_button">Login with Google</button>
+                  <?php
+    if($_SERVER['HTTP_X_REQUESTED_WITH'] != "com.team.yaarme") {
+    echo '<button class="social-media  g-signin2" data-onsuccess="onSignIn" id="google_login_button">Login with Google</button>
                <div class="fb-login-button social-media " data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" scope="public_profile,email"
-  onlogin="checkLoginState();">Login with Facebook</div>
+  onlogin="checkLoginState();">Login with Facebook</div>';
+}
+    ?>
+                    
 <!--                    <label for="google_login_button" class="social-media twitter">Log in with Twitter</label >-->
 
                 
