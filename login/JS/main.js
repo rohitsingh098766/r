@@ -169,7 +169,8 @@ xhttp.send("username="+login_username+"&password="+login_password);
          // add welcome message and redirect at
 //         window.location.href = 'https://yaarme.com/';
          animation_close();
-         document.getElementById('created').classList.add("active")
+//         document.getElementById('created').classList.add("active")
+         window.location.href = 'https://yaarme.com/';
      }else{
          animation_close();
          // choose another username

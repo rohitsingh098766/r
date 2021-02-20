@@ -301,8 +301,8 @@ if(isset($_SESSION['id'])){
                         if (this.responseText == 1) {
 
                             // add welcome message and redirect at
-                            document.getElementById('created').classList.add("active")
-                            //  window.location.href = 'https://yaarme.com/edit_profile';
+//                            document.getElementById('created').classList.add("active")
+                              window.location.href = 'https://yaarme.com/edit_profile';
                             animation_close();
                         } else if (this.responseText == 2) {
                             animation_close();
@@ -348,8 +348,8 @@ if(isset($_SESSION['id'])){
                         if (this.responseText == 1) {
 
                             // add welcome message and redirect at
-                            document.getElementById('created').classList.add("active")
-                            //  window.location.href = 'https://yaarme.com/edit_profile';
+//                            document.getElementById('created').classList.add("active")
+                              window.location.href = 'https://yaarme.com/edit_profile';
                             animation_close();
                         } else if (this.responseText == 2) {
                             animation_close();
