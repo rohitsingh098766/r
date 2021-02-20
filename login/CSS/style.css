@@ -197,6 +197,7 @@ html{
     background-color: whitesmoke;
 }
 .social-media::before{
+/*
     content: '';
     width: 1em;
     height: 1em;
@@ -205,6 +206,7 @@ html{
     background-size: 0.95em;
     display: block;
     margin-right: 0.5em;
+*/
 }
 .google::before{
     background-image: url("Images/google.svg");

@@ -1724,6 +1724,9 @@ background-color: white;
 .promote_following_p .conn-name{
 width: 100%;
 }
+#s_lists li .follow-conn .follow-icon{
+    border-radius: 0;
+}
 
 
 /*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*/

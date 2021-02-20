@@ -145,7 +145,7 @@
 
                     <li>
                         <a href="?t=1" class="follow-conn ">
-                            <img src="./emogi/128/symbols/black-heart.png" class="follow-icon">
+                            <img src="./emogi/128/symbols/heart-suit.png" class="follow-icon">
                             <span class="conn-name cn">
                                 <span><b>All</b></span>
                                 <span>Watch posts from all following.</span>

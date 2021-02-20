@@ -257,7 +257,17 @@ exit(0);
 // echo 'no';
 }
 
-
+if(isset($_GET['skip'])){
+     if($_COOKIE['shared']==1){
+//            direct at profile
+            header('Location: ../account?user='.$_COOKIE['shared_id']);
+        }else if($_COOKIE['shared']==2){
+//            direct at post
+            header('Location: ../posts?p='.$_COOKIE['shared_id']);
+        }else{
+         header('Location: ../');
+     }
+}
 
 
 
@@ -452,7 +462,12 @@ exit(0);
                     </div>
                     <br>
                 </div>
+             
             </form>
+               <div >
+                    
+                    <a href="./?skip=1" id="skipall">Skip all</a>
+                </div>
         </div>
     </div>
     <div class="hide load_anything"></div>
