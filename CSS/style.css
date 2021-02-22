@@ -649,7 +649,7 @@ height: 2.6em;
   top: 0;
   z-index: 4;
   background-color: rgb(255, 255, 255);
-  transition: all 0.3s;
+  transition: all 0.1s;
 }
 .desktop-menu{
     position: initial;

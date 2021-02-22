@@ -43,10 +43,21 @@ if(isset($_SESSION['id'])){
 
     <!--    google login kit-->
     <?php
-    if($_SERVER['HTTP_X_REQUESTED_WITH'] != "com.team.yaarme") {
-    echo '<script src="https://apis.google.com/js/platform.js" async defer></script>
+    $isWebView = false;
+if((strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile/') !== false) && (strpos($_SERVER['HTTP_USER_AGENT'], 'Safari/') == false)) :
+    $isWebView = true;
+elseif(isset($_SERVER['HTTP_X_REQUESTED_WITH'])) :
+    $isWebView = true;
+endif;
+
+if($isWebView){
+}else{
+   echo '<script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="439528579983-k5k0e41kel6a4dsd6517jr7r48ksl7ms.apps.googleusercontent.com">';
 }
+    
+    
+   
     ?>
     
 </head>
@@ -59,8 +70,11 @@ if(isset($_SESSION['id'])){
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0&appId=956412888207642&autoLogAppEvents=1" nonce="NJkMk60z"></script>
 -->
       <?php
-    if($_SERVER['HTTP_X_REQUESTED_WITH'] != "com.team.yaarme") {
-    echo '<div id="fb-root"></div>
+    
+    
+    if($isWebView){
+}else{
+   echo '<div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v9.0&appId=956412888207642&autoLogAppEvents=1" nonce="GwISju0w"></script>';
 }
     ?>
@@ -128,8 +142,11 @@ if(isset($_SESSION['id'])){
                     </form>
 <!--                    <fb:login-button class="social-media " scope="public_profile,email" onlogin="checkLoginState();" id="favebook_login">Sign in</fb:login-button>-->
                   <?php
-    if($_SERVER['HTTP_X_REQUESTED_WITH'] != "com.team.yaarme") {
-    echo '<button class="social-media  g-signin2" data-onsuccess="onSignIn" id="google_login_button">Login with Google</button>
+    
+    
+    if($isWebView){
+}else{
+   echo '<button class="social-media  g-signin2" data-onsuccess="onSignIn" id="google_login_button">Login with Google</button>
                <div class="fb-login-button social-media " data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" scope="public_profile,email"
   onlogin="checkLoginState();">Login with Facebook</div>';
 }
