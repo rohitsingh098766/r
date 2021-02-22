@@ -181,6 +181,7 @@ session_start();
                             $proceed = true;
                         while($row_relation = mysqli_fetch_assoc($result_relation)){
 //                            $following = '';
+                            $proceed = true;
                             if($row_relation['approve']==9){
                               $following = ' • Requested ';
                             }else if($row_relation['approve']==1){
