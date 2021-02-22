@@ -200,6 +200,10 @@ session_start();
                             }
                             
                         }
+                            if($row['location']){
+                                $location_show = '
+                        <div class="location"><img class="loc-icon" src="./SVG/location.svg" alt="">'.$row['location'].'</div>';
+                            }
                             
                          if($proceed===true){  
                         echo '
@@ -212,8 +216,7 @@ session_start();
                             <small class="fllw_'.$row['user'].'" onclick="unfollow_ys('.$row['user'].','.$row['account_type'].')">'.$following.'</small>
                             <small class="unmt_'.$row['user'].'" onclick="mute_ys('.$row['user'].')">'.$mute.'</small>
                         </div>
-                        <div class="description">'.$row['status_mini_bio'].'</div>
-                        <div class="location"><img class="loc-icon" src="./SVG/location.svg" alt="">'.$row['location'].'</div>
+                        <div class="description">'.$row['status_mini_bio'].'</div>'.$location_show.'
                         </div>
                     <div class="flex_s" onclick="open_post_options('.$row['user'].', 88,16,0)"><span class="icon more-icon" ></span></div>
                     </div>
