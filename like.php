@@ -163,7 +163,7 @@ session_start();
                     
                     if(isset($_GET['post'])){
                         $post  = mysqli_real_escape_string($connection, $_GET['post']);
-                        $query = "select * from yaarme_like.post_like join yaarme.users on users.id = post_like.user join yaarme.location on location.id = users.location where post_id = {$post} limit 500";
+                        $query = "select * from yaarme_like.post_like join yaarme.users on users.id = post_like.user left join yaarme.location on location.id = users.location where post_id = {$post} limit 500";
                         $result = mysqli_query($connection,$query);
                         while($row = mysqli_fetch_assoc($result)){
                             if($row['img']){
