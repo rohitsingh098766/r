@@ -291,9 +291,9 @@ $follower_user = $row_following['total_sum_following'];
                     </div>
 
                     <div class="b1">
-                        <div class="b11 b11_name"><?php echo $name_user.$group_name;?><small  class="edit_allowed"><a href="page/edit_name.php" class="edit"><img src="SVG/pencil.svg" class="pencil">Edit</a></small></div>
-                        <div class="b11 b11_bio"><?php echo $bio_user;?> <small class="edit_allowed"><a href="page/edit_bio.php" class="edit"><img src="SVG/pencil.svg" class="pencil">Edit</a></small></div>
-                        <div class="b11 b11_location"><img class="loc-icon" src="./SVG/location.svg" alt=""><?php echo $location_user;?><small class="edit_allowed"><a href="page/edit_location.php" class="edit"><img src="SVG/pencil.svg" class="pencil">Edit</a></small></div>
+                        <div class="b11 b11_name"><?php echo $name_user.$group_name;?><small  class="edit_allowed"><a href="page/edit_name.php" class="edit"><img src="SVG/pencil.svg" class="pencil">Change name</a></small></div>
+                        <div class="b11 b11_bio"><?php echo $bio_user;?> <small class="edit_allowed"><a href="page/edit_bio.php" class="edit"><img src="SVG/pencil.svg" class="pencil">Update Intro</a></small></div>
+                        <div class="b11 b11_location"><img class="loc-icon" src="./SVG/location.svg" alt=""><?php echo $location_user;?><small class="edit_allowed"><a href="page/edit_location.php" class="edit"><img src="SVG/pencil.svg" class="pencil">Update location</a></small></div>
                     </div>
 
                     <div class="c1" >
