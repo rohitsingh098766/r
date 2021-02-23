@@ -70,9 +70,9 @@ header a img{
 
 header .lnk{
     margin: auto;
-    width: 28px;
+    width: 26px;
     filter: invert(1);
-
+    margin-left: 10px;
 
 }
 
