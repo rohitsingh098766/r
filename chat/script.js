@@ -1,6 +1,7 @@
    function scrollToBottom() {
        var last = document.querySelector("main");
-       window.scrollBy(0, last.scrollHeight)
+       window.scrollBy(0, last.scrollHeight);
+        document.getElementById("input_text").focus();
    }
    scrollToBottom();
    window.onscroll = function (ev) {
@@ -8,12 +9,12 @@
        if (this.oldScroll > this.scrollY) {
            if (window.pageYOffset < 1000) {
                //  scrolling down
-               console.log('down');
+               // console.log('down');
            }
        } else {
            //   scrolling up
            if (window.pageYOffset > last.scrollHeight - 1000) {
-               console.log('up');
+               // console.log('up');
            }
        }
        this.oldScroll = this.scrollY;
@@ -29,7 +30,9 @@
 
    //        send postMessage
    inputForm.addEventListener("submit", function (e) {
+      
        e.preventDefault();
+       
        var msg = inputBox.value;
        inputBox.value = null;
        document.getElementById("camera-btn").setAttribute("src", "SVG/camera-solid.svg");
@@ -45,7 +48,8 @@
         scrollToBottom();
        
        my_ajax("./send.php", 'room=' + room + '&text=' + msg + '&opponent=' + opponent);
-       console.log('room=' + room + '&text=' + msg + '&opponent=' + opponent)
+       // console.log('room=' + room + '&text=' + msg + '&opponent=' + opponent)
+       
    });
 
    //        ajax
@@ -71,7 +75,7 @@
                } else {
                    my_ajax("more_message.php", 'room=' + room + '&max_id=' + last_message_id(), 'last');
                }
-               console.log(this.responseText);
+               // console.log(this.responseText);
            }
            scrollToBottom();
        };

@@ -232,7 +232,7 @@ $final_result = '
             <a href="#">
                 <img id="camera-btn" class="lnk3 camera" src="SVG/camera-solid.svg" alt="" title="Camera">
             </a>
-            <input type="text" placeholder="Message...">
+            <input type="text" placeholder="Message..." id="input_text">
             <!--
                         <a href="#" class="other-btns">
                             <img class="lnk3 mic" src="SVG/microphone-outline.svg" alt="" title="Voice Message">
