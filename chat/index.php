@@ -14,7 +14,7 @@ exit(0);
     <title>Chat | YaarMe</title>
     <link rel="icon" href="logo.png" type="image/icon type">
 
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=5">
 
 
     <!--icons-->
@@ -41,7 +41,7 @@ exit(0);
 
     <header>
         <a href="../chatall/">
-            <img class="lnk" src="SVG/arrow-left-solid.svg" alt="" title="Back">
+            <img class="lnk" src="SVG/arrow-left-solid.svg?v=2" alt="" title="Back">
         </a>
         <?php
                                 $room =  mysqli_real_escape_string($connection, $_GET['room']);
