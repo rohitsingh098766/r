@@ -115,6 +115,7 @@ $final_result = '
     exit(0);
 }
 ?>
+           
             <!--<li class="left">
                         <ul>
                             <li>
@@ -217,7 +218,11 @@ $final_result = '
         <!--<p class="seen">
                     Seen
                 </p>-->
-
+<!--
+ <div id="sending">
+            
+            </div>
+-->
         <section style="height: 90px;"></section>
 
     </main>

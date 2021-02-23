@@ -315,6 +315,14 @@ footer .lnk3{
     height: -moz-fit-content;
     width: fit-content;
 }
+main .right li p.sending{
+    background: rgb(216 216 216 / 33%) ! important;
+}
+::marker {
+  color: blue;
+  font-size: 0;
+    display: none;
+}
 
 @media only screen and (max-width: 500px) {
 footer{
