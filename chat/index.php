@@ -14,7 +14,7 @@ exit(0);
     <title>Chat | YaarMe</title>
     <link rel="icon" href="logo.png" type="image/icon type">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2">
 
 
     <!--icons-->
