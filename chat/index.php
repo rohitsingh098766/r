@@ -14,7 +14,7 @@ exit(0);
     <title>Chat | YaarMe</title>
     <link rel="icon" href="logo.png" type="image/icon type">
 
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=4">
 
 
     <!--icons-->
@@ -261,7 +261,7 @@ $final_result = '
 //        scroll
      
     </script>
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=4"></script>
 </body>
 </html>
 
