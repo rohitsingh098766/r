@@ -6,14 +6,30 @@
 ?>
 <?php
                                     
-                                   
+                                    $list_show = 1;
                                         if(isset($_GET['t'])){
                                             $post_type = $_GET['t'];
                                              setcookie("t", $_GET['t'], time() + (86400 * 364));
+                                            if($post_type==5){
+                                               setcookie("list", $_GET['l'], time() + (86400 * 364)); 
+                                                $list_show = $_GET['l'];
+                                            }
+                                            
                                         }else if(isset($_COOKIE['t'])){
                                             $post_type = $_COOKIE['t'];
+                                            
+                                             if($post_type==5){
+                                               if(isset($_COOKIE['list'])){
+                                                   $list_show = $_COOKIE['list'];
+                                               }else{
+                                                  $post_type = 1;
+                                               }
+                                                
+                                            }
+                                            
                                         }else{
                                              $post_type = 1;
+                                           
                                         }
                                     if($post_type==1){
                                         $show_list =  "all followings";
@@ -34,7 +50,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Feed | YaarMe</title>
-    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="CSS/style.css?v=2" />
     <link rel="stylesheet" href="CSS/spin_loader.css" />
     <link rel="stylesheet" href="./search/CSS/style.css" />
     <link rel="stylesheet" href="CSS/slider.css" />
@@ -143,7 +159,7 @@
                     </li>
 
 
-                    <li>
+                    <!--<li>
                         <a href="?t=1" class="follow-conn ">
                             <img src="./emogi/128/symbols/heart-suit.png" class="follow-icon">
                             <span class="conn-name cn">
@@ -173,7 +189,7 @@
                             </span>
 
                         </a>
-                    </li>
+                    </li>-->
                     <!--
                     <li>
                         <a href="#" class="follow-conn ">
@@ -445,13 +461,114 @@
             <div class="left-bar"></div>
             <div class="main-content">
                 <div class="homepage-main-content">
-                    <div class="card">
+                    <div class="select_one_cont">
+                         <div class="options">
+                        <ul class="select_one" id="select_one_home">
+                            <li>
+                                <a href="./?t=1" class="select_element <?php if($post_type==1){echo  "active";}?>">Following</a>
+
+                            </li>
+                            
+                            
+                            <?php
+                              $query = "SELECT * FROM `yaarme_follow`.`category` where (owner_id = {$_SESSION['id']}) " ;
+    $result = mysqli_query($connection,$query);
+                            
+                           $colors = array("#ff8197",  "var(--blue)", "darkorange",  "#71bd21", "#cc00ff", "#067206");
+//                            $total = count($colors);
+                            $y = 0;
+                            
+                            
+                            
+                            if(mysqli_num_rows($result)>1){
+                                
+                                if($post_type==2){$echo_active =   "active";}else{$echo_active= '';}
+                                echo '
+                                <li>
+                                <a href="./?t=2" class="select_element '.$echo_active.'">Favorite&nbsp;tags
+                                </a>
+                            </li>
+                                ';
+    }
+                            
+                             while($row = mysqli_fetch_assoc($result)){
+                                 if($y==count($colors)){
+                                    $y=0; 
+                                 }
+                                 
+                                 if(($list_show == $row['id']) && ($post_type == 5)){
+                                     $make_it_active = 'active';
+                                 }else{
+                                    $make_it_active = ''; 
+                                 }
+                                 
+                                 echo '
+                                    <li>
+                                <a href="./?t=5&l='.$row['id'].'" class="select_element '.$make_it_active. '" style="color:'.$colors[$y].'">
+                                    <img src="./emogi/128/'.$row['emoji'].'" class="tag_icon">
+                                    '.$row['group_name'].'
+                                </a>
+                            </li>   
+                                 ';
+                                  $y++;
+                             }
+                           
+                            ?>
+                            
+                            <li>
+                                 <a href="./?t=3"  class="select_element <?php if($post_type==3){echo  "active";}?>">Untagged</a>
+
+                            </li>
+                            <li>
+                                 <a href="./?t=4"  class="select_element <?php if($post_type==4){echo  "active";}?>">Muted</a>
+
+                            </li>
+                        </ul>
+                        </div>
+                        <?php if($post_type==2){
+    $query = "SELECT * FROM `yaarme_follow`.`category` where (owner_id = {$_SESSION['id']} and pin = 1) " ;
+    $result = mysqli_query($connection,$query);
+    $selected_tags = '';
+    $row_s = 0;
+    $x = 1;
+    if(mysqli_num_rows($result)){
+    $selected_tags = 'You are watching updates only from ';
+    $row_s = mysqli_num_rows($result);
+    }
+
+    while($row = mysqli_fetch_assoc($result)){
+    if($x==($row_s-1)){
+    $end = ' and ';
+    }else if($x==$row_s){
+    $end = '. ';
+    }else{
+    $end = ', ';
+    }
+    $selected_tags .= '<a href="./manage_people/?c='.$row['id'].'" class="blue">'.$row['group_name'].'</a>'.$end;
+    $x++;
+    }
+    if(!$selected_tags){
+    $selected_tags .= 'Ooops! you have not selected any tags.';
+    }
+
+    echo '<div class="card-header">
+
+        <div>
+            '.$selected_tags.'
+        </div>
+        <span class="icon more-icon" id="alter_posts"></span>
+    </div>';
+    }
+                        ?>
+<!--
                             <div class="card-header">
+                               
                                 <div>
                                     You are watching stories and posts from <b> <?php echo $show_list; ?></b>
                                 </div>
                                 <span class="icon more-icon" id="alter_posts"></span>
                             </div>
+-->
                         </div>
                     <div class="scroll">
                         <section class="stories">
@@ -630,6 +747,8 @@
                                         echo "var po_st_type = 3;";
                                     }else if($post_type==4){
                                         echo "var po_st_type = 4;";
+                                    }else if($post_type==5){
+                                        echo "var po_st_type = '5&l=".$list_show."';";
                                     }
                             
                              if($_SESSION['img']){
@@ -695,7 +814,7 @@ creat_post();
                     
                     
                        if(output.post.length<1 && !document.getElementById("first_post").innerHTML){
-                       document.getElementById("first_post").innerHTML='<div class="card " ><div class="follow-conn promote_following_p"> <a href="#"  class="follow-icon users post_profile promote_following" ></a><div class="conn-name"> <span> <b class="promote_following_para">follow accounts to watch their posts </b> </span>  </div> <span></span> </div></div>'; 
+                       document.getElementById("first_post").innerHTML='<div class="card " ><div class="follow-conn promote_following_p"> <a href="#"  class="follow-icon users post_profile promote_following" ></a><div class="conn-name"> <span> <b class="promote_following_para"><?php if($post_type==1){echo 'follow accounts to watch their posts';}else{echo 'Ooops! there are no posts, try to change filter.';}?> </b> </span>  </div> <span></span> </div></div>'; 
                        }
                     
                     for (var i = 0; i < output.post.length+1; i++) {
@@ -1135,7 +1254,7 @@ for(var i = 0; i < images.length; i++){
             </a>
         </ul>
     </div>
-    <script src="JS/main.js"></script>
+    <script src="JS/main.js?v=2"></script>
 
 
 

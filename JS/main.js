@@ -135,18 +135,22 @@ for (var i = select_list.length - 1; i >= 0; --i) {
     })
 }
 
-
+if(document.querySelector("#my_options")){
 document.querySelector("#my_options").addEventListener("click", function () {
     document.querySelector(".my_options").style.display = "none";
     auto_bg();
 })
+}
 
-document.querySelector("#alter_posts").addEventListener("click", function () {
+if(document.querySelector("#alter_posts")){
+    document.querySelector("#alter_posts").addEventListener("click", function () {
     document.querySelector(".my_options").style.display = "flex";
     //        document.querySelector(".items").style.animation = "show_alter_timeline";
     //        document.querySelector(".items").style.animationDuration = ".3s";
     stop_bg();
 });
+}
+
 
 
 
@@ -801,5 +805,13 @@ function copyTextToClipboard(text) {
   });
 }
 
+if(document.getElementById('select_one_home') && document.querySelector('.select_element.active')){
+    if(document.querySelector('.select_element.active').offsetLeft>480){
+        
+   document.getElementById('select_one_home').scrollBy(document.querySelector('.select_element.active').offsetLeft, 0);
+    }
+//    window.alert(9)
+//    document.querySelector('.select_element.active').offsetLeft
+}
 
 

@@ -114,6 +114,38 @@ WHERE
 group by story.owner_id 
 limit 500
 ";   
+}else if($filter==5){
+  $query = "
+SELECT *,  max(story.id) as post_num, story.owner_id as owner  ,TIMESTAMPDIFF(SECOND, story.time,CURRENT_TIMESTAMP ) as time_ago
+from yaarme_post.story
+join yaarme.users on yaarme.users.id = yaarme_post.story.owner_id 
+join yaarme_follow.follow A on yaarme_post.story.owner_id = A.opponent 
+left join yaarme_follow.category on yaarme_follow.category.id = A.category
+ left join yaarme_post.share_with_story on share_with_story.story_detail = story.id
+ left join  yaarme_follow.follow B on B.category = share_with_story.category_id
+WHERE 
+(
+    A.user = {$_SESSION['id']} and
+    (
+        A.approve = 1 OR
+        (A.approve = 2 and yaarme.users.account_type=0)
+    ) and
+    A.mute_post = 0 and
+     
+    (
+        yaarme_follow.category.id = {$list_show} and 
+         yaarme_follow.category.owner_id = {$_SESSION['id']}
+    )
+     and
+   (
+   yaarme_post.story.shared_with is null
+   or B.opponent ={$_SESSION['id']} 
+   )
+)
+group by story.owner_id 
+limit 500
+";  
+ 
 }
 
 
