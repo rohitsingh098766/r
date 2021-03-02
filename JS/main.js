@@ -806,10 +806,20 @@ function copyTextToClipboard(text) {
 }
 
 if(document.getElementById('select_one_home') && document.querySelector('.select_element.active')){
-    if(document.querySelector('.select_element.active').offsetLeft>480){
+//    if(document.querySelector('.select_element.active').offsetLeft>480){
+     if( po_st_type == 4 || po_st_type == 3 ){
         
+        }else if(po_st_type == 2 ){
+   document.getElementById('select_one_home').scrollBy(185, 0);
+            
+        } else if(po_st_type == 1 ){
    document.getElementById('select_one_home').scrollBy(document.querySelector('.select_element.active').offsetLeft, 0);
-    }
+            
+        }  else{
+        
+   document.getElementById('select_one_home').scrollBy((document.querySelector('.select_element.active').offsetLeft-50), 0);
+        } 
+//    }
 //    window.alert(9)
 //    document.querySelector('.select_element.active').offsetLeft
 }

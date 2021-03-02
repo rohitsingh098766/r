@@ -464,6 +464,15 @@
                     <div class="select_one_cont">
                          <div class="options">
                         <ul class="select_one" id="select_one_home">
+                             <li>
+                                 <a href="./?t=4"  class="select_element <?php if($post_type==4){echo  "active";}?>">Muted</a>
+
+                            </li>
+                              <li>
+                                 <a href="./?t=3"  class="select_element <?php if($post_type==3){echo  "active";}?>">Untagged</a>
+
+                            </li>
+                           
                             <li>
                                 <a href="./?t=1" class="select_element <?php if($post_type==1){echo  "active";}?>">Following</a>
 
@@ -512,15 +521,11 @@
                              }
                            
                             ?>
-                            
                             <li>
-                                 <a href="./?t=3"  class="select_element <?php if($post_type==3){echo  "active";}?>">Untagged</a>
-
+                                <a href="./manage_category/" class="select_element " style="color:#cc00ff">
+                                    <img src="SVG/cog-solid.svg" class="tag_icon" style="opacity:.6">&nbsp;</a>
                             </li>
-                            <li>
-                                 <a href="./?t=4"  class="select_element <?php if($post_type==4){echo  "active";}?>">Muted</a>
-
-                            </li>
+                          
                         </ul>
                         </div>
                         <?php if($post_type==2){
@@ -1252,7 +1257,7 @@ for(var i = 0; i < images.length; i++){
             </a>
         </ul>
     </div>
-    <script src="JS/main.js?v=2"></script>
+    <script src="JS/main.js?v=3"></script>
 
 
 
