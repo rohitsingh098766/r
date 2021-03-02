@@ -506,7 +506,7 @@
                                     <li>
                                 <a href="./?t=5&l='.$row['id'].'" class="select_element '.$make_it_active. '" style="color:'.$colors[$y].'">
                                     <img src="./emogi/128/'.$row['emoji'].'" class="tag_icon">
-                                    '.$row['group_name'].'
+                                    '.str_replace('<br><br>','&nbsp;',preg_replace('/\r|\n/','<br>',trim(htmlentities($row['group_name'])))).'
                                 </a>
                             </li>   
                                  ';
