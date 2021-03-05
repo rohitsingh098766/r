@@ -160,7 +160,7 @@ exit(0);
             <div class="left-bar"></div>
             <div class="main-content">
                 <div class="homepage-main-content">
-<p id="my_list"> My Lists</p>
+<p id="my_list"> My labels</p>
 
                     <div id="all_list">
                         <?php
@@ -194,7 +194,7 @@ exit(0);
 
 
                     <div class="posts g1 g1_create">
-                        Create new list
+                        Create new label
                     </div>
 
 
@@ -569,7 +569,7 @@ exit(0);
                                 </div>
                                 <span class="z2" src="image/edit.svg"> Change&nbsp;avatar</span>
                             </div>
-                            <div><textarea class="textarea textarea1" placeholder="Name of list"></textarea></div>
+                            <div><textarea class="textarea textarea1" placeholder="Name of label"></textarea></div>
                             <div><textarea class="textarea textarea2" placeholder="Description (optional)"></textarea></div>
                             <div><button type="submit" value="SAVE" id="save">SAVE</button></div>
                         </div>
@@ -587,7 +587,7 @@ exit(0);
                                 <span class="z8" src="image/edit.svg"> </span>
                             </div>
                             <div><textarea class="textarea warnhead" readonly>RAT</textarea></div>
-                            <div><div class="textarea warntext " >Warning!<br><br> If you delete this list then member of this list will be also deleted from this list and this action can not be reverse back. </div></div>
+                            <div><div class="textarea warntext " >Warning!<br><br> If you delete this label then member of this label will be also deleted from this label and this action can not be reverse back. </div></div>
                             <div class="btn_ct"><button type="submit" value="SAVE" class="warn_btn" id="back" >BACK</button>
                               <button type="submit" value="SAVE" class="warn_btn warn_red" id="delete">DELETE</button>
                               </div>
@@ -606,7 +606,7 @@ exit(0);
             </svg>
         </a>
         <span class="">
-            <label id="button_post" for="button_post_desk">Manage List</label>
+            <label id="button_post" for="button_post_desk">Manage label</label>
         </span>
         <form class="input-wrap" autocomplete="off">
         </form>
