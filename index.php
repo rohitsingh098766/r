@@ -494,7 +494,7 @@
                                 if($post_type==2){$echo_active =   "active";}else{$echo_active= '';}
                                 echo '
                                 <li>
-                                <a href="./?t=2" class="select_element '.$echo_active.'">Favorite&nbsp;tags
+                                <a href="./?t=2" class="select_element '.$echo_active.'">Favorite&nbsp;labels
                                 </a>
                             </li>
                                 ';
