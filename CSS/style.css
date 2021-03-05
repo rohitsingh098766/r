@@ -1741,7 +1741,7 @@ width: 100%;
     transition: .3s all ease;
 }
 .select_element{
-padding: .3em 1em;
+padding: .5em 1em;
     border-bottom: 2px solid transparent;
     display: flex;
     justify-content: center;
