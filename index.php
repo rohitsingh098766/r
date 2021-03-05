@@ -241,14 +241,14 @@
                 </li>
                 <li>
                     <a href="manage_category/">
-                        <img src="SVG/list-alt-solid.svg" alt="" />
-                        <span>Manage List</span>
+                        <img src="./SVG/tags-solid-black.svg" alt="" />
+                        <span>Manage Labels</span>
                     </a>
                 </li>
                 <li>
                     <a href="page/activity">
                         <img src="SVG/clock-solid.svg" alt="" />
-                        <span>My activity</span>
+                        <span>My activities</span>
                     </a>
                 </li>
                 <li>
@@ -410,14 +410,14 @@
                                     </li>
                                     <li>
                                         <a href="manage_category/">
-                                            <img src="SVG/list-alt-solid.svg" alt="" />
-                                            <span>Manage List</span>
+                                            <img src="./SVG/tags-solid-black.svg" alt="" />
+                                            <span>Manage Labels</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="page/activity">
                                             <img src="SVG/clock-solid.svg" alt="" />
-                                            <span>My activity</span>
+                                            <span>My activities</span>
                                         </a>
                                     </li>
                                     <li>
