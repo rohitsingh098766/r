@@ -36,8 +36,17 @@
   }    
          
          
+//     update total comment 
          
          
+          $query_get = "SELECT COUNT(*) as set_na FROM yaarme_post.post_comment where post_id = '{$post_id}'" ;
+  $result_get = mysqli_query($connection,$query_get);
+     while($row_get = mysqli_fetch_assoc($result_get)){
+         $query_make_update = "UPDATE yaarme_post.posts SET `total_comment` = {$row_get['set_na']} where id = '{$post_id}'" ;
+    if(mysqli_query($connection,$query_make_update)){
+  } 
+         
+     }    
          
          
          

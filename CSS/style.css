@@ -1788,7 +1788,14 @@ background: rgba(188, 188, 188, 0.12);
 .blue{
     color: var(--blue);
 }
-
+.more_comment{
+    color: #969696;
+    font-size: .8em;
+}
+.comnt_click{
+    padding-left: 1em;
+    color: #ff5757;
+}
 
 /*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*/
 

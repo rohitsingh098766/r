@@ -362,7 +362,7 @@ creat_post();
                         if(output.post[i].profile_url){
                             var post_own_pic = "profile/i/120/"+output.post[i].profile_url;
                         }else{
-                            var post_own_pic = "none.png";
+                            var post_own_pic = "profile/i/none.svg";
                         }
                         if(user_id==output.post[i].owner_id){
                             var check_if_owner = '<span class="icon more-icon top-corner" id="more_post_click" onclick="open_ask_delete('+ output.post[i].id + ');openlist('+"'"+'_warning_delete'+"'"+','+ output.post[i].id + ');"></span>'; 
@@ -375,15 +375,21 @@ creat_post();
                         }else{
                              var location_in_post ='';
                         }
+                        var total_comments = '';
+                        if(output.post[i].comment==1){
+                             total_comments = '1 comment';
+                        }else if(output.post[i].comment>1){
+                             total_comments = output.post[i].comment+' comments';
+                        }
                         
                         console.log(react_types)
                         max_id = output.post[i].id;
                         my_adds = '<div class="card card_own_' + output.post[i].owner_id + '" post_id="' + output.post[i].id + '"> <div class="follow-conn"> <a href="./account?user='+output.post[i].owner_id+'" style="background-image:url('+post_own_pic+')" class="follow-icon users post_profile" target="_blank"></a> <div class="conn-name"> <span> <b>' + output.post[i].name + ' <small class="u_c_' + output.post[i].owner_id + '">' + tagshow + '</small> <small class="fllw_' + output.post[i].owner_id + '" onclick="unfollow_ys(' + output.post[i].owner_id + ',' + output.post[i].account_type + ')">'+follow_integ+'</small><small class="unmt_' + output.post[i].owner_id + '" onclick="mute_ys(' + output.post[i].owner_id + ')">'+mute_integ+'</small> </b> </span> <a href="./account?user='+output.post[i].owner_id+'" target="_blank">' + output.post[i].introduction + '</a> <a href="./account?user='+output.post[i].owner_id+'" target="_blank"> <span>' + output.post[i].time + location_in_post + ' </span>  </a> </div> '+check_if_owner+' </div><div class="post_raw_body" ondblclick="double_click_love(' + output.post[i].id + ')"> <p class="content select_text"> ' + output.post[i].body_text.replace("\n\n","<br>") + ' </p> ' +
                             sa + slidrr + sb +
-                            '</div> <div class="vote-section" > '+react_types+' <a href="like?post='+output.post[i].id+'" class="votes">' + output.post[i].like + '</a> <a href="like?post='+output.post[i].id+'" class=" post-slider-dots post-slider-dots_' + output.post[i].id + '"></a> <a href=""> ' + output.post[i].comment + ' Comments</a> </div> <div class="share-section"  > <div class="icon-wrap open_reactions ' + output.post[i].reaction + '" id="like_' + output.post[i].id + '"> <div class="like_option"> <div class="set_it"> <img src="./emogi/other/compressed/thumbs_up.gif" title="Like" class="like_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/sparkling_heart.gif" title="Love" class="love_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/handshake.gif" title="Support" class="support_inner " oncontextmenu="return false"/> <img src="./emogi/other/compressed/party_popper.gif" title="Celebrate" class="cele_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/fire.gif" title="Hot" class="hot_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/beaming_face_with_smiling_eyes.gif" title="Laugh" class="smile_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/crying_face.gif" title="Sad" class="sad_inner" oncontextmenu="return false"/> </div> </div> <div class="flex"> <img src="./emogi/128/human/thumbs-up-medium-light-skin-tone.png" class="icon like-i default"> <span class="default">Like&nbsp;</span> <img src="./emogi/other/compressed/thumbs_up.gif" class="icon like-i liked" oncontextmenu="return false"> <span class="liked">Liked</span> <img src="./emogi/other/compressed/sparkling_heart.gif" class="icon loved" oncontextmenu="return false"> <span class="loved">Loved</span> <img src="./emogi/other/compressed/handshake.gif" class="icon supported" oncontextmenu="return false"> <span class="supported">Supported</span> <img src="./emogi/other/compressed/party_popper.gif" class="icon celebrated" oncontextmenu="return false"> <span class="celebrated">celebrated</span> <img src="./emogi/other/compressed/fire.gif" class="icon fired" oncontextmenu="return false"> <span class="fired">Hot</span> <img src="./emogi/other/compressed/beaming_face_with_smiling_eyes.gif" class="icon haha" oncontextmenu="return false"> <span class="haha">HaHa</span> <img src="./emogi/other/compressed/crying_face.gif" class="icon sad" oncontextmenu="return false"> <span class="sad">Sad</span> </div> </div> <div class="icon-wrap" onclick="show_comment(' + output.post[i].id + ')"> <img src="./SVG/comment.svg" class="icon comment-icon" /> <span>Comment</span> </div> <div class="icon-wrap ' + output.post[i].save + '" id="save_' + output.post[i].id + '" onclick="save_me(' + output.post[i].id + ')"> <img src="./SVG/save.svg" class="icon send-icon" /><span>Save&nbsp;</span> <img src="./SVG/saved.svg" class="icon send-icon saved_done" /> <span class="saved_done ">Saved</span> </div> </div><form class="follow-conn comment_attempt comment_show" id="comment_' + output.post[i].id + '" onsubmit="submit_comment(event,' + output.post[i].id + ')"><img src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>" class="follow-icon comment_profile" /><span href="profile/" class="comment_form"><textarea type="text" rows="1" class="comment_input" id="comment_input_' + output.post[i].id + '" value="o" placeholder="Leave your comment..." onkeydown="autosize(' + output.post[i].id + ')"></textarea></span><button class="follow post_comment">Post</button></form> <div id="load_comments_' + output.post[i].id + '"></div><?php
+                            '</div> <div class="vote-section" > '+react_types+' <a href="like?post='+output.post[i].id+'" class="votes">' + output.post[i].like + '</a> <a href="like?post='+output.post[i].id+'" class=" post-slider-dots post-slider-dots_' + output.post[i].id + '"></a> <a href=""> ' + total_comments + ' </a> </div> <div class="share-section"  > <div class="icon-wrap open_reactions ' + output.post[i].reaction + '" id="like_' + output.post[i].id + '"> <div class="like_option"> <div class="set_it"> <img src="./emogi/other/compressed/thumbs_up.gif" title="Like" class="like_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/sparkling_heart.gif" title="Love" class="love_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/handshake.gif" title="Support" class="support_inner " oncontextmenu="return false"/> <img src="./emogi/other/compressed/party_popper.gif" title="Celebrate" class="cele_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/fire.gif" title="Hot" class="hot_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/beaming_face_with_smiling_eyes.gif" title="Laugh" class="smile_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/crying_face.gif" title="Sad" class="sad_inner" oncontextmenu="return false"/> </div> </div> <div class="flex"> <img src="./emogi/128/human/thumbs-up-medium-light-skin-tone.png" class="icon like-i default"> <span class="default">Like&nbsp;</span> <img src="./emogi/other/compressed/thumbs_up.gif" class="icon like-i liked" oncontextmenu="return false"> <span class="liked">Liked</span> <img src="./emogi/other/compressed/sparkling_heart.gif" class="icon loved" oncontextmenu="return false"> <span class="loved">Loved</span> <img src="./emogi/other/compressed/handshake.gif" class="icon supported" oncontextmenu="return false"> <span class="supported">Supported</span> <img src="./emogi/other/compressed/party_popper.gif" class="icon celebrated" oncontextmenu="return false"> <span class="celebrated">celebrated</span> <img src="./emogi/other/compressed/fire.gif" class="icon fired" oncontextmenu="return false"> <span class="fired">Hot</span> <img src="./emogi/other/compressed/beaming_face_with_smiling_eyes.gif" class="icon haha" oncontextmenu="return false"> <span class="haha">HaHa</span> <img src="./emogi/other/compressed/crying_face.gif" class="icon sad" oncontextmenu="return false"> <span class="sad">Sad</span> </div> </div> <div class="icon-wrap" onclick="show_comment(' + output.post[i].id + ')"> <img src="./SVG/comment.svg" class="icon comment-icon" /> <span>Comment</span> </div> <div class="icon-wrap ' + output.post[i].save + '" id="save_' + output.post[i].id + '" onclick="save_me(' + output.post[i].id + ')"> <img src="./SVG/save.svg" class="icon send-icon" /><span>Save&nbsp;</span> <img src="./SVG/saved.svg" class="icon send-icon saved_done" /> <span class="saved_done ">Saved</span> </div> </div><form class="follow-conn comment_attempt comment_show" id="comment_' + output.post[i].id + '" onsubmit="submit_comment(event,' + output.post[i].id + ')"><img src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>" class="follow-icon comment_profile" /><span href="profile/" class="comment_form"><textarea type="text" rows="1" class="comment_input" id="comment_input_' + output.post[i].id + '" value="o" placeholder="Leave your comment..." onkeydown="autosize(' + output.post[i].id + ')"></textarea></span><button class="follow post_comment">Post</button></form> <div id="load_comments_' + output.post[i].id + '"></div><?php
                             
 //                        $post_id = 100;
-                        $query_comments = "select * , TIMESTAMPDIFF(SECOND, yaarme_post.post_comment.time,CURRENT_TIMESTAMP ) as time_ago
+                        $query_comments = "select * , TIMESTAMPDIFF(SECOND, yaarme_post.post_comment.time,CURRENT_TIMESTAMP ) as time_ago,yaarme_post.post_comment.id as comment_id
                         from yaarme_post.post_comment 
                         join yaarme.users on yaarme.users.id = yaarme_post.post_comment.user
                         where post_id = {$post_id} order by yaarme_post.post_comment.id desc limit 200 ";
@@ -394,10 +400,30 @@ creat_post();
         }else{
            $img_comment = './profile/i/none.svg'; 
         }
+        
+//        check relation
+$add_follow_option = '<small class="blue fllw_'.$row_comments['user'].'" onclick="unfollow_ys('.$row_comments['user'].','.$row_comments['account_type'].')"> • Follow </small>';
+        
+         $query_relation = "select *  from yaarme_follow.follow where (user = {$_SESSION['id']} and opponent = {$row_comments['user']})";
+                        $query_relation = mysqli_query($connection,$query_relation);
+    while($row_relation = mysqli_fetch_assoc($query_relation)){
+        
+        if($row_relation['approve']==1 || $row_relation['approve']==11 || $row_relation['approve']==10 || ($row_comments['user'] == $_SESSION['id'])){  
+        $add_follow_option = '';
+        }else if($row_relation['approve']==9){  
+        $add_follow_option = '<small class="blue fllw_'.$row_comments['user'].'" onclick="unfollow_ys('.$row_comments['user'].',1)"> • Requested </small>';
+        }
+    }
+          $editable = '';
+        if(($row_comments['user'] == $_SESSION['id'])|| ($owner == $_SESSION['id'])){
+            $editable = '<span class="comnt_click" onclick="delete_comment('.$row_comments['comment_id'].')">more</span>';
+        }
+        
+        
         $comment =str_replace("'",'&apos;',trim(htmlentities($row_comments['text'])));
         $time_comment = time_convert($row_comments['time_ago']);
 //        $img_comment = 
-          echo '<a href="./account?user='.$row_comments['user'].'" class="load_comments"><div class="follow-conn"><img src="'.$img_comment.'" class="follow-icon comment_profile"><span href="profile/" class="comment_form commented"><div class="comment_input commented_input"> <b>'.$row_comments['first_name'].' '.$row_comments['last_name'].'</b> •  <small> '.$time_comment.'</small><br>'.$comment.'</div></span></div></a>';
+          echo '<div  class="load_comments" id="comment_id_'.$row_comments['comment_id'].'"><div class="follow-conn"><a href="./account?user='.$row_comments['user'].'"><img src="'.$img_comment.'" class="follow-icon users comment_profile" ></a><span href="profile/" class="comment_form commented"><div class="comment_input commented_input"> <b>'.$row_comments['first_name'].' '.$row_comments['last_name'].'</b>'.$add_follow_option.'<br>'.$comment.'<div class="more_comment">'.$time_comment.$editable.'   </div></div></span></div></div>';
     }
                     
                             
@@ -587,6 +613,21 @@ for(var i = 0; i < images.length; i++){
                                     <div></div>
                                 </div>
                             </div>
+                        </div>  
+                        
+                        <!-- Delete comments-->
+                        <div class="my_options" id="post_option_delete_comment">
+                            <div class="my_options my_options_block" onclick="close_options('_delete_comment')">
+                            </div>
+                            <div class="items item_post" style="">
+                                <p class="select_category">You can delete this comment, no one will be notified.</p>
+                                <ul class="post_options">
+                                    <li onclick="delete_comment_confirmed();close_options('_delete_comment');">
+                                        <div class="follow-conn "> <img src="./SVG/trash-alt-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Delete comment...</b></span> </span> </div>
+                                    </li>
+                                </ul>
+                               
+                            </div>
                         </div>
 
 
@@ -706,7 +747,23 @@ for(var i = 0; i < images.length; i++){
 
 <script src="JS/main.js"></script>
 
-
+<script>
+    
+    var active_comment = 0;
+    function delete_comment(id){
+        active_comment = id;
+//        window.alert(id);
+        openlist('_delete_comment');
+    }
+    
+    function delete_comment_confirmed(){
+        document.getElementById('comment_id_'+active_comment).classList.add('hide');
+ my_ajax("./php/delete_comment.php","comment_id="+active_comment,"body");
+    }
+    
+    
+    
+    </script>
 
 
 
