@@ -441,9 +441,9 @@ padding-top: 0
   }
 
   .conversation {
-    height: calc(100vh - 55px);
+    height: calc(100% - 55px);
   }
   .conversation .conversation-container {
-    height: calc(100vh - 120px);
+        height: calc(100% + 6px);
   }
 }
