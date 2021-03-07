@@ -11,7 +11,7 @@
      $opponent = mysqli_real_escape_string($connection, $_POST['opponent']);
 
 
-   $query = "INSERT INTO yaarme_message.message (`id`, `sender`, `room_id`, `text`) VALUES (NULL, '{$_SESSION['id']}', '{$room}', '{$text}')";
+   $query = "INSERT INTO yaarme_message.message (`id`, `sender`, `room_id`, `text`, `time`) VALUES (NULL, '{$_SESSION['id']}', '{$room}', '{$text}',UTC_TIMESTAMP)";
 
      if(mysqli_query($connection,$query)){
      echo "inserted";
@@ -26,6 +26,10 @@
 while($row_get_last_id = mysqli_fetch_assoc($result_get_last_id)){
     
     $query_insert = "UPDATE `yaarme_message`.`room` SET `last_message_id` = '{$row_get_last_id['id']}' WHERE `room`.`id` = {$room};";
+     if(mysqli_query($connection,$query_insert)){
+     }
+    
+    $query_insert = "UPDATE `yaarme_message`.`my_room` SET `last_seen_msg_id` = '{$row_get_last_id['id']}' WHERE (room_id = {$room} and room_member = {$_SESSION['id']});";
      if(mysqli_query($connection,$query_insert)){
      }
 }
