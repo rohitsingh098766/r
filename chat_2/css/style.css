@@ -25,6 +25,7 @@ body {
   align-items: center;
   justify-content: center;
     padding-top: 4em;
+   
 }
 
 .marvel-device .screen {
@@ -408,7 +409,8 @@ height: 20px;
 
 @media (max-width: 1024px) {
 .page {
-padding-top: 0
+padding-top: 0;
+     background: #ededed;
 }
     .marvel-device.nexus5 {
     border-radius: 0;
@@ -444,6 +446,6 @@ padding-top: 0
     height: calc(100% - 55px);
   }
   .conversation .conversation-container {
-        height: calc(100% + 6px);
+        height: calc(100% + 5px);
   }
 }
