@@ -179,6 +179,12 @@ while($row = mysqli_fetch_assoc($query)){
         $active = 'chat-item-active';
     }else {$active = "";}
     
+    if($row['chat_status']==10){
+        $text_go = 'You have blocked this chat.';
+    }else{
+        $text_go = $row['text'];
+    }
+    
 echo '
 <a  href="../chat/?room='.$row['room_number'].'" class="chat-item flex ">
                     <div class="chat-img flex align-centre '.$active.'">
@@ -187,7 +193,7 @@ echo '
                     <div class="chat-body flex">
                         <div class="chat-text flex flex-c">
                             <h4>'.$row['first_name'].' '.$row['last_name'].'</h4>
-                            <p>'.$row['text'].'</p>
+                            <p>'.$text_go.'</p>
                         </div>
                         <div class="chat-time">
                             '.$time_out.'

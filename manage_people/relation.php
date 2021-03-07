@@ -121,6 +121,10 @@ $list = mysqli_real_escape_string($connection, $_POST['list']);
         mysqli_query($connection,$query);
     }
     
+    //block message
+    $query = "UPDATE yaarme_message.my_room SET `chat_status` = 10 WHERE (room_member = {$_SESSION['id']} and opponent_member = {$user})";
+        mysqli_query($connection,$query);
+    
 }else if(isset($_POST['mute']) && isset($_POST['user'])&& isset($_POST['value'])){
 //    mute user
     $user = mysqli_real_escape_string($connection, $_POST['user']);
