@@ -85,6 +85,8 @@ img {
 
 .round {
     border-radius: 50% !important;
+    height: 3.1rem;
+    width: 3.1rem;
 }
 
 .t-bold {
@@ -299,8 +301,6 @@ img {
     text-align: center;
     display: flex;
     justify-content: center;
-    align-items: center;
-    align-content: center;
 }
     
 

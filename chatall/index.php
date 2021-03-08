@@ -11,7 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
     <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="static/app.css?v=2">
+    <link rel="stylesheet" href="static/app.css?v=3">
     <!--icons-->
     <link rel="apple-touch-icon" sizes="57x57" href="../icons/icons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="../icons/icons/apple-icon-60x60.png">
@@ -202,7 +202,7 @@ while($row_total_unseen = mysqli_fetch_assoc($query_total_unseen)){
 echo '
 <a  href="../chat/?room='.$row['room_number'].'" class="chat-item flex ">
                     <div class="chat-img flex align-centre '.$active.'">
-                        <img src="'.$profile_chat.'" class="round">
+                        <div    style="background-image:url('.$profile_chat.')" class="post_profile round"></div>
                     </div>
                     <div class="chat-body flex">
                         <div class="chat-text flex flex-c">
