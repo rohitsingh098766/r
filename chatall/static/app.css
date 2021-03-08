@@ -296,6 +296,11 @@ img {
     color: white;
     background: var(--blue);
     text-align: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
     
 

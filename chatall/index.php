@@ -11,7 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
     <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="static/app.css">
+    <link rel="stylesheet" href="static/app.css?v=2">
     <!--icons-->
     <link rel="apple-touch-icon" sizes="57x57" href="../icons/icons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="../icons/icons/apple-icon-60x60.png">
