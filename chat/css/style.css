@@ -328,6 +328,7 @@ body {
   flex: 0 0 auto;
   margin-left: 8px;
   width: 48px;
+    width: 10px;
 }
 
 .conversation-compose .input-msg {
@@ -345,6 +346,7 @@ body {
   text-align: center;
   position: relative;
   width: 48px;
+    width: 10px;
 }
 
 .conversation-compose .photo:after {
@@ -402,6 +404,9 @@ height: 20px;
 }
 #insert_here .message{
     margin: 8px 0;
+}
+.marvel-device.nexus5{
+    width: 980px;
 }
 
 /* Small Screens */
