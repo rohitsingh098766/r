@@ -115,7 +115,7 @@ console.log('get_message_id:'+get_message_id+'  and last_seen: '+last_seen)
 
                } else {
                    document.getElementById('insert_here').querySelector('path').setAttribute("fill", "gray");
-                   my_ajax("more_message.php", 'room=' + room + '&max_id=' + last_message_id(), 'insert_here');
+//                   my_ajax("more_message.php", 'room=' + room + '&max_id=' + last_message_id(), 'insert_here');
                }
            }
            //           scrollToBottom();
