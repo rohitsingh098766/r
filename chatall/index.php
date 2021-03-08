@@ -150,8 +150,8 @@ session_start();
 <?php
 
 $query = "
-SELECT *,TIMESTAMPDIFF(SECOND, message.time,CURRENT_TIMESTAMP ) as last_chat_time,
-TIMESTAMPDIFF(SECOND, users.last_login,CURRENT_TIMESTAMP ) as last_login,
+SELECT *,TIMESTAMPDIFF(SECOND, message.time,UTC_TIMESTAMP ) as last_chat_time,
+TIMESTAMPDIFF(SECOND, users.last_login,UTC_TIMESTAMP ) as last_login,
 my_room.room_id as room_number
 FROM yaarme_message.my_room
 left join yaarme.users on yaarme.users.id = my_room.opponent_member
@@ -184,6 +184,20 @@ while($row = mysqli_fetch_assoc($query)){
     }else{
         $text_go = $row['text'];
     }
+    $show_unread_count = '';
+    if($row['last_message_id'] != $row['last_seen_msg_id']){
+        $last_seen_msg_id = 0;
+        if($row['last_seen_msg_id']>0){
+            $last_seen_msg_id = $row['last_seen_msg_id'];
+        }
+        
+        $query_total_unseen = " select COUNT(*) as unread from yaarme_message.message where (room_id = {$row['room_number']} and id > {$last_seen_msg_id})";
+        $query_total_unseen = mysqli_query($connection,$query_total_unseen);
+while($row_total_unseen = mysqli_fetch_assoc($query_total_unseen)){
+    $show_unread_count = '<span class="missed_message">'.$row_total_unseen['unread'].'</span>';
+}
+        
+    }
     
 echo '
 <a  href="../chat/?room='.$row['room_number'].'" class="chat-item flex ">
@@ -196,8 +210,8 @@ echo '
                             <p>'.$text_go.'</p>
                         </div>
                         <div class="chat-time">
-                            '.$time_out.'
-                           <!--  <span class="missed_message">8</span> -->
+                            '.$time_out.$show_unread_count.'
+                           
                         </div>
                     </div>
                 </a>
