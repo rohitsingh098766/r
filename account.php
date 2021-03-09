@@ -59,7 +59,7 @@ $location_user =  $row_details['location'];
 $dob_user =  $row_details['DOB_date'].'-'.$row_details['DOB_month'].'-'.$row_details['DOB_year'];
 $summary_user =  $row_details['summary'];
     if($row_details['img']){
-        $img_user = "./profile/i/240/".$row_details['img'];
+        $img_user = "./profile/i/1080/".$row_details['img'];
     }else{
         $img_user = "./profile/i/none.svg";
     }
@@ -275,7 +275,7 @@ $follower_user = $row_following['total_sum_following'];
 
                     <div class="a1">
                         <div class="a12 a12_change">
-                            <img src="<?php echo $img_user;?>" class="a121" onclick="this.requestFullscreen();this.setAttribute('src',this.getAttribute('src').replace('profile/i/240/', 'profile/i/1080/'));return false;">
+                            <div  style="background-image:url('<?php echo $img_user;?>')" class="post_profile a121" id="profile_image"></div>
                         <div class="change_profile edit_allowed"> 
                             <small  class=""><a href="page/edit_pic.php" class="edit"><img src="SVG/pencil.svg" class="pencil">Edit</a></small>
                             </div>
@@ -293,6 +293,8 @@ $follower_user = $row_following['total_sum_following'];
                             </div>
                         </a>
                     </div>
+                    
+                    <img src="<?php echo $img_user;?>" id="full_image">
 
                     <div class="b1">
                         <div class="b11 b11_name"><?php echo $name_user.$group_name;?><small  class="edit_allowed"><a href="page/edit_name.php" class="edit"><img src="SVG/pencil.svg" class="pencil">Change name</a></small></div>
@@ -637,7 +639,7 @@ creat_post();
                             }
                         }
                         if(output.post[i].profile_url){
-                            var post_own_pic = "profile/i/120/"+output.post[i].profile_url;
+                            var post_own_pic = "profile/i/1080/"+output.post[i].profile_url;
                         }else{
                             var post_own_pic = "profile/i/none.svg";
                         }

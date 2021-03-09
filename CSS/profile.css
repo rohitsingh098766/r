@@ -219,7 +219,12 @@ position:absolute;
     color: gray;
     font-size: .78em;
 }
-
+#full_image{
+    height: 200px;
+    width: 200px;
+    position: fixed;
+    top: -2000px;
+}
 
 
 

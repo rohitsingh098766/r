@@ -58,3 +58,8 @@ function post_options(){
     document.getElementById('share_options').style.display="none"
     document.getElementById('block_options').style.display="none"
 }
+
+//full profile image
+document.getElementById('profile_image').addEventListener('click',function(){
+    document.getElementById('full_image').requestFullscreen();return false;
+})
