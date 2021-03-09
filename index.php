@@ -667,14 +667,18 @@
                         
                         <div  id="first_post"></div>
 
-                        <div class="suggestion-box">
+                        
+                         <?php 
+                        if($post_type==1){
+                           echo ' <div class="suggestion-box">
                             <div class="suggestion-title">
                                 <span>Suggested for You</span>
                                 <a href="./request/" class="see-all">See All</a>
                             </div>
-                            <div class="suggestions-list">
-
-                                <?php
+                            <div class="suggestions-list">' ;
+                        
+                        
+                       
                                 $query_select = "SELECT * FROM yaarme_follow.follow where (user = {$_SESSION['id']} and approve = 1) ORDER BY `follow`.`id` DESC limit 5";
                                 $query_select = mysqli_query($connection,$query_select);
                                 $g=1;
@@ -727,14 +731,15 @@
                                 }else{
                                 }
                                 }
-                        ?>
+                       
 
-                                <img class="arrow previous" src="./Images/left-arrow.png" />
+                             echo '   <img class="arrow previous" src="./Images/left-arrow.png" />
                                 <img class="arrow next" src="./Images/right-arrow.png" />
                             </div>
-                        </div>
+                        </div>';
+                        }
 
-
+ ?>
 
                         <div id="new_posts"> </div>
 
@@ -1263,7 +1268,7 @@ for(var i = 0; i < images.length; i++){
             </a>
         </ul>
     </div>
-    <script src="JS/main.js?v=3"></script>
+    <script src="JS/main.js?v=4"></script>
 
 
 

@@ -63,7 +63,11 @@ $summary_user =  $row_details['summary'];
     }else{
         $img_user = "./profile/i/none.svg";
     }
+    if($group_name){
     $group_name = ' <small class="u_c u_c_'.$row_details['selected_user'].'"> • '.$group_name.'</small>';
+    }else{
+        $group_name ='';
+}
     if($show_every===false && $privacy_user!=1){
         $show_every = true;
     }

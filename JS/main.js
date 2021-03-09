@@ -59,9 +59,9 @@ const previous_btn = document.querySelector(".previous");
 const wrapper = document.querySelector(".suggestions-list");
 
 let scrollMovePoint = 0;
-const max_scroll = wrapper.scrollWidth;
 
 function test(event) {
+const max_scroll = wrapper.scrollWidth;
     let operand = 300;
 
     // Calculate the number to move.
@@ -78,8 +78,12 @@ function test(event) {
     // Move the scroll bar to the value.
     wrapper.scroll(scrollMovePoint, 0);
 }
+if(next_btn){
 next_btn.addEventListener("click", test);
+}
+if(previous_btn){
 previous_btn.addEventListener("click", test);
+}
 
 //Scroll Story
 const nxt_btn = document.querySelector(".nxt");
@@ -88,9 +92,9 @@ const prev_btn = document.querySelector(".prev");
 const wrapperStory = document.querySelector(".scroll-stories");
 
 let scrollStoryMovePoint = 0;
-const maxStory_scroll = wrapperStory.scrollWidth;
 
 function testStory(event) {
+const maxStory_scroll = wrapperStory.scrollWidth;
     let operandStory = 300;
 
     // Calculate the number to move.
@@ -107,8 +111,12 @@ function testStory(event) {
     // Move the scroll bar to the value.
     wrapperStory.scroll(scrollStoryMovePoint, 0);
 }
+if(nxt_btn){
 nxt_btn.addEventListener("click", testStory);
+}
+if(prev_btn){
 prev_btn.addEventListener("click", testStory);
+}
 
 
 

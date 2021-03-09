@@ -190,7 +190,7 @@ hours = 12;
                     <div class="chat">
                         <div class="chat-container">
                             <div class="user-bar">
-                                <a href="../" class="back inner_div">
+                                <a href="../chatall/" class="back inner_div">
                                     <img src="./images/back.svg" class="send_icon">
                                 </a>
                                 
