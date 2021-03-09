@@ -88,7 +88,7 @@ if($proceed===true  && $row['target']!=$user){
 }
 echo '
 <div class="grid">
-<a class="flex_s" href="./account?user='.$row['target'].'"><img class="profile_img" src="'.$img.'"></a>
+<a class="flex_s" href="./account?user='.$row['target'].'"><div class="post_profile profile_img" style="background-image:url('."'".$img."'".')"></div></a>
 <div class="grid_mid">
 <div class="name">'.$row['first_name'].' '.$row['last_name'].'
 <small class="u_c_'.$row['target'].'">'.$category.'</small>
@@ -146,32 +146,4 @@ echo '
  exit(0);
 ?> 
 
-<div class="grid">
-                                    <div class="flex_s"><img class="profile_img" src="./profile/i/240/30.2t0cp.png"></div>
-                                    <div class="grid_mid">
-                                        <div class="name">YaarMe
-                                            <small class="u_c_1">• favorite</small>
-                                            <small class="fllw_1" onclick="unfollow_ys(1,0)"></small>
-                                            <small class="unmt_1" onclick="mute_ys(1)"></small>
-                                        </div>
-                                        <div class="description">Official account</div>
-                                        <div class="location"><img class="loc-icon" src="./SVG/location.svg" alt="">i</div>
-                                    </div>
-                                    <div class="flex_s" onclick="open_post_options(1, 88,16,0)"><span class="icon more-icon"></span></div>
-                                </div>
 
-   
-                                
-                                <div class="grid">
-                                    <div class="flex_s"><img class="profile_img" src="./profile/i/240/2z.2qjbx.jpg"></div>
-                                    <div class="grid_mid">
-                                        <div class="name">Akash Modi
-                                            <small class="u_c_2"></small>
-                                            <small class="fllw_2" onclick="unfollow_ys(2,0)"></small>
-                                            <small class="unmt_2" onclick="mute_ys(2)"></small>
-                                        </div>
-                                        <div class="description"></div>
-                                        <div class="location"><img class="loc-icon" src="./SVG/location.svg" alt="">India</div>
-                                    </div>
-                                    <div class="flex_s" onclick="open_post_options(2, 88,16,0)"><span class="icon more-icon"></span></div>
-                                </div>

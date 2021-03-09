@@ -113,7 +113,7 @@ $follower_user = $row_following['total_sum_following'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YaarMe</title>
     <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="./CSS/profile.css">
+    <link rel="stylesheet" href="./CSS/profile.css?v=2">
     <link rel="stylesheet" href="./page/css/like.css">
     
     <link rel="stylesheet" href="CSS/spin_loader.css" />
