@@ -61,5 +61,8 @@ function post_options(){
 
 //full profile image
 document.getElementById('profile_image').addEventListener('click',function(){
-    document.getElementById('full_image').requestFullscreen();return false;
+    if(this.classList.contains('allow')){
+        document.getElementById('full_image').requestFullscreen();
+    }
+    return false;
 })

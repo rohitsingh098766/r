@@ -275,7 +275,7 @@ $follower_user = $row_following['total_sum_following'];
 
                     <div class="a1">
                         <div class="a12 a12_change">
-                            <div  style="background-image:url('<?php echo $img_user;?>')" class="post_profile a121" id="profile_image"></div>
+                            <div  style="background-image:url('<?php echo $img_user;?>')" class="post_profile a121  <?php if($show_every===true){echo "allow";} ?>" id="profile_image"></div>
                         <div class="change_profile edit_allowed"> 
                             <small  class=""><a href="page/edit_pic.php" class="edit"><img src="SVG/pencil.svg" class="pencil">Edit</a></small>
                             </div>
