@@ -581,7 +581,7 @@ $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> Ever
     $privacy_change = 'onclick="show_privacy_change()"';
 }
     if($row_about['add_profile']){
-        echo '<style>.about_image_work{height: 3em;width: 3em;margin-right: 1em;}.about_image_dimension_work{height: 3em;width: 3em;background-color: white;</style>';
+        echo '<style>.about_image_relationship{height: 3em;width: 3em;margin-right: 1em;}.about_image_dimension_relationship{height: 3em;width: 3em;background-color: white;</style>';
     }
     
        $widget_up = ' <div class="about_section">
@@ -649,7 +649,7 @@ $profile_img = './profile/i/120/'.$row_about['img'];
     }
 
     $relationship_body .= ' <div class="section_body"><div class="section_body_grid">
-                                        <a '.$profile_link.' class="  about_image_work"><div class="post_profile about_image_dimension_work round" style="background-image:url('."'".$profile_img."'".')"></div></a>
+                                        <a '.$profile_link.' class="  about_image_relationship"><div class="post_profile about_image_dimension_relationship round" style="background-image:url('."'".$profile_img."'".')"></div></a>
                                         <div class="  about_other">
                                            <a '.$profile_link.' class="black"> '.$row_about['position'].$company.$branch.'</a>                                 
                                            '.$echo_date_work.'
@@ -672,7 +672,7 @@ $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> Ever
     $privacy_change = 'onclick="show_privacy_change()"';
 }
     if($row_about['add_profile']){
-        echo '<style>.about_image_work{height: 3em;width: 3em;margin-right: 1em;}.about_image_dimension_work{height: 3em;width: 3em;background-color: white;</style>';
+        echo '<style>.about_image_education{height: 3em;width: 3em;margin-right: 1em;}.about_image_dimension_education{height: 3em;width: 3em;background-color: white;</style>';
     }
     
        $widget_up = ' <div class="about_section">
@@ -746,7 +746,7 @@ $branch = '<div class="about_edu_degre">'.$row_about['position'].$comma_edu.$row
     }
 
     $education_body .= ' <div class="section_body"><div class="section_body_grid">
-                                        <a '.$profile_link.' class="  about_image_work"><div class="post_profile about_image_dimension_work round" style="background-image:url('."'".$profile_img."'".')"></div></a>
+                                        <a '.$profile_link.' class="  about_image_education"><div class="post_profile about_image_dimension_education round" style="background-image:url('."'".$profile_img."'".')"></div></a>
                                         <div class="  about_other">
                                            <a '.$profile_link.' class="black"> '.$company.'</a>
                                            '.$branch.'     
