@@ -66,3 +66,29 @@ document.getElementById('profile_image').addEventListener('click',function(){
     }
     return false;
 })
+
+//show privacy ontions
+function show_privacy_change(){
+         document.querySelector(".my_options").style.display = "flex";
+}
+
+
+//change privacy
+var select_list = document.getElementById('s_lists_privacy').querySelectorAll('.select_tl');
+for (var i = select_list.length - 1; i >= 0; --i) {
+    select_list[i].addEventListener("click", function () {
+        var id = this.getAttribute('cd');
+        if (this.querySelector('.select_me').classList.contains('select_me_selected')) {
+            my_ajax("./php/choose_category.php", "ct=" + id + "&action=delete");
+        } else {
+            my_ajax("./php/choose_category.php", "ct=" + id + "&action=add");
+        }
+        this.querySelector('.select_me').classList.toggle('select_me_selected');
+        this.querySelector('.select_me').querySelector('div').classList.toggle('display_flex');
+    })
+}
+
+
+
+//texting remove it later
+show_now('about');

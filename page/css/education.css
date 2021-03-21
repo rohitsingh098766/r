@@ -1,0 +1,59 @@
+.note-plus {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+}
+.note-plus #i_work_here {
+    margin-right: .5em;
+}
+.autocomplete-items div {
+    padding: 0;
+    border-bottom: 0;
+    background: white;
+}
+.autocomplete-items div:hover {
+
+    background: white;
+}
+
+#auto_grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    border-bottom: 1px solid #d4d4d4;
+    background-color: transparent;
+}
+
+#auto_grid:hover {
+    background-color: #e9e9e9;
+}
+
+
+
+#about_img {
+    padding: .5em;
+
+}
+
+#about_bg_image {
+
+    height: 2em;
+    width: 2em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #e3e3e352;
+    border-radius: 50%;
+}
+#school_name{
+font-size: .9em;
+    font-weight: 500;
+}
+#school_description{
+font-size: .8em;
+    color: gray;
+}
+#about_flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

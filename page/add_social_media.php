@@ -6,22 +6,23 @@ include '../connection.php';
 
 if(isset($_POST['submitted'])){
     
-$query = "DELETE FROM  yaarme.about WHERE (`user` = {$_SESSION['id']} and `about_code` = 1)";
-if(mysqli_query($connection,$query)){
+   $date = mysqli_real_escape_string($connection,$_POST['date']);
+$year = mysqli_real_escape_string($connection,$_POST['year']);
     
-}
+//    echo $date.$year;
+//    exit();
 
-    
-$summary = mysqli_real_escape_string($connection,$_POST['summary']);
-$query = "INSERT INTO yaarme.about (`user`, `about_code`,  `my_opinion`) VALUES ( {$_SESSION['id']}, 1,  '{$summary}');";
+    $query = "INSERT INTO yaarme.about (`user`, `about_code`,  `position`, `my_opinion`) VALUES ( {$_SESSION['id']}, 8,  '{$date}','{$year}');";
 // echo $query;
 if(mysqli_query($connection,$query)){
-// echo "inserted_summary";
-    header('Location: ../account');
-exit;
-} 
+    
+}  
+
+
     
 
+header('Location: ../account');
+exit;
     
 }
   
@@ -34,7 +35,7 @@ exit;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Summary | YaarMe</title>
+    <title>Add other social media </title>
     <link rel="icon" type="image/x-icon" href="CSS/Images/Yaarme-logo.png">
 
     <link rel="stylesheet" href="../CSS/spin_loader.css">
@@ -59,6 +60,11 @@ exit;
     <meta name="msapplication-TileColor" content="#0073b1" />
     <meta name="msapplication-TileImage" content="../icons/icons/ms-icon-144x144.png" />
     <meta name="theme-color" content="#0073b1" />
+    <style>
+    .date-wrap .input-wrap:last-of-type {
+    flex: 3;
+}
+    </style>
 </head>
 
 <body>
@@ -98,27 +104,24 @@ exit;
                 
                 <div class="forms">
                     <div class="form-heading">
-                        <span class="svg-icon pers"></span>
-                        <span>Update summary</span>
+<!--                        <span class="svg-icon pers"></span>-->
+                        <span>Add other social media profiles</span>
                     </div>
                     
-                    <div class="input-wrap">
-                        <textarea type="text" class="fields" id="summary" name="summary" required onkeydown="autosize('summary')" maxlength="350" ><?php
-                            
-                            $query_about = "select * from yaarme.about
-where (
-yaarme.about.user = {$_SESSION['id']} and
-about_code  = 1
-)
-";
-$result_about = mysqli_query($connection,$query_about);
-while($row_about = mysqli_fetch_assoc($result_about)){
-    echo $row_about['my_opinion'];
-}
-                            ?></textarea>
-                        <span class="label">summary</span>
+                    <div class="date-wrap">
+                        <div class="input-wrap">
+                            <select class="fields" name="date" id="date" required>
+                                <option value="" selected ></option>
+                            </select>
+                            <span class="label select">Profile</span>
+                        </div>
+                        <div class="input-wrap month">
+                            <input type="text" class="fields" id="summary" name="year" required="" onkeydown="autosize('summary')" maxlength="350"></input>
+                            <span class="label select">Profile link</span>
+                        </div>
+                       
                     </div>
-                    
+
 
                     <div class="button-wrap">
                        <input type="hidden" name="submitted" value="oiuygf">
@@ -132,14 +135,17 @@ while($row_about = mysqli_fetch_assoc($result_about)){
     </div>
     <div class="hide load_anything"></div>
     <script>
-    function autosize(getEleId) {
-    setTimeout(function () {
-        el = document.getElementById(getEleId);
-        el.style.cssText = 'height:auto; padding:.75em 1em';
-        el.style.cssText = 'height:calc(' + (el.scrollHeight) + 'px +  2px);';
-    }, 100);
+
+        
+var social_media = ["Facebook","Instagram","Twitter","LinkedIn","Youtube","Whatsapp","Snapchat","Telegram","Github","Website"];
+for(var i = 0; i < 10; i++){
+    var option = document.createElement('option');
+    option.value = social_media[i];
+    option.innerHTML = social_media[i];
+    date.appendChild(option);
 }
-autosize();
+
+        
     </script>
 </body>
 </html>

@@ -12,7 +12,7 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Notifications</title>
          <link rel="stylesheet" href="../CSS/style.css">
-        <link rel="stylesheet" href="CSS/style.css?v=2">
+        <link rel="stylesheet" href="CSS/style.css?v=3">
         
         
               <!--icons-->

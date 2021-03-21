@@ -316,9 +316,11 @@ html{
 .form-heading{
     align-self: center;
     display: flex;
-    margin: 0.5em 0;
+    margin: 1em 0;
     align-items: center;
     font-size: 1.1em;
+    font-weight: 600;
+    color: #606060;
 }
 .form-heading span:nth-child(2){
     margin-right: 0.5em;
@@ -535,6 +537,9 @@ html{
     font-weight: bold;
     background: #0073b1;
 /*    padding:0 1em;*/
+}
+.delete_it{
+    color: red;
 }
 @media only screen and (max-width:1700px){
     .main-login{

@@ -10,6 +10,24 @@ if(isset($_POST['submitted'])){
 $month = mysqli_real_escape_string($connection,$_POST['month']);
 $year = mysqli_real_escape_string($connection,$_POST['year']);
     
+    
+    $query = "DELETE FROM  yaarme.about WHERE (`user` = {$_SESSION['id']} and (`about_code` = 2 or `about_code` = 3))";
+if(mysqli_query($connection,$query)){
+    
+}
+    $query = "INSERT INTO yaarme.about (`user`, `about_code`,  `start_date`, `start_month`, `start_year`) VALUES ( {$_SESSION['id']}, 2,  '{$date}','{$month}', null);";
+// echo $query;
+if(mysqli_query($connection,$query)){
+    
+}  
+    $query = "INSERT INTO yaarme.about (`user`, `about_code`,  `start_date`, `start_month`, `start_year`) VALUES( {$_SESSION['id']}, 2,   null,null, '{$year}');";
+// echo $query;
+if(mysqli_query($connection,$query)){
+    
+}
+//    echo $query;
+//    exit(0);
+    
     $query = "UPDATE yaarme.users SET
 `DOB_date` = '{$date}',
 `DOB_month` = '{$month}',
@@ -17,14 +35,13 @@ $year = mysqli_real_escape_string($connection,$_POST['year']);
 WHERE `users`.`id` = {$_SESSION['id']};";
 // echo $query;
 if(mysqli_query($connection,$query)){
- header('Location: ../account');
-exit;
 }else{
 // echo"something went wrong ";
 }
     
 
-
+header('Location: ../account');
+exit;
     
 }
   
@@ -37,7 +54,7 @@ exit;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | YaarMe</title>
+    <title>Date of birth | YaarMe</title>
     <link rel="icon" type="image/x-icon" href="CSS/Images/Yaarme-logo.png">
 
     <link rel="stylesheet" href="../CSS/spin_loader.css">
@@ -102,25 +119,25 @@ exit;
                 <div class="forms">
                     <div class="form-heading">
                         <span class="svg-icon pers"></span>
-                        <span>Update date of birth</span>
+                        <span>Date of birth</span>
                     </div>
                     
                     <div class="date-wrap">
                         <div class="input-wrap">
                             <select class="fields" name="date" id="date" required>
-                                <option value="" selected disabled></option>
+                                <option value="" selected ></option>
                             </select>
                             <span class="label select">Date</span>
                         </div>
                         <div class="input-wrap month">
                             <select class="fields" name="month" id="month" required>
-                                <option value="" selected disabled></option>
+                                <option value="" selected ></option>
                             </select>
                             <span class="label select">Month</span>
                         </div>
                         <div class="input-wrap">
                             <select class="fields" name="year" id="year" required>
-                                <option value="" selected disabled></option>
+                                <option value="" selected ></option>
                             </select>
                             <span class="label select">Year</span>
                         </div>
@@ -140,18 +157,55 @@ exit;
     <div class="hide load_anything"></div>
     <script>
 // Filling in Date
+          var correct_day = 0;
+          var correct_month = 0;
+       var correct_year = 0;
+        <?php
+        
+        $query_info = "select * from yaarme.about
+where (
+yaarme.about.user = {$_SESSION['id']} and
+(
+yaarme.about.about_code = 2 or yaarme.about.about_code = 3
+)
+)
+
+";
+$result_info = mysqli_query($connection,$query_info);
+while($row_info = mysqli_fetch_assoc($result_info)){
+  if($row_info['start_date']){
+      echo ' var correct_day = '.$row_info['start_date'].';';
+  }
+    if($row_info['start_month']){
+      echo '  var correct_month ='.$row_info['start_month'].';';
+  }
+    if($row_info['start_year']){
+      echo ' var correct_year = '.$row_info['start_year'].';';
+  }  
+}
+        
+        ?>
+     
+        
 for(var i = 1; i <= 31; i++){
     var option = document.createElement('option');
     option.value = i;
     option.innerHTML = i;
+    if(option.value == correct_day){
+         option.selected = "true";
+    }
     date.appendChild(option);
 }
 
 // Filling in Month
+     
 var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 for(var i = 0; i < 12; i++){
     var option = document.createElement('option');
-    option.value = i;
+    option.value = i+1;
+    if(option.value == correct_month){
+         option.selected = "true";
+    }
     option.innerHTML = months[i];
     month.appendChild(option);
 }
@@ -161,6 +215,9 @@ for(var i = 2020; i >= 1940; i--){
     var option = document.createElement('option');
     option.value = i;
     option.innerHTML = i;
+    if(option.value == correct_year){
+         option.selected = "true";
+    }
     year.appendChild(option);
 }
         

@@ -86,6 +86,7 @@ color:black;
 
 .notif{
     background-color: rgb(230,247,255);
+    align-items: center;
 }
 
 .notif.read{

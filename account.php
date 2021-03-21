@@ -52,7 +52,7 @@ yaarme.users.id = {$user}
 )";
 $result_details = mysqli_query($connection,$query_details);
 while($row_details = mysqli_fetch_assoc($result_details)){
-$name_user =  $row_details['first_name'].'&nbsp;'.$row_details['last_name'];
+$name_user =  $row_details['first_name'].' '.$row_details['last_name'];
  $privacy_user =    $row_details['account_type'];
 $bio_user =  $row_details['status_mini_bio'];
 $location_user =  $row_details['location'];
@@ -151,6 +151,141 @@ $follower_user = $row_following['total_sum_following'];
 </head>
 
 <body id="body" oncontextmenu="">
+    
+    
+        <div class="my_options">
+        <div class="my_options" id="my_options"></div>
+        <div class="items">
+            <p class="select_category">Share with. </p>
+            <form>
+                <ul id="s_lists_privacy">
+                      <li>
+                        <div class="follow-conn select_tl" cd="'.$row['id'].'">
+                            <img src="./emogi/128/nature/whale.png" class="follow-icon">
+                                    <span class="conn-name">
+                                        <span><b>Nobady</b></span>
+                                          
+                                         </span>
+                                    <span class="select_me ">
+                                <div class="inner_checked ">&#10004;</div>
+                            </span>
+                        </div>
+                    </li>
+                      <li>
+                        <div class="follow-conn select_tl" cd="'.$row['id'].'">
+                            <img src="./emogi/128/nature/whale.png" class="follow-icon">
+                                    <span class="conn-name">
+                                        <span><b>Followers</b></span>
+                                            
+                                         </span>
+                                    <span class="select_me '.$pin1.'">
+                                <div class="inner_checked ">&#10004;</div>
+                            </span>
+                        </div>
+                    </li>
+                      <li>
+                        <div class="follow-conn select_tl" cd="'.$row['id'].'">
+                            <img src="./emogi/128/nature/whale.png" class="follow-icon">
+                                    <span class="conn-name">
+                                        <span><b>Everyone</b></span>
+                                            
+                                         </span>
+                                    <span class="select_me ">
+                                <div class="inner_checked ">&#10004;</div>
+                            </span>
+                        </div>
+                    </li>
+<p class="select_category"></p>
+<span class="or-marker">&nbsp;Or share with selected label.&nbsp;</span>
+                    <?php
+                    
+                    $query = "select * from yaarme_follow.category where owner_id = {$_SESSION['id']}";
+               $query = mysqli_query($connection,$query);
+  while($row = mysqli_fetch_assoc($query)){
+      if($row['description']){
+          $description = '<span>'.$row['description'].'</span>';
+      }else{
+          $description = '';
+      }
+      if($row['pin']){
+          $pin1 = "select_me_selected";
+          $pin2 = "display_flex";
+      }else{
+            $pin1 = "";
+          $pin2 = "";
+      }
+      echo '      <li>
+                        <div class="follow-conn select_tl" cd="'.$row['id'].'">
+                            <img src="./emogi/128/'.$row['emoji'].'" class="follow-icon">
+                                    <span class="conn-name">
+                                        <span><b>'.$row['group_name'].'</b></span>
+                                             '.$description.'
+                                         </span>
+                                    <span class="select_me '.$pin1.'">
+                                <div class="inner_checked '.$pin2.'">&#10004;</div>
+                            </span>
+                        </div>
+                    </li>';
+  }
+                    
+                    
+                    ?>
+                 
+
+
+                    <!--<li>
+                        <a href="?t=1" class="follow-conn ">
+                            <img src="./emogi/128/symbols/heart-suit.png" class="follow-icon">
+                            <span class="conn-name cn">
+                                <span><b>All</b></span>
+                                <span>Watch posts from all following.</span>
+                            </span>
+
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="?t=4" class="follow-conn ">
+                            <img src="./emogi/128/symbols/muted-speaker.png" class="follow-icon">
+                            <span class="conn-name cn">
+                                <span><b>Muted</b></span>
+                                <span>Watch posts from Muted Following</span>
+                            </span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="?t=3" class="follow-conn ">
+                            <img src="./emogi/128/human/man-astronaut-medium-dark-skin-tone.png" class="follow-icon">
+                            <span class="conn-name cn">
+                                <span><b>Unlisted</b></span>
+                                <span>Everyone who are not listed yet.</span>
+                            </span>
+
+                        </a>
+                    </li>-->
+                    <!--
+                    <li>
+                        <a href="#" class="follow-conn ">
+                            <img src="./emogi/128/nature/fire.png" class="follow-icon">
+                            <span class="conn-name cn">
+                                <span><b>Trending posts</b></span>
+                                <span>Among Your following / in India.</span>
+                            </span>
+
+                        </a>
+                    </li>
+-->
+
+
+
+                </ul>
+
+            </form>
+        </div>
+
+    </div>
+
 
     <!--desktop header-->
    <div class="main-navbar-wrap">
@@ -326,10 +461,476 @@ $follower_user = $row_following['total_sum_following'];
                     <div class="e1" >
 <!--                        about-->
                         <div class="e11 <?php if($show_every===false){echo "active";} ?>" id="about_show">
-                            <div class="e111 e111_dob">Date of birth :<small class="edit_allowed"><a href="page/edit_dob.php" class="edit"><img src="SVG/pencil.svg" class="pencil">Edit</a></small></div>
+                           <!-- <div class="e111 e111_dob">Date of birth :<small class="edit_allowed"><a href="page/edit_dob.php" class="edit"><img src="SVG/pencil.svg" class="pencil">Edit</a></small></div>
                             <div class="e111 e111_date"><?php echo $dob_user;?></div>
                             <div class="e111 e111_Sum">Summary and Overview :<small class="edit_allowed"><a href="page/edit_summary.php" class="edit"><img src="SVG/pencil.svg" class="pencil">Edit</a></small></div>
-                            <div class="e111 e111_detail"><?php echo $summary_user;?></div>
+                            <div class="e111 e111_detail"><?php echo $summary_user;?></div>-->
+                            
+                            
+                           
+                            
+                           
+                            
+<?php
+                            $all_echo  = array();
+                            $dateName = '';
+                            $monthName = '';
+                            $yearName = '';
+                            $add_relationship = '';
+                            $edit_option = '';
+                            $privacy_option = '';
+                            $social_links = '';
+                            $contact = '';
+                            $education_body ='';
+                            $work_body ='';
+                            $echo_date_work = '';
+                            $echo_date_education = '';
+                            $edit_option_inner = '';
+                            $relationship_body = '';
+                            
+if($user==$_SESSION['id']){
+$all_echo[1] = '<a href="page/edit_summary"> <div  class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> A BRIEF NOTE ABOUT YOURSELF</div></div></div></a>'; 
+$all_echo[2] = ' <a href="page/edit_dob"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> DATE OF BIRTH</div></div></div></a>';  
+$all_echo[4] = ' <a href="page/relationship"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> RELATIONSHIP</div></div></div></a>';  
+$all_echo[5] = ' <a href="page/education"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> EDUCATION</div></div></div></a>'; 
+$all_echo[6] = ' <a href="page/work"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> WORK</div></div></div></a>';  
+//$all_echo[7] = ' <a href="page/edit_summary"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> a bried note about yourself</div></div></div></a>'; 
+$all_echo[8] = ' <a href="page/add_social_media"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> OTHER SOCIAL MEDIA</div></div></div></a>';  
+$all_echo[9] = ' <a href="page/contact_details"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> CONTACT DETAILS</div></div></div></a>';  
+}
+                       
+                                
+                            
+$query_about = "select *,users.id as  profile_id, about.id as real_id from yaarme.about left join yaarme.users on users.id = about.add_profile
+where (
+yaarme.about.user = {$user}
+)
+order by about_code, yaarme.about.id desc
+";
+$result_about = mysqli_query($connection,$query_about);
+while($row_about = mysqli_fetch_assoc($result_about)){
+    $joining_date = '';
+    $leaving_date = '';
+if($row_about['about_code']==1){
+if($user==$_SESSION['id']){
+$edit_option = '<a href="page/edit_summary" class=""><img src="SVG/pencil.svg" class="pencil about"></a>';
+}
+if($user==$_SESSION['id']){
+$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> Everyone';
+$privacy_change = 'onclick="show_privacy_change()"';
+}
+    
+$all_echo[1] = ' <div class="about_section">
+    <div class="section_header">
+        <div class="header_main">ABOUT '.strtoupper($name_user).'</div>
+        <div class="header_edit">'.$edit_option.'</div>
+        <div class="header_privacy" '.$privacy_change.'>'.$privacy_option.'</div>
+    </div>
+    <div class="section_body">'.$row_about['my_opinion'].'</div>
+</div>';
+
+}else if($row_about['about_code']==2 || $row_about['about_code']==3){
+    
+    if($user==$_SESSION['id']){
+$edit_option = '<a href="page/edit_dob" class=""><img src="SVG/pencil.svg" class="pencil about"></a>';
+}
+if($user==$_SESSION['id']){
+$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> Everyone';
+    $privacy_change = 'onclick="show_privacy_change()"';
+}
+
+    $widget_up = ' <div class="about_section">
+     <div class="section_header">
+        <div class="header_main">DATE OF BIRTH</div>
+        <div class="header_edit">'.$edit_option.'</div>
+        <div class="header_privacy" '.$privacy_change.'>'.$privacy_option.'</div>
+    </div>
+    <div class="section_body">';
+    $widget_down = '</div>
+</div>';
+    
+
+    if($row_about['start_date']){
+    $dateName = $row_about['start_date'];
+    }
+    
+    if($row_about['start_month']){
+        $monthNum  = $row_about['start_month'];
+$monthName = date('F', mktime(0, 0, 0, $monthNum, 10));
+         $monthName = substr($monthName,0,3);  
+    }
+    
+    if($row_about['start_year']){
+    $yearName = $row_about['start_year'];
+    }
+    if($dateName && $yearName){
+        $comma = ', ';
+    }else{
+       $comma = ''; 
+    }
+    
+$all_echo[2] =  $widget_up.$monthName.' '.$dateName.$comma.$yearName.$widget_down;
+
+}else if($row_about['about_code']==4){
+         if($user==$_SESSION['id']){
+$edit_option = '<a href="page/relationship" class=""><img src="SVG/plus-regular.svg" class="plus_about about"></a>';
+$edit_option_inner = '<a href="page/relationship?edit='.$row_about['real_id'].'" class="about_inner_edit"><img src="SVG/pencil.svg" class="pencil about"></a>';
+}
+if($user==$_SESSION['id']){
+$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> Everyone';
+    $privacy_change = 'onclick="show_privacy_change()"';
+}
+    if($row_about['add_profile']){
+        echo '<style>.about_image_work{height: 3em;width: 3em;margin-right: 1em;}.about_image_dimension_work{height: 3em;width: 3em;background-color: white;</style>';
+    }
+    
+       $widget_up = ' <div class="about_section">
+    <div class="section_header">  <div class="header_main">RELATIONSHIP</div>
+        <div class="header_edit">'.$edit_option.'</div>
+        <div class="header_privacy" '.$privacy_change.'>'.$privacy_option.'</div></div>
+    ';
+    $widget_down = '</div>';
+    
+    $branch = '';
+    $company = '';
+    $dateName = '';
+    $profile_link = '';
+    $echo_date_work = '';
+    if($row_about['branch'] && $row_about['add_profile']){
+        $branch = ', '.$row_about['branch'];
+    }
+    if($row_about['add_profile']){
+        $company = ' with <b>'.$row_about['first_name'].' '.$row_about['last_name'].'</b>';
+    }else if($row_about['add_profile_name']){
+         $company = ' with '.$row_about['add_profile_name'].' ';
+    }else{
+$company = '  ';
+    }
+    
+     if($row_about['start_year']){
+         if($row_about['start_month'] ){
+             $monthNum  = $row_about['start_month'];
+$monthName = date('F', mktime(0, 0, 0, $monthNum, 10));
+           $monthName = substr($monthName,0,3);  
+         }else{$monthName='';}
+         if($row_about['start_date'] && $row_about['end_date']){
+             $dateName = $row_about['start_date'].', ';
+}
+         
+        $joining_date = $monthName.' '.$dateName.' '.$row_about['start_year'];
+         
+           if($row_about['end_year']){
+         if($row_about['end_month']){
+             $monthNum  = $row_about['end_month'];
+$monthName = date('F', mktime(0, 0, 0, $monthNum, 10));
+              $monthName = substr($monthName,0,3);  
+         }else{$monthName='';}
+         if($row_about['end_date'] && $row_about['end_month']){
+             $dateName = $row_about['end_date'].', ';
+}
+         
+        $leaving_date = ' - '.$monthName.' '.$dateName.' '.$row_about['end_year'];
+    }else{
+        $leaving_date = ' - Present';
+    }
+      $echo_date_work = '<div class="about_date"> '.$joining_date.$leaving_date .'</div> ';  
+    }
+  if($row_about['profile_id']){
+  if($row_about['img']){
+$profile_img = './profile/i/120/'.$row_about['img'];   
+  }else{
+      $profile_img = './profile/i/none.svg';
+}
+  } else{
+      $profile_img = '';
+  } 
+    if($row_about['profile_id']){
+         $profile_link = 'href="./account?user='.$row_about['profile_id'].'"';
+    }
+
+    $relationship_body .= ' <div class="section_body"><div class="section_body_grid">
+                                        <a '.$profile_link.' class="  about_image_work"><div class="post_profile about_image_dimension_work round" style="background-image:url('."'".$profile_img."'".')"></div></a>
+                                        <div class="  about_other">
+                                           <a '.$profile_link.' class="black"> '.$row_about['position'].$company.$branch.'</a>                                 
+                                           '.$echo_date_work.'
+                                           <div class="about_description"> '.$row_about['my_opinion'].' </div>  
+                                        </div>
+                                       '.$edit_option_inner.'
+                                    </div></div>';
+$all_echo[4] =  $widget_up.$relationship_body.$widget_down;
+
+    
+    
+    
+}else if($row_about['about_code']==5){
+         if($user==$_SESSION['id']){
+$edit_option = '<a href="page/education" class=""><img src="SVG/plus-regular.svg" class="plus_about about"></a>';
+             $edit_option_inner = '<a href="page/education?edit='.$row_about['real_id'].'" class="about_inner_edit"><img src="SVG/pencil.svg" class="pencil about"></a>';
+}
+if($user==$_SESSION['id']){
+$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> Everyone';
+    $privacy_change = 'onclick="show_privacy_change()"';
+}
+    if($row_about['add_profile']){
+        echo '<style>.about_image_work{height: 3em;width: 3em;margin-right: 1em;}.about_image_dimension_work{height: 3em;width: 3em;background-color: white;</style>';
+    }
+    
+       $widget_up = ' <div class="about_section">
+    <div class="section_header">  <div class="header_main">EDUCATION</div>
+        <div class="header_edit">'.$edit_option.'</div>
+        <div class="header_privacy" '.$privacy_change.'>'.$privacy_option.'</div></div>
+    ';
+    $widget_down = '</div>';
+    
+    $branch = '';
+    $company = '';
+    $dateName = '';
+    $profile_link = '';
+    $echo_date_education = '';
+   
+    
+     if($row_about['start_year']){
+         if($row_about['start_month'] ){
+             $monthNum  = $row_about['start_month'];
+$monthName = date('F', mktime(0, 0, 0, $monthNum, 10));
+           $monthName = substr($monthName,0,3);  
+         }else{$monthName='';}
+         if($row_about['start_date'] && $row_about['end_date']){
+             $dateName = $row_about['start_date'].', ';
+}
+         
+        $joining_date = $monthName.' '.$dateName.' '.$row_about['start_year'];
+         
+           if($row_about['end_year']){
+         if($row_about['end_month']){
+             $monthNum  = $row_about['end_month'];
+$monthName = date('F', mktime(0, 0, 0, $monthNum, 10));
+              $monthName = substr($monthName,0,3);  
+         }else{$monthName='';}
+         if($row_about['end_date'] && $row_about['end_month']){
+             $dateName = $row_about['end_date'].', ';
+}
+         
+        $leaving_date = ' - '.$monthName.' '.$dateName.' '.$row_about['end_year'];
+    }else{
+        $leaving_date = ' - Present';
+    }
+      $echo_date_education = '<div class="about_date"> '.$joining_date.$leaving_date .'</div> ';  
+    }
+    
+ $profile_img = '';
+    if($row_about['profile_id']){
+         $profile_link = 'href="./account?user='.$row_about['profile_id'].'"';
+         if($row_about['img']){
+$profile_img = './profile/i/120/'.$row_about['img'];
+     
+  }else{
+      $profile_img = './profile/i/none.svg';
+}
+    }
+    
+    
+    if($row_about['add_profile']){
+        $company = '<b>'.$row_about['first_name'].' '.$row_about['last_name'].'</b>';
+    }else{
+       $company =  $row_about['add_profile_name'];
+    }
+    if($row_about['branch'] || $row_about['branch']){
+        $comma_edu = '';
+        if($row_about['branch'] && $row_about['branch']){
+            $comma_edu = ', ';
+}
+$branch = '<div class="about_edu_degre">'.$row_about['position'].$comma_edu.$row_about['branch'].'</div> ';
+    }else{
+        $branch = '';
+    }
+
+    $education_body .= ' <div class="section_body"><div class="section_body_grid">
+                                        <a '.$profile_link.' class="  about_image_work"><div class="post_profile about_image_dimension_work round" style="background-image:url('."'".$profile_img."'".')"></div></a>
+                                        <div class="  about_other">
+                                           <a '.$profile_link.' class="black"> '.$company.'</a>
+                                           '.$branch.'     
+                                           '.$echo_date_education.'
+                                           <div class="about_description"> '.$row_about['my_opinion'].' </div>  
+                                        </div>
+                                        '.$edit_option_inner.'
+                                    </div></div>';
+$all_echo[5] =  $widget_up.$education_body.$widget_down;
+
+}else if($row_about['about_code']==6){
+      if($user==$_SESSION['id']){
+$edit_option = '<a href="page/work" class=""><img src="SVG/plus-regular.svg" class="plus_about about"></a>';
+$edit_option_inner = '<a href="page/work?edit='.$row_about['real_id'].'" class="about_inner_edit"><img src="SVG/pencil.svg" class="pencil about"></a>';
+}
+if($user==$_SESSION['id']){
+$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> Everyone';
+    $privacy_change = 'onclick="show_privacy_change()"';
+}
+    if($row_about['add_profile']){
+        echo '<style>.about_image_work{height: 3em;width: 3em;margin-right: 1em;}.about_image_dimension_work{height: 3em;width: 3em;background-color: white;</style>';
+    }
+    
+       $widget_up = ' <div class="about_section">
+    <div class="section_header">  <div class="header_main">WORK</div>
+        <div class="header_edit">'.$edit_option.'</div>
+        <div class="header_privacy" '.$privacy_change.'>'.$privacy_option.'</div></div>
+    ';
+    $widget_down = '</div>';
+    
+    $branch = '';
+    $company = '';
+    $dateName = '';
+    $profile_link = '';
+    $echo_date_work = '';
+    if($row_about['branch'] && $row_about['add_profile']){
+        $branch = ', '.$row_about['branch'];
+    }
+    if($row_about['add_profile']){
+        $company = ' at <b>'.$row_about['first_name'].' '.$row_about['last_name'].'</b>';
+    }
+    
+     if($row_about['start_year']){
+         if($row_about['start_month'] ){
+             $monthNum  = $row_about['start_month'];
+$monthName = date('F', mktime(0, 0, 0, $monthNum, 10));
+           $monthName = substr($monthName,0,3);  
+         }else{$monthName='';}
+         if($row_about['start_date'] && $row_about['end_date']){
+             $dateName = $row_about['start_date'].', ';
+}
+         
+        $joining_date = $monthName.' '.$dateName.' '.$row_about['start_year'];
+         
+           if($row_about['end_year']){
+         if($row_about['end_month']){
+             $monthNum  = $row_about['end_month'];
+$monthName = date('F', mktime(0, 0, 0, $monthNum, 10));
+              $monthName = substr($monthName,0,3);  
+         }else{$monthName='';}
+         if($row_about['end_date'] && $row_about['end_month']){
+             $dateName = $row_about['end_date'].', ';
+}
+         
+        $leaving_date = ' - '.$monthName.' '.$dateName.' '.$row_about['end_year'];
+    }else{
+        $leaving_date = ' - Present';
+    }
+      $echo_date_work = '<div class="about_date"> '.$joining_date.$leaving_date .'</div> ';  
+    }
+  if($row_about['profile_id']){
+  if($row_about['img']){
+$profile_img = './profile/i/120/'.$row_about['img'];   
+  }else{
+      $profile_img = './profile/i/none.svg';
+}
+  } else{
+      $profile_img = '';
+  } 
+    if($row_about['profile_id']){
+         $profile_link = 'href="./account?user='.$row_about['profile_id'].'"';
+    }
+
+    $work_body .= ' <div class="section_body"><div class="section_body_grid">
+                                        <a '.$profile_link.' class="  about_image_work"><div class="post_profile about_image_dimension_work round" style="background-image:url('."'".$profile_img."'".')"></div></a>
+                                        <div class="  about_other">
+                                           <a '.$profile_link.' class="black"> '.$row_about['position'].$company.$branch.'</a>                                 
+                                           '.$echo_date_work.'
+                                           <div class="about_description"> '.$row_about['my_opinion'].' </div>  
+                                        </div>
+                                       '.$edit_option_inner.'
+                                    </div></div>';
+$all_echo[6] =  $widget_up.$work_body.$widget_down;
+
+}else if($row_about['about_code']==7){
+      if($user==$_SESSION['id']){
+$edit_option = '<a href="page/edit_dob" class=""><img src="SVG/pencil.svg" class="pencil about"></a>';
+}
+if($user==$_SESSION['id']){
+$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> Everyone';
+    $privacy_change = 'onclick="show_privacy_change()"';
+}
+
+$all_echo[7] =  ' <div class="about_section">
+    <div class="section_header">  <div class="header_main">LOCATIONS</div>
+        <div class="header_edit">'.$edit_option.'</div>
+        <div class="header_privacy" '.$privacy_change.'>'.$privacy_option.'</div></div>
+    <div class="section_body">'.$row_about['position'].'</div>
+</div>';
+
+}else if($row_about['about_code']==8){
+      if($user==$_SESSION['id']){
+$edit_option = '<a href="page/add_social_media" class=""><img src="SVG/pencil.svg" class="pencil about"></a>';
+}
+if($user==$_SESSION['id']){
+$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> Everyone';
+    $privacy_change = 'onclick="show_privacy_change()"';
+}
+
+$upper_grid =  '   <div class="about_section">
+                                <div class="section_header">  <div class="header_main">SOCIAL ACCOUNTS</div>
+        <div class="header_edit">'.$edit_option.'</div>
+        <div class="header_privacy" '.$privacy_change.'>'.$privacy_option.'</div></div>
+                                <div class="section_body">';
+    $lower_grid = '</div></div>';
+    
+    $transform_css = '';
+    if($row_about['position'] === 'Youtube' || $row_about['position'] === 'Telegram' ){
+        $transform_css = 'style="transform: scale(1.4);margin-right: 1em;"';
+    }
+    
+    $social_links .= '<a href="'.$row_about['my_opinion'].'"><img src="./SVG/social-'.$row_about['position'].'.svg" class="about_social_media" '.$transform_css.'></a>';
+    
+                      
+ $all_echo[8] = $upper_grid.$social_links.$lower_grid;
+    
+}else if($row_about['about_code']==9){
+
+
+      if($user==$_SESSION['id']){
+$edit_option = '<a href="page/contact_details" class=""><img src="SVG/plus-regular.svg" class="plus_about about"></a>';
+}
+if($user==$_SESSION['id']){
+$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> Everyone';
+    $privacy_change = 'onclick="show_privacy_change()"';
+}
+
+$upper_grid = ' <div class="about_section">
+    <div class="section_header">
+        <div class="header_main">CONTACT</div>
+        <div class="header_edit">'.$edit_option.'</div>
+       
+    </div>
+    ';
+    $lower_grid = '</div>';
+    $description = '';
+    if($row_about['my_opinion']){
+        $description = '  <div class="about_description">'.$row_about['my_opinion'].'</div>';
+    }
+    
+    $contact .= '<div class="section_body">
+        <div class="contact_about">
+            <div>
+                <div>'.$row_about['position'].'<a href="page/contact_details?edit='.$row_about['real_id'].'" class=""><img src="SVG/pencil.svg" class="pencil about"></a></div>
+              '.$description.'
+            </div>
+            <div></div>
+            <div class="header_privacy" '.$privacy_change.'><img src="SVG/eye-regular.svg" class="pencil about eye"> Everyone</div>
+        </div></div>';
+    
+                      
+ $all_echo[9] = $upper_grid.$contact.$lower_grid;
+    
+}
+}
+
+
+foreach($all_echo as $value){
+    echo $value ;
+}
+?>
+                            
+
+                            
                         </div>
                         
 <!--                        post-->

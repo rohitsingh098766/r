@@ -4,23 +4,58 @@ include '../connection.php';
   if(!isset($_SESSION['id'])){include '../login/check_coockie.php';}
 
 
-if(isset($_POST['submitted'])){
-    
-$query = "DELETE FROM  yaarme.about WHERE (`user` = {$_SESSION['id']} and `about_code` = 1)";
+if(isset($_GET['delete'])){
+$delete = mysqli_real_escape_string($connection,$_GET['delete']);
+$query = "DELETE FROM yaarme.about WHERE (`about`.`id` = {$delete} and `about`.`user` = {$_SESSION['id']})";
+// echo $query;
 if(mysqli_query($connection,$query)){
+header('Location: ../account');
+exit(0);
+}
+}
+
+ $saved_opinion = '';
+      $saved_degree = '';
+if(isset($_GET['edit'])){
+$edit = mysqli_real_escape_string($connection,$_GET['edit']);
+
+    $query_show = "SELECT * FROM yaarme.about WHERE (`about`.`id` = {$edit} and `about`.`user` = {$_SESSION['id']})" ;
+$result_show = mysqli_query($connection,$query_show);
+while($row_show = mysqli_fetch_assoc($result_show)){
+    $saved_opinion = $row_show['my_opinion'];
+      $saved_degree = $row_show['position'];
+}
     
 }
 
+
+if(isset($_POST['submitted'])){
     
-$summary = mysqli_real_escape_string($connection,$_POST['summary']);
-$query = "INSERT INTO yaarme.about (`user`, `about_code`,  `my_opinion`) VALUES ( {$_SESSION['id']}, 1,  '{$summary}');";
+    
+   $date = mysqli_real_escape_string($connection,$_POST['date']);
+$year = mysqli_real_escape_string($connection,$_POST['year']);
+    
+if(isset($_GET['edit'])){
+$edit = mysqli_real_escape_string($connection,$_GET['edit']);
+ $query = "UPDATE `about` SET 
+    `position` = {$date},
+    `my_opinion` =   '{$year}'
+    WHERE (`about`.`id` = {$edit} and user = {$_SESSION['id']});";
+}else{
+    
+    $query = "INSERT INTO yaarme.about (`user`, `about_code`,  `position`, `my_opinion`) VALUES ( {$_SESSION['id']}, 9,  '{$date}','{$year}');";
+}
+
 // echo $query;
+//    exit;
 if(mysqli_query($connection,$query)){
-// echo "inserted_summary";
-    header('Location: ../account');
-exit;
-} 
+  header('Location: ../account');
+exit;  
+}  
+
+
     
+
 
     
 }
@@ -34,7 +69,7 @@ exit;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Summary | YaarMe</title>
+    <title>Contact details </title>
     <link rel="icon" type="image/x-icon" href="CSS/Images/Yaarme-logo.png">
 
     <link rel="stylesheet" href="../CSS/spin_loader.css">
@@ -59,6 +94,11 @@ exit;
     <meta name="msapplication-TileColor" content="#0073b1" />
     <meta name="msapplication-TileImage" content="../icons/icons/ms-icon-144x144.png" />
     <meta name="theme-color" content="#0073b1" />
+    <style>
+    .date-wrap .input-wrap:last-of-type {
+    flex: 3;
+}
+    </style>
 </head>
 
 <body>
@@ -98,41 +138,39 @@ exit;
                 
                 <div class="forms">
                     <div class="form-heading">
-                        <span class="svg-icon pers"></span>
-                        <span>Update summary</span>
+<!--                        <span class="svg-icon pers"></span>-->
+                        <span>Contact details</span>
                     </div>
                     
                     <div class="input-wrap">
-                        <textarea type="text" class="fields" id="summary" name="summary" required onkeydown="autosize('summary')" maxlength="350" ><?php
-                            
-                            $query_about = "select * from yaarme.about
-where (
-yaarme.about.user = {$_SESSION['id']} and
-about_code  = 1
-)
-";
-$result_about = mysqli_query($connection,$query_about);
-while($row_about = mysqli_fetch_assoc($result_about)){
-    echo $row_about['my_opinion'];
-}
-                            ?></textarea>
-                        <span class="label">summary</span>
+                        <input type="text" class="fields" id="first_name" name="date" required="" value="<?php echo $saved_degree;?>">
+                        <span class="label">E-mail / contact no.</span>
+                        
                     </div>
-                    
+                    <div class="input-wrap">
+                        <textarea type="text" class="fields" id="summary" name="year" required="" onkeydown="autosize('summary')" maxlength="350" style="height: calc(69px);"  placeholder="Add a note..."><?php echo $saved_opinion;?></textarea>
+                        <span class="label"></span>
+                    </div>
+
 
                     <div class="button-wrap">
                        <input type="hidden" name="submitted" value="oiuygf">
-                        <button class="continue" name="submitted" onclick="document.getElementById('form').submit();">Save</button>
+                        <button class="continue" name="submitted" onclick="document.getElementById('form').submit();">Add</button>
                     </div>
                     <br>
                 </div>
                
             </form>
+             <?php 
+            if(isset($_GET['edit'])){
+echo '<a href="?delete='.$_GET['edit'].'" id="skipall" >Delete this contact detail</a>';
+            }
+            ?>
         </div>
     </div>
     <div class="hide load_anything"></div>
     <script>
-    function autosize(getEleId) {
+  function autosize(getEleId) {
     setTimeout(function () {
         el = document.getElementById(getEleId);
         el.style.cssText = 'height:auto; padding:.75em 1em';
@@ -140,6 +178,16 @@ while($row_about = mysqli_fetch_assoc($result_about)){
     }, 100);
 }
 autosize();
+        
+var social_media = ["Facebook","Instagram","Twitter","LinkedIn","Youtube","Whatsapp","Snapchat","Telegram","Github","Website"];
+for(var i = 0; i < 10; i++){
+    var option = document.createElement('option');
+    option.value = social_media[i];
+    option.innerHTML = social_media[i];
+    date.appendChild(option);
+}
+
+        
     </script>
 </body>
 </html>
