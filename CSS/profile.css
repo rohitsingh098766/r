@@ -353,7 +353,7 @@ display: grid;
 
 @media only screen and (max-width: 1024px){
     .section_header{
-   background: rgb(254 253 253);
+   background: rgb(253 253 253);
     }
    .about_section{
 /*       box-shadow: 1px 0px 17px 0px #92929214;*/
