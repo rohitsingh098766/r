@@ -522,7 +522,7 @@ $privacy_change = 'onclick="show_privacy_change()"';
     
 $all_echo[1] = ' <div class="about_section">
     <div class="section_header">
-        <div class="header_main">ABOUT '.strtoupper($name_user).'</div>
+        <div class="header_main">ABOUT </div>
         <div class="header_edit">'.$edit_option.'</div>
         <div class="header_privacy" '.$privacy_change.'>'.$privacy_option.'</div>
     </div>
