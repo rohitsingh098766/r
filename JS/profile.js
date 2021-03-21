@@ -74,7 +74,7 @@ function show_privacy_change(){
 
 
 //change privacy
-var select_list = document.getElementById('s_lists_privacy').querySelectorAll('.select_tl');
+var select_list = document.getElementById('s_lists').querySelectorAll('.select_tl');
 for (var i = select_list.length - 1; i >= 0; --i) {
     select_list[i].addEventListener("click", function () {
         var id = this.getAttribute('cd');

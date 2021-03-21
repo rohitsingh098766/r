@@ -158,7 +158,7 @@ $follower_user = $row_following['total_sum_following'];
         <div class="items">
             <p class="select_category">Share with. </p>
             <form>
-                <ul id="s_lists_privacy">
+                <ul id="s_lists">
                       <li>
                         <div class="follow-conn select_tl" cd="'.$row['id'].'">
                             <img src="./emogi/128/nature/whale.png" class="follow-icon">
