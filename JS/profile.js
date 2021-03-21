@@ -91,4 +91,4 @@ for (var i = select_list.length - 1; i >= 0; --i) {
 
 
 //texting remove it later
-show_now('about');
+//show_now('about');
