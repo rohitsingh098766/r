@@ -253,6 +253,7 @@ font-size: .85em;
     background: rgba(144, 199, 255, 0.19);
     background: white;
     border-bottom: 1px solid #8080801f;
+    line-height: 150%;
 }
 .header_edit{
     display: grid;
@@ -274,12 +275,12 @@ font-size: .85em;
 
 .about_date{
     font-size: .8em;
-    margin-top: .3em;
+/*    margin-top: .3em;*/
     
 }
 .about_description{
 font-size: .9em;
-    margin-top: .3em;
+/*    margin-top: .3em;*/
     color: gray;
     text-align: justify;
 }
@@ -307,7 +308,7 @@ display: grid;
     color: black;
 }
 .about_edu_degre{
-    margin-top: .2em;
+/*    margin-top: .2em;*/
 }
 
 .plus_about{
