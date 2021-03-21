@@ -892,6 +892,8 @@ $edit_option = '<a href="page/contact_details" class=""><img src="SVG/plus-regul
 if($user==$_SESSION['id']){
 $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> Everyone';
     $privacy_change = 'onclick="show_privacy_change()"';
+    $contact_edit = '<a href="page/contact_details?edit='.$row_about['real_id'].'" class=""><img src="SVG/pencil.svg" class="pencil about"></a>';
+    $contact_eye = '<img src="SVG/eye-regular.svg" class="pencil about eye"> Everyone';
 }
 
 $upper_grid = ' <div class="about_section">
@@ -910,11 +912,11 @@ $upper_grid = ' <div class="about_section">
     $contact .= '<div class="section_body">
         <div class="contact_about">
             <div>
-                <div>'.$row_about['position'].'<a href="page/contact_details?edit='.$row_about['real_id'].'" class=""><img src="SVG/pencil.svg" class="pencil about"></a></div>
+                <div>'.$row_about['position'].$contact_edit.'</div>
               '.$description.'
             </div>
             <div></div>
-            <div class="header_privacy" '.$privacy_change.'><img src="SVG/eye-regular.svg" class="pencil about eye"> Everyone</div>
+            <div class="header_privacy" '.$privacy_change.'>'.$contact_eye.'</div>
         </div></div>';
     
                       
