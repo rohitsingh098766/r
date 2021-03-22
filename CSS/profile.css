@@ -348,7 +348,9 @@ display: grid;
     background-color: gainsboro;
     display: block;
 }
-
+.about_lock{
+transform: scale(.5);
+}
 
 
 @media only screen and (max-width: 1024px){

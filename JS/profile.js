@@ -74,7 +74,7 @@ function show_privacy_change(){
 
 
 //change privacy
-var select_list = document.getElementById('s_lists').querySelectorAll('.select_tl');
+var select_list = document.getElementById('s_lists_about').querySelectorAll('.select_tl');
 for (var i = select_list.length - 1; i >= 0; --i) {
     select_list[i].addEventListener("click", function () {
         var id = this.getAttribute('cd');
@@ -85,8 +85,11 @@ for (var i = select_list.length - 1; i >= 0; --i) {
         }
         this.querySelector('.select_me').classList.toggle('select_me_selected');
         this.querySelector('.select_me').querySelector('div').classList.toggle('display_flex');
+        
     })
 }
+
+
 
 
 

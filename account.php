@@ -151,19 +151,19 @@ $follower_user = $row_following['total_sum_following'];
 </head>
 
 <body id="body" oncontextmenu="">
-    
+     
     
         <div class="my_options">
         <div class="my_options" id="my_options"></div>
         <div class="items">
-            <p class="select_category">Share with. </p>
+            <p class="select_category">Who can see this? </p>
             <form>
-                <ul id="s_lists">
+                <ul id="s_lists_about">
                       <li>
                         <div class="follow-conn select_tl" cd="'.$row['id'].'">
-                            <img src="./emogi/128/nature/whale.png" class="follow-icon">
+                            <img src="SVG/lock-solid-about.svg" class="follow-icon  about_lock">
                                     <span class="conn-name">
-                                        <span><b>Nobady</b></span>
+                                        <span><b>Nobody</b></span>
                                           
                                          </span>
                                     <span class="select_me ">
@@ -173,9 +173,9 @@ $follower_user = $row_following['total_sum_following'];
                     </li>
                       <li>
                         <div class="follow-conn select_tl" cd="'.$row['id'].'">
-                            <img src="./emogi/128/nature/whale.png" class="follow-icon">
+                            <img src="SVG/lock-solid-green.svg" class="follow-icon about_lock">
                                     <span class="conn-name">
-                                        <span><b>Followers</b></span>
+                                        <span><b>Only followers</b></span>
                                             
                                          </span>
                                     <span class="select_me '.$pin1.'">
@@ -185,7 +185,7 @@ $follower_user = $row_following['total_sum_following'];
                     </li>
                       <li>
                         <div class="follow-conn select_tl" cd="'.$row['id'].'">
-                            <img src="./emogi/128/nature/whale.png" class="follow-icon">
+                            <img src="SVG/lock-open-red.svg" class="follow-icon about_lock">
                                     <span class="conn-name">
                                         <span><b>Everyone</b></span>
                                             
@@ -196,7 +196,7 @@ $follower_user = $row_following['total_sum_following'];
                         </div>
                     </li>
 <p class="select_category"></p>
-<span class="or-marker">&nbsp;Or share with selected label.&nbsp;</span>
+<span class="or-marker">&nbsp;Or only selected labels.&nbsp;</span>
                     <?php
                     
                     $query = "select * from yaarme_follow.category where owner_id = {$_SESSION['id']}";
@@ -233,49 +233,7 @@ $follower_user = $row_following['total_sum_following'];
                  
 
 
-                    <!--<li>
-                        <a href="?t=1" class="follow-conn ">
-                            <img src="./emogi/128/symbols/heart-suit.png" class="follow-icon">
-                            <span class="conn-name cn">
-                                <span><b>All</b></span>
-                                <span>Watch posts from all following.</span>
-                            </span>
-
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="?t=4" class="follow-conn ">
-                            <img src="./emogi/128/symbols/muted-speaker.png" class="follow-icon">
-                            <span class="conn-name cn">
-                                <span><b>Muted</b></span>
-                                <span>Watch posts from Muted Following</span>
-                            </span>
-
-                        </a>
-                    </li>
-                    <li>
-                        <a href="?t=3" class="follow-conn ">
-                            <img src="./emogi/128/human/man-astronaut-medium-dark-skin-tone.png" class="follow-icon">
-                            <span class="conn-name cn">
-                                <span><b>Unlisted</b></span>
-                                <span>Everyone who are not listed yet.</span>
-                            </span>
-
-                        </a>
-                    </li>-->
-                    <!--
-                    <li>
-                        <a href="#" class="follow-conn ">
-                            <img src="./emogi/128/nature/fire.png" class="follow-icon">
-                            <span class="conn-name cn">
-                                <span><b>Trending posts</b></span>
-                                <span>Among Your following / in India.</span>
-                            </span>
-
-                        </a>
-                    </li>
--->
+                  
 
 
 
