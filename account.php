@@ -1034,7 +1034,7 @@ foreach($all_echo as $value){
                     <div class="my_options " id="post_optionyy">
                         <div class="my_options my_options_block" onclick="close_options('yy')"></div>
                         <div class="items item_post" style="">
-                               <p class="select_category">Add a label for <span class="active_name">name</span>.</p>
+                               <p class="select_category">Add a label  <span class="active_name hide">name</span></p>
                             <form>
                                 <ul>
 
@@ -1082,7 +1082,7 @@ foreach($all_echo as $value){
                                             <img src="./emogi/128/human/man-astronaut-medium-dark-skin-tone.png" class="follow-icon">
                                             <span class="conn-name cn">
                                                   <span><b>Unlabel</b></span>
-                                                    <span>Everyone who doesn't have any label.</span>
+                                                    <span>Remove label from this profile.</span>
                                             </span>
 
                                         </div>

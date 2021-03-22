@@ -52,12 +52,22 @@ function profile_options(){
     document.getElementById('post_options').style.display="none"
     document.getElementById('share_options').style.display="block"
     document.getElementById('block_options').style.display="block"
+     document.getElementById('mutww').style.display="block"
 }
 function post_options(){
     document.getElementById('post_options').style.display="block"
     document.getElementById('share_options').style.display="none"
     document.getElementById('block_options').style.display="none"
+     document.getElementById('mutww').style.display="block"
 }
+
+document.getElementById('follow_following_list').addEventListener('click',function(){
+     document.getElementById('post_options').style.display="none"
+    document.getElementById('share_options').style.display="none"
+    document.getElementById('block_options').style.display="none"
+    document.getElementById('mutww').style.display="none"
+    document.getElementById('block_options').style.display="none"
+})
 
 //full profile image
 document.getElementById('profile_image').addEventListener('click',function(){
