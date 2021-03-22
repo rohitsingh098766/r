@@ -89,6 +89,11 @@ for (var i = select_list.length - 1; i >= 0; --i) {
     })
 }
 
+document.querySelector("#my_options").addEventListener("click", function () {
+    document.querySelector(".my_options").style.display = "none";
+})
+
+
 
 
 
