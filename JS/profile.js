@@ -77,6 +77,21 @@ function show_privacy_change(){
 var select_list = document.getElementById('s_lists_about').querySelectorAll('.select_tl');
 for (var i = select_list.length - 1; i >= 0; --i) {
     select_list[i].addEventListener("click", function () {
+        
+        if(this.querySelector('.follow-icon').classList.contains('about_lock')){
+         for (var i = select_list.length - 1; i >= 0; --i) {
+             select_list[i].querySelector('.select_me').classList.remove('select_me_selected');
+        select_list[i].querySelector('.select_me').querySelector('div').classList.remove('display_flex');
+         }
+        }else{
+//            only_one
+            var only_one = document.querySelectorAll('.only_one');
+             for (var i = only_one.length - 1; i >= 0; --i) {
+             only_one[i].classList.remove('select_me_selected');
+        only_one[i].querySelector('div').classList.remove('display_flex');
+         }
+        }
+        
         var id = this.getAttribute('cd');
         if (this.querySelector('.select_me').classList.contains('select_me_selected')) {
             my_ajax("./php/choose_category.php", "ct=" + id + "&action=delete");

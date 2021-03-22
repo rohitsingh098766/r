@@ -9,7 +9,7 @@ $delete = mysqli_real_escape_string($connection,$_GET['delete']);
 $query = "DELETE FROM yaarme.about WHERE (`about`.`id` = {$delete} and `about`.`user` = {$_SESSION['id']})";
 // echo $query;
 if(mysqli_query($connection,$query)){
-header('Location: ../account');
+header('Location: ../account?edit=1');
 exit(0);
 }
 }
@@ -49,7 +49,7 @@ $edit = mysqli_real_escape_string($connection,$_GET['edit']);
 // echo $query;
 //    exit;
 if(mysqli_query($connection,$query)){
-  header('Location: ../account');
+  header('Location: ../account?edit=1');
 exit;  
 }  
 

@@ -19,7 +19,7 @@ $last_name = mysqli_real_escape_string($connection,$_POST['last_name']);
 WHERE `id` = {$_SESSION['id']};";
 if(mysqli_query($connection,$query)){
     $_SESSION['name'] = $first_name.' '.$last_name;
-header('Location: ../account');
+header('Location: ../account?edit=1');
 exit;
 }
     

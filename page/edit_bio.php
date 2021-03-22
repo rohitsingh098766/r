@@ -10,7 +10,7 @@ $bio = mysqli_real_escape_string($connection,$_POST['bio']);
 `status_mini_bio` = '{$bio}'
 WHERE `id` = {$_SESSION['id']};";
 if(mysqli_query($connection,$query)){
-header('Location: ../account');
+header('Location: ../account?edit=1');
 exit;
 }
     

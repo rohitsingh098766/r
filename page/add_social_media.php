@@ -21,7 +21,7 @@ if(mysqli_query($connection,$query)){
 
     
 
-header('Location: ../account');
+header('Location: ../account?edit=1');
 exit;
     
 }

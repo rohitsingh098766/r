@@ -17,7 +17,7 @@ $query = "INSERT INTO yaarme.about (`user`, `about_code`,  `my_opinion`) VALUES 
 // echo $query;
 if(mysqli_query($connection,$query)){
 // echo "inserted_summary";
-    header('Location: ../account');
+    header('Location: ../account?edit=1');
 exit;
 } 
     

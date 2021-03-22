@@ -166,7 +166,7 @@ $follower_user = $row_following['total_sum_following'];
                                         <span><b>Nobody</b></span>
                                           
                                          </span>
-                                    <span class="select_me ">
+                                    <span class="select_me only_one">
                                 <div class="inner_checked ">&#10004;</div>
                             </span>
                         </div>
@@ -178,7 +178,7 @@ $follower_user = $row_following['total_sum_following'];
                                         <span><b>Only followers</b></span>
                                             
                                          </span>
-                                    <span class="select_me '.$pin1.'">
+                                    <span class="select_me only_one ">
                                 <div class="inner_checked ">&#10004;</div>
                             </span>
                         </div>
@@ -190,7 +190,7 @@ $follower_user = $row_following['total_sum_following'];
                                         <span><b>Everyone</b></span>
                                             
                                          </span>
-                                    <span class="select_me ">
+                                    <span class="select_me only_one">
                                 <div class="inner_checked ">&#10004;</div>
                             </span>
                         </div>
@@ -1286,6 +1286,11 @@ for(var i = 0; i < images.length; i++){
     if($show_every===false){
         echo "<script>function show_now(id){window.alert('this is private account.')}</script>";
     }
+    if(isset($_GET['edit'])){
+        echo "<script>show_now('about');</script>";
+        
+    }
+    
     ?>
     
 </body>
