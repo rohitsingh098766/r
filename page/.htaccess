@@ -4,4 +4,4 @@ AddHandler cgi-script .py
 RewriteEngine On
 
 
-RewriteRule ^(logout|search|activity|like|post|saved_post|share_profile|settings|edit_username|edit_password|saved_posts)$ $1.php [NC,L]
+RewriteRule ^(logout|search|activity|like|post|saved_post|share_profile|settings|edit_username|edit_password|saved_posts|work|relationship|education|edit_summary|edit_dob|add_social_media|contact_details)$ $1.php [NC,L]
