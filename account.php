@@ -450,6 +450,8 @@ $follower_user = $row_following['total_sum_following'];
                             $relationship_body = '';
                             $echo_list_id = '';
                             $privacy_change = '';
+                            $contact_edit = '';
+                            $contact_eye = '';
                             
 if($user==$_SESSION['id']){
 $all_echo[1] = '<a href="page/edit_summary"> <div  class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> A BRIEF NOTE ABOUT YOURSELF</div></div></div></a>'; 
@@ -565,7 +567,7 @@ $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <spa
      <div class="section_header">
         <div class="header_main">DATE OF BIRTH</div>
         <div class="header_edit">'.$edit_option.'</div>
-        <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="3">'.$privacy_option.'</div>
+        <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div>
     </div>
     <div class="section_body">';
     $widget_down = '</div>
@@ -629,7 +631,7 @@ $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <spa
        $widget_up = ' <div class="about_section">
     <div class="section_header">  <div class="header_main">RELATIONSHIP</div>
         <div class="header_edit">'.$edit_option.'</div>
-        <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="1">'.$privacy_option.'</div></div>
+        <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div></div>
     ';
     $widget_down = '</div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ '.$echo_list_id.' ];</script>';
     
@@ -710,9 +712,35 @@ $edit_option = '<a href="page/education" class=""><img src="SVG/plus-regular.svg
              $edit_option_inner = '<a href="page/education?edit='.$row_about['real_id'].'" class="about_inner_edit"><img src="SVG/pencil.svg" class="pencil about"></a>';
 }
 if($user==$_SESSION['id']){
-$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>Everyone</span>';
+$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>'.$echo_privacy.'</span>';
     $privacy_change = 'onclick="show_privacy_change('.$row_about['real_id'].','.$row_about['about_code'].')"';
 }
+    if($user==$_SESSION['id']){
+    if($row_about['share_with']==1){
+        $echo_privacy = 'Only you';
+    }else if($row_about['share_with']==2){
+         $echo_privacy = 'Only followers';
+    }else if($row_about['share_with']==3){
+         $echo_privacy = 'Everyone';
+    }else if($row_about['share_with']==4){
+         $echo_privacy = '';
+        $query_echo_lebels = "select * from yaarme.about_privacy where about_id = {$row_about['real_id']}";
+          $result_echo_lebels = mysqli_query($connection,$query_echo_lebels);
+             $echo_privacy = '';
+            $echo_list_id = '';
+  while($row_echo_lebels = mysqli_fetch_assoc($result_echo_lebels)){
+      $echo_privacy .= $row_echo_lebels['group_name'].', ';
+      $echo_list_id .= $row_echo_lebels['category_id'].', ';
+  }
+        
+    }
+    
+    
+$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>'.$echo_privacy.'</span>';
+    $privacy_change = 'onclick="show_privacy_change('.$row_about['real_id'].','.$row_about['about_code'].')"';
+}
+    
+    
     if($row_about['add_profile']){
         echo '<style>.about_image_education{height: 3em;width: 3em;margin-right: 1em;}.about_image_dimension_education{height: 3em;width: 3em;background-color: white;</style>';
     }
@@ -720,9 +748,9 @@ $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <spa
        $widget_up = ' <div class="about_section">
     <div class="section_header">  <div class="header_main">EDUCATION</div>
         <div class="header_edit">'.$edit_option.'</div>
-        <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="2">'.$privacy_option.'</div></div>
+        <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div></div>
     ';
-    $widget_down = '</div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ 1 , 2 , 3 , 4 , 5 , 6 , 7 , 19 ];</script>';
+    $widget_down = '</div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ '.$echo_list_id.' ];</script>';
     
     $branch = '';
     $company = '';
@@ -800,12 +828,37 @@ $branch = '<div class="about_edu_degre">'.$row_about['position'].$comma_edu.$row
 $all_echo[5] =  $widget_up.$education_body.$widget_down;
 
 }else if($row_about['about_code']==6){
+    if($user==$_SESSION['id']){
+    if($row_about['share_with']==1){
+        $echo_privacy = 'Only you';
+    }else if($row_about['share_with']==2){
+         $echo_privacy = 'Only followers';
+    }else if($row_about['share_with']==3){
+         $echo_privacy = 'Everyone';
+    }else if($row_about['share_with']==4){
+         $echo_privacy = '';
+        $query_echo_lebels = "select * from yaarme.about_privacy where about_id = {$row_about['real_id']}";
+          $result_echo_lebels = mysqli_query($connection,$query_echo_lebels);
+             $echo_privacy = '';
+            $echo_list_id = '';
+  while($row_echo_lebels = mysqli_fetch_assoc($result_echo_lebels)){
+      $echo_privacy .= $row_echo_lebels['group_name'].', ';
+      $echo_list_id .= $row_echo_lebels['category_id'].', ';
+  }
+        
+    }
+    
+    
+$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>'.$echo_privacy.'</span>';
+    $privacy_change = 'onclick="show_privacy_change('.$row_about['real_id'].','.$row_about['about_code'].')"';
+}
+    
       if($user==$_SESSION['id']){
 $edit_option = '<a href="page/work" class=""><img src="SVG/plus-regular.svg" class="plus_about about"></a>';
 $edit_option_inner = '<a href="page/work?edit='.$row_about['real_id'].'" class="about_inner_edit"><img src="SVG/pencil.svg" class="pencil about"></a>';
 }
 if($user==$_SESSION['id']){
-$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>Everyone</span>';
+$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>'.$echo_privacy.'</span>';
     $privacy_change = 'onclick="show_privacy_change('.$row_about['real_id'].','.$row_about['about_code'].')"';
 }
     if($row_about['add_profile']){
@@ -817,7 +870,7 @@ $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <spa
         <div class="header_edit">'.$edit_option.'</div>
         <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div></div>
     ';
-    $widget_down = '</div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ 1 , 2 , 3 , 4 , 5 , 6 , 7 , 19 ];</script>';
+    $widget_down = '</div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ '.$echo_list_id.' ];</script>';
     
     $branch = '';
     $company = '';
@@ -884,6 +937,31 @@ $profile_img = './profile/i/120/'.$row_about['img'];
 $all_echo[6] =  $widget_up.$work_body.$widget_down;
 
 }else if($row_about['about_code']==7){
+    
+    if($user==$_SESSION['id']){
+    if($row_about['share_with']==1){
+        $echo_privacy = 'Only you';
+    }else if($row_about['share_with']==2){
+         $echo_privacy = 'Only followers';
+    }else if($row_about['share_with']==3){
+         $echo_privacy = 'Everyone';
+    }else if($row_about['share_with']==4){
+         $echo_privacy = '';
+        $query_echo_lebels = "select * from yaarme.about_privacy where about_id = {$row_about['real_id']}";
+          $result_echo_lebels = mysqli_query($connection,$query_echo_lebels);
+             $echo_privacy = '';
+            $echo_list_id = '';
+  while($row_echo_lebels = mysqli_fetch_assoc($result_echo_lebels)){
+      $echo_privacy .= $row_echo_lebels['group_name'].', ';
+      $echo_list_id .= $row_echo_lebels['category_id'].', ';
+  }
+        
+    }
+    
+    
+$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>'.$echo_privacy.'</span>';
+    $privacy_change = 'onclick="show_privacy_change('.$row_about['real_id'].','.$row_about['about_code'].')"';
+}
       if($user==$_SESSION['id']){
 $edit_option = '<a href="page/edit_dob" class=""><img src="SVG/pencil.svg" class="pencil about"></a>';
 }
@@ -897,14 +975,39 @@ $all_echo[7] =  ' <div class="about_section">
         <div class="header_edit">'.$edit_option.'</div>
         <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div></div>
     <div class="section_body">'.$row_about['position'].'</div>
-</div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ 1 , 2 , 3 , 4 , 5 , 6 , 7 , 19 ];</script>';
+</div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ '.$echo_list_id.' ];</script>';
 
 }else if($row_about['about_code']==8){
+    
+    if($user==$_SESSION['id']){
+    if($row_about['share_with']==1){
+        $echo_privacy = 'Only you';
+    }else if($row_about['share_with']==2){
+         $echo_privacy = 'Only followers';
+    }else if($row_about['share_with']==3){
+         $echo_privacy = 'Everyone';
+    }else if($row_about['share_with']==4){
+         $echo_privacy = '';
+        $query_echo_lebels = "select * from yaarme.about_privacy where about_id = {$row_about['real_id']}";
+          $result_echo_lebels = mysqli_query($connection,$query_echo_lebels);
+             $echo_privacy = '';
+            $echo_list_id = '';
+  while($row_echo_lebels = mysqli_fetch_assoc($result_echo_lebels)){
+      $echo_privacy .= $row_echo_lebels['group_name'].', ';
+      $echo_list_id .= $row_echo_lebels['category_id'].', ';
+  }
+        
+    }
+    
+    
+$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>'.$echo_privacy.'</span>';
+    $privacy_change = 'onclick="show_privacy_change('.$row_about['real_id'].','.$row_about['about_code'].')"';
+}
       if($user==$_SESSION['id']){
 $edit_option = '<a href="page/add_social_media" class=""><img src="SVG/pencil.svg" class="pencil about"></a>';
 }
 if($user==$_SESSION['id']){
-$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>Everyone</span>';
+$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>'.$echo_privacy.'</span>';
     $privacy_change = 'onclick="show_privacy_change('.$row_about['real_id'].','.$row_about['about_code'].')"';
 }
 
@@ -913,7 +1016,7 @@ $upper_grid =  '   <div class="about_section">
         <div class="header_edit">'.$edit_option.'</div>
         <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div></div>
                                 <div class="section_body">';
-    $lower_grid = '</div></div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ 1 , 2 , 3 , 4 , 5 , 6 , 7 , 19 ];</script>';
+    $lower_grid = '</div></div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ '.$echo_list_id.' ];</script>';
     
     $transform_css = '';
     if($row_about['position'] === 'Youtube' || $row_about['position'] === 'Telegram' ){
@@ -926,16 +1029,40 @@ $upper_grid =  '   <div class="about_section">
  $all_echo[8] = $upper_grid.$social_links.$lower_grid;
     
 }else if($row_about['about_code']==9){
+    if($user==$_SESSION['id']){
+    if($row_about['share_with']==1){
+        $echo_privacy = 'Only you';
+    }else if($row_about['share_with']==2){
+         $echo_privacy = 'Only followers';
+    }else if($row_about['share_with']==3){
+         $echo_privacy = 'Everyone';
+    }else if($row_about['share_with']==4){
+         $echo_privacy = '';
+        $query_echo_lebels = "select * from yaarme.about_privacy where about_id = {$row_about['real_id']}";
+          $result_echo_lebels = mysqli_query($connection,$query_echo_lebels);
+             $echo_privacy = '';
+            $echo_list_id = '';
+  while($row_echo_lebels = mysqli_fetch_assoc($result_echo_lebels)){
+      $echo_privacy .= $row_echo_lebels['group_name'].', ';
+      $echo_list_id .= $row_echo_lebels['category_id'].', ';
+  }
+        
+    }
+    
+    
+$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>'.$echo_privacy.'</span>';
+    $privacy_change = 'onclick="show_privacy_change('.$row_about['real_id'].','.$row_about['about_code'].')"';
+}
 
 
       if($user==$_SESSION['id']){
 $edit_option = '<a href="page/contact_details" class=""><img src="SVG/plus-regular.svg" class="plus_about about"></a>';
 }
 if($user==$_SESSION['id']){
-$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>Everyone</span>';
+$privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>'.$echo_privacy.'</span>';
     $privacy_change = 'onclick="show_privacy_change('.$row_about['real_id'].','.$row_about['about_code'].')"';
     $contact_edit = '<a href="page/contact_details?edit='.$row_about['real_id'].'" class=""><img src="SVG/pencil.svg" class="pencil about"></a>';
-    $contact_eye = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>Everyone</span>';
+    $contact_eye = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>'.$echo_privacy.'</span>';
 }
 
 $upper_grid = ' <div class="about_section">
@@ -958,8 +1085,8 @@ $upper_grid = ' <div class="about_section">
               '.$description.'
             </div>
             <div></div>
-            <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="1">'.$contact_eye.'</div>
-        </div></div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ 1 , 2 , 3 , 4 , 5 , 6 , 7 , 19 ];</script>';
+            <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$contact_eye.'</div>
+        </div></div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ '.$echo_list_id.' ];</script>';
     
                       
  $all_echo[9] = $upper_grid.$contact.$lower_grid;
