@@ -452,6 +452,7 @@ $follower_user = $row_following['total_sum_following'];
                             $privacy_change = '';
                             $contact_edit = '';
                             $contact_eye = '';
+                            $group_name = '';
                             
 if($user==$_SESSION['id']){
 $all_echo[1] = '<a href="page/edit_summary"> <div  class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> A BRIEF NOTE ABOUT YOURSELF</div></div></div></a>'; 
@@ -478,9 +479,9 @@ order by about_code, yaarme.about.id desc
        $following = '' ; 
      }
      
- $query_about = "select *,users.id as  profile_id, about.id as real_id from yaarme.about left join yaarme.users on users.id = about.add_profile
+ $query_about = "select *,users.id as  profile_id, about.id as real_id from yaarme.about left join yaarme.users on users.id = about.add_profile left join yaarme.about_privacy on about.connect_privacy  = about_privacy.about_id left join yaarme_follow.follow on follow.category = about_privacy.category_id
 where (
-yaarme.about.user = {$user} and (share_with = 3 ".$following.")
+yaarme.about.user = {$user} and (share_with = 3 ".$following." or follow.opponent = {$_SESSION['id']})
 )
 order by about_code, yaarme.about.id desc
 ";    
@@ -521,7 +522,7 @@ if($user==$_SESSION['id']){
     
     
 $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>'.$echo_privacy.'</span>';
-$privacy_change = 'onclick="show_privacy_change('.$row_about['real_id'].','.$row_about['about_code'].',4)"';
+$privacy_change = 'onclick="show_privacy_change('.$row_about['real_id'].','.$row_about['about_code'].')"';
 }
     
 $all_echo[1] = ' <div class="about_section">
@@ -547,7 +548,7 @@ if($user==$_SESSION['id']){
          $echo_privacy = 'Everyone';
     }else if($row_about['share_with']==4){
          $echo_privacy = '';
-        $query_echo_lebels = "select * from yaarme.about_privacy where about_id = {$row_about['real_id']}";
+        $query_echo_lebels = "select * from yaarme.about_privacy join yaarme_follow.category on yaarme_follow.category.id = yaarme.about_privacy.category_id where about_id = {$row_about['real_id']}";
           $result_echo_lebels = mysqli_query($connection,$query_echo_lebels);
              $echo_privacy = '';
             $echo_list_id = '';
@@ -724,7 +725,7 @@ $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <spa
          $echo_privacy = 'Everyone';
     }else if($row_about['share_with']==4){
          $echo_privacy = '';
-        $query_echo_lebels = "select * from yaarme.about_privacy where about_id = {$row_about['real_id']}";
+        $query_echo_lebels = "select * from yaarme.about_privacy join yaarme_follow.category on yaarme_follow.category.id = yaarme.about_privacy.category_id where about_id = {$row_about['real_id']}";
           $result_echo_lebels = mysqli_query($connection,$query_echo_lebels);
              $echo_privacy = '';
             $echo_list_id = '';
@@ -837,7 +838,7 @@ $all_echo[5] =  $widget_up.$education_body.$widget_down;
          $echo_privacy = 'Everyone';
     }else if($row_about['share_with']==4){
          $echo_privacy = '';
-        $query_echo_lebels = "select * from yaarme.about_privacy where about_id = {$row_about['real_id']}";
+        $query_echo_lebels = "select * from yaarme.about_privacy join yaarme_follow.category on yaarme_follow.category.id = yaarme.about_privacy.category_id where about_id = {$row_about['real_id']}";
           $result_echo_lebels = mysqli_query($connection,$query_echo_lebels);
              $echo_privacy = '';
             $echo_list_id = '';
@@ -947,7 +948,7 @@ $all_echo[6] =  $widget_up.$work_body.$widget_down;
          $echo_privacy = 'Everyone';
     }else if($row_about['share_with']==4){
          $echo_privacy = '';
-        $query_echo_lebels = "select * from yaarme.about_privacy where about_id = {$row_about['real_id']}";
+        $query_echo_lebels = "select * from yaarme.about_privacy join yaarme_follow.category on yaarme_follow.category.id = yaarme.about_privacy.category_id where about_id = {$row_about['real_id']}";
           $result_echo_lebels = mysqli_query($connection,$query_echo_lebels);
              $echo_privacy = '';
             $echo_list_id = '';
@@ -988,7 +989,7 @@ $all_echo[7] =  ' <div class="about_section">
          $echo_privacy = 'Everyone';
     }else if($row_about['share_with']==4){
          $echo_privacy = '';
-        $query_echo_lebels = "select * from yaarme.about_privacy where about_id = {$row_about['real_id']}";
+        $query_echo_lebels = "select * from yaarme.about_privacy join yaarme_follow.category on yaarme_follow.category.id = yaarme.about_privacy.category_id where about_id = {$row_about['real_id']}";
           $result_echo_lebels = mysqli_query($connection,$query_echo_lebels);
              $echo_privacy = '';
             $echo_list_id = '';
@@ -1038,7 +1039,7 @@ $upper_grid =  '   <div class="about_section">
          $echo_privacy = 'Everyone';
     }else if($row_about['share_with']==4){
          $echo_privacy = '';
-        $query_echo_lebels = "select * from yaarme.about_privacy where about_id = {$row_about['real_id']}";
+        $query_echo_lebels = "select * from yaarme.about_privacy join yaarme_follow.category on yaarme_follow.category.id = yaarme.about_privacy.category_id where about_id = {$row_about['real_id']}";
           $result_echo_lebels = mysqli_query($connection,$query_echo_lebels);
              $echo_privacy = '';
             $echo_list_id = '';

@@ -203,6 +203,8 @@ session_start();
                             if($row['location']){
                                 $location_show = '
                         <div class="location"><img class="loc-icon" src="./SVG/location.svg" alt="">'.$row['location'].'</div>';
+                            }else{
+                                $location_show = '';
                             }
                             
                          if($proceed===true){  
