@@ -150,8 +150,13 @@ VALUES (NULL, '{$_SESSION['id']}', '5', '1', NULL, {$degree}, {$branch}, {$colla
 
 // echo $query;
 if(mysqli_query($connection,$query)){
-
-// echo 'inserted';
+  $query_inspect = "select * from yaarme.about where (user = {$_SESSION['id']} and about_code = 5) order by id asc limit 1";
+    $result_inspect = mysqli_query($connection,$query_inspect);
+  while($row_inspect = mysqli_fetch_assoc($result_inspect)){
+    $query_set = "UPDATE `about` SET `share_with` = {$row_inspect['share_with']}, `connect_privacy` = {$row_inspect['connect_privacy']} WHERE (user = {$_SESSION['id']} and about_code = 5)";
+      if(mysqli_query($connection,$query_set)){
+      }
+}
 }
 // echo $query;
 //exit;

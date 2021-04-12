@@ -15,7 +15,13 @@ $year = mysqli_real_escape_string($connection,$_POST['year']);
     $query = "INSERT INTO yaarme.about (`user`, `about_code`,  `position`, `my_opinion`) VALUES ( {$_SESSION['id']}, 8,  '{$date}','{$year}');";
 // echo $query;
 if(mysqli_query($connection,$query)){
-    
+     $query_inspect = "select * from yaarme.about where (user = {$_SESSION['id']} and about_code = 8) order by id asc limit 1";
+    $result_inspect = mysqli_query($connection,$query_inspect);
+  while($row_inspect = mysqli_fetch_assoc($result_inspect)){
+    $query_set = "UPDATE `about` SET `share_with` = {$row_inspect['share_with']}, `connect_privacy` = {$row_inspect['connect_privacy']} WHERE (user = {$_SESSION['id']} and about_code = 8)";
+      if(mysqli_query($connection,$query_set)){
+      }
+}
 }  
 
 

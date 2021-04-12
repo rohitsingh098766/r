@@ -152,7 +152,14 @@ VALUES (NULL, '{$_SESSION['id']}', '4', '1', NULL, {$collage}, {$branch}, {$coll
 // echo $query;
 if(mysqli_query($connection,$query)){
 
-// echo 'inserted';
+    $query_inspect = "select * from yaarme.about where (user = {$_SESSION['id']} and about_code = 4) order by id asc limit 1";
+    $result_inspect = mysqli_query($connection,$query_inspect);
+  while($row_inspect = mysqli_fetch_assoc($result_inspect)){
+    $query_set = "UPDATE `about` SET `share_with` = {$row_inspect['share_with']}, `connect_privacy` = {$row_inspect['connect_privacy']} WHERE (user = {$_SESSION['id']} and about_code = 4)";
+      if(mysqli_query($connection,$query_set)){
+      }
+}
+    
 }
 // echo $query;
 //exit;
@@ -290,7 +297,7 @@ exit;
                         <span class="label">With</span>
                     </div>
                     <div class="input-wrap hide">
-                        <input type="text" class="fields " id="branch" name="" required>
+                        <input type="text" class="fields " id="branch" name="branch" required>
                         <span class="label">Branch</span>
                     </div>
 

@@ -517,7 +517,8 @@ if($user==$_SESSION['id']){
       $echo_privacy .= $row_echo_lebels['group_name'].', ';
       $echo_list_id .= $row_echo_lebels['category_id'].', ';
   }
-        
+         $echo_privacy = 'Only '.substr($echo_privacy,0,-2);
+         $echo_list_id = substr($echo_list_id,0,-2);
     }
     
     
@@ -556,8 +557,10 @@ if($user==$_SESSION['id']){
       $echo_privacy .= $row_echo_lebels['group_name'].', ';
       $echo_list_id .= $row_echo_lebels['category_id'].', ';
   }
-        
+     $echo_privacy = 'Only '.substr($echo_privacy,0,-2);
+         $echo_list_id = substr($echo_list_id,0,-2);   
     }
+    
     
     
 $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>'.$echo_privacy.'</span>';
@@ -620,6 +623,8 @@ if($user==$_SESSION['id']){
       $echo_privacy .= $row_echo_lebels['group_name'].', ';
       $echo_list_id .= $row_echo_lebels['category_id'].', ';
   }
+         $echo_privacy = 'Only '.substr($echo_privacy,0,-2);
+         $echo_list_id = substr($echo_list_id,0,-2);
         
     }
 $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <span>'.$echo_privacy.'</span>';
@@ -733,7 +738,8 @@ $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <spa
       $echo_privacy .= $row_echo_lebels['group_name'].', ';
       $echo_list_id .= $row_echo_lebels['category_id'].', ';
   }
-        
+        $echo_privacy = 'Only '.substr($echo_privacy,0,-2);
+         $echo_list_id = substr($echo_list_id,0,-2);
     }
     
     
@@ -846,6 +852,8 @@ $all_echo[5] =  $widget_up.$education_body.$widget_down;
       $echo_privacy .= $row_echo_lebels['group_name'].', ';
       $echo_list_id .= $row_echo_lebels['category_id'].', ';
   }
+        $echo_privacy = 'Only '.substr($echo_privacy,0,-2);
+         $echo_list_id = substr($echo_list_id,0,-2);
         
     }
     
@@ -956,6 +964,8 @@ $all_echo[6] =  $widget_up.$work_body.$widget_down;
       $echo_privacy .= $row_echo_lebels['group_name'].', ';
       $echo_list_id .= $row_echo_lebels['category_id'].', ';
   }
+        $echo_privacy = 'Only '.substr($echo_privacy,0,-2);
+         $echo_list_id = substr($echo_list_id,0,-2);
         
     }
     
@@ -997,6 +1007,8 @@ $all_echo[7] =  ' <div class="about_section">
       $echo_privacy .= $row_echo_lebels['group_name'].', ';
       $echo_list_id .= $row_echo_lebels['category_id'].', ';
   }
+        $echo_privacy = 'Only '.substr($echo_privacy,0,-2);
+         $echo_list_id = substr($echo_list_id,0,-2);
         
     }
     
@@ -1047,7 +1059,8 @@ $upper_grid =  '   <div class="about_section">
       $echo_privacy .= $row_echo_lebels['group_name'].', ';
       $echo_list_id .= $row_echo_lebels['category_id'].', ';
   }
-        
+        $echo_privacy = 'Only '.substr($echo_privacy,0,-2);
+         $echo_list_id = substr($echo_list_id,0,-2);
     }
     
     

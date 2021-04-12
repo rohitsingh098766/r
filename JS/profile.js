@@ -86,6 +86,7 @@ var get_it_by_id = 0;
 var privacy_level = 0;
 var active_lists = 0;
 
+//correct this function
 function show_privacy_change(id_about, section) {
     active_about_id = id_about;
     active_about_section = section;
@@ -178,6 +179,8 @@ console.log("i am good")
         }
 
             console.log(label_id);
+            console.log(active_about_section);
+            console.log(active_about_id);
         if (this.querySelector('.select_me').classList.contains('select_me_selected')) {
             my_ajax("./php/change_privacy.php", "label=" + label_id + "&privacy_level=" + privacy_level + "&about_id=" + active_about_id + "&about_section=" + active_about_section + "&action=add");
             list_html[active_about_section][active_about_id].push(label_id)

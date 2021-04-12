@@ -497,6 +497,7 @@ echo $row['status_mini_bio'];
                                           </div>
                                       </div>
                                   </div>
+<!--
                                   <div class="setting_option">
                                       <div class="share-section">
                                           <div class="icon-wrap">
@@ -511,6 +512,7 @@ echo $row['status_mini_bio'];
                                           </div>
                                       </div>
                                   </div>
+-->
                               </div>
                                 <BUTTON  class="share-section"  id="button_post_desk" name="submit" value="submit">
                                      PUBLISH

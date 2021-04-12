@@ -35,6 +35,15 @@ if(mysqli_query($connection,$query)){
 WHERE `users`.`id` = {$_SESSION['id']};";
 // echo $query;
 if(mysqli_query($connection,$query)){
+    
+     $query_inspect = "select * from yaarme.about where (user = {$_SESSION['id']} and (about_code = 2 or about_code = 3 )) order by id asc limit 1";
+    $result_inspect = mysqli_query($connection,$query_inspect);
+  while($row_inspect = mysqli_fetch_assoc($result_inspect)){
+    $query_set = "UPDATE `about` SET `share_with` = {$row_inspect['share_with']}, `connect_privacy` = {$row_inspect['connect_privacy']} WHERE (user = {$_SESSION['id']} and (about_code = 2 or about_code = 3 ))";
+      if(mysqli_query($connection,$query_set)){
+      }
+}
+    
 }else{
 // echo"something went wrong ";
 }
