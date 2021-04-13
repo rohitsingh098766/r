@@ -260,6 +260,11 @@ font-size: .85em;
     justify-content: center;
     align-items: center;
 }
+.header_main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .header_privacy{
     display: flex;
     justify-content: flex-end;
@@ -268,14 +273,18 @@ font-size: .85em;
         font-size: .85em;
     color: gray;
     
-    text-overflow: ellipsis;
+    
+}.header_privacy span{
+   text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    
+    
 }
 
-.header_privacy:active,.header_privacy:focus,.header_privacy:hover{
+.header_privacy span:active,.header_privacy span:focus,.header_privacy span:hover{
    display: flex;
 }
 
