@@ -144,7 +144,7 @@
                     ?>
                     <div class="follow-conn ">
 
-                        <a href="./manage_category" class="hint_crt">Click to create, manage or delete lists</a>
+                        <a href="./manage_category" class="hint_crt">Click to manage labels.</a>
 
                     </div>
 

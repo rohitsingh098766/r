@@ -235,7 +235,11 @@ $follower_user = $row_following['total_sum_following'];
 
 
                   
+<div class="follow-conn ">
 
+                        <a href="./manage_category" class="hint_crt">Click to manage labels.</a>
+
+                    </div>
 
 
                 </ul>
@@ -481,7 +485,7 @@ order by about_code, yaarme.about.id desc
      
  $query_about = "select *,users.id as  profile_id, about.id as real_id from yaarme.about left join yaarme.users on users.id = about.add_profile left join yaarme.about_privacy on about.connect_privacy  = about_privacy.about_id left join yaarme_follow.follow on follow.category = about_privacy.category_id
 where (
-yaarme.about.user = {$user} and (share_with = 3 ".$following." or follow.opponent = {$_SESSION['id']})
+yaarme.about.user = {$user} and (share_with = 3 ".$following." or (share_with = 4 and follow.opponent = {$_SESSION['id']}))
 )
 order by about_code, yaarme.about.id desc
 ";
