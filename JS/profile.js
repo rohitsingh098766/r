@@ -133,7 +133,8 @@ for (var i = select_list.length - 1; i >= 0; --i) {
                 select_list[i].querySelector('.select_me').classList.remove('select_me_selected');
                 select_list[i].querySelector('.select_me').querySelector('div').classList.remove('display_flex');
             }
-            //              document.querySelector(".my_options").style.display = "none";
+//            auto close on selecting single choice 
+                          document.querySelector(".my_options").style.display = "none";
         } else {
             //            only_one
             var only_one = document.querySelectorAll('.only_one');
@@ -155,15 +156,15 @@ for (var i = select_list.length - 1; i >= 0; --i) {
         var text_show_up = '';
 
         //        update function call on privacy
-        get_it_by_id.setAttribute('privacy_level', privacy_level);
         var privacy_level = this.getAttribute('c');
+        get_it_by_id.setAttribute('privacy_level', privacy_level);
 //        var active_lists = get_it_by_id.getAttribute('lists');
 //console.log(typeof active_lists)
 //console.log(active_lists)
 //active_lists = ' '+ active_lists +' ';
 //active_lists.replace('1', ' 0 ');
 //console.log(active_lists)
-console.log("i am good")
+//console.log("i am good")
         if (label_id == 0) {
             //            window.alert('kk');
             document.querySelector('.header_privacy_' + active_about_section).querySelector('span').innerHTML = this.querySelector('.conn-name').querySelector('b').innerHTML;
@@ -174,8 +175,9 @@ console.log("i am good")
                 text_show_up += text_add[i].getAttribute('name') + ', ';
             }
             text_show_up = text_show_up.substring(0, text_show_up.length - 2);
-            document.querySelector('.header_privacy_' + active_about_section).querySelector('span').innerHTML += ', ' + this.querySelector('.conn-name').querySelector('b').innerHTML;
-            document.querySelector('.header_privacy_' + active_about_section).querySelector('span').innerHTML = text_show_up;
+//            document.querySelector('.header_privacy_' + active_about_section).querySelector('span').innerHTML += ', ' + this.querySelector('.conn-name').querySelector('b').innerHTML;
+//            document.querySelector('.header_privacy_' + active_about_section).querySelector('span').innerHTML = text_show_up;
+            document.getElementById('privacy_func_' + active_about_id+"_"+active_about_section).querySelector('span').innerHTML = text_show_up;
         }
 
             console.log(label_id);
