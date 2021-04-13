@@ -479,7 +479,7 @@ order by about_code, yaarme.about.id desc
        $following = '' ; 
      }
      
- $query_about = "select *,users.id as  profile_id, about.id as real_id from yaarme.about left join yaarme.users on users.id = about.add_profile left join yaarme.about_privacy on about.connect_privacy  = about_privacy.about_id left join yaarme_follow.follow on follow.category = about_privacy.category_id
+ $query_about = "select *,users.id as  profile_id, about.id as real_id from yaarme.about left join yaarme.users on users.id = about.add_profile join yaarme.about_privacy on about.connect_privacy  = about_privacy.about_id join yaarme_follow.follow on follow.category = about_privacy.category_id
 where (
 yaarme.about.user = {$user} and (share_with = 3 ".$following." or follow.opponent = {$_SESSION['id']})
 )
