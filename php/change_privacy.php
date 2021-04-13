@@ -28,7 +28,11 @@
      echo "inserted";
      }
      }else{
+           if($about_section==9){
+     $query = "Select * from yaarme.about where  ( user = {$_SESSION['id']} and `id` = {$about_id}) order by id asc limit 1";
+           }else{
      $query = "Select * from yaarme.about where  ( user = {$_SESSION['id']} and `about_code` = {$about_section}) order by id asc limit 1";
+           }
 
      $result = mysqli_query($connection,$query);
      while($row = mysqli_fetch_assoc($result)){
