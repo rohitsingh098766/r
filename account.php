@@ -485,7 +485,6 @@ yaarme.about.user = {$user} and (share_with = 3 ".$following." or follow.opponen
 )
 order by about_code, yaarme.about.id desc
 ";
-     echo "<script>console.log('".$query_about."')</script>";
  }  
 //                            echo $query_about;
                             
