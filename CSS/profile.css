@@ -267,7 +267,18 @@ font-size: .85em;
     font-weight: 400;
         font-size: .85em;
     color: gray;
+    
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
+
+.header_privacy:active,.header_privacy:focus,.header_privacy:hover{
+   display: flex;
+}
+
 .section_body_grid{
     display: grid;
     grid-template-columns: auto 1fr auto;
