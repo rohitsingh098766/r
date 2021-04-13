@@ -167,7 +167,7 @@ for (var i = select_list.length - 1; i >= 0; --i) {
 //console.log("i am good")
         if (label_id == 0) {
             //            window.alert('kk');
-            document.querySelector('.header_privacy_' + active_about_section).querySelector('span').innerHTML = this.querySelector('.conn-name').querySelector('b').innerHTML;
+           document.getElementById('privacy_func_' + active_about_id+"_"+active_about_section).querySelector('span').innerHTML  = this.querySelector('.conn-name').querySelector('b').innerHTML;
             //            document.querySelector(".my_options").style.display = "none";
         } else {
             var text_add = document.querySelectorAll('.select_me_selected');
