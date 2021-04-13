@@ -1504,8 +1504,8 @@ for(var i = 0; i < images.length; i++){
         <form class="input-wrap" autocomplete="off">
         </form>
     </div>
-    <script src="./JS/main.js?v=2"></script>
-    <script src="./JS/profile.js?v=2"></script>
+    <script src="./JS/main.js?v=3"></script>
+    <script src="./JS/profile.js?v=3"></script>
     
     <?php
     if($show_every===false){
