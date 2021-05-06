@@ -30,7 +30,7 @@ if($type==1){
     $query = "select *, yaarme_follow.follow.user as target from yaarme_follow.follow
 join yaarme.users on users.id = yaarme_follow.follow.user 
  left join yaarme.location on location.id  = users.location 
-where yaarme_follow.follow.opponent = {$user}
+where (yaarme_follow.follow.opponent = {$user} and approve = 1)
 limit 500
     
 ";
@@ -38,7 +38,7 @@ limit 500
    $query = "select *, yaarme_follow.follow.opponent as target from yaarme_follow.follow
 join yaarme.users on users.id = yaarme_follow.follow.opponent 
 left join yaarme.location on location.id  = users.location 
-where yaarme_follow.follow.user = {$user}
+where (yaarme_follow.follow.user = {$user} and approve = 1)
 limit 500 
 ";
 }

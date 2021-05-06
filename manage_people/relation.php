@@ -122,8 +122,21 @@ $list = mysqli_real_escape_string($connection, $_POST['list']);
     }
     
     //block message
-    $query = "UPDATE yaarme_message.my_room SET `chat_status` = 10 WHERE (room_member = {$_SESSION['id']} and opponent_member = {$user})";
-        mysqli_query($connection,$query);
+//    $query = "UPDATE yaarme_message.my_room SET `chat_status` = 10 WHERE (room_member = {$_SESSION['id']} and opponent_member = {$user})";
+//        mysqli_query($connection,$query);
+    
+    $query_get = "select * from  yaarme_message.my_room WHERE (room_member = {$_SESSION['id']} and opponent_member = {$user})";
+      $result_get = mysqli_query($connection,$query_get);
+     while($row_get = mysqli_fetch_assoc($result_get)){
+         
+         $query_delete = "DELETE FROM yaarme_message.my_room WHERE `room_id` = {$row_get['room_id']}";
+         mysqli_query($connection,$query_delete);
+         $query_delete = "DELETE FROM yaarme_message.message WHERE `room_id` = {$row_get['room_id']}";
+         mysqli_query($connection,$query_delete);
+         
+     }
+    
+    
     
 }else if(isset($_POST['mute']) && isset($_POST['user'])&& isset($_POST['value'])){
 //    mute user

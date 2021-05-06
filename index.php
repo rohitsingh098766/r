@@ -213,25 +213,61 @@
     </div>
 
     <div class="sidebar">
-        <a  href="profile/" class="profile-img-sidebar">
-            <img class="avatar" src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>" alt="" />
-            <img class="moon" src="SVG/moon-solid.svg" alt="" />
+        <div  class="profile-img-sidebar">
+            <a  href="profile/"><img class="avatar" src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>" alt="" /></a>
+            <a  href="profile/"><img class="moon" src="SVG/moon-solid.svg" alt="" /></a>
             <p>
-                <?php echo $_SESSION['name'];?> <br />
+                <a class="white"  href="profile/">  <?php echo $_SESSION['name'];?> <br /></a>
             </p>
-            <img class="down expand-add-acc opacaity0" src="SVG/chevron-down-solid.svg" alt="" />
+            <img class="down expand-add-acc " src="SVG/chevron-down-solid.svg" alt="" />
             <!-- <i class="fas fa-chevron-down arrow expand-add-acc"></i> -->
-        </a>
+        </div>
         <div class="all-uls">
             <ul class="add-account">
-                <li>
-                    <a href="#">
-                        <img src="SVG/plus-solid.svg" alt="" /> <span>Add Account</span>
+                 <li>
+                    <a href="login/">
+                        <img src="SVG/plus-solid.svg" alt="" /> <span>Add account</span>
                     </a>
                 </li>
-
+                 <?php
+                
+if (isset($_COOKIE['active_user'])){
+    foreach ($_COOKIE['user_id'] as $user_id => $value) {
+        if($user_id != $_COOKIE['active_user']){
+                $query_verify = "SELECT * FROM `users` where id='{$user_id}'";
+//        echo $query_verify;
+               $result_verify = mysqli_query($connection,$query_verify);
+//               echo"gor each9";
+  while($row = mysqli_fetch_assoc($result_verify)){
+     $password =  $row['key_'];
+//    
+     if ($password === $value && $value) {
+//echo $row['first_name'].' '.$row['last_name'];
+//                echo $row['img'];
+         if($row['img']){
+             $sidebar_other_profile = "./profile/i/120/".$row['img'];
+         }else{
+              $sidebar_other_profile = "./profile/i/none.svg";
+         }
+                echo ' <li>
+                    <a href="login/switch.php?to='.$user_id.'">
+                        <img src="'.$sidebar_other_profile.'" alt="" class="profile_sidebar"/>
+                        <span>Switch to '.$row['first_name'].' '.$row['last_name'].'</span>
+                    </a>
+                </li>';
+         
+  }
+                }
+}
+    }
+}
+                
+                ?>
+               
+               
             </ul>
-            <hr class="hidden-hr-add-acc" />
+            
+            <hr /> 
             <ul>
                 <li>
                     <a href="profile/">
@@ -258,6 +294,7 @@
 
             </ul>
             <hr />
+            
             <ul>
                 <li>
                     <a href="page/settings">
