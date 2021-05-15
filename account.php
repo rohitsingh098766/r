@@ -1287,7 +1287,7 @@ foreach($all_echo as $value){
       }
       echo '
        <li>
-     <div class="follow-conn select_tl" onclick="changelist('.$row['id'].','."'".$row['group_name']."'".')">
+     <div class="follow-conn select_tl" onclick="changelist('.$row['id'].','."'".str_replace('  ',' ', htmlentities( preg_replace('/\r|\n/',' ', htmlentities($row['group_name']))))."'".')">
          <img src="./emogi/128/'.$row['emoji'].'" class="follow-icon">
          <span class="conn-name">
              <span><b>'.$row['group_name'].'</b></span>

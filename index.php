@@ -506,7 +506,7 @@ if (isset($_COOKIE['active_user'])){
 
                             </li>
                               <li>
-                                 <a href="./?t=3"  class="select_element <?php if($post_type==3){echo  "active";}?>">Unlabelled</a>
+                                 <a href="./?t=3"  class="select_element <?php if($post_type==3){echo  "active";}?>">Unlebelled</a>
 
                             </li>
                            
