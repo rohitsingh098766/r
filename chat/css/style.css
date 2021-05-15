@@ -453,3 +453,7 @@ padding-top: 0;
         height: calc(100% + 5px);
   }
 }
+.more_options{
+    transform: rotate(90deg);
+    filter: invert(1);
+}

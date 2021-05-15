@@ -24,7 +24,7 @@ document.getElementById('textarea').addEventListener("mouseover",function(){
 
 
  document.getElementById('other').addEventListener('submit',function(){
-     document.querySelector('.loader').style.display="flex";
+//     document.querySelector('.loader').style.display="flex";
  })
 
 //close post options 
@@ -46,3 +46,24 @@ var checkboxs = document.querySelectorAll('.checkbox');
         }
     }
 }
+
+
+
+
+
+
+
+function validateForm() {
+  var x = document.forms["other"]["a"].value;
+  if (x == "") {
+    alert("Please add an image");
+    return false;
+  }else{
+      document.querySelector('.loader').style.display="flex";   
+  }
+}
+
+
+
+
+

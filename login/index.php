@@ -5,6 +5,9 @@ session_start();
 //    header('Location: ../');
 //}
 
+//reset default mode
+$set_to_one = 1;
+setcookie("t", $set_to_one, time() + (86400 * 364),'/');
 ?>
 
 

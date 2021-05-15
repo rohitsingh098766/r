@@ -237,8 +237,8 @@ while($row_room = mysqli_fetch_assoc($result_room)){
                                 <div class="actions attachment inner_div">
                                     <i class="zmdi zmdi-attachment-alt"></i>
                                 </div>
-                                <div class="actions inner_div">
-                                    <i class="zmdi zmdi-phone"></i>
+                                <div class="actions inner_div ">
+                                    <img src="../SVG/ellipsis-regular.svg" class="send_icon more_options">
                                 </div>
                             </div>
                             <div class="conversation">

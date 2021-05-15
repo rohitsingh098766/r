@@ -5,6 +5,13 @@ session_start();
 
      include '../connection.php';
 echo 'oo';
+
+//reset default mode
+$set_to_one = 1;
+setcookie("t", $set_to_one, time() + (86400 * 364),'/');
+echo $_COOKIE['t'];
+//exit(0);
+
 $switch_to = $_GET['to'];
 if (isset($_COOKIE['user_id'])){
     foreach ($_COOKIE['user_id'] as $user_id => $value) {

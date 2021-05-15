@@ -245,7 +245,7 @@ function imageResize($imageResourceId,$width,$height,$target) {
         <span class="span"></span>
         <span class="span" onclick="openlist('_warning_delete');"><img src='./image/cog-solid.svg' alt="Exit" class="img arrow ellipse"></span>
         </div>
-        <form id="other" method="post" enctype="multipart/form-data">
+        <form id="other" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
         
         <div id="story_img">
           <label for="image_file" id="image_file_label">
@@ -255,7 +255,7 @@ function imageResize($imageResourceId,$width,$height,$target) {
               
             </label>  
             </div>
-            <input  type="file" title="image_file" value="image_file" name="a" id="image_file" onchange="loadFile(event)">
+            <input  type="file" title="image_file" value="" name="a" id="image_file" onchange="loadFile(event)" >
         <div  id="story_description">
             
             <textarea id="textarea" onkeydown="autosize()" placeholder="Add a caption..." name="text" maxlength="2000"></textarea>

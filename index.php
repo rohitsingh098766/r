@@ -9,7 +9,7 @@
                                     $list_show = 1;
                                         if(isset($_GET['t'])){
                                             $post_type = $_GET['t'];
-                                             setcookie("t", $_GET['t'], time() + (86400 * 364));
+                                             setcookie("t", $_GET['t'], time() + (86400 * 364),'/');
                                             if($post_type==5){
                                                setcookie("list", $_GET['l'], time() + (86400 * 364)); 
                                                 $list_show = $_GET['l'];
