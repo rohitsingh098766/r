@@ -31,10 +31,7 @@
                                              $post_type = 1;
                                            
                                         }
-                                    if($post_type==
-                                       
-                                       
-                                       1){
+                                    if($post_type==1){
                                         $show_list =  "all followings";
                                     }else if($post_type==2){
                                         $show_list =  "selected lists";
