@@ -40,7 +40,8 @@ if(mysqli_query($connection,$query_insert)){
                if(mysqli_query($connection,$follow));
       //    favorite
       $i = mysqli_real_escape_string($connection, 'symbols/heart-with-ribbon.png');
-      $favorite = "INSERT INTO `yaarme_follow`.`category` (`owner_id`, `group_name`,`emoji`) VALUES ({$id}, 'favorite','{$i}');"; 
+      $j = mysqli_real_escape_string($connection, 'activity/volleyball.png');
+      $favorite = "INSERT INTO `yaarme_follow`.`category` (`owner_id`, `group_name`,`emoji`,`pin`) VALUES ({$id}, 'Friends','{$i}','1'),({$id}, 'Family','{$j}','1');"; 
  if(mysqli_query($connection,$favorite));
       
       
