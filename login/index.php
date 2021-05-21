@@ -17,8 +17,7 @@ setcookie("t", $set_to_one, time() + (86400 * 364),'/');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YaarMe | Social media</title>
-    <link rel="icon" type="image/x-icon" href="CSS/Images/Yaarme-logo.png">
+    <title>Yaariii | Social media</title>
 
     <link rel="stylesheet" href="../CSS/spin_loader.css">
     <link rel="stylesheet" href="CSS/style.css">
@@ -41,8 +40,8 @@ setcookie("t", $set_to_one, time() + (86400 * 364),'/');
     <meta name="msapplication-TileColor" content="#0073b1" />
     <meta name="msapplication-TileImage" content="../icons/icons/ms-icon-144x144.png" />
     <meta name="theme-color" content="#0073b1" />
-    <meta name="description" content="YaarMe is an ultra-customizable social media platform, helps individuals to build their optimized social network.">
-    <meta name="keywords" content="Yaarme, YaarMe, Yaar me, Social media, Social media platform, ultra customized social media platform, safest socail media platform, Build and organize your network, organize your network, world's most advanced social media platform">
+    <meta name="description" content="Yaariii is an ultra-customizable social media platform, helps individuals to build their optimized social network.">
+    <meta name="keywords" content="Yaariii, Yaariii, Yaar me, Social media, Social media platform, ultra customized social media platform, safest socail media platform, Build and organize your network, organize your network, world's most advanced social media platform">
 
     <!--    google login kit-->
     <?php
@@ -103,9 +102,9 @@ if($isWebView){
         </div>
         <div class="main-login" id="login-form">
             <div class="left-bar">
-                <img src="CSS/Images/Yaarme-logo.png" class="main-img">
+                <img src="../icons/logo/logo_transparent.png" class="main-img">
                 <div class="title">
-                    <b style="color: #196fb6;">Yaar</b><b>Me</b>
+                    <b style="color: #196fb6;">Yaariii</b><b></b>
                 </div>
                 <p class="about">Get connected with friend, family and personality you like and be the first to watch their personal updates.</p>
                 <div class="signup-action">
@@ -166,7 +165,7 @@ if($isWebView){
         </div>
         <div class="main-signup hide" id="signup-form">
             <div class="header">
-                <img src="CSS/Images/Yaarme-logo.png" class="main-img head-img">
+                <img src="../icons/logo/logo_transparent.png" class="main-img head-img">
                 <div class="title">
                     <b style="color: #196fb6;">Yaar</b><b>Me</b>
                 </div>
@@ -253,7 +252,7 @@ if($isWebView){
                 <div class="success_mark success_mark_wrong_ps"><img src="images/times-circle-regular.svg" class="tick_scg"></div>
                 <div class="success_message success_message_wrong_ps">
                     <div>Invalid details.</div>
-                    <div>Incorrect username or password.<br> New at YaarMe! please create an account.</div>
+                    <div>Incorrect username or password.<br> New at Yaariii! please create an account.</div>
                     <div> <button id="wrong_ps_btn">Create account</button></div>
                 </div>
             </div>
@@ -337,11 +336,11 @@ if($isWebView){
 
                             // add welcome message and redirect at
 //                            document.getElementById('created').classList.add("active")
-                              window.location.href = 'https://yaarme.com/edit_profile';
+                              window.location.href = 'https://Yaariii.com/edit_profile';
                             animation_close();
                         } else if (this.responseText == 2) {
                             animation_close();
-                            window.location.href = 'https://yaarme.com/';
+                            window.location.href = 'https://Yaariii.com/';
                         }
                     } else {
                         animation();
@@ -384,11 +383,11 @@ if($isWebView){
 
                             // add welcome message and redirect at
 //                            document.getElementById('created').classList.add("active")
-                              window.location.href = 'https://yaarme.com/edit_profile';
+                              window.location.href = 'https://Yaariii.com/edit_profile';
                             animation_close();
                         } else if (this.responseText == 2) {
                             animation_close();
-                            window.location.href = 'https://yaarme.com/';
+                            window.location.href = 'https://Yaariii.com/';
                         }
                     } else {
                         animation();

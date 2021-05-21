@@ -111,7 +111,7 @@ $follower_user = $row_following['total_sum_following'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YaarMe</title>
+    <title>Yaariii</title>
     <link rel="stylesheet" href="./CSS/style.css">
     <link rel="stylesheet" href="./CSS/profile.css?v=4">
     <link rel="stylesheet" href="./page/css/like.css">
@@ -343,7 +343,7 @@ $follower_user = $row_following['total_sum_following'];
 
 
                                     <li>
-                                        <a href="#" onclick="share(' <?php echo $_SESSION['name'];?>','Follow <?php echo $_SESSION['name'];?> on YaarMe','https://yaarme.com/account?user=<?php echo $_SESSION['id'];?>')">
+                                        <a href="#" onclick="share(' <?php echo $_SESSION['name'];?>','Follow <?php echo $_SESSION['name'];?> on Yaariii','https://Yaariii.com/account?user=<?php echo $_SESSION['id'];?>')">
                                             <img src="SVG/share-black.svg" alt="" />
                                             <span>Share Your Profile</span>
                                         </a>
@@ -1177,7 +1177,7 @@ foreach($all_echo as $value){
                                     <div class="follow-conn "> <img src="./SVG/tags-solid.svg" class="follow-icon"> <span class="conn-name"> <span><b>Label</b></span> </span> </div>
                                 </li>
                                 
-                                    <li id="share_options" onclick="share(' <?php echo $name_user;?>','Follow <?php echo $name_user;?> on YaarMe','https://yaarme.com/account?user=<?php echo $user;?>');close_options('_fst')">
+                                    <li id="share_options" onclick="share(' <?php echo $name_user;?>','Follow <?php echo $name_user;?> on Yaariii','https://yaariii.com/account?user=<?php echo $user;?>');close_options('_fst')">
                                         <div class="follow-conn "> <img src="./SVG/share.svg" class="follow-icon"> <span class="conn-name"> <span><b>Share Profile</b></span> </span> </div>
                                     </li>
                                 

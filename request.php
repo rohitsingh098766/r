@@ -147,7 +147,7 @@ session_start();
 
 
                                     <li>
-                                        <a href="#" onclick="share(' <?php echo $_SESSION['name'];?>','Follow <?php echo $_SESSION['name'];?> on YaarMe','https://yaarme.com/account?user=<?php echo $_SESSION['id'];?>')">
+                                        <a href="#" onclick="share(' <?php echo $_SESSION['name'];?>','Follow <?php echo $_SESSION['name'];?> on Yaariii','https://Yaariii.com/account?user=<?php echo $_SESSION['id'];?>')">
                                             <img src="SVG/share-black.svg" alt="" />
                                             <span>Share Your Profile</span>
                                         </a>

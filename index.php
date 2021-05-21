@@ -49,8 +49,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Feed | YaarMe</title>
-    <link rel="stylesheet" href="CSS/style.css?v=3" />
+    <title>Feed | Yaariii</title>
+    <link rel="stylesheet" href="CSS/style.css?v=4" />
     <link rel="stylesheet" href="CSS/spin_loader.css" />
     <link rel="stylesheet" href="./search/CSS/style.css" />
     <link rel="stylesheet" href="CSS/slider.css" />
@@ -80,7 +80,7 @@
     <meta name="msapplication-TileImage" content="./icons/icons/ms-icon-144x144.png" />
     <meta name="theme-color" content="#0073b1" />
     <meta name="description" content="Sign up for free and start building your network.">
-  <meta name="keywords" content="Yaarme, YaarMe, Yaar me, Social media, Build and organize your network">
+  <meta name="keywords" content="Yaariii, Yaariii, Yaar me, Social media, Build and organize your network">
 </head>
 
 
@@ -105,7 +105,7 @@
     <div class="my_options">
         <div class="my_options" id="my_options"></div>
         <div class="items">
-            <p class="select_category">Select lists to watch posts and stories only from them. </p>
+            <p class="select_category">Select labels to watch posts and stories only from them. </p>
             <form>
                 <ul id="s_lists">
 
@@ -333,7 +333,7 @@ if (isset($_COOKIE['active_user'])){
             <hr />
             <ul>
                 <li >
-                    <a href="#" onclick="share(' <?php echo $_SESSION['name'];?>','Follow <?php echo $_SESSION['name'];?> on YaarMe','https://yaarme.com/account?user=<?php echo $_SESSION['id'];?>')">
+                    <a href="#" onclick="share(' <?php echo $_SESSION['name'];?>','Follow <?php echo $_SESSION['name'];?> on Yaariii','https://Yaariii.com/account?user=<?php echo $_SESSION['id'];?>')">
                         <img src="SVG/share-black.svg" alt="" />
                         <span>Share Your Profile</span>
                     </a>
@@ -342,7 +342,7 @@ if (isset($_COOKIE['active_user'])){
                 <li>
                     <a href="page/faq">
                         <img src="SVG/question-circle-solid.svg" alt="" />
-                        <span>YaarMe FAQ</span>
+                        <span>Yaariii FAQ</span>
                     </a>
                 </li>
                 
@@ -473,7 +473,7 @@ if (isset($_COOKIE['active_user'])){
 
 
                                     <li>
-                                        <a href="#" onclick="share(' <?php echo $_SESSION['name'];?>','Follow <?php echo $_SESSION['name'];?> on YaarMe','https://yaarme.com/account?user=<?php echo $_SESSION['id'];?>')">
+                                        <a href="#" onclick="share(' <?php echo $_SESSION['name'];?>','Follow <?php echo $_SESSION['name'];?> on Yaariii','https://Yaariii.com/account?user=<?php echo $_SESSION['id'];?>')">
                                             <img src="SVG/share-black.svg" alt="" />
                                             <span>Share Your Profile</span>
                                         </a>
@@ -506,7 +506,7 @@ if (isset($_COOKIE['active_user'])){
 
                             </li>
                               <li>
-                                 <a href="./?t=3"  class="select_element <?php if($post_type==3){echo  "active";}?>">Unlebelled</a>
+                                 <a href="./?t=3"  class="select_element <?php if($post_type==3){echo  "active";}?>">Unlabelled</a>
 
                             </li>
                            
@@ -1257,14 +1257,14 @@ for(var i = 0; i < images.length; i++){
         </span>
         <form id="header-form" class="input-wrap blue-background-header" autocomplete="off" onclick="invisible()">
             <span class="search-icon autocomplete"></span>
-            <span id="company-title" class="title white"><span>YAAR</span><span>ME</span></span>
+            <span id="company-title" class="title white"><span>YAARIII</span><span></span></span>
             <input type="search" placeholder="Search" class="search-bar invisible" id="search_mob" name="s">
 
             <img id="search-icon-img" src="SVG/search.png">
 
             <span class="icon qrcode-icon"></span>
         </form>
-        <a href="https://yaarme.com/profile" class="icon profile-icon">
+        <a href="https://Yaariii.com/profile" class="icon profile-icon">
             <!--            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-circle" class="svg-inline--fa fa-user-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="white" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"></path></svg>-->
             <img src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>">
         </a>

@@ -135,7 +135,7 @@ function animation_close() {
      document.querySelector(".load_anything").innerHTML = this.responseText;
     
      if(this.responseText==1){
-          window.location.href = 'https://yaarme.com/';
+          window.location.href = 'https://yaariii.com/';
          // add welcome message and redirect at
          console.log("correct password");
      }else {
@@ -167,10 +167,10 @@ xhttp.send("username="+login_username+"&password="+login_password);
      animation();
      if(this.responseText==1){
          // add welcome message and redirect at
-//         window.location.href = 'https://yaarme.com/';
+//         window.location.href = 'https://yaariii.com/';
          animation_close();
 //         document.getElementById('created').classList.add("active")
-         window.location.href = 'https://yaarme.com/';
+         window.location.href = 'https://yaariii.com/';
      }else{
          animation_close();
          // choose another username
