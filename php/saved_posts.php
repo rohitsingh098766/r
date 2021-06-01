@@ -64,18 +64,22 @@ while($row_react = mysqli_fetch_assoc($result_react)){
          $saved_output = 'saved';
     }
 }
+      
     
 //    count likes
 //    modify and add symbols
      $query_total_like = "select emogi,COUNT(*) as total_likes from yaarme_like.post_like where (post_id = {$row['post_num']} ) GROUP by emogi ORDER BY `total_likes` DESC" ;
 $result_total_like = mysqli_query($connection,$query_total_like);
-   $total_like = "";
+   $total_like = 0;
     $emogi_type = '[';
     
 while($row_total_like = mysqli_fetch_assoc($result_total_like)){
        $total_like += $row_total_like['total_likes']; 
     $emogi_type .= $row_total_like['emogi'].',';
 }
+    if($total_like==0){
+        $total_like = '';
+    }
     $emogi_type .='0]';
     
  

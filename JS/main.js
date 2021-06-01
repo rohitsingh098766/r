@@ -782,9 +782,9 @@ function share_post(){
     event.preventDefault();
      if (navigator.share) {
     navigator.share({
-      title: "YaarMe post",
-      text: "Hey there, I found something usefull for you on YaarMe",
-      url: "https://yaarme.com/posts?p="+active_post
+      title: "Yaariii post",
+      text: "Hey there, I found something usefull for you on Yaariii",
+      url: "https://Yaariii.com/posts?p="+active_post
     }).then(() => {
       console.log('Thanks for sharing!');
     })
@@ -794,7 +794,7 @@ function share_post(){
   } else {
       
     // console.log('web share not supported');
-     copyTextToClipboard("Hey there, I found something usefull for you on YaarMe. https://yaarme.com/posts?p="+active_post);
+     copyTextToClipboard("Hey there, I found something usefull for you on Yaariii. https://Yaariii.com/posts?p="+active_post);
   alert("Link copied to clipboard ");
   }
     

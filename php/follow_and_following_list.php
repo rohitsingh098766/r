@@ -26,7 +26,7 @@ if(isset($_GET['type']) && isset($_GET['user'])){
 $type  = mysqli_real_escape_string($connection, $_GET['type']);
 $user  = mysqli_real_escape_string($connection, $_GET['user']);
 $post  = mysqli_real_escape_string($connection, 16);
-if($type==1){
+if($type==='follower'){
     $query = "select *, yaarme_follow.follow.user as target from yaarme_follow.follow
 join yaarme.users on users.id = yaarme_follow.follow.user 
  left join yaarme.location on location.id  = users.location 
@@ -34,14 +34,23 @@ where (yaarme_follow.follow.opponent = {$user} and approve = 1)
 limit 500
     
 ";
-}else if($type==2){
+}else if($type==='following'){
    $query = "select *, yaarme_follow.follow.opponent as target from yaarme_follow.follow
 join yaarme.users on users.id = yaarme_follow.follow.opponent 
 left join yaarme.location on location.id  = users.location 
 where (yaarme_follow.follow.user = {$user} and approve = 1)
 limit 500 
 ";
+}else if($type>1){
+   $query = "select *, yaarme_follow.follow.opponent as target from yaarme_follow.follow
+join yaarme.users on users.id = yaarme_follow.follow.opponent 
+left join yaarme.location on location.id  = users.location 
+join yaarme_follow.category on category.id = yaarme_follow.follow.category
+where (yaarme_follow.follow.user = {$user} and yaarme_follow.follow.category = {$type})
+limit 500 
+";
 }
+   
 //    echo $query;
     
 $result = mysqli_query($connection,$query);

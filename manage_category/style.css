@@ -402,7 +402,35 @@ display: flex;
     font-weight: bold;
     font-size: 1.2em;
 }
-
+.safe_message{
+    font-size: .8em;
+    color:gray;
+    padding: 1em;
+    
+}
+.eye_show {
+    height: .8em;
+    width: .6em;
+    margin: 0 .3em 0 .5em;
+    opacity: .4;
+}
+.btn_ct{
+    display: flex;
+    justify-content: space-between;
+    padding: 2em;
+}
+.warn_red{
+    background: red;
+}
+.k1_r1{
+display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.privacy_visble{
+    color: #969696;
+    font-size: .8em
+}
 
 
 
@@ -447,14 +475,7 @@ display: flex;
         background: white;
     }
 }
-.btn_ct{
-    display: flex;
-    justify-content: space-between;
-    padding: 2em;
-}
-.warn_red{
-    background: red;
-}
+
 
 @media only screen and (max-width: 480px) {
     .g1 {

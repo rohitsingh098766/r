@@ -113,7 +113,7 @@ $follower_user = $row_following['total_sum_following'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yaariii</title>
     <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="./CSS/profile.css?v=4">
+    <link rel="stylesheet" href="./CSS/profile.css?v=12">
     <link rel="stylesheet" href="./page/css/like.css">
     
     <link rel="stylesheet" href="CSS/spin_loader.css" />
@@ -196,11 +196,14 @@ $follower_user = $row_following['total_sum_following'];
                         </div>
                     </li>
 <p class="select_category"></p>
-<span class="or-marker">&nbsp;Or only selected labels.&nbsp;</span>
+<span class="or-marker">&nbsp;Or only&nbsp;</span>
                     <?php
                     
                     $query = "select * from yaarme_follow.category where owner_id = {$_SESSION['id']}";
                $query = mysqli_query($connection,$query);
+                    $users_label = '';
+                    $add_me_too = '';
+                    $labels_name = '';
   while($row = mysqli_fetch_assoc($query)){
       if($row['description']){
           $description = '<span>'.$row['description'].'</span>';
@@ -213,13 +216,16 @@ $follower_user = $row_following['total_sum_following'];
       }else{
            
       }
-       $pin1 = "";
-          $pin2 = "";
+        $pin1 = "";
+        $pin2 = "";
+     
+        $labels_name =  str_replace(" ","&nbsp;",htmlentities( preg_replace('/\r|\n/',' ', htmlentities($row['group_name']))));
+      
       echo '      <li>
                         <div class="follow-conn select_tl" cd="'.$row['id'].'"  c="4">
                             <img src="./emogi/128/'.$row['emoji'].'" class="follow-icon">
                                     <span class="conn-name">
-                                        <span><b>'.$row['group_name'].'</b></span>
+                                        <span><b>'.$labels_name.'</b></span>
                                              '.$description.'
                                          </span>
                                     <span class="select_me '.$pin1.' " name="'.$row['group_name'].'">
@@ -227,11 +233,43 @@ $follower_user = $row_following['total_sum_following'];
                             </span>
                         </div>
                     </li>';
+      
+      $users_label .= ' <div class="f11 label_list" id="people_label_'.$row['id'].'" onclick="show_member('.$row['id'].')">
+                                     <img src="./emogi/128/'.$row['emoji'].'" class="label_list_logo">
+                                    <div class="  following_button">'.$labels_name.'</div>
+                                </div>';
+      $add_me_too .= ' <div class="f11 label_list" id="people_adds_'.$row['id'].'" onclick="add_me_to('.$row['id'].')">
+                                     <img src="./emogi/128/'.$row['emoji'].'" class="label_list_logo">
+                                    <div class="  following_button">'.$labels_name.'</div>
+                                </div>';
+      
   }
-                    
+                     if($user!=$_SESSION['id']){
+                           if($approve == 1){
+       $if_follow = 'or A.share_with = 2' ; 
+     }else{
+       $if_follow = '' ; 
+     }
+                         $query = "select *,A.id as label_id, A.emoji as emoji_out,A.group_name as group_name_out from yaarme_follow.category A 
+                         left join yaarme_follow.category_privacy on A.id = category_privacy.category_id 
+                         left join yaarme_follow.category B on  category_privacy.category_allow = B.id 
+                         left join yaarme_follow.follow on follow.category = category_privacy.category_allow
+                         where (A.owner_id = {$user} and (A.share_with = 3 ".$if_follow." or follow.opponent = {$_SESSION['id']}))";
+                         echo $query;
+                         $query = mysqli_query($connection,$query);
+                         $users_label = '';
+                         while($row = mysqli_fetch_assoc($query)){
+                               $labels_name =  str_replace(" ","&nbsp;",htmlentities( preg_replace('/\r|\n/',' ', htmlentities($row['group_name_out']))));
+
+                               $users_label .= ' <div class="f11 label_list" id="people_label_'.$row['label_id'].'" onclick="show_member('.$row['label_id'].')">
+                                     <img src="./emogi/128/'.$row['emoji_out'].'" class="label_list_logo">
+                                    <div class="  following_button">'.$labels_name.'</div>
+                                </div>';
+                         }
+                     }
                     
                     ?>
-                 
+              
 
 
                   
@@ -384,7 +422,7 @@ $follower_user = $row_following['total_sum_following'];
                                 <p class="a122 a122_l">Posts</p>
                             </div>
                         </a>
-                        <a href="#about" class="a12" onclick="show_now('people');show_member(1)">
+                        <a href="#about" class="a12" onclick="show_now('people');show_member('follower')">
                             <div>
                                 <p class="a122 a122_b"><?php echo $follower_user-1;?></p>
                                 <p class="a122 a122_l">Followers</p>
@@ -418,7 +456,7 @@ $follower_user = $row_following['total_sum_following'];
                     <div class="d1">
                         <a href="#about" class="d12 <?php if($show_every===false){echo "active";} ?>" id="about_add_active" onclick="show_now('about')">About</a>
                         <a href="#about" class="d12 <?php if($show_every===true){echo "active";} ?>" id="post_add_active" onclick="show_now('post')">Posts</a>
-                        <a href="#about" class="d12" id="people_add_active" onclick="show_now('people');show_member(2)">People</a>
+                        <a href="#about" class="d12" id="people_add_active" onclick="show_now('people');show_member('following')">People</a>
                     </div>
 <script>
                     var list_html = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
@@ -459,14 +497,14 @@ $follower_user = $row_following['total_sum_following'];
                             $group_name = '';
                             
 if($user==$_SESSION['id']){
-$all_echo[1] = '<a href="page/edit_summary"> <div  class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> A BRIEF NOTE ABOUT YOURSELF</div></div></div></a>'; 
-$all_echo[2] = ' <a href="page/edit_dob"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> DATE OF BIRTH</div></div></div></a>';  
-$all_echo[4] = ' <a href="page/relationship"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> RELATIONSHIP</div></div></div></a>';  
-$all_echo[5] = ' <a href="page/education"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> EDUCATION</div></div></div></a>'; 
-$all_echo[6] = ' <a href="page/work"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> WORK</div></div></div></a>';  
-//$all_echo[7] = ' <a href="page/edit_summary"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> a bried note about yourself</div></div></div></a>'; 
-$all_echo[8] = ' <a href="page/add_social_media"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> OTHER SOCIAL MEDIA</div></div></div></a>';  
-$all_echo[9] = ' <a href="page/contact_details"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add</span> CONTACT DETAILS</div></div></div></a>';  
+$all_echo[1] = '<a href="page/edit_summary"> <div  class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> A BRIEF NOTE ABOUT YOURSELF</div></div></div></a>'; 
+$all_echo[2] = ' <a href="page/edit_dob"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> DATE OF BIRTH</div></div></div></a>';  
+$all_echo[4] = ' <a href="page/relationship"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> RELATIONSHIP</div></div></div></a>';  
+$all_echo[5] = ' <a href="page/education"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> EDUCATION</div></div></div></a>'; 
+$all_echo[6] = ' <a href="page/work"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> WORK</div></div></div></a>';  
+//$all_echo[7] = ' <a href="page/edit_summary"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> a bried note about yourself</div></div></div></a>'; 
+$all_echo[8] = ' <a href="page/add_social_media"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> OTHER SOCIAL MEDIA</div></div></div></a>';  
+$all_echo[9] = ' <a href="page/contact_details"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> CONTACT DETAILS</div></div></div></a>';  
 }
                        
  if($user==$_SESSION['id']){
@@ -1127,19 +1165,90 @@ foreach($all_echo as $value){
                         
 <!--                        follower-->
                         <div class="e11 " id="people_show">
-                            <div class="f1">
-                                <div class="f11" onclick="show_member(1)">
-                                    <div class="f111 follower_button">follower</div>
-                                </div>
-                                <div class="f11" onclick="show_member(2)">
+                            <div class="f1 f1_scroll">
+                                <div class="f11 green" id="people_label_following" onclick="show_member('following')">
                                     <div class="f111  following_button">following</div>
                                 </div>
+                                <div class="f11 green active" id="people_label_follower" onclick="show_member('follower')">
+                                    <div class="f111 follower_button">follower</div>
+                                </div>
+                                
+                                
+                                <?php
+//                                if($user==$_SESSION['id']){
+                                    echo $users_label;
+//}
+                                  if($user==$_SESSION['id']){
+                                    echo '<a href="./manage_category/" class="f11 manage_label_f11" onclick="show_member(2)">
+                                    <div class="f111  following_button manage_label">Manage&nbsp;labels</div>
+                                </a>
+                                    ';
+}
+                                
+                                
+                                ?>
+                                
+                                
+                                
                             </div>
                             <div id="follow_following_list">
 
                                 <!--                            take source code from like.php-->
                              
                             </div>
+                            
+                            
+<!--                            add people-->
+                              <?php
+                                            if($user==$_SESSION['id']){
+                                            echo ' <div class="add_people" id="g1_create">
+                                Add People
+                            </div>
+                            <div class="all_ado ">
+                                <div class="f1 f1_scroll">
+                                    <div class="f11 green" id="people_adds_following" onclick="add_me_to('."'".'following'."'".')">
+                                        <div class="f111  following_button">following</div>
+                                    </div>
+                                    <div class="f11 green active" id="people_adds_follower" onclick="add_me_to('."'".'follower'."'".')">
+                                        <div class="f111 follower_button">follower</div>
+                                    </div>'.$add_me_too.' <div class="f11 green" id="people_adds_unlisted" onclick="add_me_to('."'".'unlisted'."'".')">
+                                        <div class="f111  following_button">Unlabelled</div>
+                                    </div>
+                                </div>
+                                <div id="all_list_f_add">
+                                    <div id="result_f_add">
+                                    </div>
+                                </div>
+                            </div>';
+                                            }
+                                            ?>
+                            
+                           <!-- <div class="add_people" id="g1_create">
+                                Add People
+                            </div>
+                            <div class="all_ado ">
+                                <div class="f1 f1_scroll">
+                                    <div class="f11 green" id="people_adds_following" onclick="add_me_to('following')">
+                                        <div class="f111  following_button">following</div>
+                                    </div>
+                                    <div class="f11 green active" id="people_adds_follower" onclick="add_me_to('follower')">
+                                        <div class="f111 follower_button">follower</div>
+                                    </div>
+                                            <?php
+                                            if($user==$_SESSION['id']){
+                                            echo $add_me_too;
+                                            }
+                                            ?>
+                                      <div class="f11 green" id="people_adds_unlisted" onclick="add_me_to('unlisted')">
+                                        <div class="f111  following_button">Unlabelled</div>
+                                    </div>
+                                </div>
+                                <div id="all_list_f_add">
+                                    <div id="result_f_add">
+                                    </div>
+                                </div>
+                            </div>-->
+                            
                         </div>
 
                     </div>
@@ -1479,7 +1588,7 @@ for(var i = 0; i < images.length; i++){
                 }
             };
             xhttp.open("GET", "./php/profile_posts.php?u=<?php if($show_every!=false){echo $user;} ?>&f=" + max_id, true);
-            console.log("./php/next.php?f="+po_st_type+"&s=" + max_id)
+            console.log( "./php/profile_posts.php?u=<?php if($show_every!=false){echo $user;} ?>&f=" + max_id, true)
             xhttp.send();
             t++;
         }
@@ -1508,8 +1617,8 @@ for(var i = 0; i < images.length; i++){
         <form class="input-wrap" autocomplete="off">
         </form>
     </div>
-    <script src="./JS/main.js?v=3"></script>
-    <script src="./JS/profile.js?v=3"></script>
+    <script src="./JS/main.js?v=5"></script>
+    <script src="./JS/profile.js?v=11"></script>
     
     <?php
     if($show_every===false){
@@ -1519,6 +1628,12 @@ for(var i = 0; i < images.length; i++){
         echo "<script>show_now('about');</script>";
         
     }
+     if($user==$_SESSION['id']){
+           echo "<script>if(location.hash==='#about'){show_now('about');}else if(location.hash==='#people'){show_now('people');}else if(location.hash==='#post'){show_now('post');}</script>";
+         if(isset($_GET['label'])){
+              echo "<script>show_member(".$_GET['label'].")</script>";
+         }
+     }
     
     ?>
     <script>

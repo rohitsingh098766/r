@@ -13,14 +13,25 @@ if(mysqli_query($connection,$query)){
 
     
 $summary = mysqli_real_escape_string($connection,$_POST['summary']);
-$query = "INSERT INTO yaarme.about (`user`, `about_code`,  `my_opinion`) VALUES ( {$_SESSION['id']}, 1,  '{$summary}');";
+    if(strlen($summary)<1){
+        $query = "DELETE FROM yaarme.about WHERE (`user` = {$_SESSION['id']} and `about_code` = 1)";
+        echo $query;
+        
+//        echo strlen($summary);
+//    exit;
+    }else{
+        $query = "INSERT INTO yaarme.about (`user`, `about_code`,`share_with`,  `my_opinion`) VALUES ( {$_SESSION['id']}, 1, 3, '{$summary}');";
+    }
+   
+
+
 // echo $query;
 if(mysqli_query($connection,$query)){
 // echo "inserted_summary";
-    header('Location: ../account?edit=1');
-exit;
+   
 } 
-    
+    header('Location: ../account?edit=1');
+exit; 
 
     
 }

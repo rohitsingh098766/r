@@ -180,11 +180,11 @@ $privacy = 'private';
                    <div class="items item_post" style="">
                        <div class="choose" id="make_public">
                            <div class="settings_header">Public</div>
-                           <div class="settings_subject">Anyone can watch your posts, stories and network.</div>
+                           <div class="settings_subject">Anyone can follow you, however you can remove them anytime.<br>Anyone can watch your post, story, followers-followings.</div>
                        </div>
                        <div class="choose" id="make_private">
                            <div class="settings_header">Private</div>
-                           <div class="settings_subject">Only your followings can watch your posts, stories and network.</div>
+                           <div class="settings_subject">People can follow you only after your approval.<br>Only your followings can watch your post, story, followers-followings. </div>
                        </div>
                    </div>
                </div>

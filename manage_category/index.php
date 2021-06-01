@@ -11,9 +11,10 @@ exit(0);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feed | YaarMe</title>
+    <title>Feed | Yaariii</title>
     <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css?v=4">
+    <link rel="stylesheet" href="../CSS/profile.css">
 
     <!--icons-->
     <link rel="apple-touch-icon" sizes="57x57" href="../icons/icons/apple-icon-57x57.png">
@@ -155,6 +156,103 @@ exit(0);
     </div>
     
     
+<!--    add label -->
+    <div class="my_options" >
+        <div class="my_options" id="my_options"></div>
+        <div class="items">
+            <p class="select_category">Who can see  this label? </p>
+            <form>
+                <ul id="s_lists_about">
+                      <li>
+                        <div class="follow-conn select_tl" cd="0" c="1">
+                            <img src="../SVG/lock-solid-about.svg" class="follow-icon  about_lock">
+                                    <span class="conn-name">
+                                        <span><b>Only you</b></span>
+                                          
+                                         </span>
+                                    <span class="select_me only_one">
+                                <div class="inner_checked">✔</div>
+                            </span>
+                        </div>
+                    </li>
+                      <li>
+                        <div class="follow-conn select_tl" cd="0" c="2">
+                            <img src="../SVG/lock-solid-green.svg" class="follow-icon about_lock">
+                                    <span class="conn-name">
+                                        <span><b>Only followers</b></span>
+                                            
+                                         </span>
+                                    <span class="select_me only_one">
+                                <div class="inner_checked">✔</div>
+                            </span>
+                        </div>
+                    </li>
+                      <li>
+                        <div class="follow-conn select_tl" cd="0" c="3">
+                            <img src="../SVG/lock-open-red.svg" class="follow-icon about_lock">
+                                    <span class="conn-name">
+                                        <span><b>Everyone</b></span>
+                                            
+                                         </span>
+                                    <span class="select_me only_one select_me_selected">
+                                <div class="inner_checked display_flex">✔</div>
+                            </span>
+                        </div>
+                    </li>
+<p class="select_category"></p>
+<span class="or-marker">&nbsp;Or only&nbsp;</span>
+                      <?php
+                    
+                    $query = "select * from yaarme_follow.category where owner_id = {$_SESSION['id']}";
+                    $query = mysqli_query($connection,$query);
+
+                    while($row = mysqli_fetch_assoc($query)){
+                    if($row['description']){
+                    $description = '<span>'.$row['description'].'</span>';
+                    }else{
+                    $description = '';
+                    }
+                    if($row['pin']){
+                    $pin1 = "select_me_selected";
+                    $pin2 = "display_flex";
+                    }else{
+
+                    }
+                    $pin1 = "";
+                    $pin2 = "";
+                    $group_name = htmlentities( preg_replace('/\r|\n/',' ', htmlentities($row['group_name'])));
+
+                    echo ' <li>
+                        <div class="follow-conn select_tl" cd="'.$row['id'].'" c="4">
+                            <img src="../emogi/128/'.$row['emoji'].'" class="follow-icon">
+                            <span class="conn-name">
+                                <span><b>'.$group_name.'</b></span>
+                                '.$description.'
+                            </span>
+                            <span class="select_me '.$pin1.' " name="'.$row['group_name'].'">
+                                <div class="inner_checked '.$pin2.'">&#10004;</div>
+                            </span>
+                        </div>
+                    </li>';
+
+
+                    }
+                 
+                    ?>
+                      
+
+
+
+
+                </ul>
+
+            </form>
+        </div>
+
+    </div>
+    
+    
+    
     <div class="container-wrap">
         <div class="container">
             <div class="left-bar"></div>
@@ -163,30 +261,80 @@ exit(0);
 <p id="my_list"> My labels</p>
 
                     <div id="all_list">
+                         <script>
+//        rough work
+//     var a = [];
+//    a[9] = [123,34566,23456];
+//        console.log(a[9][2]);
+//        a[345678] = [1123456];
+//         console.log(a[345678][0]);
+                             var privacy_level = [];
+                             var selected_labels = [];
+    </script>
                         <?php
                     
-                    $query = "select * from yaarme_follow.category where owner_id = {$_SESSION['id']} order by `category`.`id` ASC";
+                    $query = "select *, category.id as label_id from yaarme_follow.category where owner_id = {$_SESSION['id']} order by `category`.`id` ASC";
+//                        echo $query;
                $query = mysqli_query($connection,$query);
   while($row = mysqli_fetch_assoc($query)){
+      $label = $row['label_id'];
       if($row['description']){
           $description = '<div class="mid_con">'.$row['description'].'</div>';
       }else{
           $description = '';
       }
+      $final_labels = '';
+     
+      if($row['share_with']==1){
+          $privacy_out = 'Private';
+      }else if($row['share_with']==2){
+          $privacy_out = 'Only followers';
+      }else if($row['share_with']==3){
+          $privacy_out = 'Everyone';
+      }else  if($row['share_with']==4){
+          $privacy_out = ' ';
+          $query_get_lebels = "select * from yaarme_follow.category_privacy join yaarme_follow.category on category.id = category_privacy.category_allow where category_id = {$label}";
+          $query_get_lebels = mysqli_query($connection,$query_get_lebels);
+          $class_exists = false;
 
-        echo ' <div class="posts g1" id="pt_'.$row['id'].'">
-                            <a href="../manage_people?c='.$row['id'].'" class="k1"><img src="../emogi/128/'.$row['emoji'].'" class="avatar"></a>
-                            <a href="../manage_people?c='.$row['id'].'" class="k1 mid">
-                                <div class="mid_head">'.$row['group_name'].'</div>
+          while($row_label = mysqli_fetch_assoc($query_get_lebels)){
+          $privacy_out .= $row_label['group_name'].', ';
+              $final_labels .= $row_label['category_allow'].', ';
+              $class_exists = true;
+          }
+          if($class_exists == true){
+              $privacy_out = substr($privacy_out,0,-2);
+          }
+          else{
+              $privacy_out = 'Private';
+          }
+      }else{
+          $privacy_out = '';
+      }
+      
+      
+      
+
+        echo ' <div class="posts g1" id="pt_'.$label.'">
+                            <a href="../account?label='.$label.'#people" class="k1"><img src="../emogi/128/'.$row['emoji'].'" class="avatar"></a>
+                            <div  class="k1 mid">
+                                <div class="k1_r1"><a href="../account?label='.$label.'#people" class="mid_head">'.$row['group_name'].'</a><img src="../SVG/eye-regular.svg" class="eye_show" onclick="edit_tag_privacy('.$label.')"><span id="privacy_lebal_id_'.$label.'" class="privacy_visble" onclick="edit_tag_privacy('.$label.')">'.$privacy_out.'</span></div>
                                 '.$description.'
-                            </a>
-                            <div href="#" class="k1 hovrr1" id="'.$row['id'].'" name="'.$row['group_name'].'"  des="'.$row['description'].'"   url="'.$row['emoji'].'">
+                            </div>
+                            <div href="#" class="k1 hovrr1" id="'.$label.'" name="'.$row['group_name'].'"  des="'.$row['description'].'"   url="'.$row['emoji'].'">
                                 <div class="svg_a"> <img src="image/trash.svg"></div>
                             </div>
-                            <div href="#" class="k1 hovrr2" id="'.$row['id'].'" name="'.$row['group_name'].'"  des="'.$row['description'].'"   url="'.$row['emoji'].'">
+                            <div href="#" class="k1 hovrr2" id="'.$label.'" name="'.$row['group_name'].'"  des="'.$row['description'].'"   url="'.$row['emoji'].'">
                                 <div class="svg_a"> <img src="image/edit.svg"></div>
                             </div>
-                        </div>';
+                        </div>
+                        <script>
+                        privacy_level['.$label.'] = '.$row['share_with'].';
+                        selected_labels['.$label.'] = ['.$final_labels.'];
+                        console.log(privacy_level['.$label.']);
+                        console.log(selected_labels['.$label.']);
+                        </script>
+                        ';
   }
                     ?>
                     </div>
@@ -195,6 +343,9 @@ exit(0);
 
                     <div class="posts g1 g1_create">
                         Create new label
+                    </div>
+                    <div class="safe_message">
+                    * Your all labels are private to you, unless you haven't change it's privacy.
                     </div>
 
 
@@ -587,7 +738,7 @@ exit(0);
                                 <span class="z8" src="image/edit.svg"> </span>
                             </div>
                             <div><textarea class="textarea warnhead" readonly>RAT</textarea></div>
-                            <div><div class="textarea warntext " >Warning!<br><br> If you delete this label then member of this label will be also deleted from this label and this action can not be reverse back. </div></div>
+                            <div><div class="textarea warntext " >Warning!<br><br> If you delete this label then, this label will be removed from all associated members. </div></div>
                             <div class="btn_ct"><button type="submit" value="SAVE" class="warn_btn" id="back" >BACK</button>
                               <button type="submit" value="SAVE" class="warn_btn warn_red" id="delete">DELETE</button>
                               </div>
@@ -611,7 +762,15 @@ exit(0);
         <form class="input-wrap" autocomplete="off">
         </form>
     </div>
-    <script src="app.js"></script>
+    <script src="app.js?v=8"></script>
+    <script>
+//        rough work
+//     var a = [[]];
+//    a[9] = [123,34566,23456];
+//        console.log(a[9][2]);
+//        a[345678] = [1123456];
+//         console.log(a[345678][0]);
+    </script>
 </body>
 
 </html>
