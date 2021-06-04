@@ -50,7 +50,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Feed | Yaariii</title>
-    <link rel="stylesheet" href="CSS/style.css?v=4" />
+    <link rel="stylesheet" href="CSS/style.css?v=5" />
     <link rel="stylesheet" href="CSS/spin_loader.css" />
     <link rel="stylesheet" href="./search/CSS/style.css" />
     <link rel="stylesheet" href="CSS/slider.css" />
@@ -626,75 +626,7 @@ if (isset($_COOKIE['active_user'])){
                                 <?php
                                include 'php/next_story.php';
                                 ?>
-                                
-                              <!--  <div class="storie live">
-                                    <span class="photo">
-                                        <img src="./Images/profile-pic2.jpg" alt="profile-pic" />
-                                        <span class="live-text">LIVE</span>
-                                    </span>
-                                    <span class="name">static Meghana</span>
-                                </div>
-                                <div class="storie">
-                                    <span class="photo">
-                                        <img src="./Images/profile-pic3.png" alt="profile-pic" />
-                                    </span>
-                                    <span class="name">Shirley</span>
-                                </div>
-                                <div class="storie">
-                                    <span class="photo">
-                                        <img src="./Images/profile-pic5.jpg" alt="profile-pic" />
-                                    </span>
-                                    <span class="name">Mahathi</span>
-                                </div>
-                                <div class="storie">
-                                    <span class="photo inactive">
-                                        <img src="./Images/profile-pic4.jpg" alt="profile-pic" />
-                                    </span>
-                                    <span class="name">Rahul</span>
-                                </div>
-                                <div class="storie">
-                                    <span class="photo inactive">
-                                        <img src="./Images/profile-pic6.jpg" alt="profile-pic" />
-                                    </span>
-                                    <span class="name">Sandeep</span>
-                                </div>
-                                <div class="storie">
-                                    <span class="photo inactive">
-                                        <img src="./Images/profile-pic7.jpg" alt="profile-pic" />
-                                    </span>
-                                    <span class="name">Shreyan</span>
-                                </div>
-                                <div class="storie">
-                                    <span class="photo inactive">
-                                        <img src="./Images/profile-pic3.png" alt="profile-pic" />
-                                    </span>
-                                    <span class="name">Priya</span>
-                                </div>
-                                <div class="storie">
-                                    <span class="photo inactive">
-                                        <img src="./Images/profile-pic4.jpg" alt="profile-pic" />
-                                    </span>
-                                    <span class="name">Rahul</span>
-                                </div>
-                                <div class="storie">
-                                    <span class="photo inactive">
-                                        <img src="./Images/profile-pic6.jpg" alt="profile-pic" />
-                                    </span>
-                                    <span class="name">Sandeep</span>
-                                </div>
-                                <div class="storie">
-                                    <span class="photo inactive">
-                                        <img src="./Images/profile-pic7.jpg" alt="profile-pic" />
-                                    </span>
-                                    <span class="name">Shreyan</span>
-                                </div>
-                                <div class="storie">
-                                    <span class="photo inactive">
-                                        <img src="./Images/profile-pic3.png" alt="profile-pic" />
-                                    </span>
-                                    <span class="name">Priya</span>
-                                </div>-->
-                                <img class="arr prev" src="./Images/left-arrow.png" />
+                             <img class="arr prev" src="./Images/left-arrow.png" />
                                 <img class="arr nxt" src="./Images/right-arrow.png" />
                             </div>
                         </section>
@@ -707,7 +639,7 @@ if (isset($_COOKIE['active_user'])){
                         
                          <?php 
                         if($post_type==1){
-                           echo ' <div class="suggestion-box">
+                           $suggestion_frame =  ' <div class="suggestion-box">
                             <div class="suggestion-title">
                                 <span>Suggested for You</span>
                                 <a href="./request/" class="see-all">See All</a>
@@ -741,6 +673,7 @@ if (isset($_COOKIE['active_user'])){
                                 $query = "SELECT *,COUNT(*) FROM yaarme_follow.follow join yaarme.users on yaarme.users.id = yaarme_follow.follow.opponent WHERE ({$selected_user}) GROUP by opponent ORDER BY COUNT(*) DESC limit 100";
                                 $query = mysqli_query($connection,$query);
                                 $x=1;
+                            $suggestion_out = '';
                                 while($row = mysqli_fetch_assoc($query)){
                                 $query_user = "select * from yaarme_follow.follow where (user = {$_SESSION['id']} and opponent = {$row['opponent']} )";
                                 $query_user = mysqli_query($connection,$query_user);
@@ -754,20 +687,23 @@ if (isset($_COOKIE['active_user'])){
                                     }else{
                                     $img_out = "./profile/i/none.svg";
                                     }
-                                echo '<div class="suggestion suggest_'.$row['opponent'].'">
+                                $suggestion_out .= '<div class="suggestion suggest_'.$row['opponent'].'">
                                     <a href="./account?user='.$row['opponent'].'" style="background-image: url('.$img_out.');" class="suggest-img" ></a>
                                     <span class="suggest-close" onclick="ignore('.$row['opponent'].')">&#x2715;</span>
                                     <span class="suggest-name">'.$row['first_name'].' '.$row['last_name'].'</span>
                                     <p class="suggest-info">'.$row['status_mini_bio'].'</p>
                                     <button class="follow-button flw_btn_'.$row['opponent'].'" onclick="follow_ya('.$row['opponent'].','.$row['account_type'].')">Follow</button>
                                 </div>';
-                                if($x==10){
+                                if($x==25){
                                 break;
                                 }
                                 $x++;
                                 }else{
                                 }
                                 }
+                             if($x>1){
+                                 echo $suggestion_frame.$suggestion_out;
+                             }
                        
 
                              echo '   <img class="arrow previous" src="./Images/left-arrow.png" />

@@ -1057,18 +1057,19 @@ height: 2.6em;
 }
 
 .suggest-name {
-width: 12em;
+width: 12.5em;
    font-size: .8em;
     font-weight: 600;
     justify-content: center;
     margin-top: 0.5em;
-    white-space: nowrap;
+/*    white-space: nowrap;*/
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     text-align: center;
+    padding: 0 5px;
 }
 
 .suggest-info {

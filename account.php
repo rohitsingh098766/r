@@ -111,9 +111,9 @@ $follower_user = $row_following['total_sum_following'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yaariii</title>
+    <title><?php echo $name_user;?></title>
     <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="./CSS/profile.css?v=12">
+    <link rel="stylesheet" href="./CSS/profile.css?v=14">
     <link rel="stylesheet" href="./page/css/like.css">
     
     <link rel="stylesheet" href="CSS/spin_loader.css" />
@@ -146,7 +146,9 @@ $follower_user = $row_following['total_sum_following'];
     echo "<style>.edit_allowed{
     display:inline;
     }.c1{display:none;}</style>";
-}
+}else{
+       echo "<style>.cn_mine{display:none;}</style>";  
+    }
     ?>
 </head>
 
@@ -412,9 +414,7 @@ $follower_user = $row_following['total_sum_following'];
                     <div class="a1">
                         <div class="a12 a12_change">
                             <div  style="background-image:url('<?php echo $img_user;?>')" class="post_profile a121  <?php if($show_every===true){echo "allow";} ?>" id="profile_image"></div>
-                        <div class="change_profile edit_allowed"> 
-                            <small  class=""><a href="page/edit_pic.php" class="edit"><img src="SVG/pencil.svg" class="pencil">Edit</a></small>
-                            </div>
+                      
                         </div>
                         <a href="#about" class="a12" onclick="show_now('post')">
                             <div>
@@ -433,11 +433,9 @@ $follower_user = $row_following['total_sum_following'];
                     <img src="<?php echo $img_user;?>" id="full_image">
 
                     <div class="b1">
-                        <div class="b11 b11_name"><?php echo $name_user.$group_name;?><small  class="edit_allowed"><a href="page/edit_name.php" class="edit"><img src="SVG/pencil.svg" class="pencil">Change name</a></small></div>
-                        <div class="b11 b11_bio"><?php echo $bio_user;?> <small class="edit_allowed"><a href="page/edit_bio.php" class="edit"><img src="SVG/pencil.svg" class="pencil">Update Intro</a></small></div>
-                        <div class="b11 b11_location"><?php if(strlen($location_user)>2){
-    echo '<img class="loc-icon" src="./SVG/location.svg" alt="">'.$location_user;
-} ?><small class="edit_allowed"><a href="page/edit_location.php" class="edit"><img src="SVG/pencil.svg" class="pencil">Update location</a></small></div>
+                        <div class="b11 b11_name"><?php echo $name_user.$group_name;?></div>
+                        <div class="b11 b11_bio"><?php echo $bio_user;?> </div>
+                        <div class="b11 b11_location"><?php if(strlen($location_user)>2){echo '<img class="loc-icon" src="./SVG/location.svg" alt="">'.$location_user;} ?></div>
                     </div>
 
                     <div class="c1" >
@@ -449,6 +447,15 @@ $follower_user = $row_following['total_sum_following'];
                         </div>
                         <div class="c12">
                             <div class="c121 c121_more" onclick="profile_options();open_post_options(<?php echo $user.','. "'".$name_user."'";?>,24,0);">More</div>
+                        </div>
+                    </div>
+                    
+                     <div class="cn_mine" >
+                        <div class="c12  c12_mine">
+                            <a class="c121 c121_follow"  href="./page/edit_public_profile">Edit profile</a>
+                        </div>
+                        <div class="c12 c12_mine">
+                            <a class="c121 c121_more" href="./page/settings.php">Settings</a>
                         </div>
                     </div>
 

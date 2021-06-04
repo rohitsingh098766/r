@@ -62,22 +62,35 @@ html{
 }
 
 .c1 {
-    display: grid;
+    display: flex;
     width: 100%;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin: 1em 0;
+/*    grid-template-columns: 1fr 1fr 1fr;*/
+    justify-content: space-around;
+    margin: 2em 0  1em 0;
 }
 
 .c12 {
     display: flex;
     justify-content: center;
+    width: 30%;
+}
+.c12_mine {
+   
+    width: 45%;
 }
 
 .c121 {
     border: 1px solid var(--blue);
     padding: .33em .75em;
     border-radius: 1em;
-    color: var(--blue)
+    color: var(--blue);
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    padding: .75em;
+    border-radius: 12px;
 }
 
 .c121_follow {
@@ -570,7 +583,11 @@ transform: scale(.5);
     height: 1em;
     margin-right: .25em;
 }
-
+.cn_mine{
+    display: flex;
+    justify-content: space-around;
+    margin: 2em 0 1em 0;
+}
 
 
 

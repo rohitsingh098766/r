@@ -1,0 +1,20 @@
+.span_update {
+    position: absolute;
+    color: gray;
+    font-size: .85em;
+    
+}
+.previous, .continue, .signup-button{
+    width: 100%;
+    justify-content: center;
+}
+.previous::before, .continue::after, .signup-button::after {
+    display: none;
+}
+.change_img{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #e3e3e352;
+    background-image: url(../../profile/i/none.svg)
+}
