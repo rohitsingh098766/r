@@ -273,3 +273,13 @@ document.querySelector("#my_options").addEventListener("click", function () {
 })
 
 
+function setting_about(){
+document.getElementById('show_advance_setting_about').style.display = 'none';
+    
+    var sections_to_hide = document.querySelectorAll('.about_edit_show');
+    for( var m = 0; m<sections_to_hide.length; m++){
+        sections_to_hide[m].classList.remove('hidden_about');
+    }
+    
+}
+

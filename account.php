@@ -113,7 +113,7 @@ $follower_user = $row_following['total_sum_following'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $name_user;?></title>
     <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="./CSS/profile.css?v=14">
+    <link rel="stylesheet" href="./CSS/profile.css?v=16">
     <link rel="stylesheet" href="./page/css/like.css">
     
     <link rel="stylesheet" href="CSS/spin_loader.css" />
@@ -504,14 +504,14 @@ $follower_user = $row_following['total_sum_following'];
                             $group_name = '';
                             
 if($user==$_SESSION['id']){
-$all_echo[1] = '<a href="page/edit_summary"> <div  class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> A BRIEF NOTE ABOUT YOURSELF</div></div></div></a>'; 
-$all_echo[2] = ' <a href="page/edit_dob"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> DATE OF BIRTH</div></div></div></a>';  
-$all_echo[4] = ' <a href="page/relationship"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> RELATIONSHIP</div></div></div></a>';  
-$all_echo[5] = ' <a href="page/education"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> EDUCATION</div></div></div></a>'; 
-$all_echo[6] = ' <a href="page/work"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> WORK</div></div></div></a>';  
+$all_echo[1] = '<a href="page/edit_summary" class=" about_edit_show hidden_about"> <div  class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> A BRIEF NOTE ABOUT YOURSELF</div></div></div></a>'; 
+$all_echo[2] = ' <a href="page/edit_dob" class=" about_edit_show hidden_about"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> DATE OF BIRTH</div></div></div></a>';  
+$all_echo[4] = ' <a href="page/relationship" class=" about_edit_show hidden_about"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> RELATIONSHIP</div></div></div></a>';  
+$all_echo[5] = ' <a href="page/education" class=" about_edit_show hidden_about"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> EDUCATION</div></div></div></a>'; 
+$all_echo[6] = ' <a href="page/work" class=" about_edit_show hidden_about"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> WORK</div></div></div></a>';  
 //$all_echo[7] = ' <a href="page/edit_summary"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> a bried note about yourself</div></div></div></a>'; 
-$all_echo[8] = ' <a href="page/add_social_media"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> OTHER SOCIAL MEDIA</div></div></div></a>';  
-$all_echo[9] = ' <a href="page/contact_details"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> CONTACT DETAILS</div></div></div></a>';  
+$all_echo[8] = ' <a href="page/add_social_media" class=" about_edit_show hidden_about"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> OTHER SOCIAL MEDIA</div></div></div></a>';  
+$all_echo[9] = ' <a href="page/contact_details" class=" about_edit_show hidden_about"> <div class="about_section"> <div class="section_header"><div class="header_main"><span class="add_user">Add &nbsp;</span> CONTACT DETAILS</div></div></div></a>';  
 }
                        
  if($user==$_SESSION['id']){
@@ -578,8 +578,8 @@ $privacy_change = 'onclick="show_privacy_change('.$row_about['real_id'].','.$row
 $all_echo[1] = ' <div class="about_section">
     <div class="section_header">
         <div class="header_main">ABOUT </div>
-        <div class="header_edit">'.$edit_option.'</div>
-        <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.' id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'"> '.$privacy_option.'</div>
+        <div class=" about_edit_show hidden_about header_edit">'.$edit_option.'</div>
+        <div class=" about_edit_show hidden_about header_privacy  header_privacy about_edit_show hidden_about_'.$row_about['about_code'].'" '.$privacy_change.' id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'"> '.$privacy_option.'</div>
     </div>
     <div class="section_body">'.$row_about['my_opinion'].'</div>
 </div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ '.$echo_list_id.' ];</script>';
@@ -619,8 +619,8 @@ $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <spa
     $widget_up = ' <div class="about_section">
      <div class="section_header">
         <div class="header_main">DATE OF BIRTH</div>
-        <div class="header_edit">'.$edit_option.'</div>
-        <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div>
+        <div class=" about_edit_show hidden_about header_edit">'.$edit_option.'</div>
+        <div class=" about_edit_show hidden_about header_privacy  header_privacy about_edit_show hidden_about_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div>
     </div>
     <div class="section_body">';
     $widget_down = '</div>
@@ -685,8 +685,8 @@ $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <spa
     
        $widget_up = ' <div class="about_section">
     <div class="section_header">  <div class="header_main">RELATIONSHIP</div>
-        <div class="header_edit">'.$edit_option.'</div>
-        <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div></div>
+        <div class=" about_edit_show hidden_about header_edit">'.$edit_option.'</div>
+        <div class=" about_edit_show hidden_about header_privacy  header_privacy about_edit_show hidden_about_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div></div>
     ';
     $widget_down = '</div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ '.$echo_list_id.' ];</script>';
     
@@ -803,8 +803,8 @@ $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <spa
     
        $widget_up = ' <div class="about_section">
     <div class="section_header">  <div class="header_main">EDUCATION</div>
-        <div class="header_edit">'.$edit_option.'</div>
-        <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div></div>
+        <div class=" about_edit_show hidden_about header_edit">'.$edit_option.'</div>
+        <div class=" about_edit_show hidden_about header_privacy  header_privacy about_edit_show hidden_about_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div></div>
     ';
     $widget_down = '</div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ '.$echo_list_id.' ];</script>';
     
@@ -925,8 +925,8 @@ $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <spa
     
        $widget_up = ' <div class="about_section">
     <div class="section_header">  <div class="header_main">WORK</div>
-        <div class="header_edit">'.$edit_option.'</div>
-        <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div></div>
+        <div class=" about_edit_show hidden_about header_edit">'.$edit_option.'</div>
+        <div class=" about_edit_show hidden_about header_privacy  header_privacy about_edit_show hidden_about_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div></div>
     ';
     $widget_down = '</div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ '.$echo_list_id.' ];</script>';
     
@@ -1032,8 +1032,8 @@ $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <spa
 
 $all_echo[7] =  ' <div class="about_section">
     <div class="section_header">  <div class="header_main">LOCATIONS</div>
-        <div class="header_edit">'.$edit_option.'</div>
-        <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div></div>
+        <div class=" about_edit_show hidden_about header_edit">'.$edit_option.'</div>
+        <div class=" about_edit_show hidden_about header_privacy  header_privacy about_edit_show hidden_about_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div></div>
     <div class="section_body">'.$row_about['position'].'</div>
 </div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ '.$echo_list_id.' ];</script>';
 
@@ -1075,8 +1075,8 @@ $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <spa
 
 $upper_grid =  '   <div class="about_section">
                                 <div class="section_header">  <div class="header_main">SOCIAL ACCOUNTS</div>
-        <div class="header_edit">'.$edit_option.'</div>
-        <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div></div>
+        <div class=" about_edit_show hidden_about header_edit">'.$edit_option.'</div>
+        <div class=" about_edit_show hidden_about header_privacy  header_privacy about_edit_show hidden_about_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$privacy_option.'</div></div>
                                 <div class="section_body">';
     $lower_grid = '</div></div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ '.$echo_list_id.' ];</script>';
     
@@ -1131,7 +1131,7 @@ $privacy_option = '<img src="SVG/eye-regular.svg" class="pencil about eye"> <spa
 $upper_grid = ' <div class="about_section">
     <div class="section_header">
         <div class="header_main">CONTACT</div>
-        <div class="header_edit">'.$edit_option.'</div>
+        <div class=" about_edit_show hidden_about header_edit">'.$edit_option.'</div>
        
     </div>
     ';
@@ -1148,7 +1148,7 @@ $upper_grid = ' <div class="about_section">
               '.$description.'
             </div>
             <div></div>
-            <div class="header_privacy header_privacy_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$contact_eye.'</div>
+            <div class=" about_edit_show hidden_about header_privacy  header_privacy about_edit_show hidden_about_'.$row_about['about_code'].'" '.$privacy_change.'  id="privacy_func_'.$row_about['real_id'].'_'.$row_about['about_code'].'" privacy_level="'.$row_about['share_with'].'">'.$contact_eye.'</div>
         </div></div><script>list_html['.$row_about['about_code'].']['.$row_about['real_id'].']=[ '.$echo_list_id.' ];</script>';
     
                       
@@ -1162,7 +1162,11 @@ foreach($all_echo as $value){
     echo $value ;
 }
 ?>
-                            
+                           <div class="cn_mine cn_mine_holder" >
+                        <div class="c12 c12_mine cn_about_edit" id="show_advance_setting_about" onclick="setting_about()">
+                            <div class="c121 c121_more cn_about_more" >Edit about section</div>
+                        </div>
+                    </div>
 
                             
                         </div>
@@ -1625,14 +1629,14 @@ for(var i = 0; i < images.length; i++){
         </form>
     </div>
     <script src="./JS/main.js?v=5"></script>
-    <script src="./JS/profile.js?v=11"></script>
+    <script src="./JS/profile.js?v=13"></script>
     
     <?php
     if($show_every===false){
         echo "<script>function show_now(id){window.alert('this is private account.')}</script>";
     }
     if(isset($_GET['edit'])){
-        echo "<script>show_now('about');</script>";
+        echo "<script>show_now('about');setting_about();</script>";
         
     }
      if($user==$_SESSION['id']){

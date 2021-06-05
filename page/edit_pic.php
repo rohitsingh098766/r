@@ -220,14 +220,14 @@ exit(0);
 
         </div>
         <div class="main-signup " id="signup-form">
-            <div class="header">
-                <img src="../edit_profile/CSS/Images/Yaarme-logo.png" class="main-img head-img">
+             <div class="header">
+                <img src="../icons/logo/logo_transparent.png" class="main-img head-img">
                 <div class="title">
-                    <b style="color: #196fb6;">Yaar</b><b>Me</b>
+                    <b style="color: #196fb6;">YAARIII</b><b></b>
                 </div>
 
             </div>
-           
+            
             <form class="multi-stage" autocomplete="off" id="form" method="post" enctype="multipart/form-data">
                 <div class="forms">
                     <div class="form-heading">

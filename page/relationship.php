@@ -236,12 +236,13 @@ exit;
        
         <div class="main-signup " id="signup-form">
             <div class="header">
-                <img src="../login/CSS/Images/Yaarme-logo.png" class="main-img head-img">
+                <img src="../icons/logo/logo_transparent.png" class="main-img head-img">
                 <div class="title">
-                    <b style="color: #196fb6;">Yaar</b><b>Me</b>
+                    <b style="color: #196fb6;">YAARIII</b><b></b>
                 </div>
 
             </div>
+            
             <h2 class="heading" style="font-size: 1.25em;">Sign Up</h2>
             <div class="progress-bar hide">
                 <span class="number finished" id="n-1">1</span>
