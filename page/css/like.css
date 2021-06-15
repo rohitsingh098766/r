@@ -63,3 +63,6 @@
     filter: invert(0.5);
     transform: rotate(90deg)
 }
+.name_link{
+    color: black;
+}

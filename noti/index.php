@@ -157,7 +157,7 @@ session_start();
                         
                         $query = "SELECT * , TIMESTAMPDIFF(SECOND, notifications_all.at, CURRENT_TIMESTAMP ) as sec FROM yaarme.notifications_all 
                         join yaarme.users on users.id = notifications_all.from_user 
-                        where for_user = {$_SESSION['id']} order by at desc limit 500" ;
+                        where for_user = {$_SESSION['id']} order by at desc limit 100" ;
   $result = mysqli_query($connection,$query);
                         
                         if(!mysqli_num_rows($result)){

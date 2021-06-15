@@ -2,6 +2,7 @@
     //upload image
 function loadFile(event) {
             var image = document.getElementById('o1');
+      document.getElementById('delete_image_input').value = 1;
 //            image.src = URL.createObjectURL(event.target.files[0]);
     image.style.backgroundImage = "url('"+URL.createObjectURL(event.target.files[0])+"')";
 //    window.alert(URL.createObjectURL(event.target.files[0]));
@@ -158,4 +159,13 @@ document.addEventListener("click", function (e) {
 }
 
 autocomplete(document.getElementById("location"));
+
+
+
+//delete profile image
+function delete_profile_img(){
+    document.getElementById('delete_image_input').value = 1;
+     document.getElementById('o1').style.backgroundImage = "url('../profile/i/none.svg')";
+    
+}
     

@@ -833,3 +833,10 @@ if(document.getElementById('select_one_home') && document.querySelector('.select
 }
 
 
+function change_tag(user_id){
+    openlist('yy');
+    user_at = user_id;
+//window.alert(user_id);
+    
+}
+

@@ -35,6 +35,8 @@
     max-height: 1200px;
     margin-top: 1em;
     background-color: black;
+    min-height: 200px;
+    background-color: #dadada;
 }
 
 .control {

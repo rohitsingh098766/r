@@ -173,10 +173,20 @@ exit(0);
         }
     }
     
-     $query = "UPDATE yaarme.users SET `first_name` = '{$first_name}' ".$insert." WHERE `users`.`id` = {$_SESSION['id']};";
+    $delete_img_query = '';
+    if(isset($_POST['delete_img'])){
+        if($_POST['delete_img']==1){
+             delete_file('../profile/i/original/',$_SESSION['img']);
+    $_SESSION['img'] = "";
+            $delete_img_query = ",`img` = null";
+        }
+    }
+    
+     $query = "UPDATE yaarme.users SET `first_name` = '{$first_name}' ".$insert.$delete_img_query." WHERE `users`.`id` = {$_SESSION['id']};";
 //    echo $query;
 //    exit(0);
     if(mysqli_query($connection,$query)){
+           $_SESSION['name'] = $first_name;
 //        exit(0); 
 }
     
@@ -234,6 +244,7 @@ while($row = mysqli_fetch_assoc($result)){
     $name = $row['first_name'].' '.$row['last_name'];
     $bio = $row['status_mini_bio'];
     $location = $row['space'];
+    $image = $row['img'];
 }
 
 
@@ -251,7 +262,7 @@ while($row = mysqli_fetch_assoc($result)){
     <link rel="stylesheet" href="../CSS/spin_loader.css">
     <link rel="stylesheet" href="../login/CSS/style.css">
     <link rel="stylesheet" href="../edit_profile/CSS/style.css">
-    <link rel="stylesheet" href="./css/edit_profile.css?v=3">
+    <link rel="stylesheet" href="./css/edit_profile.css?v=4">
 
     <!--icons-->
     <link rel="apple-touch-icon" sizes="57x57" href="../icons/icons/apple-icon-57x57.png" />
@@ -310,12 +321,12 @@ while($row = mysqli_fetch_assoc($result)){
                     </div>
 
                     <label for="f1" class="profile_img">
-                        <div src="../profile/i/none.svg"  class="change_img" id="o1"></div>
+                        <div src="" style="background-image:url('../profile/<?php if($image)echo 'i/1080/'.$image;else{echo 'i/none.svg';}?>')"  class="change_img" id="o1"></div>
                     </label>
                     <input accept="image/*" type="file" id="f1" onchange="loadFile(event)" class="hide" value="image_file" name="a" id="image_file">
-                    <label for="f1" class="profile_img">
-                        <span class="span_update">Update profile image</span>
-                    </label>
+                    <div for="f1" class="profile_img">
+                        <div class="span_update"><label for="f1">Update profile image</label><?php if($image)echo '<span onclick="delete_profile_img();">Remove profile image</span>';else{}?></div>
+                    </div>
                     <div class="input-wrap">
                         <input type="text" class="fields" id="first_name" name="first_name" value="<?php echo $name;?>" required>
                         <span class="label">Name</span>
@@ -333,6 +344,7 @@ while($row = mysqli_fetch_assoc($result)){
                     <div class="button-wrap">
                         
                         <input class="continue"  name="submitted_form" type="hidden" value="1">
+                        <input class="continue" id="delete_image_input"  name="delete_img" type="hidden" value="0">
                         <button class="continue" name="submitted" onclick="submit_fast();">Update</button>
                     </div>
                 </div>
@@ -341,6 +353,6 @@ while($row = mysqli_fetch_assoc($result)){
     </div>
     <div class="hide load_anything"></div>
     
-    <script src="js/edit_profile.js?v=3"></script>
+    <script src="js/edit_profile.js?v=4"></script>
 </body>
 </html>

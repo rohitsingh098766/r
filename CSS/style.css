@@ -1806,6 +1806,19 @@ background: rgba(188, 188, 188, 0.12);
     border-radius: 50%;
     filter: invert(0) ! important;
 }
+.post_header{
+display: flex  ! important;
+    align-items: center;
+}
+.post_header .name{
+font-size: .9em;
+    color: black;
+    font-weight: 700;
+}
+.remove_label{
+color: black;
+    float: right;
+}
 
 /*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*/
 

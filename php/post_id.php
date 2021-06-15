@@ -85,12 +85,14 @@ while($row_total_like = mysqli_fetch_assoc($result_total_like)){
     
 
 //    check relation
-     $query_relation = "select * from yaarme_follow.follow where user =  {$_SESSION['id']} and opponent = {$row['owner']}" ;
+     $query_relation = "select * from yaarme_follow.follow left join yaarme_follow.category on category.id = follow.category where user =  {$_SESSION['id']} and opponent = {$row['owner']}" ;
 $result_relation = mysqli_query($connection,$query_relation);
 
- $relation_out = 2;   
+ $relation_out = 2; 
+    $group_name = '';
 while($row_relation = mysqli_fetch_assoc($result_relation)){
       $relation_out = $row_relation['approve'];
+    $group_name = preg_replace('/\r|\n/','\n',trim(htmlentities($row_relation['group_name'])));
 }
     
     
@@ -155,7 +157,7 @@ $time_show = $time_show."y";
             "name":"'.preg_replace('/\r|\n/','\n',trim(htmlentities($row['first_name'].' '.$row['last_name']))).'",
             "owner_id":"'.$row['owner'].'",
             "account_type":"'.$row['account_type'].'",
-            "tag":"'.preg_replace('/\r|\n/','\n',trim(htmlentities($row['group_name']))).'",
+            "tag":"'.$group_name.'",
             "introduction":"'.preg_replace('/\r|\n/','\n',trim(htmlentities($row['status_mini_bio']))).'",
             "time":"'.$time_show.'",
             "location":"'.preg_replace('/\r|\n/','\n',trim(htmlentities($row['post_location']))).'",

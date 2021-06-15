@@ -97,15 +97,15 @@ if($proceed===true  && $row['target']!=$user){
 }
 echo '
 <div class="grid">
-<a class="flex_s" href="./account?user='.$row['target'].'"><div class="post_profile profile_img" style="background-image:url('."'".$img."'".')"></div></a>
+<a class="flex_s" href="./account?user='.$row['target'].'" target="_blank"><div class="post_profile profile_img" style="background-image:url('."'".$img."'".')"></div></a>
 <div class="grid_mid">
-<div class="name">'.$row['first_name'].' '.$row['last_name'].'
-<small class="u_c_'.$row['target'].'">'.$category.'</small>
+<div class="name"><a href="./account?user='.$row['target'].'" target="_blank" class="name_link">'.$row['first_name'].' '.$row['last_name'].'</a>
+<small class="u_c_'.$row['target'].'" onclick="change_tag('.$row['target'].')">'.$category.'</small>
 <small class="fllw_'.$row['target'].'" onclick="unfollow_ys('.$row['target'].','.$row['account_type'].')">'.$following.'</small>
 <small class="unmt_'.$row['target'].'" onclick="mute_ys('.$row['target'].')">'.$mute.'</small>
 </div>
-<a class="description" href="./account?user='.$row['target'].'">'.$row['status_mini_bio'].'</a>
-<a class="location" href="./account?user='.$row['target'].'">'.$location_out.'</a>
+<a class="description" href="./account?user='.$row['target'].'" target="_blank">'.$row['status_mini_bio'].'</a>
+<a class="location" href="./account?user='.$row['target'].'" target="_blank">'.$location_out.'</a>
 </div>
 <div class="flex_s" onclick="open_post_options('.$row['target'].', 88,16,0)"><span class="icon more-icon" ></span></div>
 </div>

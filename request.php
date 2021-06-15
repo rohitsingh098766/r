@@ -12,7 +12,7 @@ session_start();
     <title>Feed | YaarMe</title>
     <link rel="stylesheet" href="./CSS/style.css">
     <link rel="stylesheet" href="./request/style.css">
-    <link rel="stylesheet" href="./page/css/like.css">
+    <link rel="stylesheet" href="./page/css/like.css?v=2">
 
     <!--icons-->
     <link rel="apple-touch-icon" sizes="57x57" href="./icons/icons/apple-icon-57x57.png">
@@ -357,15 +357,15 @@ session_start();
                         echo '
                         <div class="grid">
                     
-                    <a href="./account?user='.$row['opponent'].'" class="flex_s"><img class="profile_img" src="'.$img.'"></a>
+                    <a href="./account?user='.$row['opponent'].'" target="_blank" class="flex_s"><img class="profile_img" src="'.$img.'"></a>
                     <div class="grid_mid">
-                        <div class="name">'.$row['first_name'].' '.$row['last_name'].'
-                            <small class="u_c_'.$row['opponent'].'">'.$category.'</small>
+                        <div class="name"><a href="./account?user='.$row['opponent'].'" target="_blank" class="name_link">'.$row['first_name'].' '.$row['last_name'].'</a>
+                            <small class="u_c_'.$row['opponent'].'" onclick="change_tag('.$row['opponent'].')">'.$category.'</small>
                             <small class="fllw_'.$row['opponent'].'" onclick="unfollow_ys('.$row['opponent'].','.$row['account_type'].')">'.$following.'</small>
                             <small class="unmt_'.$row['opponent'].'" onclick="mute_ys('.$row['opponent'].')">'.$mute.'</small>
                         </div>
-                        <a href="./account?user='.$row['opponent'].'" class="description">'.$row['status_mini_bio'].'</a>
-                        <a href="./account?user='.$row['opponent'].'" class="location"><img class="loc-icon" src="./SVG/location.svg" alt="">'.$row['location'].'</a>
+                        <a href="./account?user='.$row['opponent'].'" target="_blank" class="description">'.$row['status_mini_bio'].'</a>
+                        <a href="./account?user='.$row['opponent'].'" target="_blank" class="location"><img class="loc-icon" src="./SVG/location.svg" alt="">'.$row['location'].'</a>
                         </div>
                     <div class="flex_s" onclick="open_post_options('.$row['opponent'].', 88,16,0)"><span class="icon more-icon" ></span></div>
                     </div>
@@ -422,7 +422,7 @@ session_start();
                         <div class="my_options " id="post_optionyy">
                             <div class="my_options my_options_block" onclick="close_options('yy')"></div>
                             <div class="items item_post" style="">
-                                <p class="select_category">Send <span class="active_name">name</span> in list</p>
+                                <p class="select_category">Add a label on <span class="active_name">name</span>.<span class="remove_label" onclick=" changelist(id,'',1)">Remove Label</span></p>
                                 <form>
                                     <ul>
 
@@ -433,7 +433,7 @@ session_start();
                $query = mysqli_query($connection,$query);
   while($row = mysqli_fetch_assoc($query)){
       if($row['description']){
-          $description = '<span>'.$row['description'].'</span>';
+          $description = '<span>'.preg_replace('/\r|\n/','',trim(htmlentities($row['description']))).'</span>';
       }else{
           $description = '';
       }
@@ -446,10 +446,10 @@ session_start();
       }
       echo '
        <li>
-     <div class="follow-conn select_tl" onclick="changelist('.$row['id'].','."'".$row['group_name']."'".')">
+     <div class="follow-conn select_tl" onclick="changelist('.$row['id'].','."'".preg_replace('/\r|\n/','',trim(htmlentities($row['group_name'])))."'".')">
          <img src="./emogi/128/'.$row['emoji'].'" class="follow-icon">
          <span class="conn-name">
-             <span><b>'.$row['group_name'].'</b></span>
+             <span><b>'.preg_replace('/\r|\n/','',trim(htmlentities($row['group_name']))).'</b></span>
              '.$description.'
          </span>
          </span>
@@ -465,25 +465,31 @@ session_start();
                     ?>
 
 
+<!--
                                         <li onclick=" changelist(id,'',1)">
                                             <div class="follow-conn select_tl">
                                                 <img src="./emogi/128/human/man-astronaut-medium-dark-skin-tone.png" class="follow-icon">
                                                 <span class="conn-name cn">
-                                                    <span><b>Unlisted</b></span>
-                                                    <span>keep name unlisted.</span>
+                                                    <span><b>Unlabel</b></span>
+                                                    <span>Everyone who doesn't have any label.</span>
                                                 </span>
 
                                             </div>
                                         </li>
+-->
 
 
+<div class="follow-conn ">
 
+                        <a href="./manage_category" class="hint_crt">Click to manage labels.</a>
+
+                    </div>
                                     </ul>
 
                                 </form>
                             </div>
                         </div>
-                                   
+
 
 
                     </div>

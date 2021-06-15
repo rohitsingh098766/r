@@ -64,7 +64,7 @@ $summary_user =  $row_details['summary'];
         $img_user = "./profile/i/none.svg";
     }
     if($group_name){
-    $group_name = ' <small class="u_c u_c_'.$row_details['selected_user'].'"> • '.$group_name.'</small>';
+    $group_name = ' <small class="u_c u_c_'.$row_details['selected_user'].'" onclick="change_tag('.$user.')"> • '.$group_name.'</small>';
     }else{
         $group_name ='';
 }
@@ -112,9 +112,9 @@ $follower_user = $row_following['total_sum_following'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $name_user;?></title>
-    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/style.css?v=17">
     <link rel="stylesheet" href="./CSS/profile.css?v=16">
-    <link rel="stylesheet" href="./page/css/like.css">
+    <link rel="stylesheet" href="./page/css/like.css?v=16">
     
     <link rel="stylesheet" href="CSS/spin_loader.css" />
     <link rel="stylesheet" href="./search/CSS/style.css" />
@@ -1376,25 +1376,27 @@ foreach($all_echo as $value){
                             </div>
                         </div>
 
+<?php echo '<script>var user = '.$user.';</script>';?>
 
                     
 
                     <!-- chnage list-->
-                    <div class="my_options " id="post_optionyy">
-                        <div class="my_options my_options_block" onclick="close_options('yy')"></div>
-                        <div class="items item_post" style="">
-                               <p class="select_category">Add a label  <span class="active_name hide">name</span></p>
-                            <form>
-                                <ul>
+                  <!--                        chnage list-->
+                        <div class="my_options " id="post_optionyy">
+                            <div class="my_options my_options_block" onclick="close_options('yy')"></div>
+                            <div class="items item_post" style="">
+                                <p class="select_category">Add a label on <span class="active_name">name</span>.<span class="remove_label" onclick=" changelist(id,'',1)">Remove Label</span></p>
+                                <form>
+                                    <ul>
 
-<?php echo '<script>var user = '.$user.';</script>';?>
-                                    <?php
+
+                                        <?php
                     
                     $query = "select * from yaarme_follow.category where owner_id = {$_SESSION['id']}";
                $query = mysqli_query($connection,$query);
   while($row = mysqli_fetch_assoc($query)){
       if($row['description']){
-          $description = '<span>'.$row['description'].'</span>';
+          $description = '<span>'.preg_replace('/\r|\n/','',trim(htmlentities($row['description']))).'</span>';
       }else{
           $description = '';
       }
@@ -1407,10 +1409,10 @@ foreach($all_echo as $value){
       }
       echo '
        <li>
-     <div class="follow-conn select_tl" onclick="changelist('.$row['id'].','."'".str_replace('  ',' ', htmlentities( preg_replace('/\r|\n/',' ', htmlentities($row['group_name']))))."'".')">
+     <div class="follow-conn select_tl" onclick="changelist('.$row['id'].','."'".preg_replace('/\r|\n/','',trim(htmlentities($row['group_name'])))."'".')">
          <img src="./emogi/128/'.$row['emoji'].'" class="follow-icon">
          <span class="conn-name">
-             <span><b>'.$row['group_name'].'</b></span>
+             <span><b>'.preg_replace('/\r|\n/','',trim(htmlentities($row['group_name']))).'</b></span>
              '.$description.'
          </span>
          </span>
@@ -1426,25 +1428,30 @@ foreach($all_echo as $value){
                     ?>
 
 
-                                    <li onclick=" changelist(id,'',1)">
-                                        <div class="follow-conn select_tl">
-                                            <img src="./emogi/128/human/man-astronaut-medium-dark-skin-tone.png" class="follow-icon">
-                                            <span class="conn-name cn">
-                                                  <span><b>Unlabel</b></span>
-                                                    <span>Remove label from this profile.</span>
-                                            </span>
+<!--
+                                        <li onclick=" changelist(id,'',1)">
+                                            <div class="follow-conn select_tl">
+                                                <img src="./emogi/128/human/man-astronaut-medium-dark-skin-tone.png" class="follow-icon">
+                                                <span class="conn-name cn">
+                                                    <span><b>Unlabel</b></span>
+                                                    <span>Everyone who doesn't have any label.</span>
+                                                </span>
 
-                                        </div>
-                                    </li>
+                                            </div>
+                                        </li>
+-->
 
 
+<div class="follow-conn ">
 
-                                </ul>
+                        <a href="./manage_category" class="hint_crt">Click to manage labels.</a>
 
-                            </form>
-                        </div>
                     </div>
+                                    </ul>
 
+                                </form>
+                            </div>
+                        </div>
 
                     <!--                   add posts   -->
                          <script>
@@ -1578,9 +1585,9 @@ creat_post();
                         
                         console.log(react_types)
                         max_id = output.post[i].id;
-                        my_adds = '<div class="card card_own_' + output.post[i].owner_id + '" post_id="' + output.post[i].id + '">'+shared_with+' <div class="follow-conn"> <img src="' + post_own_pic + '" class="follow-icon users" oncontextmenu="this.requestFullscreen();this.setAttribute('+"'"+'src'+"'"+','+'this.getAttribute('+"'"+'src'+"'"+').replace('+"'"+'profile/i/120/'+"'"+', '+"'"+'profile/i/1080/'+"'"+')'+');return false;"/> <div class="conn-name"> <span> <b>' + output.post[i].name + ' <small class="u_c_' + output.post[i].owner_id + '">' + tagshow + '</small> <small class="fllw_' + output.post[i].owner_id + '" onclick="unfollow_ys(' + output.post[i].owner_id + ',' + output.post[i].account_type + ')">'+follow_integ+'</small><small class="unmt_' + output.post[i].owner_id + '" onclick="mute_ys(' + output.post[i].owner_id + ')">'+mute_integ+'</small> </b> </span> <span>' + output.post[i].introduction + '</span> <span> <span>' + output.post[i].time + location_in_post + ' </span>  </span> </div> '+check_if_owner+' </div><div class="post_raw_body" ondblclick="double_click_love(' + output.post[i].id + ')"> <p class="content select_text"> ' + output.post[i].body_text.replace("\n\n","<br>") + ' </p> ' +
+                        my_adds = '<div class="card card_own_' + output.post[i].owner_id + '" post_id="' + output.post[i].id + '">'+shared_with+' <div class="follow-conn"> <img src="' + post_own_pic + '" class="follow-icon users" oncontextmenu="this.requestFullscreen();this.setAttribute('+"'"+'src'+"'"+','+'this.getAttribute('+"'"+'src'+"'"+').replace('+"'"+'profile/i/120/'+"'"+', '+"'"+'profile/i/1080/'+"'"+')'+');return false;"/> <div class="conn-name"> <span> <b class="post_header"><a  href="./account?user='+output.post[i].owner_id+'" target="_blank" class="name">' + output.post[i].name + '&nbsp;</a> <small class="u_c_' + output.post[i].owner_id + '" onclick="change_tag(' + output.post[i].owner_id + ')">' + tagshow + '</small> <small class="fllw_' + output.post[i].owner_id + '" onclick="unfollow_ys(' + output.post[i].owner_id + ',' + output.post[i].account_type + ')">'+follow_integ+'</small><small class="unmt_' + output.post[i].owner_id + '" onclick="mute_ys(' + output.post[i].owner_id + ')">'+mute_integ+'</small> </b> </span> <a href="./account?user='+output.post[i].owner_id+'" target="_blank">' + output.post[i].introduction + '</a>  <a href="./account?user='+output.post[i].owner_id+'" target="_blank"> <span>' + output.post[i].time + location_in_post + ' </span>  </a> </div> '+check_if_owner+' </div><div class="post_raw_body" ondblclick="double_click_love(' + output.post[i].id + ')"> <p class="content select_text"> ' + output.post[i].body_text.replace("<br>","<br>") + ' </p> ' +
                             sa + slidrr + sb +
-                            '</div> <div class="vote-section" > '+react_types+' <a href="like?post='+output.post[i].id+'" target="_blank" class="votes">' + output.post[i].like + '</a> <span class=" post-slider-dots post-slider-dots_' + output.post[i].id + '"></span> <a href="posts?p='+output.post[i].id+'" target="_blank" > ' + total_comments + ' </a> </div> <div class="share-section"  > <div class="icon-wrap open_reactions ' + output.post[i].reaction + '" id="like_' + output.post[i].id + '"> <div class="like_option"> <div class="set_it"> <img src="./emogi/other/compressed/thumbs_up.gif" title="Like" class="like_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/sparkling_heart.gif" title="Love" class="love_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/handshake.gif" title="Support" class="support_inner " oncontextmenu="return false"/> <img src="./emogi/other/compressed/party_popper.gif" title="Celebrate" class="cele_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/fire.gif" title="Hot" class="hot_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/beaming_face_with_smiling_eyes.gif" title="Laugh" class="smile_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/crying_face.gif" title="Sad" class="sad_inner" oncontextmenu="return false"/> </div> </div> <div class="flex"> <img src="./emogi/128/human/thumbs-up-medium-light-skin-tone.png" class="icon like-i default"> <span class="default">Like&nbsp;</span> <img src="./emogi/other/compressed/thumbs_up.gif" class="icon like-i liked" oncontextmenu="return false"> <span class="liked">Liked</span> <img src="./emogi/other/compressed/sparkling_heart.gif" class="icon loved" oncontextmenu="return false"> <span class="loved">Loved</span> <img src="./emogi/other/compressed/handshake.gif" class="icon supported" oncontextmenu="return false"> <span class="supported">Supported</span> <img src="./emogi/other/compressed/party_popper.gif" class="icon celebrated" oncontextmenu="return false"> <span class="celebrated">celebrated</span> <img src="./emogi/other/compressed/fire.gif" class="icon fired" oncontextmenu="return false"> <span class="fired">Hot</span> <img src="./emogi/other/compressed/beaming_face_with_smiling_eyes.gif" class="icon haha" oncontextmenu="return false"> <span class="haha">HaHa</span> <img src="./emogi/other/compressed/crying_face.gif" class="icon sad" oncontextmenu="return false"> <span class="sad">Sad</span> </div> </div> <div class="icon-wrap" onclick="show_comment(' + output.post[i].id + ')"> <img src="./SVG/comment.svg" class="icon comment-icon" /> <span>Comment</span> </div> <div class="icon-wrap ' + output.post[i].save + '" id="save_' + output.post[i].id + '" onclick="save_me(' + output.post[i].id + ')"> <img src="./SVG/save.svg" class="icon send-icon" /><span>Save&nbsp;</span> <img src="./SVG/saved.svg" class="icon send-icon saved_done" /> <span class="saved_done ">Saved</span> </div> </div> <div id="load_comments_' + output.post[i].id + '"></div> <form class="follow-conn comment_attempt " id="comment_' + output.post[i].id + '" onsubmit="submit_comment(event,' + output.post[i].id + ')"><img src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>" class="follow-icon comment_profile" /><span href="profile/" class="comment_form"><textarea type="text" rows="1" class="comment_input" id="comment_input_' + output.post[i].id + '" value="o" placeholder="Leave your comment..." onkeydown="autosize(' + output.post[i].id + ')"></textarea></span><button class="follow post_comment">Post</button></form> </div> ';
+                            '</div> <div class="vote-section" > '+react_types+' <a href="like?post='+output.post[i].id+'" target="_blank" class="votes">' + output.post[i].like + '&nbsp;</a> <span class=" post-slider-dots post-slider-dots_' + output.post[i].id + '"></span> <a href="posts?p='+output.post[i].id+'" target="_blank" > ' + total_comments + ' </a> </div> <div class="share-section"  > <div class="icon-wrap open_reactions ' + output.post[i].reaction + '" id="like_' + output.post[i].id + '"> <div class="like_option"> <div class="set_it"> <img src="./emogi/other/compressed/thumbs_up.gif" title="Like" class="like_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/sparkling_heart.gif" title="Love" class="love_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/handshake.gif" title="Support" class="support_inner " oncontextmenu="return false"/> <img src="./emogi/other/compressed/party_popper.gif" title="Celebrate" class="cele_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/fire.gif" title="Hot" class="hot_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/beaming_face_with_smiling_eyes.gif" title="Laugh" class="smile_inner" oncontextmenu="return false"/> <img src="./emogi/other/compressed/crying_face.gif" title="Sad" class="sad_inner" oncontextmenu="return false"/> </div> </div> <div class="flex"> <img src="./emogi/128/human/thumbs-up-medium-light-skin-tone.png" class="icon like-i default"> <span class="default">Like&nbsp;</span> <img src="./emogi/other/compressed/thumbs_up.gif" class="icon like-i liked" oncontextmenu="return false"> <span class="liked">Liked</span> <img src="./emogi/other/compressed/sparkling_heart.gif" class="icon loved" oncontextmenu="return false"> <span class="loved">Loved</span> <img src="./emogi/other/compressed/handshake.gif" class="icon supported" oncontextmenu="return false"> <span class="supported">Supported</span> <img src="./emogi/other/compressed/party_popper.gif" class="icon celebrated" oncontextmenu="return false"> <span class="celebrated">celebrated</span> <img src="./emogi/other/compressed/fire.gif" class="icon fired" oncontextmenu="return false"> <span class="fired">Hot</span> <img src="./emogi/other/compressed/beaming_face_with_smiling_eyes.gif" class="icon haha" oncontextmenu="return false"> <span class="haha">HaHa</span> <img src="./emogi/other/compressed/crying_face.gif" class="icon sad" oncontextmenu="return false"> <span class="sad">Sad</span> </div> </div> <div class="icon-wrap" onclick="show_comment(' + output.post[i].id + ')"> <img src="./SVG/comment.svg" class="icon comment-icon" /> <span>Comment</span> </div> <div class="icon-wrap ' + output.post[i].save + '" id="save_' + output.post[i].id + '" onclick="save_me(' + output.post[i].id + ')"> <img src="./SVG/save.svg" class="icon send-icon" /><span>Save&nbsp;</span> <img src="./SVG/saved.svg" class="icon send-icon saved_done" /> <span class="saved_done ">Saved</span> </div> </div> <div id="load_comments_' + output.post[i].id + '"></div> <form class="follow-conn comment_attempt " id="comment_' + output.post[i].id + '" onsubmit="submit_comment(event,' + output.post[i].id + ')"><img src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>" class="follow-icon comment_profile" /><span href="profile/" class="comment_form"><textarea type="text" rows="1" class="comment_input" id="comment_input_' + output.post[i].id + '" value="o" placeholder="Leave your comment..." onkeydown="autosize(' + output.post[i].id + ')"></textarea></span><button class="follow post_comment">Post</button></form> </div> ';
                         load_m = 1;
                         document.getElementById("new_posts").insertAdjacentHTML("beforeend", my_adds);
                         if (document.getElementById('slider_' + output.post[i].id)) {
@@ -1628,8 +1635,8 @@ for(var i = 0; i < images.length; i++){
         <form class="input-wrap" autocomplete="off">
         </form>
     </div>
-    <script src="./JS/main.js?v=5"></script>
-    <script src="./JS/profile.js?v=13"></script>
+    <script src="./JS/main.js?v=7"></script>
+    <script src="./JS/profile.js?v=16"></script>
     
     <?php
     if($show_every===false){
