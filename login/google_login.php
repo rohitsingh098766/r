@@ -21,7 +21,7 @@ if(mysqli_query($connection,$query_insert)){
           $id = $row['id'];
             $password = $row['key_'];
             $_SESSION['id'] = $id;
-                $_SESSION['name'] = $row['first_name'].' '.$row['last_name'];
+                $_SESSION['name'] = htmlentities($row['first_name'].' '.$row['last_name']);
                 $_SESSION['img'] = $row['img'];
       
       
@@ -54,7 +54,7 @@ if(mysqli_query($connection,$query_insert)){
    $id = $row['id'];
                 $password = $row['key_'];
                 $_SESSION['id'] = $id;
-                $_SESSION['name'] = $row['first_name'].' '.$row['last_name'];
+                $_SESSION['name'] = htmlentities($row['first_name'].' '.$row['last_name']);
                 $_SESSION['img'] = $row['img'];
                 setcookie("active_user", $id, time() + (86400 * 364),'/');
                 setcookie("user_id[$id]", $password, time() + (86400 * 364),'/');

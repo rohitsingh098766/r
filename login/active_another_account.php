@@ -21,7 +21,7 @@ if (isset($_COOKIE['user_id'])){
                 $id_after = $row['id'];
                 $password = $row['key_'];
                 $_SESSION['id'] = $id_after;
-                $_SESSION['name'] = $row['first_name'].' '.$row['last_name'];
+                $_SESSION['name'] = htmlentities($row['first_name'].' '.$row['last_name']);
                 $_SESSION['img'] = $row['img'];
                 setcookie("active_user", $id_after, time() + (86400 * 364),'/');
                 setcookie("user_id[$id_after]", $password, time() + (86400 * 364),'/');

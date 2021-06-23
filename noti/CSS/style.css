@@ -94,7 +94,8 @@ color:black;
 }
 
 .notif .last p{
-    margin: 8px auto;
+   margin: 5px auto;
+    font-size: .85em;
 }
 
 .notif .last{

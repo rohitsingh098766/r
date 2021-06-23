@@ -50,7 +50,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Feed | Yaariii</title>
-    <link rel="stylesheet" href="CSS/style.css?v=8" />
+    <link rel="stylesheet" href="CSS/style.css?v=13" />
     <link rel="stylesheet" href="CSS/spin_loader.css" />
     <link rel="stylesheet" href="./search/CSS/style.css" />
     <link rel="stylesheet" href="CSS/slider.css?v=7" />
@@ -115,7 +115,7 @@
                $query = mysqli_query($connection,$query);
   while($row = mysqli_fetch_assoc($query)){
       if($row['description']){
-          $description = '<span>'.$row['description'].'</span>';
+          $description = '<span>'.htmlentities($row['description']).'</span>';
       }else{
           $description = '';
       }
@@ -130,7 +130,7 @@
                         <div class="follow-conn select_tl" cd="'.$row['id'].'">
                             <img src="./emogi/128/'.$row['emoji'].'" class="follow-icon">
                                     <span class="conn-name">
-                                        <span><b>'.$row['group_name'].'</b></span>
+                                        <span><b>'.htmlentities($row['group_name']).'</b></span>
                                              '.$description.'
                                          </span>
                                     <span class="select_me '.$pin1.'">
@@ -214,15 +214,18 @@
 
     <div class="sidebar">
         <div  class="profile-img-sidebar">
-            <a  href="profile/"><img class="avatar" src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>" alt="" /></a>
+            <a  href="profile/">
+                    <div  style="background-image:url('<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>')" alt="profile-pic" class="bg_image avatar "></div>
+<!--                <img class="avatar" src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>" alt="" />-->
+            </a>
             <a  href="profile/"><img class="moon" src="SVG/moon-solid.svg" alt="" /></a>
             <p>
                 <a class="white"  href="profile/">  <?php echo $_SESSION['name'];?> <br /></a>
             </p>
-            <img class="down expand-add-acc " src="SVG/chevron-down-solid.svg" alt="" />
+            <img class="down expand-add-acc rotate-arrow" src="SVG/chevron-down-solid.svg" alt="" />
             <!-- <i class="fas fa-chevron-down arrow expand-add-acc"></i> -->
         </div>
-        <div class="all-uls">
+        <div class="all-uls show-add-acc">
             <ul class="add-account">
                  <li>
                     <a href="login/">
@@ -251,8 +254,8 @@ if (isset($_COOKIE['active_user'])){
          }
                 echo ' <li>
                     <a href="login/switch.php?to='.$user_id.'">
-                        <img src="'.$sidebar_other_profile.'" alt="" class="profile_sidebar"/>
-                        <span>Switch to '.$row['first_name'].' '.$row['last_name'].'</span>
+                      <div  style="background-image:url('.$sidebar_other_profile.')" alt="profile-pic" class="bg_image profile_sidebar"></div>
+                        <span>Switch to '.htmlentities($row['first_name'].' '.$row['last_name']).'</span>
                     </a>
                 </li>';
          
@@ -272,7 +275,7 @@ if (isset($_COOKIE['active_user'])){
                 <li>
                     <a href="profile/">
                         <img src="SVG/user-edit-solid.svg" alt="" />
-                        <span>Edit Profile</span>
+                        <span>Visit Profile</span>
                     </a>
                 </li>
                 <li>
@@ -295,6 +298,7 @@ if (isset($_COOKIE['active_user'])){
             </ul>
             <hr />
             
+<!--
             <ul>
                 <li>
                     <a href="page/settings">
@@ -315,14 +319,12 @@ if (isset($_COOKIE['active_user'])){
                         <span>Password</span>
                     </a>
                 </li>
-<!--
                 <li>
                     <a href="#">
                         <img src="SVG/stumbleupon-circle-brands.svg" alt="" />
                         <span>Statics</span>
                     </a>
                 </li>
--->
                 <li>
                     <a href="page/settings">
                         <img src="" alt="" />
@@ -331,7 +333,15 @@ if (isset($_COOKIE['active_user'])){
                 </li>
             </ul>
             <hr />
+-->
             <ul>
+                  <li>
+                    <a href="page/settings">
+                        <img src="SVG/cog-solid.svg" alt="" />
+                        <span >Settings</span>
+
+                    </a>
+                </li>
                 <li >
                     <a href="#" onclick="share(' <?php echo $_SESSION['name'];?>','Follow <?php echo $_SESSION['name'];?> on Yaariii','https://Yaariii.com/account?user=<?php echo $_SESSION['id'];?>')">
                         <img src="SVG/share-black.svg" alt="" />
@@ -339,12 +349,14 @@ if (isset($_COOKIE['active_user'])){
                     </a>
                 </li>
                
+<!--
                 <li>
                     <a href="page/faq">
                         <img src="SVG/question-circle-solid.svg" alt="" />
                         <span>Yaariii FAQ</span>
                     </a>
                 </li>
+-->
                 
                  <li >
                     <a href="page/logout" >
@@ -377,7 +389,7 @@ if (isset($_COOKIE['active_user'])){
     ?>
 
 
-
+<!--desktop header-->
     <div class="main-navbar-wrap">
         <div class="main-navbar">
             <a href="./" class="icon company-logo"></a>
@@ -417,11 +429,19 @@ if (isset($_COOKIE['active_user'])){
                     </svg>
                 </a>
                 <span href="#" class="icon profile-icon work-cont">
-                    <img src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>">
+<!--
+                    height: 2em;
+    width: 2em;
+    background: red;
+    border: 1px solid #64ff64;
+    display: table;
+-->
+<!--                    <img src="">-->
+                      <div  style="background-image:url('<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>');" alt="profile-pic" class="bg_image profile_img_desk_header"></div>
                     <div class="desk-menu">
                         <div class="sidebar desktop-menu">
                             <a href="./account" class="profile-img-sidebar">
-                                <img class="avatar" src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>" alt="" />
+                                  <div  style="background-image:url('<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>')" alt="profile-pic" class="bg_image avatar "></div>
                                 <span class="moon"></span>
                                 <p>
                                     <?php echo $_SESSION['name'];?> <br />
@@ -442,7 +462,7 @@ if (isset($_COOKIE['active_user'])){
                                     <li>
                                         <a href="profile/">
                                             <img src="SVG/user-edit-solid.svg" alt="" />
-                                            <span>Edit Profile</span>
+                                            <span>Visit Profile</span>
                                         </a>
                                     </li>
                                     <li>
@@ -459,7 +479,8 @@ if (isset($_COOKIE['active_user'])){
                                     </li>
                                     <li>
                                         <a href="page/saved_posts">
-                                            <img src="SVG/save-black.svg" alt="" /> <span>Saved posts</span>
+                                            <img src="SVG/save-black.svg" alt="" />
+                                            <span>Saved posts</span>
                                         </a>
                                     </li>
                                     <li>
@@ -584,7 +605,7 @@ if (isset($_COOKIE['active_user'])){
     }else{
     $end = ', ';
     }
-    $selected_tags .= '<a href="./manage_people/?c='.$row['id'].'" class="blue">'.$row['group_name'].'</a>'.$end;
+    $selected_tags .= '<a href="./manage_people/?c='.$row['id'].'" class="blue">'.htmlentities($row['group_name']).'</a>'.$end;
     $x++;
     }
     if(!$selected_tags){
@@ -615,7 +636,8 @@ if (isset($_COOKIE['active_user'])){
                             <div class="scroll-stories">
                                 <a href="create_story/" class="storie">
                                     <span class="photo user">
-                                        <img src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>" alt="profile-pic" />
+                                          <div  style="background-image:url('<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>')" alt="profile-pic" class="bg_image bg_image_story "></div>
+                                        
                                         <span class="add-story">
                                             <div class="add-story-text">+</div>
                                         </span>
@@ -690,8 +712,8 @@ if (isset($_COOKIE['active_user'])){
                                 $suggestion_out .= '<div class="suggestion suggest_'.$row['opponent'].'">
                                     <a href="./account?user='.$row['opponent'].'" style="background-image: url('.$img_out.');" class="suggest-img" ></a>
                                     <span class="suggest-close" onclick="ignore('.$row['opponent'].')">&#x2715;</span>
-                                    <span class="suggest-name">'.$row['first_name'].' '.$row['last_name'].'</span>
-                                    <p class="suggest-info">'.$row['status_mini_bio'].'</p>
+                                    <span class="suggest-name">'.htmlentities($row['first_name'].' '.$row['last_name']).'</span>
+                                    <p class="suggest-info">'.htmlentities($row['status_mini_bio']).'</p>
                                     <button class="follow-button flw_btn_'.$row['opponent'].'" onclick="follow_ya('.$row['opponent'].','.$row['account_type'].')">Follow</button>
                                 </div>';
                                 if($x==25){
@@ -1202,7 +1224,7 @@ for(var i = 0; i < images.length; i++){
             <span id="company-title" class="title white"><span>YAARIII</span><span></span></span>
             <input type="search" placeholder="Search" class="search-bar invisible" id="search_mob" name="s">
 
-            <img id="search-icon-img" src="SVG/search.png">
+            <img id="search-icon-img" src="SVG/search-regular.svg">
 <!--              <img id="search-icon-img" src="./SVG/search-solid.svg" style="height:28px;width:28px;">-->
 <!--
              <svg id="search-icon-img" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-bars fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="24px" width="px">
@@ -1214,7 +1236,8 @@ for(var i = 0; i < images.length; i++){
         </form>
         <a href="https://Yaariii.com/profile" class="icon profile-icon">
             <!--            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-circle" class="svg-inline--fa fa-user-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="white" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"></path></svg>-->
-            <img src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>">
+<!--            <img src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>">-->
+            <div  style="background-image:url('<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>')" alt="profile-pic" class="bg_image profile-icon_mobi"></div>
         </a>
     </div>
 

@@ -2,7 +2,7 @@
     //upload image
 function loadFile(event) {
             var image = document.getElementById('o1');
-      document.getElementById('delete_image_input').value = 1;
+      document.getElementById('delete_image_input').value = 0;
 //            image.src = URL.createObjectURL(event.target.files[0]);
     image.style.backgroundImage = "url('"+URL.createObjectURL(event.target.files[0])+"')";
 //    window.alert(URL.createObjectURL(event.target.files[0]));

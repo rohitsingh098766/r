@@ -186,7 +186,7 @@ exit(0);
 //    echo $query;
 //    exit(0);
     if(mysqli_query($connection,$query)){
-           $_SESSION['name'] = $first_name;
+           $_SESSION['name'] = htmlentities($first_name);
 //        exit(0); 
 }
     
@@ -353,6 +353,6 @@ while($row = mysqli_fetch_assoc($result)){
     </div>
     <div class="hide load_anything"></div>
     
-    <script src="js/edit_profile.js?v=4"></script>
+    <script src="js/edit_profile.js?v=5"></script>
 </body>
 </html>

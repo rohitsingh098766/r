@@ -178,6 +178,7 @@ transform:scale(1.5);
   border-right: 4.5px solid transparent;
   border-top: 5px solid #8dafcb;
   margin-left: 0.5em;
+    transform: translate(1.5em, 0);
 }
 .work-cont:hover:after {
    border-top: 0;
@@ -321,13 +322,13 @@ transform:scale(1.5);
      border-right: 67px solid transparent;
      
   }
-  .profile-icon img{
-      height:1.7em;
-       width:1.7em;
+  .profile-icon img, .profile-icon_mobi{
+      height:1.5em;
+       width:1.5em;
        border-radius:50%;
        display: flex;
     margin: auto;
-border: 1px solid #a7a7a7;
+/*border: 1px solid #a7a7a7;*/
   } 
   .desk-menu img{
 border:0;
@@ -707,6 +708,7 @@ height: 2.6em;
   filter: invert(0.4);
 
   height: 22px;
+    width: 22px;
 }
 
 .sidebar ul li a {
@@ -721,6 +723,7 @@ height: 2.6em;
   width: 95%;
   border: 0;
   border-top: 1px solid #d5d5d5;
+    margin: .25em 0;
 }
 
 .profile-img-sidebar {
@@ -1049,7 +1052,7 @@ height: 2.6em;
     background-position: center;
     background-color: #8080801a;
 }
-.post_profile{
+.post_profile, .bg_image{
      background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -1636,6 +1639,8 @@ color: #b5b5b5;
 .comment_profile{
     width:2em;
     height: 2em;
+    margin-top: .5em;
+    border-radius: 50%;
 }
 .post_comment{
     background: #0382c7;
@@ -1805,6 +1810,10 @@ background: rgba(188, 188, 188, 0.12);
 .profile_sidebar{
     border-radius: 50%;
     filter: invert(0) ! important;
+    margin-right: 25px !important;
+    margin-left: 25px !important;
+    height: 22px;
+    width: 22px;
 }
 .post_header{
 display: flex  ! important;
@@ -1819,6 +1828,27 @@ font-size: .9em;
 color: black;
     float: right;
 }
+.bg_image_story{
+    border: 2.5px solid white;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+#search-icon-img{
+height: 1.4em;
+    width:  1.4em;
+    transform: translate(-0.5em, 0);
+}
+.profile_img_desk_header{
+    
+ height: 1.5em;
+    width: 1.5em; 
+    display: table;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+}
+
 
 /*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*//*media query*/
 
@@ -2016,8 +2046,8 @@ border: 1px solid #0b4d8e;
 }
 .all-uls {
   transition: transform 0.3s;
-  transform: translateY(128px);
-  -moz-transform: translateY(128px);
+  transform: translateY(120px);
+  -moz-transform: translateY(120px);
 }
 
 .show-add-acc {
@@ -2088,6 +2118,10 @@ display: block ! important;
   }
 }
 
-@media only screen and (max-width: 360px) {
-   
+@media only screen and (max-width: 300px) {
+   #search-icon-img{
+       height: 1.2em;
+    width:  1.2em;
+    transform: translate(0, 0);
+}
 }

@@ -154,10 +154,10 @@ $query_check_seen = "select * from yaarme_post.story where (owner_id = {$_SESSIO
     if(mysqli_num_rows($query_check_seen)){
         
         if($_SESSION['img']){ $my_profile = 'profile/i/240/'.$_SESSION['img'];}else{ $my_profile = "profile/i/none.svg"; }
-        
+//      to  add, if user has not seen his story class="photo my" instead of class="photo inactive"
          echo  '<a class="storie " href="story/?u='.$_SESSION['id'].'">
-    <span class="photo my">
-        <img src="'.$my_profile.'" alt="profile-pic" />
+    <span class="photo inactive">
+        <div  style="background-image:url('.$my_profile.')" alt="profile-pic" class="bg_image bg_image_story "></div>
     </span>
     <span class="name">You</span>
 </a>';
@@ -183,14 +183,14 @@ $owner_profile = "profile/i/none.svg";
     if(mysqli_num_rows($query_check_seen)){
        $seen_story .=  '<a class="storie " href="story/?u='.$row['owner'].'">
     <span class="photo inactive">
-        <img src="'.$owner_profile.'" alt="profile-pic" />
+     <div  style="background-image:url('.$owner_profile.')" alt="profile-pic" class="bg_image bg_image_story "></div>
     </span>
     <span class="name">'.$row['first_name'].'&nbsp;'.$row['last_name'].'</span>
 </a>';
     }else{
        $unseen_story .=  '<a class="storie " href="story/?f='.$filter.'&o='.$row['owner'].'">
     <span class="photo">
-        <img src="'.$owner_profile.'" alt="profile-pic" />
+     <div  style="background-image:url('.$owner_profile.')" alt="profile-pic" class="bg_image bg_image_story "></div>
     </span>
     <span class="name">'.$row['first_name'].'&nbsp;'.$row['last_name'].'</span>
 </a>';

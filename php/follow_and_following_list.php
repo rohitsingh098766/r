@@ -80,7 +80,7 @@ if($row_relation['mute_post']){
 $mute = " • Unmute "  ;
 }
 if($row_relation['group_name']){
-$category = '• '.$row_relation['group_name'];
+$category = '• '.htmlentities($row_relation['group_name']);
 }
 $proceed = true;
 if($row_relation['approve']==10 || $row_relation['approve']==11 || $row_relation['approve']==8 ){
@@ -91,7 +91,7 @@ $proceed = false;
 
 if($proceed===true  && $row['target']!=$user){  
     if($row['location']){
-     $location_out = '<img class="loc-icon" src="./SVG/location.svg" alt="">'.$row['location'];  
+     $location_out = '<img class="loc-icon" src="./SVG/location.svg" alt="">'.htmlentities($row['location']);  
     }else{
         $location_out = "";
 }
@@ -99,12 +99,12 @@ echo '
 <div class="grid">
 <a class="flex_s" href="./account?user='.$row['target'].'" target="_blank"><div class="post_profile profile_img" style="background-image:url('."'".$img."'".')"></div></a>
 <div class="grid_mid">
-<div class="name"><a href="./account?user='.$row['target'].'" target="_blank" class="name_link">'.$row['first_name'].' '.$row['last_name'].'</a>
+<div class="name"><a href="./account?user='.$row['target'].'" target="_blank" class="name_link">'.htmlentities($row['first_name'].' '.$row['last_name']).'</a>
 <small class="u_c_'.$row['target'].'" onclick="change_tag('.$row['target'].')">'.$category.'</small>
 <small class="fllw_'.$row['target'].'" onclick="unfollow_ys('.$row['target'].','.$row['account_type'].')">'.$following.'</small>
 <small class="unmt_'.$row['target'].'" onclick="mute_ys('.$row['target'].')">'.$mute.'</small>
 </div>
-<a class="description" href="./account?user='.$row['target'].'" target="_blank">'.$row['status_mini_bio'].'</a>
+<a class="description" href="./account?user='.$row['target'].'" target="_blank">'.htmlentities($row['status_mini_bio']).'</a>
 <a class="location" href="./account?user='.$row['target'].'" target="_blank">'.$location_out.'</a>
 </div>
 <div class="flex_s" onclick="open_post_options('.$row['target'].', 88,16,0)"><span class="icon more-icon" ></span></div>

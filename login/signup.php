@@ -31,7 +31,7 @@ if(mysqli_query($connection,$query_insert)){
           $id = $row['id'];
             $password = $row['key_'];
             $_SESSION['id'] = $id;
-                $_SESSION['name'] = $row['first_name'].' '.$row['last_name'];
+                $_SESSION['name'] = htmlentities($row['first_name'].' '.$row['last_name']);
                 $_SESSION['img'] = $row['img'];
       
       
