@@ -180,7 +180,7 @@ if($isWebView){
             <div class="header">
                 <img src="../icons/logo/logo_transparent.png" class="main-img head-img"  alt="logo">
                 <div class="title">
-                    <b style="color: #196fb6;">Yaar</b><b>Me</b>
+                    <b style="color: #196fb6;">Yaariii</b><b></b>
                 </div>
                 <span class="login" id="login-back">Login</span>
             </div>

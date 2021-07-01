@@ -21,7 +21,7 @@
 
 .header_intro {
     width: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./files/1.jpg);
+/*    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./files/1.jpg);*/
     height: 100vh;
     background-size: cover;
     background-position: center;
@@ -203,6 +203,10 @@ background-image: url(files/1.jpg);
 
 
 @media only screen and (max-width: 600px) {
+    .logo_intro {
+    height: 4em;
+    width: 4em;
+}
     .header_text_intro {
         padding: 0 1em;
 
