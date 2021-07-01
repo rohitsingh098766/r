@@ -21,7 +21,7 @@
 
 .header_intro {
     width: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(./files/1.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./files/1.jpg);
     height: 100vh;
     background-size: cover;
     background-position: center;
@@ -82,8 +82,8 @@
 .btn_know_more_intro {
     background-image: linear-gradient(to right, transparent, transparent);
     background-color: transparent;
-    color: #3bb0ef;
-    border: 2px solid #3bb0ef;
+    color: #7fd2ff;
+    border: 2px solid #7fd2ff;
     padding: calc(.75em - 2px) calc(1.5em - 2px);
 }
 
@@ -167,9 +167,9 @@ background-image: url(files/1.jpg);
     
 }
 .red:hover{
-    filter: brightness(.6);
+    filter: brightness(.8);
     transform: scale(.98);
-    box-shadow: inset 0 0 5px 0 black;
+    box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 1);
 }
 
 @media only screen and (max-width: 900px) {
@@ -247,9 +247,17 @@ background-image: url(files/1.jpg);
     .heading__tertiary{
         font-weight: 500;
         font-size: 1.1em;
+        margin-bottom: 7px;
     }
     .paragraph__second{
 font-size: 1em;
     line-height: 145%;
     }
+    
+    .red:hover{
+    filter: brightness(1);
+    transform: scale(1.15);
+    box-shadow: inset 0 0 0 0 rgba(255, 255, 255, 0.25);
+}
+
 }
