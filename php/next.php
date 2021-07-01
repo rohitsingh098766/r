@@ -186,6 +186,30 @@ order by post_num DESC
 limit 10
 ";  
 
+}else if($filter==6){
+    $query = "
+SELECT *, posts.id as post_num, posts.owner_id as owner , posts.location as post_location  ,TIMESTAMPDIFF(SECOND, posts.time,CURRENT_TIMESTAMP ) as time_ago, A.approve as approved
+from yaarme_post.posts
+join yaarme.users on yaarme.users.id = yaarme_post.posts.owner_id 
+join yaarme_follow.follow A on yaarme_post.posts.owner_id = A.opponent 
+left join yaarme_follow.category on yaarme_follow.category.id = A.category
+ left join yaarme_post.share_with_post on share_with_post.post_detail = posts.id
+ left join  yaarme_follow.follow B on B.category = share_with_post.category_id
+WHERE 
+(
+    A.user = 1 and
+    A.approve = 1 and
+    A.mute_post = 0 and
+     yaarme_post.posts.id < {$skip}  
+   and
+   (
+   yaarme_post.posts.shared_with is null
+   or B.opponent =1 
+   )
+)
+order by post_num DESC
+limit 10
+";
 }
 
 //echo $query;

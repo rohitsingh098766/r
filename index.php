@@ -50,7 +50,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Feed | Yaariii</title>
-    <link rel="stylesheet" href="CSS/style.css?v=13" />
+    <link rel="stylesheet" href="CSS/style.css?v=14" />
     <link rel="stylesheet" href="CSS/spin_loader.css" />
     <link rel="stylesheet" href="./search/CSS/style.css" />
     <link rel="stylesheet" href="CSS/slider.css?v=7" />
@@ -219,7 +219,7 @@
 <!--                <img class="avatar" src="<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>" alt="" />-->
             </a>
             <a  href="profile/"><img class="moon" src="SVG/moon-solid.svg" alt="" /></a>
-            <p>
+            <p class="single_line">
                 <a class="white"  href="profile/">  <?php echo $_SESSION['name'];?> <br /></a>
             </p>
             <img class="down expand-add-acc rotate-arrow" src="SVG/chevron-down-solid.svg" alt="" />
@@ -228,7 +228,7 @@
         <div class="all-uls show-add-acc">
             <ul class="add-account">
                  <li>
-                    <a href="login/">
+                    <a href="login/?add=1">
                         <img src="SVG/plus-solid.svg" alt="" /> <span>Add account</span>
                     </a>
                 </li>
@@ -535,6 +535,10 @@ if (isset($_COOKIE['active_user'])){
                                 <a href="./?t=1" class="select_element <?php if($post_type==1){echo  "active";}?>">Following</a>
 
                             </li>
+                            <li>
+                                <a href="./?t=6" class="select_element <?php if($post_type==6){echo  "active";}?>">Trending</a>
+
+                            </li>
                             
                             
                             <?php
@@ -631,28 +635,16 @@ if (isset($_COOKIE['active_user'])){
                             </div>
 -->
                         </div>
-                    <div class="scroll">
-                        <section class="stories">
-                            <div class="scroll-stories">
-                                <a href="create_story/" class="storie">
-                                    <span class="photo user">
-                                          <div  style="background-image:url('<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>')" alt="profile-pic" class="bg_image bg_image_story "></div>
-                                        
-                                        <span class="add-story">
-                                            <div class="add-story-text">+</div>
-                                        </span>
-                                    </span>
-                                    <span class="name">Your Story</span>
-                                </a>
+                    
+                    
+<!--                    stories-->
                                 
                                 <?php
+                       if($post_type<6){
                                include 'php/next_story.php';
+                                    }
                                 ?>
-                             <img class="arr prev" src="./Images/left-arrow.png" />
-                                <img class="arr nxt" src="./Images/right-arrow.png" />
-                            </div>
-                        </section>
-                    </div>
+
 
                     <div class="posts" >
                         
@@ -660,7 +652,7 @@ if (isset($_COOKIE['active_user'])){
 
                         
                          <?php 
-                        if($post_type==1){
+                        if($post_type==1 || $post_type==6){
                            $suggestion_frame =  ' <div class="suggestion-box">
                             <div class="suggestion-title">
                                 <span>Suggested for You</span>
@@ -723,15 +715,16 @@ if (isset($_COOKIE['active_user'])){
                                 }else{
                                 }
                                 }
-                             if($x>1){
-                                 echo $suggestion_frame.$suggestion_out;
-                             }
+                            
                        
 
-                             echo '   <img class="arrow previous" src="./Images/left-arrow.png" />
+                             $suggestion_bottom =  '   <img class="arrow previous" src="./Images/left-arrow.png" />
                                 <img class="arrow next" src="./Images/right-arrow.png" />
                             </div>
                         </div>';
+                             if($x>1){
+                                 echo $suggestion_frame.$suggestion_out;
+                             }
                         }
 
  ?>
@@ -752,6 +745,8 @@ if (isset($_COOKIE['active_user'])){
                                         echo "var po_st_type = 4;";
                                     }else if($post_type==5){
                                         echo "var po_st_type = '5&l=".$list_show."';";
+                                    }else if($post_type==6){
+                                        echo "var po_st_type = 6;";
                                     }
                             
                              if($_SESSION['img']){
@@ -1276,7 +1271,7 @@ for(var i = 0; i < images.length; i++){
             </a>
         </ul>
     </div>
-    <script src="JS/main.js?v=6"></script>
+    <script src="JS/main.js?v=9"></script>
 
 
 

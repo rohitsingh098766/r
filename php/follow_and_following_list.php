@@ -41,7 +41,7 @@ left join yaarme.location on location.id  = users.location
 where (yaarme_follow.follow.user = {$user} and approve = 1)
 limit 500 
 ";
-}else if($type>1){
+}else if($type>=1){
    $query = "select *, yaarme_follow.follow.opponent as target from yaarme_follow.follow
 join yaarme.users on users.id = yaarme_follow.follow.opponent 
 left join yaarme.location on location.id  = users.location 
@@ -96,7 +96,7 @@ if($proceed===true  && $row['target']!=$user){
         $location_out = "";
 }
 echo '
-<div class="grid">
+<div class="grid user_profile_'.$row['target'].'">
 <a class="flex_s" href="./account?user='.$row['target'].'" target="_blank"><div class="post_profile profile_img" style="background-image:url('."'".$img."'".')"></div></a>
 <div class="grid_mid">
 <div class="name"><a href="./account?user='.$row['target'].'" target="_blank" class="name_link">'.htmlentities($row['first_name'].' '.$row['last_name']).'</a>

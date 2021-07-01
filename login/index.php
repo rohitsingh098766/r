@@ -17,10 +17,11 @@ setcookie("t", $set_to_one, time() + (86400 * 364),'/');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yaariii | Social media</title>
+    <title>Yaariii | Smart social media</title>
 
-    <link rel="stylesheet" href="../CSS/spin_loader.css">
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="../CSS/spin_loader.css?v=2">
+    <link rel="stylesheet" href="CSS/style.css?v=2">
+    <link rel="stylesheet" href="intro/style.css?v=2">
 
     <!--icons-->
     <link rel="apple-touch-icon" sizes="57x57" href="../icons/icons/apple-icon-57x57.png" />
@@ -40,8 +41,9 @@ setcookie("t", $set_to_one, time() + (86400 * 364),'/');
     <meta name="msapplication-TileColor" content="#0073b1" />
     <meta name="msapplication-TileImage" content="../icons/icons/ms-icon-144x144.png" />
     <meta name="theme-color" content="#0073b1" />
-    <meta name="description" content="Yaariii is an ultra-customizable social media platform, helps individuals to build their optimized social network.">
-    <meta name="keywords" content="Yaariii, Yaariii, Yaar me, Social media, Social media platform, ultra customized social media platform, safest socail media platform, Build and organize your network, organize your network, world's most advanced social media platform">
+    
+    <meta name="description" content="Yaariii is a smart social media platform, organize your social network, enjoy dynamic news feed, ultra sharing options, full control over privacy and much more....">
+    <meta name="keywords" content="Yaariii, Social media, Social media platform, smart social media, smartest social media, dynamic news feed, organize social network, best social media, yaari, yaarii, yariii, yarii, yari">
 
     <!--    google login kit-->
     <?php
@@ -79,11 +81,22 @@ if($isWebView){
    echo '<div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v9.0&appId=956412888207642&autoLogAppEvents=1" nonce="GwISju0w"></script>';
 }
+    
+    $intro = true;
+    if(isset($_GET['add'])){
+         $intro = false;
+    }
+    
+    if($intro===true){
+        
+     include './intro/intro.html';
+    }
+    
     ?>
 
     
 
-    <div class="container">
+    <div class="container <?php if($intro===true){echo 'display_none';}?>">
         <div class="loader">
             <div class="lds-spinner">
                 <div></div>
@@ -102,11 +115,11 @@ if($isWebView){
         </div>
         <div class="main-login" id="login-form">
             <div class="left-bar">
-                <img src="../icons/logo/logo_transparent.png" class="main-img">
+                <img src="../icons/logo/logo_transparent.png" class="main-img"  alt="logo">
                 <div class="title">
                     <b style="color: #196fb6;">Yaariii</b><b></b>
                 </div>
-                <p class="about">Get connected with friend, family and personality you like and be the first to watch their personal updates.</p>
+                <p class="about">Get connected with your friends, family and communities in a smart way.</p>
                 <div class="signup-action">
                     <span class="not_a_member">Not a member yet?</span>
                     <span class="signup" id="signup-forward">Signup</span>
@@ -126,7 +139,7 @@ if($isWebView){
                     <div class="recovery">
                         <div class="checkbox">
                         </div>
-                        <a href="" style="color: blue;">Forgot Password?</a>
+<!--                        <a href="" style="color: blue;">Forgot Password?</a>-->
                     </div>
                     <input type="submit" class="submit" value="Login">
                     <span class="or-marker">&nbsp;Or&nbsp;</span>
@@ -165,7 +178,7 @@ if($isWebView){
         </div>
         <div class="main-signup hide" id="signup-form">
             <div class="header">
-                <img src="../icons/logo/logo_transparent.png" class="main-img head-img">
+                <img src="../icons/logo/logo_transparent.png" class="main-img head-img"  alt="logo">
                 <div class="title">
                     <b style="color: #196fb6;">Yaar</b><b>Me</b>
                 </div>
@@ -236,7 +249,7 @@ if($isWebView){
     <a class="alert" href="../edit_profile/" id="created">
         <div class="alert_center">
             <div class="alert_grid">
-                <div class="success_mark"><img src="images/check-circle-regular.svg" class="tick_scg"></div>
+                <div class="success_mark"><img src="images/check-circle-regular.svg" class="tick_scg"  alt="icon"></div>
                 <div class="success_message">
                     <div>Account created.</div>
                     <div>Lets set up your account details quickly.</div>
@@ -246,33 +259,41 @@ if($isWebView){
         </div>
     </a>
 
-    <a href="" class="alert " id="wrong_ps">
+    <a href="#" class="alert " id="wrong_ps">
         <div class="alert_center">
             <div class="alert_grid">
-                <div class="success_mark success_mark_wrong_ps"><img src="images/times-circle-regular.svg" class="tick_scg"></div>
+                <div class="success_mark success_mark_wrong_ps"><img src="images/times-circle-regular.svg" class="tick_scg"  alt="icon"></div>
                 <div class="success_message success_message_wrong_ps">
                     <div>Invalid details.</div>
                     <div>Incorrect username or password.<br> New at Yaariii! please create an account.</div>
-                    <div> <button id="wrong_ps_btn">Create account</button></div>
+                    <div> <button id="wrong_ps_btn">Try again.</button></div>
                 </div>
             </div>
         </div>
     </a>
-    <a href="" class="alert " id="another_username">
+    <a href="#" class="alert " id="another_username">
         <div class="alert_center">
             <div class="alert_grid">
-                <div class="success_mark success_mark_another_username"><img src="images/times-circle-regular.svg" class="tick_scg"></div>
+                <div class="success_mark success_mark_another_username"><img src="images/times-circle-regular.svg" class="tick_scg"  alt="icon"></div>
                 <div class="success_message success_message_another_username">
                     <div>Username not avilable!</div>
-                    <div>This username has been already taken please try another one</div>
-                    <div> <button id="wrong_ps_btn">Try Another</button></div>
+                    <div>This username has been already taken please try another one.</div>
+                    <div> <button id="wrong_ps_btn">Try Another.</button></div>
                 </div>
             </div>
         </div>
     </a>
 
     <div class="hide load_anything"></div>
-    <script src="JS/main.js"></script>
+    <script src="JS/main.js?v=2"></script>
+    <?php
+    if($intro===true){
+        
+     echo '<script src="JS/intro.js?v=2"></script>';
+    }
+    
+    ?>
+    
 
 
 

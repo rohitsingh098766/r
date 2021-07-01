@@ -541,6 +541,9 @@ html{
 .delete_it{
     color: red;
 }
+.display_none{
+    display: none;
+}
 @media only screen and (max-width:1700px){
     .main-login{
         width: 55%;
@@ -596,6 +599,9 @@ html{
     }
     .multi-stage{
         width: 75%;
+    }
+    .progress-bar{
+display: none;
     }
 }
 @media only screen and (max-width:800px){

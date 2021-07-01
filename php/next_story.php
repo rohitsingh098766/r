@@ -1,4 +1,27 @@
-  <?php
+  <div class="scroll">
+      <section class="stories">
+          <div class="scroll-stories">
+              <a href="create_story/" class="storie">
+                  <span class="photo user">
+                      <div style="background-image:url('<?php if($_SESSION['img']){ echo 'profile/i/240/'.$_SESSION['img'];}else{ echo "profile/i/none.svg"; } ?>')" alt="profile-pic" class="bg_image bg_image_story "></div>
+
+                      <span class="add-story">
+                          <div class="add-story-text">+</div>
+                      </span>
+                  </span>
+                  <span class="name">Your Story</span>
+              </a>
+
+
+
+
+
+
+
+
+
+
+              <?php
         
 
 $filter=  $post_type;
@@ -203,3 +226,9 @@ $owner_profile = "profile/i/none.svg";
 echo $unseen_story.$seen_story;
 
 ?>
+
+              <img class="arr prev" src="./Images/left-arrow.png" />
+              <img class="arr nxt" src="./Images/right-arrow.png" />
+          </div>
+      </section>
+  </div>

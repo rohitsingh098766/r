@@ -93,8 +93,8 @@ login.onclick = function(){
 // Toggling Login Form
 wrong_ps_btn.onclick = function(){
 //   window.alert(8)
-    lform.classList.add("hide");
-    sform.classList.remove("hide");
+//    lform.classList.add("hide");
+//    sform.classList.remove("hide");
 }
 
 // Toggling Signup Form

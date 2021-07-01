@@ -605,6 +605,11 @@ function unfollow_ys(id,privacy){
     }
              }
 }
+//remove from follower
+function remove_follower(){
+    document.querySelector('.user_profile_'+user_at).style.display="none";
+   my_ajax("./manage_people/relation.php", 'remove_follower=1&user=' + user_at );
+}
 //mute user from posts
 function mute_ys(id){
     var select_owner = document.querySelectorAll('.unmt_'+id)
@@ -817,7 +822,7 @@ if(document.getElementById('select_one_home') && document.querySelector('.select
 //    if(document.querySelector('.select_element.active').offsetLeft>480){
      if( po_st_type == 4 || po_st_type == 3 ){
         
-        }else if(po_st_type == 2 ){
+        }else if(po_st_type == 2 || po_st_type == 6 ){
    document.getElementById('select_one_home').scrollBy(185, 0);
             
         } else if(po_st_type == 1 ){

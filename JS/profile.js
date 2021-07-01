@@ -9,6 +9,7 @@ function show_now(id) {
 var except_list = '';
 
 function show_member(type) {
+    
     except_list = type;
     document.querySelector('.f11.active').classList.remove('active')
     document.getElementById('people_label_' + type).classList.add('active')
@@ -31,7 +32,17 @@ function show_member(type) {
     }
      document.querySelector('.all_ado').classList.remove('active')
     }
-   
+    
+   if(document.getElementById('remover_follower')){
+      if(type==='follower'){
+        document.getElementById('remover_follower').style.display="block";
+    }else{
+        document.getElementById('remover_follower').style.display="none";
+        
+    }   
+   }
+  
+    
 }
 
 //add people list
@@ -282,4 +293,5 @@ document.getElementById('show_advance_setting_about').style.display = 'none';
     }
     
 }
+
 
