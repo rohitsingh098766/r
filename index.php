@@ -723,7 +723,7 @@ if (isset($_COOKIE['active_user'])){
                             </div>
                         </div>';
                              if($x>1){
-                                 echo $suggestion_frame.$suggestion_out;
+                                 echo $suggestion_frame.$suggestion_out.$suggestion_bottom;
                              }
                         }
 

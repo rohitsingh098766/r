@@ -244,7 +244,7 @@ if($isWebView){
 
             </div>
         </div>
-         <a class="alert" href="../edit_profile/" id="created">
+         <a class="alert" href="../" id="created">
         <div class="alert_center">
             <div class="alert_grid">
                 <div class="success_mark"><img src="images/check-circle-regular.svg" class="tick_scg"  alt="icon"></div>
@@ -358,7 +358,7 @@ if($isWebView){
 
                             // add welcome message and redirect at
 //                            document.getElementById('created').classList.add("active")
-                              window.location.href = 'https://Yaariii.com/edit_profile';
+                              window.location.href = 'https://Yaariii.com/';
                             animation_close();
                         } else if (this.responseText == 2) {
                             animation_close();
@@ -405,7 +405,7 @@ if($isWebView){
 
                             // add welcome message and redirect at
 //                            document.getElementById('created').classList.add("active")
-                              window.location.href = 'https://Yaariii.com/edit_profile';
+                              window.location.href = 'https://Yaariii.com/';
                             animation_close();
                         } else if (this.responseText == 2) {
                             animation_close();
