@@ -21,7 +21,7 @@ if($_SERVER['HTTP_HOST']==='localhost'){
     
 $current_domain = 'http://localhost/r/a/';
 }else{
-$current_domain = 'https://yaariii.com';
+$current_domain = 'https://yaariii.com/';
 
 }
 ?>
