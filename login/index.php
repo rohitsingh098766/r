@@ -244,9 +244,7 @@ if($isWebView){
 
             </div>
         </div>
-    </div>
-
-    <a class="alert" href="../edit_profile/" id="created">
+         <a class="alert" href="../edit_profile/" id="created">
         <div class="alert_center">
             <div class="alert_grid">
                 <div class="success_mark"><img src="images/check-circle-regular.svg" class="tick_scg"  alt="icon"></div>
@@ -283,6 +281,9 @@ if($isWebView){
             </div>
         </div>
     </a>
+    </div>
+
+   
 
     <div class="hide load_anything"></div>
     <script src="JS/main.js?v=2"></script>
