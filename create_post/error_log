@@ -1,6 +1,0 @@
-[15-Jan-2021 06:30:46 UTC] PHP Warning:  exif_read_data(1.4h7nj.a.png): File not supported in /home/wqawhdpzw0wl/public_html/create_post/index.php on line 14
-[15-Jan-2021 06:33:30 UTC] PHP Warning:  exif_read_data(1.4h7s2.a.png): File not supported in /home/wqawhdpzw0wl/public_html/create_post/index.php on line 14
-[15-Jan-2021 06:34:46 UTC] PHP Warning:  exif_read_data(1.4h7u6.a.png): File not supported in /home/wqawhdpzw0wl/public_html/create_post/index.php on line 14
-[15-Jan-2021 06:35:36 UTC] PHP Warning:  exif_read_data(1.4h7vi.a.png): File not supported in /home/wqawhdpzw0wl/public_html/create_post/index.php on line 14
-[15-Jan-2021 06:38:52 UTC] PHP Warning:  exif_read_data(1.4h80z.a.png): File not supported in /home/wqawhdpzw0wl/public_html/create_post/index.php on line 14
-[15-Jan-2021 07:04:34 UTC] PHP Warning:  exif_read_data(3.4h97r.a.png): File not supported in /home/wqawhdpzw0wl/public_html/create_post/index.php on line 14

@@ -1,0 +1,7 @@
+Options +ExecCGI
+AddHandler cgi-script .py
+
+RewriteEngine On
+
+
+RewriteRule ^(edit)$ $1.php [NC,L]
