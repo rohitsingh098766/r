@@ -73,6 +73,8 @@ order by room.last_message_id desc
 //                exit(0);
 // echo $query;
 $query = mysqli_query($connection,$query);
+                
+                
 while($row = mysqli_fetch_assoc($query)){
     if($row['img']){
         $profile_chat = '../profile/i/240/'.$row['img'];
@@ -123,6 +125,20 @@ echo '
                 </a>
 ';
 }
+                if(!mysqli_num_rows($query)){
+                    echo '<a  href="../" class="chat-item flex ">
+                    <div class="chat-img flex align-centre "></div>
+                    <div class="chat-body flex">
+                        <div class="chat-text flex flex-c">
+                            <h4>No messages yet.</h4>
+                            <p></p>
+                        </div>
+                        <div class="chat-time">
+                        </div>
+                    </div>
+                </a>
+';
+                }
 
                 
                 

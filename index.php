@@ -50,7 +50,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Feed | Yaariii</title>
-    <link rel="stylesheet" href="CSS/style.css?v=14" />
+    <link rel="stylesheet" href="CSS/style.css?v=15" />
     <link rel="stylesheet" href="CSS/spin_loader.css" />
     <link rel="stylesheet" href="./search/CSS/style.css" />
     <link rel="stylesheet" href="CSS/slider.css?v=7" />
@@ -227,11 +227,7 @@
         </div>
         <div class="all-uls show-add-acc">
             <ul class="add-account">
-                 <li>
-                    <a href="login/?add=1">
-                        <img src="SVG/plus-solid.svg" alt="" /> <span>Add account</span>
-                    </a>
-                </li>
+                 
                  <?php
                 
 if (isset($_COOKIE['active_user'])){
@@ -266,7 +262,11 @@ if (isset($_COOKIE['active_user'])){
 }
                 
                 ?>
-               
+               <li>
+                    <a href="login/?add=1">
+                        <img src="SVG/plus-solid.svg" alt="" /> <span>Add account</span>
+                    </a>
+                </li>
                
             </ul>
             
