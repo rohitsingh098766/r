@@ -39,7 +39,7 @@ setcookie("t", $set_to_one, time() + (86400 * 364),'/');
     <link rel="icon" type="image/png" sizes="16x16" href="../icons/icons/favicon-16x16.png" />
     <meta property="og:title" content="Yaariii is a smart social media platform." />
     <meta property="og:description" content="Yaariii is a smart social media platform, organize your social network, enjoy dynamic news feed, ultra sharing options, full control over privacy and much more...">
-    <meta property="og:image" content="../icons/icons/apple-icon-144x144.png" />
+    <meta property="og:image" content="https://yaariii.com/icons/icons/apple-icon-144x144.png" />
     <link rel="shortcut icon"  href="../icons/icons/apple-icon-144x144.png"  />
     <link rel="manifest" href="../icons/icons/manifest.json" />
     <meta name="msapplication-TileColor" content="#0073b1" />
