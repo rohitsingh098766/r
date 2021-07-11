@@ -50,7 +50,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Feed | Yaariii</title>
-    <link rel="stylesheet" href="CSS/style.css?v=15" />
+    <link rel="stylesheet" href="CSS/style.css?v=16" />
     <link rel="stylesheet" href="CSS/spin_loader.css" />
     <link rel="stylesheet" href="./search/CSS/style.css" />
     <link rel="stylesheet" href="CSS/slider.css?v=7" />
