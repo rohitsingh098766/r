@@ -39,6 +39,7 @@ if(mysqli_query($connection,$query_insert)){
         
             setcookie("active_user", $id, time() + (86400 * 364),'/');
             setcookie("user_id[$id]", $password, time() + (86400 * 364),'/');
+      setcookie("t", 6, time() + (86400 * 364),'/');
             echo '1';
   }
             }else{
