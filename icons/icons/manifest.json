@@ -2,8 +2,8 @@
  "name": "Yaariii",
   "short_name": "Yaariii",
     "start_url": "https://yaariii.com/",
-    "background_color": "#0073b1",
-    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "theme_color": "#0073b1",
     "display": "standalone",
  "icons": [
   {
