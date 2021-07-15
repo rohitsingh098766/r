@@ -24,7 +24,7 @@ setcookie("t", $set_to_one, time() + (86400 * 364),'/');
     <link rel="stylesheet" href="intro/style.css?v=2">
 
     <!--icons-->
-    <link rel="icon" type="image/png" sizes="96x96" href="../icons/icons/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="../icons/icons/android-icon-48x48.png" />
     <link rel="apple-touch-icon" sizes="57x57" href="../icons/icons/apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="../icons/icons/apple-icon-60x60.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="../icons/icons/apple-icon-72x72.png" />
@@ -34,9 +34,11 @@ setcookie("t", $set_to_one, time() + (86400 * 364),'/');
     <link rel="apple-touch-icon" sizes="144x144" href="../icons/icons/apple-icon-144x144.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="../icons/icons/apple-icon-152x152.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="../icons/icons/apple-icon-180x180.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="../icons/icons/android-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="../icons/icons/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="../icons/icons/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../icons/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../icons/icons/android-icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="../icons/icons/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="../icons/icons/android-icon-192x192.png" />
     <meta property="og:title" content="Yaariii is a smart social media platform." />
     <meta property="og:description" content="Yaariii is a smart social media platform, organize your social network, enjoy dynamic news feed, ultra sharing options, full control over privacy and much more...">
     <meta property="og:image" content="https://yaariii.com/icons/icons/apple-icon-144x144.png" />
