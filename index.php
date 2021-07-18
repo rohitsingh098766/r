@@ -57,6 +57,7 @@
     <link rel="stylesheet" href="CSS/mobile_header.css" />
     <link rel="stylesheet" href="CSS/mobile_header.css" />
     <link rel="stylesheet" href="page/css/like.css">
+    <link rel="stylesheet" href="CSS/desktop.css">
     <script src="JS/app.js"> </script>
     <script src="JS/slider.js"> </script>
 
@@ -516,7 +517,95 @@ if (isset($_COOKIE['active_user'])){
     </div>
     <div class="container-wrap">
         <div class="container">
-            <div class="left-bar"></div>
+            <div class="left-bar">
+                
+                
+                 <?php
+                              $query = "SELECT * FROM `yaarme_follow`.`category` where (owner_id = {$_SESSION['id']}) " ;
+    $result = mysqli_query($connection,$query);
+                            
+                           $colors = array("#ff8197",  "var(--blue)", "darkorange",  "#71bd21", "#cc00ff", "#067206");
+//                            $total = count($colors);
+                            $y = 0;
+                            
+                            
+                            
+                            if(mysqli_num_rows($result)>1){
+                                
+                                if($post_type==2){$echo_active =   "active";}else{$echo_active= '';}
+                                $more_than_2_label =  '
+                                <li>
+                                <a href="./?t=2" class="select_element '.$echo_active.'">Favorite&nbsp;labels
+                                </a>
+                            </li>
+                                ';
+    }else{
+                                $more_than_2_label = '';
+                            }
+                            $my_labels = '';
+                            $my_labels_desk = '';
+                
+                
+                             while($row = mysqli_fetch_assoc($result)){
+                                 if($y==count($colors)){
+                                    $y=0; 
+                                 }
+                                 
+                                 if(($list_show == $row['id']) && ($post_type == 5)){
+                                     $make_it_active = 'active';
+                                 }else{
+                                    $make_it_active = ''; 
+                                 }
+                                 
+                                 $my_labels .=  '
+                                    <li>
+                                <a href="./?t=5&l='.$row['id'].'" class="select_element '.$make_it_active. '" style="color:'.$colors[$y].'">
+                                    <img src="./emogi/128/'.$row['emoji'].'" class="tag_icon">'.str_replace(' ','&nbsp;', str_replace('  ',' ', htmlentities( preg_replace('/\r|\n/',' ', htmlentities($row['group_name']))))).'</a>
+                            </li>   
+                                 '; 
+                                 $my_labels_desk .=  ' <a href="./?t=5&l='.$row['id'].'"  class="desk_side_options  '.$make_it_active. '" style="color:'.$colors[$y].'">
+                        <div class="desk_lebels">
+                            <div class="desk_lebel_div"><img src="./emogi/128/'.$row['emoji'].'" alt="label-img" class="desk_side_label_img"></div>
+                            <div>'.str_replace(' ','&nbsp;', str_replace('  ',' ', htmlentities( preg_replace('/\r|\n/',' ', htmlentities($row['group_name']))))).'</div>
+                            </div>
+                            
+                        </a> ';
+                                  $y++;
+                             }
+                           
+                            ?>
+                
+               
+                
+                
+                
+            
+                <div class="desktop_side_bar">
+               <p class="desk_side_para">You are watching posts from</p> 
+                    
+                    <div>
+                        <a  href="?t=1" class="desk_side_options <?php if($post_type==1){echo  "active";}?>">
+                           All Followings
+                        </a>
+                        <a href="?t=6"  class="desk_side_options <?php if($post_type==6){echo  "active";}?>">
+                            Trending
+                        </a> 
+                        <a href="?t=2"  class="desk_side_options <?php if($post_type==2){echo  "active";}?>">
+                            Favorite labels
+                        </a>
+                        <a href="?t=3"  class="desk_side_options <?php if($post_type==3){echo  "active";}?>">
+                            Unlabelled followings
+                        </a>
+                        <a href="?t=4"  class="desk_side_options <?php if($post_type==4){echo  "active";}?>">
+                            Muted followings
+                        </a> 
+                        <div class="desk_side_label_world ">Labels </div>
+                        <?php echo $my_labels_desk;?>
+                          <a href="manage_category/" class="desk_side_manage_label_world ">Click here to create, edit or delete labels. </a>
+                    </div>
+                </div>
+            
+            </div>
             <div class="main-content">
                 <div class="homepage-main-content">
                     <div class="select_one_cont">
@@ -542,45 +631,8 @@ if (isset($_COOKIE['active_user'])){
                             
                             
                             <?php
-                              $query = "SELECT * FROM `yaarme_follow`.`category` where (owner_id = {$_SESSION['id']}) " ;
-    $result = mysqli_query($connection,$query);
-                            
-                           $colors = array("#ff8197",  "var(--blue)", "darkorange",  "#71bd21", "#cc00ff", "#067206");
-//                            $total = count($colors);
-                            $y = 0;
-                            
-                            
-                            
-                            if(mysqli_num_rows($result)>1){
-                                
-                                if($post_type==2){$echo_active =   "active";}else{$echo_active= '';}
-                                echo '
-                                <li>
-                                <a href="./?t=2" class="select_element '.$echo_active.'">Favorite&nbsp;labels
-                                </a>
-                            </li>
-                                ';
-    }
-                            
-                             while($row = mysqli_fetch_assoc($result)){
-                                 if($y==count($colors)){
-                                    $y=0; 
-                                 }
-                                 
-                                 if(($list_show == $row['id']) && ($post_type == 5)){
-                                     $make_it_active = 'active';
-                                 }else{
-                                    $make_it_active = ''; 
-                                 }
-                                 
-                                 echo '
-                                    <li>
-                                <a href="./?t=5&l='.$row['id'].'" class="select_element '.$make_it_active. '" style="color:'.$colors[$y].'">
-                                    <img src="./emogi/128/'.$row['emoji'].'" class="tag_icon">'.str_replace(' ','&nbsp;', str_replace('  ',' ', htmlentities( preg_replace('/\r|\n/',' ', htmlentities($row['group_name']))))).'</a>
-                            </li>   
-                                 ';
-                                  $y++;
-                             }
+                                echo $more_than_2_label;
+                             echo $my_labels;
                            
                             ?>
                             <li>
@@ -652,7 +704,7 @@ if (isset($_COOKIE['active_user'])){
 
                         
                          <?php 
-                        if($post_type==1 || $post_type==6){
+                         $suggestion_out_desk = '';
                            $suggestion_frame =  ' <div class="suggestion-box">
                             <div class="suggestion-title">
                                 <span>Suggested for You</span>
@@ -684,7 +736,7 @@ if (isset($_COOKIE['active_user'])){
                                 $selected_user = 'user = 1';
                                 }
                                 // echo $selected_user;
-                                $query = "SELECT *,COUNT(*) FROM yaarme_follow.follow join yaarme.users on yaarme.users.id = yaarme_follow.follow.opponent WHERE ({$selected_user}) GROUP by opponent ORDER BY COUNT(*) DESC limit 100";
+                                $query = "SELECT *,COUNT(*),  yaarme.location.location as users_location FROM yaarme_follow.follow join yaarme.users on yaarme.users.id = yaarme_follow.follow.opponent left join yaarme.location on location.id = users.location WHERE ({$selected_user}) GROUP by opponent ORDER BY COUNT(*) DESC limit 100";
                                 $query = mysqli_query($connection,$query);
                                 $x=1;
                             $suggestion_out = '';
@@ -708,6 +760,29 @@ if (isset($_COOKIE['active_user'])){
                                     <p class="suggest-info">'.htmlentities($row['status_mini_bio']).'</p>
                                     <button class="follow-button flw_btn_'.$row['opponent'].'" onclick="follow_ya('.$row['opponent'].','.$row['account_type'].')">Follow</button>
                                 </div>';
+                                    
+                                    
+                                    if($row['users_location']){
+                                         $location_desk = '<a href="./account?user='.$row['opponent'].'" target="_blank" class="location"><img class="loc-icon" src="./SVG/location.svg" alt="">'.$row['users_location'].'</a>';
+                                    }else{
+                                        $location_desk = '';
+                                    }
+                                    $suggestion_out_desk .= '
+                                    <div class="grid">
+                    
+                    <a href="./account?user='.$row['opponent'].'" target="_blank" class="flex_s"><img class="profile_img" src="'.$img_out.'"></a>
+                    <div class="grid_mid">
+                        <div class="name name_desk_side"><a href="./account?user='.$row['opponent'].'" target="_blank" class="name_link">'.htmlentities($row['first_name'].' '.$row['last_name']).'</a>
+                            <small class="u_c_'.$row['opponent'].'" onclick="change_tag('.$row['opponent'].')"></small>
+                            <small class="fllw_'.$row['opponent'].'" onclick="unfollow_ys('.$row['opponent'].',0)"> • Follow </small>
+                            <small class="unmt_'.$row['opponent'].'" onclick="mute_ys('.$row['opponent'].')"></small>
+                        </div>
+                        <a href="./account?user='.$row['opponent'].'" target="_blank" class="description">'.htmlentities($row['status_mini_bio']).'</a>
+                        '.$location_desk.'
+                        </div>
+                    <div class="flex_s" onclick="open_post_options_desk_suggestion('.$row['opponent'].', '."'".htmlentities($row['first_name'].' '.$row['last_name'])."'".',16,0);change_tag('.$row['opponent'].')"><span class="icon more-icon" ></span></div>
+                    </div>
+                                    ';
                                 if($x==25){
                                 break;
                                 }
@@ -725,9 +800,10 @@ if (isset($_COOKIE['active_user'])){
                              if($x>1){
                                  echo $suggestion_frame.$suggestion_out.$suggestion_bottom;
                              }
-                        }
+                        
 
  ?>
+                         
 
                         <div id="new_posts"> </div>
 
@@ -966,7 +1042,15 @@ for(var i = 0; i < images.length; i++){
                     </div>
                 </div>
             </div>
-            <div class="right-bar"></div>
+            <div class="right-bar">
+            
+                <div class="desktop_side_bar">
+                
+                <p class="desk_side_para">Suggested for you</p> 
+                    <?php echo $suggestion_out_desk;?>
+                   
+                </div>
+            </div>
         </div>
 
     </div>
@@ -1008,7 +1092,8 @@ for(var i = 0; i < images.length; i++){
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div>       
+                       
 
                         <!-- mute conform-->
                         <!--
@@ -1271,7 +1356,7 @@ for(var i = 0; i < images.length; i++){
             </a>
         </ul>
     </div>
-    <script src="JS/main.js?v=9"></script>
+    <script src="JS/main.js?v=10"></script>
 
 
 

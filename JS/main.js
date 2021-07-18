@@ -206,6 +206,15 @@ var img_mute = document.getElementById('mutww').querySelector('img');
     }
     stop_bg();
 }
+  function open_post_options_desk_suggestion(owner_id, owner_name, post_id, privacy) {
+    
+    user_at = owner_id;
+    user_name = owner_name;
+    active_post = post_id;
+    active_privacy = privacy;
+    
+    stop_bg();
+}
   
 //close post options 
 function close_options(post_id) {

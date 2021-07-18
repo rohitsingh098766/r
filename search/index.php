@@ -3,7 +3,7 @@ if(isset($_GET['s'])){
 session_start();
 include '../connection.php';
 $search = mysqli_real_escape_string($connection, $_GET['s']);
-$query_get_id = "SELECT *,follower as followers, users.id as num FROM `users` left join yaarme.location on yaarme.location.id = users.location where first_name like '{$search}%' ORDER BY follower DESC limit 100 ";
+$query_get_id = "SELECT *,follower as followers, users.id as num FROM `users` left join yaarme.location on yaarme.location.id = users.location where first_name like '{$search}%' ORDER BY follower DESC limit 40 ";
 $result_get_id = mysqli_query($connection,$query_get_id);
 $total_rows = mysqli_num_rows($result_get_id);
 
@@ -45,12 +45,17 @@ $category = '• '.$row_f['group_name'];
         $following = '';
         $category = '';
     }
+     if($row['img']){
+                                    $img_out = './profile/i/240/'.$row['img'];
+                                    }else{
+                                    $img_out = "./profile/i/none.svg";
+                                    }
     
 echo '
 
 <div class="grid">
 
-    <a href="./account?user='.$row['num'].'" class="flex_s"><img class="profile_img" src="./profile/i/none.svg"></a>
+    <a href="./account?user='.$row['num'].'" class="flex_s"><img class="profile_img" src="'.$img_out.'"></a>
     <div class="grid_mid">
         <div class="name">'.$row['first_name']." ".$row['last_name'].'
             <small class="u_c_'.$row['num'].'">'.$category.'</small>
@@ -74,6 +79,3 @@ echo '
 exit(0);
 }
 ?>
-
-
-       

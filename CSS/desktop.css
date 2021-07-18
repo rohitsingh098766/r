@@ -1,0 +1,139 @@
+.left-bar,.right-bar {
+    opacity: 1;
+    background: rgb(250, 250, 250);
+
+}
+
+.desktop_side_bar {
+    padding: .5em 0;
+    overflow: hidden;
+    overflow-y: auto;
+    height: calc(100% - 52px);
+    /*    background: white*/
+}
+
+.desktop_side_bar::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+.desktop_side_bar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+
+}
+
+/* Handle */
+.desktop_side_bar::-webkit-scrollbar-thumb {
+    background: #e2e2e2;
+    border-radius: 3px;
+}
+
+/* Handle */
+.desktop_side_bar:hover::-webkit-scrollbar-thumb {
+    background: #dbdbdb;
+    border-radius: 3px;
+}
+
+/* Handle on hover */
+.desktop_side_bar::-webkit-scrollbar-thumb:hover {
+    background: #b7b7b7;
+}
+
+.desk_side_para {
+    padding: 1em;
+    /*    padding-bottom: 1.4em;*/
+    font-size: .9em;
+    color: gray;
+}
+
+.desk_side_options {
+    padding: 1em;
+    display: grid;
+    color: black;
+}
+.desk_side_options.active{
+    background: #e2e2e2;
+}
+.desk_side_options:hover {
+    background: rgba(232, 232, 232, 0.72)
+}
+.desk_lebels{
+    display: flex;
+/*    justify-content: center;*/
+    align-items: center;
+}
+.desk_side_label_img{
+height: 1.6em;
+    width: 1.6em;
+    margin: 0 1em 0 1.5em;
+}
+.desk_side_label_world{
+    color: #6d6d6d;
+    font-size: .9em;
+    padding: 2em 1em 1em 1em;
+    
+}
+.desk_side_manage_label_world{
+    margin: 1em 3em;
+    display: grid;
+    color: gray;
+    font-size: .9em;
+    
+}
+.desk_lebel_div{
+    display: flex;
+     align-items: center;
+}
+.name_desk_side:hover{
+    -webkit-line-clamp: 2;
+}
+
+@media only screen and (min-width: 1025px){
+.container{
+margin-top: 2.5em;
+}
+    .select_one_cont .options {
+    display: none;
+}
+    .suggestion-box{
+        display: none;
+    }
+    
+}@media only screen and (max-width: 1024px){
+.select_one_cont .options {
+    display: block;
+}
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
