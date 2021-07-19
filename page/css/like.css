@@ -30,6 +30,7 @@
         font-size: 11px;
     color: #55ab29;
     font-weight: 400;
+cursor: pointer;
 }
 .name small:nth-child(2) {
     color: var(--blue);

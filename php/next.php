@@ -300,15 +300,32 @@ $time_show = $time_show."y";
     }else{
         $comments_total = "";
     }
+    
+    
+    if($filter==6){
+        $approve_status = 2;
+        $tag_status = '';
+        $query_filer_6 = "select * from yaarme_follow.follow left join yaarme_follow.category on category.id = follow.category where user = {$_SESSION['id']} and opponent =  {$row['owner']}";
+        $result_filer_6 = mysqli_query($connection,$query_filer_6);
+while($row_filer_6 = mysqli_fetch_assoc($result_filer_6)){
+    $approve_status =  $row_filer_6['approve'];
+     $tag_status = $row_filer_6['group_name'];
+}
+        
+    }else{
+        $approve_status = $row['approved'];
+        $tag_status = preg_replace('/\r|\n/','\n',trim(htmlentities($row['group_name'])));
+    }
+    
     echo '
     
     {
             "id":"'.$row['post_num'].'",
             "profile_url":"'.$row['img'].'",
-            "name":"'.preg_replace('/\r|\n/','\n',trim(htmlentities($row['first_name'].' '.$row['last_name']))).'",
+            "name":"'.preg_replace('/\r|\n/','\n',trim(htmlentities($row['first_name']))).'",
             "owner_id":"'.$row['owner'].'",
             "account_type":"'.$row['account_type'].'",
-            "tag":"'.preg_replace('/\r|\n/','\n',trim(htmlentities($row['group_name']))).'",
+            "tag":"'.$tag_status.'",
             "introduction":"'.preg_replace('/\r|\n/','\n',trim(htmlentities($row['status_mini_bio']))).'",
             "time":"'.$time_show.'",
             "location":"'.preg_replace('/\r|\n/','\n',trim(htmlentities($row['post_location']))).'",
@@ -320,7 +337,7 @@ $time_show = $time_show."y";
             "reaction":"'.$like_output.'",
             "save":"'.$saved_output.'",
             "mute":"'.$mute.'",
-            "following":"'.$row['approved'].'"
+            "following":"'.$approve_status.'"
     }
     
     ';

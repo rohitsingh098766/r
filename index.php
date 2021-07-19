@@ -56,8 +56,8 @@
     <link rel="stylesheet" href="CSS/slider.css?v=7" />
     <link rel="stylesheet" href="CSS/mobile_header.css" />
     <link rel="stylesheet" href="CSS/mobile_header.css" />
-    <link rel="stylesheet" href="page/css/like.css">
-    <link rel="stylesheet" href="CSS/desktop.css">
+    <link rel="stylesheet" href="page/css/like.css?v=7">
+    <link rel="stylesheet" href="CSS/desktop.css?v=7">
     <script src="JS/app.js"> </script>
     <script src="JS/slider.js"> </script>
 
@@ -768,19 +768,19 @@ if (isset($_COOKIE['active_user'])){
                                         $location_desk = '';
                                     }
                                     $suggestion_out_desk .= '
-                                    <div class="grid">
+                                    <div class="grid" id="user_suggestion_desk_'.$row['opponent'].'">
                     
-                    <a href="./account?user='.$row['opponent'].'" target="_blank" class="flex_s"><img class="profile_img" src="'.$img_out.'"></a>
+                    <div href="./account?user='.$row['opponent'].'" target="_blank" class="flex_s user_suggestion_desk_'.$row['opponent'].'"><div class="profile_img bg_image add_cross"  style="background-image:url('.$img_out.')"><div class="desk_cross_sugges" onclick="ignone_desk_suggestion('.$row['opponent'].')">✕</div></div></div>
                     <div class="grid_mid">
                         <div class="name name_desk_side"><a href="./account?user='.$row['opponent'].'" target="_blank" class="name_link">'.htmlentities($row['first_name'].' '.$row['last_name']).'</a>
                             <small class="u_c_'.$row['opponent'].'" onclick="change_tag('.$row['opponent'].')"></small>
-                            <small class="fllw_'.$row['opponent'].'" onclick="unfollow_ys('.$row['opponent'].',0)"> • Follow </small>
+                            <small class="fllw_'.$row['opponent'].'" onclick="unfollow_ys('.$row['opponent'].','.$row['account_type'].')"> • Follow </small>
                             <small class="unmt_'.$row['opponent'].'" onclick="mute_ys('.$row['opponent'].')"></small>
                         </div>
                         <a href="./account?user='.$row['opponent'].'" target="_blank" class="description">'.htmlentities($row['status_mini_bio']).'</a>
                         '.$location_desk.'
                         </div>
-                    <div class="flex_s" onclick="open_post_options_desk_suggestion('.$row['opponent'].', '."'".htmlentities($row['first_name'].' '.$row['last_name'])."'".',16,0);change_tag('.$row['opponent'].')"><span class="icon more-icon" ></span></div>
+                    <div class="flex_s" onclick="open_post_options_desk_suggestion('.$row['opponent'].', '."'".htmlentities($row['first_name'].' '.$row['last_name'])."'".',16,'.$row['account_type'].');change_tag('.$row['opponent'].')"><span class="icon more-icon" ></span></div>
                     </div>
                                     ';
                                 if($x==25){
@@ -902,10 +902,12 @@ creat_post();
                             sa = "";
                             sb = "";
                         }
-                        if(output.post[i].following!=1){
-                           follow_integ = " • Follow ";
-                           }else{
+                        if(output.post[i].following==1){
                                follow_integ='';
+                           }else if(output.post[i].following==9){
+                               follow_integ=' • Requested ';
+                           }else{
+                           follow_integ = " • Follow ";
                            } 
                         if(output.post[i].mute==1){
                            mute_integ = " • Unmute ";

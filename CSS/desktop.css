@@ -87,6 +87,35 @@ height: 1.6em;
 .name_desk_side:hover{
     -webkit-line-clamp: 2;
 }
+.add_cross{
+    position: relative;
+}
+.desk_cross_sugges{
+    position: relative;
+    top: -1em;
+    left: -1em;
+    width: 1.2em;
+    height: 1.2em;
+    font-size: .8em;
+    font-weight:bolder;
+    color: #3e3e3e;
+    display: none;
+/*    background: #a2a2a2;*/
+/*    padding: .2em;*/
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: .2em;
+    transition: .3s ease all;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.desktop_side_bar .grid:hover .desk_cross_sugges{
+    display: flex;
+}.desk_cross_sugges:hover{
+    background-color: #d9d8d8;
+    transform: scale(1.4)
+}
 
 @media only screen and (min-width: 1025px){
 .container{

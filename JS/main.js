@@ -854,3 +854,10 @@ function change_tag(user_id){
     
 }
 
+
+function ignone_desk_suggestion(id){
+    document.getElementById('user_suggestion_desk_'+id).style.display = "none";
+     my_ajax("./manage_people/relation.php", 'ignore=1&user=' + id );
+}
+
+
