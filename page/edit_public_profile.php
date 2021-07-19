@@ -241,7 +241,7 @@ $query = "Select *, location.location as space from yaarme.users left join yaarm
 $result = mysqli_query($connection,$query);
 
 while($row = mysqli_fetch_assoc($result)){
-    $name = $row['first_name'].' '.$row['last_name'];
+    $name = $row['first_name'];
     $bio = $row['status_mini_bio'];
     $location = $row['space'];
     $image = $row['img'];

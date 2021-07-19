@@ -21,7 +21,13 @@ $password = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 $query = "SELECT * FROM `users` where user_name='{$_POST['uname']}'";
 $query_get = mysqli_query($connection,$query);
     if(!mysqli_num_rows($query_get)){
-$query_insert = "INSERT INTO `users` (`user_name`, `key_`, `first_name`, `last_name`) VALUES('{$_POST['uname']}','{$password}','{$_POST['first_name']}', '{$_POST['last_name']}')";
+        $name = $_POST['first_name'];
+        if(isset($_POST['last_name'])){
+          $name = $_POST['first_name'].' '.$_POST['first_name'];  
+        }
+        $name =  mysqli_real_escape_string($connection, $name);
+        $uname =  mysqli_real_escape_string($connection, $_POST['uname']);
+$query_insert = "INSERT INTO `users` (`user_name`, `key_`, `first_name`) VALUES('{$uname}','{$password}','{$name}')";
 
 if(mysqli_query($connection,$query_insert)){
                
