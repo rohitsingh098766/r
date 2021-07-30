@@ -82,7 +82,7 @@ $from_profile = '../profile/i/240/'.$row['img'];
      if($row['link']){
           $link_echo = $row['link'];
      }else{
-          $link_echo = $row['from_user'];
+          $link_echo = '../account?user='.$row['from_user'];
      }
       echo '
         <div class="card-main notif read">
