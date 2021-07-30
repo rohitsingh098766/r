@@ -79,12 +79,17 @@ $from_profile = '../profile/i/240/'.$row['img'];
         $from_profile = '../profile/i/none.svg';  
       }
       $time_out = time_convert($row['sec']);
+     if(){
+          $link_echo = $row['link'];
+     }else{
+          $link_echo = $row['from_user'];
+     }
       echo '
         <div class="card-main notif read">
                             <a href="../account?user='.$row['from_user'].'" class="img-wrap">
                                 <img class="circle" src="'.$from_profile.'" alt="">
                             </a>
-                            <a href="'.$row['link'].'" class="info">
+                            <a href="'.$link_echo.'" class="info">
                                 <p>
                                     '.htmlentities($row['text']).'
                                 </p>
