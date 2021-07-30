@@ -313,11 +313,7 @@ $add_follow_option = '<small class="blue fllw_'.$row_comments['user'].'" onclick
         $comment =str_replace("'",'&apos;',trim(htmlentities($row_comments['text'])));
         $time_comment = time_convert($row_comments['time_ago']);
 //        $img_comment = 
-          echo '<div  class="load_comments" id="comment_id_'.$row_comments['comment_id'].'"><div class="follow-conn"><a href="./account?user='.$row_comments['user'].'"><div  style="background-image:url('.$img_comment.')" alt="profile-pic" class="bg_image comment_profile "></div></a><span href="profile/" class="comment_form commented"><div class="comment_input commented_input"> <b>'.htmlentities($row_comments['first_name'].' '.$row_comments['last_name']).'</b>'.$add_follow_option.'<br>'.$comment.'<div class="more_comment">'.$time_comment.$editable.'   </div></div></span></div></div>';
-    }
-                    
-                            
-                            ?>  </div> ';
+          echo '<div  class="load_comments" id="comment_id_'.$row_comments['comment_id'].'"><div class="follow-conn"><a href="./account?user='.$row_comments['user'].'"><div  style="background-image:url('.$img_comment.')" alt="profile-pic" class="bg_image comment_profile "></div></a><span href="profile/" class="comment_form commented"><div class="comment_input commented_input"> <b>'.htmlentities($row_comments['first_name'].' '.$row_comments['last_name']).'</b>'.$add_follow_option.'<br>'.$comment.'<div class="more_comment">'.$time_comment.$editable.'   </div></div></span></div></div>';} ?>  </div> ';
                         load_m = 1;
                         if(num_fnt==1){
                             document.getElementById("first_post").insertAdjacentHTML("beforeend", my_adds);
