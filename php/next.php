@@ -262,12 +262,6 @@ while($row_total_like = mysqli_fetch_assoc($result_total_like)){
 
 
 
-    if($first_post==1){
-        echo '';
-          $first_post = 0;
-    }else{
-        echo ',';
-    }
    
 //    time farmatting
  $time = $row['time_ago'];
@@ -301,22 +295,41 @@ $time_show = $time_show."y";
         $comments_total = "";
     }
     
+    $proceed = true;
     
     if($filter==6){
         $approve_status = 2;
         $tag_status = '';
         $query_filer_6 = "select * from yaarme_follow.follow left join yaarme_follow.category on category.id = follow.category where user = {$_SESSION['id']} and opponent =  {$row['owner']}";
+        $proceed = true;
         $result_filer_6 = mysqli_query($connection,$query_filer_6);
 while($row_filer_6 = mysqli_fetch_assoc($result_filer_6)){
     $approve_status =  $row_filer_6['approve'];
      $tag_status = $row_filer_6['group_name'];
+    if($approve_status==10 || $approve_status==11 ){
+         $proceed = false;
+    }
+    if($row_filer_6['mute_post'] ==1){
+         $proceed = false;
+    }
 }
+       
         
     }else{
         $approve_status = $row['approved'];
         $tag_status = preg_replace('/\r|\n/','\n',trim(htmlentities($row['group_name'])));
     }
     
+    if($proceed === true){
+        
+    if($first_post==1){
+        echo '';
+          $first_post = 0;
+    }else{
+        echo ',';
+    }
+        
+   
     echo '
     
     {
@@ -341,7 +354,7 @@ while($row_filer_6 = mysqli_fetch_assoc($result_filer_6)){
     }
     
     ';
-    
+     }
 }
  
 echo ']}';

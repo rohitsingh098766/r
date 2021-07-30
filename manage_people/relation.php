@@ -159,8 +159,13 @@ $list = mysqli_real_escape_string($connection, $_POST['list']);
     if($value!=1){
         $value = '0';
     }
-     $query = "UPDATE yaarme_follow.follow SET `mute_post` = {$value} WHERE (user = {$_SESSION['id']} and opponent = {$user})";
-    if(mysqli_query($connection,$query)){}
+     $query = "INSERT INTO yaarme_follow.follow (`user`, `opponent`, `mute_post`, `approve` ) VALUES ({$_SESSION['id']}, {$user}, 1,2);";
+     
+    if(mysqli_query($connection,$query)){}else{
+        $query = "UPDATE yaarme_follow.follow SET `mute_post` = {$value} WHERE (user = {$_SESSION['id']} and opponent = {$user})";
+        mysqli_query($connection,$query);
+    } 
+    
         
 }else if(isset($_POST['remove_follower']) && isset($_POST['user'])){
 //    remove follower
