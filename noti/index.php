@@ -79,7 +79,7 @@ $from_profile = '../profile/i/240/'.$row['img'];
         $from_profile = '../profile/i/none.svg';  
       }
       $time_out = time_convert($row['sec']);
-     if(){
+     if($row['link']){
           $link_echo = $row['link'];
      }else{
           $link_echo = $row['from_user'];
